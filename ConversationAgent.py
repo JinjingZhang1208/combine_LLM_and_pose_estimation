@@ -13,7 +13,7 @@ from pythonosc import osc_message_builder
 
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
-openai.api_key = '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'
+openai.api_key = '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'
 
 def generate_prompt(data):
     """
@@ -124,20 +124,6 @@ for x in range(10):
     strr="I Love you"
     if task=="Speaking":
         simple_client.actionChatbox(client, content)
-
-        # # 2 control movement
-        # acitonMove(client,1, 0, 1, 0, 2, False)
-        # client.send_message("/input/MoveForward", False)
-        # client.send_message("/input/MoveBackward", False)
-        # client.send_message("/input/MoveLeft", False)
-        # client.send_message("/input/MoveRight", False)
-        # client.send_message("/input/Run", False)
-
-        # # 3 control Look
-
-        # # 4 interaction with item
-        # # only supported in VR
-
 
 
 
