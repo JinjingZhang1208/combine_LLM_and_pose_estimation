@@ -22,8 +22,8 @@ import time
 sys.path.append('../python-osc/')
 
 # OpenAI API key and Google Cloud credentials setup
-openai.api_key = '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'
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'stellar-utility-267412-7ce130fe08a8.json'
+openai.api_key = '*'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '*.json'
 print("OpenAI API and Google Cloud setup completed.")
 # Constants for audio setup
 DURATION = 8
