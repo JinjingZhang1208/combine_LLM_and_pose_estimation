@@ -2,6 +2,59 @@
 
 ![Blank diagram (1)](https://github.com/hongyuwan/NEU-LLM-Avartars/assets/85655086/f37b8549-08d8-4c11-a631-132a3c34651f)
 
+
+## Env setting
+python 3.9
+
+pip install -r requirements.txt
+
+
+## Instruction about running Interaction Chatting Bot for VRC (main.py)
+
+Integrate real-time chatting capabilities into VRChat with the power of OpenAI and Google Translate.
+
+### Features
+- Real-time text chat using OpenAI's powerful language model.
+- Seamless translation of messages using Google Translate.
+- Integration with VRChat's OSC functions for a holistic experience.
+
+### Prerequisites
+
+- An API key for OpenAI.
+- Google Translate API credentials.
+- VRChat with OSC functions enabled.
+
+### Setup and Running Instructions
+
+#### 1. Identify Sound Output Device
+
+- Start by running `main.py`:
+This will print a list of available sound devices using the command:
+
+    ```python
+    print(sd.query_devices())
+Identify the ID of your desired sound output device from the printed list.
+
+Update the DEVICE variable in main.py with the identified ID:
+
+
+    DEVICE = <YOUR_DEVICE_ID>
+    
+2. API Setup
+In main.py, configure your OpenAI API key and Google Translate API credentials:
+
+    ```python
+    openai.api_key = '<YOUR_OPENAI_API_KEY>'
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '<PATH_TO_YOUR_GOOGLE_TRANSLATE_CREDENTIALS>'
+3. Enable OSC in VRChat
+Launch the VRChat game client.
+Press R to access the game menu.
+Navigate to the OSC settings and enable it.
+4. Running the Chatbot
+With the configurations in place, run main.py again to initiate the chatbot:
+    ```bash
+    python main.py
+
 ## Demo Code
 
 The following are the main scripts involved in this project:
