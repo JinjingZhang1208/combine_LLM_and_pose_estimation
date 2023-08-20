@@ -20,7 +20,7 @@ import random
 import time
 
 sys.path.append('../python-osc/')
-
+print(sd.query_devices())
 # OpenAI API key and Google Cloud credentials setup
 openai.api_key = '*'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '*.json'
