@@ -1,3 +1,12 @@
+## live demo
+###player view
+https://drive.google.com/drive/folders/1d11e3JV-3WoxeiPbvFAbJpsrnLXknZ2A
+
+### AI avarta view
+https://drive.google.com/drive/folders/1d11e3JV-3WoxeiPbvFAbJpsrnLXknZ2A
+
+
+
 ## System Flow Chart
 
 ![Blank diagram (1)](https://github.com/hongyuwan/NEU-LLM-Avartars/assets/85655086/f37b8549-08d8-4c11-a631-132a3c34651f)
