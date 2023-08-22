@@ -1,9 +1,11 @@
 ## live demo
 ### player view
-https://drive.google.com/drive/folders/1d11e3JV-3WoxeiPbvFAbJpsrnLXknZ2A
+
+https://drive.google.com/file/d/1w79LhTHq1B2Kg4YSWWDJD_j-XwttfSTc/view?usp=sharing
 
 ### AI avarta view
-https://drive.google.com/drive/folders/1d11e3JV-3WoxeiPbvFAbJpsrnLXknZ2A
+
+https://drive.google.com/file/d/1Bm22XHPanlFXczCqvdcCCvoculUSB43q/view?usp=sharing
 
 
 
