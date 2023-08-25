@@ -19,12 +19,21 @@ import argparse
 import random
 import time
 
+
+def custom_print(*args, **kwargs):
+    # Print to console
+    print(*args, **kwargs)
+
+    # Write to log file
+    with open("output.log", "a") as log_file:
+        print(*args, file=log_file, **kwargs)
+
 sys.path.append('../python-osc/')
 print(sd.query_devices())
 # OpenAI API key and Google Cloud credentials setup
-openai.api_key = '*'
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '*.json'
-print("OpenAI API and Google Cloud setup completed.")
+openai.api_key = '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'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'stellar-utility-267412-7ce130fe08a8.json'
+custom_print("OpenAI API and Google Cloud setup completed.")
 # Constants for audio setup
 DURATION = 8
 SAMPLE_RATE = 44100
@@ -32,13 +41,13 @@ CHANNELS = 2
 DEVICE = 35
 BUFFER_SIZE = 10
 BUFFER = RingBuffer(capacity=BUFFER_SIZE * SAMPLE_RATE * CHANNELS)
-print("Audio constants initialized.")
+custom_print("Audio constants initialized.")
 # Deque setup for dialogs
 MAX_DIALOG_HISTORY = 3
 dialogs = deque(maxlen=MAX_DIALOG_HISTORY)
 answers = deque(['...'] * MAX_DIALOG_HISTORY, maxlen=MAX_DIALOG_HISTORY)
 
-print("Deque for dialog history setup.")
+custom_print("Deque for dialog history setup.")
 
 def callback(indata, frames, time, status):
     if status:
@@ -55,9 +64,9 @@ def update_dialogs(new_transcript):
     answers.append("...")
 
     data = {
-        "Observation": "Standing",
+        "Observation": "she is waving hands",
         "Hearing": "...",
-        "Past Memory": "He is a very hard working person.",
+        "Past Memory": "she is a very hard working person.",
     }
 
     for idx, (dialog, answer) in enumerate(zip(dialogs, answers), start=1):
@@ -123,7 +132,7 @@ def extract_data_from_response(response_content):
 # Open the stream
 stream = sd.InputStream(callback=callback, channels=CHANNELS, samplerate=SAMPLE_RATE, device=DEVICE)
 stream.start()
-print("Audio stream started.")
+custom_print("Audio stream started.")
 parser = argparse.ArgumentParser()
 parser.add_argument("--ip", default="127.0.0.1",
                         help="The ip of the OSC server")
@@ -138,7 +147,7 @@ retry="Could you speak that again? The music sound is too loud:("
 try:
     while True:
         time.sleep(DURATION)
-        print("Processing audio data...")
+        custom_print("Processing audio data...")
         data_array = np.array(BUFFER)
         mono_array = stereo_to_mono(data_array)
         audio_data = (mono_array * 32767).astype(np.int16).tobytes()
@@ -151,11 +160,11 @@ try:
             language_code="en-US",
         )
         request = speech.RecognizeRequest(config=config, audio=audio)
-        print("Sending data to Google Speech-to-Text API...")
+        custom_print("Sending data to Google Speech-to-Text API...")
         response = client.recognize(request=request)
         if not response.results:
             simple_client.actionChatbox(vrc_client, retry)
-            print("No transcription results returned from Google Speech-to-Text.")
+            custom_print("No transcription results returned from Google Speech-to-Text.")
 
         else:
             print("------------------------")
@@ -164,16 +173,16 @@ try:
             result=response.results[0]
             transcript = result.alternatives[0].transcript
             valid_response_received = False
-            print("********"+f"Transcript: {transcript}")
+            custom_print("********"+f"Transcript: {transcript}")
             simple_client.actionChatbox(vrc_client, strr)
             # Update dialogs and send the new prompt to OpenAI API
             print("Updating dialogs...")
             data = update_dialogs(transcript)
 
             while not valid_response_received:
-                print("Generating prompt for OpenAI...")
+                custom_print("Generating prompt for OpenAI...")
                 json_prompt = generate_prompt(data)
-                print(json_prompt)
+                custom_print(json_prompt)
 
                 print("Sending prompt to OpenAI GPT-3.5...")
                 response = openai.ChatCompletion.create(
@@ -186,14 +195,16 @@ try:
                     max_tokens=300
                 )
 
-                print("Received response from OpenAI GPT-3.5.")
+                custom_print("Received response from OpenAI GPT-3.5.")
                 response_content = response['choices'][0]['message']['content']
+
+                custom_print(response_content)
 
                 reasoning, task, content = extract_data_from_response(response_content)
                 if reasoning and task and content:
                     valid_response_received = True
                 else:
-                    print("Invalid response received, retrying...")
+                    custom_print("Invalid response received, retrying...")
 
             if task == "Speaking":
                 simple_client.actionChatbox(vrc_client, content)
