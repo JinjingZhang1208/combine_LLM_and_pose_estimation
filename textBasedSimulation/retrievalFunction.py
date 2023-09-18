@@ -45,19 +45,6 @@ def createBasePrompt(userName,baseDescription):
         "example": "(Observation 1)\n(Observation 2)\n"
     }
     return json.dumps(prompt,indent=4)
-
-def generateObservations(prompt):
-    response = openai.ChatCompletion.create(
-    model=GPT35,
-    messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt},
-        ]
-        ,
-        temperature=0.8,
-    max_tokens=300
-    )
-    return response['choices'][0]['message']['content']
 """
 
 

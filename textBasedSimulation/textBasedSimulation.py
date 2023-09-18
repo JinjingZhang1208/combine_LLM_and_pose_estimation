@@ -1,13 +1,16 @@
 import time
-import pymongo
+import os
+from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
 import datetime
 from pymongo.mongo_client import MongoClient
 from responseGenerator import generateInitialObservations,generateObservations,generateConversation 
 
+load_dotenv()
+
 # Constants
 DATABASE_NAME='LLMDatabase'
-DATABASE_URL= 'mongodb+srv://abdulaziz:qSG8y5kkbiEkBAuf@llmcluster.slofevi.mongodb.net/?retryWrites=true&w=majority'
+DATABASE_URL=os.environ.get('DATABASE_URL') 
 COLLECTION_USERS='Users'
 COLLECTION_MEMORY_OBJECTS='MemoryObjects'
 

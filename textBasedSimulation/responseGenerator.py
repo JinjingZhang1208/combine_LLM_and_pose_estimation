@@ -1,10 +1,13 @@
 import openai
 import json
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 GPT4='gpt-4'
 GPT35='gpt-3.5-turbo'
-API_KEY= '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'
+API_KEY=os.environ.get('API_KEY') 
 openai.api_key=API_KEY
 
 SAMPLE_DESCRIPTION="""John Lin is a pharmacy shopkeeper at the Willow
