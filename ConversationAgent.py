@@ -13,7 +13,6 @@ from pythonosc import osc_message_builder
 
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
-openai.api_key = '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'
 
 def generate_prompt(data):
     """
