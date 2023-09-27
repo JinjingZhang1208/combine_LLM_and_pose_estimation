@@ -8,7 +8,7 @@ load_dotenv()
 GPT4='gpt-4'
 GPT35='gpt-3.5-turbo'
 API_KEY=os.environ.get('API_KEY') 
-openai.api_key="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"
+openai.api_key=
 
 SAMPLE_DESCRIPTION="""John Lin is a pharmacy shopkeeper at the Willow
 Market and Pharmacy who loves to help people. He
