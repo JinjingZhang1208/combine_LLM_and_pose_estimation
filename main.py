@@ -1,3 +1,4 @@
+
 from google.cloud import speech
 import sounddevice as sd
 import numpy as np

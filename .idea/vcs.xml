@@ -6,6 +6,8 @@
     <mapping directory="$PROJECT_DIR$/genshin_auto_fish" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/kapao" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/python-osc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/whispering" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/whispering-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/yolov5" vcs="Git" />
   </component>
 </project>
