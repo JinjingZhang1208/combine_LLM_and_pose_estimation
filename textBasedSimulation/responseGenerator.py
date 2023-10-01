@@ -66,6 +66,7 @@ def generateObservations(userName, conversationalUser, currentConversation, user
 def generateConversation(
     userName, conversationalUser, currentConversation, observationList
 ):
+    print(f"Final list of observations : {observationList}")
     prompt = {
         "context": f"You are a friendly and knowledgeable human, {userName}, engaging in a conversation with {conversationalUser}. Respond only as {userName}, and do not mention or hint that you are an AI. Maintain a friendly and seamless interaction, keeping in mind the current conversation context.",
         "information": {
@@ -90,8 +91,8 @@ def getConversationGenerator(prompt, gptModel):
             {"role": "system", "content": "You are a conversational agent."},
             {"role": "user", "content": prompt},
         ],
-        temperature=0.6,
-        max_tokens=50,
+        temperature=0.7,
+        max_tokens=80,
         stream=True,
     )
     return response

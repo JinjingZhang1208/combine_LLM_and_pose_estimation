@@ -19,7 +19,8 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "Users"
-COLLECTION_MEMORY_OBJECTS = "MemoryObjects"
+COLLECTION_MEMORY_OBJECTS = "TestMemory"
+RETRIEVAL_COUNT = 10
 
 # Basic objects for the Database.
 client = MongoClient(DATABASE_URL)
@@ -50,14 +51,12 @@ def fetchPastRecords(userName: str):
 
 def updateBaseDescription(userName: str, observationList: list):
     # Get the current time.
-    currTime = datetime.datetime.now()
-    formattedTime = currTime.strftime("%Y-%m-%d %H:%M:%S")
+    currTime = datetime.datetime.utcnow()
     # Update the memoryObjects collection.
     memoryObjectData = {
         "Username": userName,
         "Conversation with User": "Base Description",
-        "Creation Time": formattedTime,
-        "Recent Access Time": formattedTime,
+        "Creation Time": currTime,
         "Observations": observationList,
     }
     # Update the latest collection with the id parameter and insert to the database.
@@ -70,14 +69,12 @@ def updateMemoryCollection(
 ):
     global pastObservations
     # Get the current time.
-    currTime = datetime.datetime.now()
-    formattedTime = currTime.strftime("%Y-%m-%d %H:%M:%S")
+    currTime = datetime.datetime.utcnow()
     # Update the memoryObjects collection.
     memoryObjectData = {
         "Username": userName,
         "Conversation with User": conversationalUser,
-        "Creation Time": formattedTime,
-        "Recent Access Time": formattedTime,
+        "Creation Time": currTime,
         "Observations": observationList,
     }
     # Update the latest collection with the id parameter and insert to the database.
@@ -114,15 +111,24 @@ def startConversation(userName):
         )
         if currentConversation.lower() == "done":
             break
-        retreivalResults = retrievalFunction(
-            currentConversation, baseObservation + pastObservations
+        baseRetrieval = retrievalFunction(
+            currentConversation,
+            baseObservation,
+            RETRIEVAL_COUNT,
+            isBaseDescription=True,
+        )
+        observationRetrieval = retrievalFunction(
+            currentConversation,
+            pastObservations,
+            RETRIEVAL_COUNT,
+            isBaseDescription=False,
         )
         startTime = time.time()
         conversationPrompt = generateConversation(
             userName,
             conversationalUser,
             currentConversation,
-            [data[1] for data in retreivalResults],
+            [data[1] for data in baseRetrieval + observationRetrieval],
         )
         print(f"{userName} :")
         resultConversationString = ""
