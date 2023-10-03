@@ -5,7 +5,7 @@ from importlib import util
 from pathlib import Path
 import copy
 
-import settings
+# import settings
 
 SUPPORTED_WIDGET_TYPES = ["button", "slider", "select", "textarea", "hyperlink", "label", "file_open", "file_save",
                           "folder_open", "dir_open"]

@@ -29,47 +29,46 @@ def convert_to_romaji(text):
 
 # Download and install Translate packages
 def InstallLanguages():
-    match get_current_translator():
-        case "M2M100":
-            texttranslateM2M100_CTranslate2.load_model(settings.GetOption("txt_translator_size"), compute_type=settings.GetOption("txt_translator_precision"))
-        case "NLLB200":
-            texttranslateNLLB200.load_model(settings.GetOption("txt_translator_size"), compute_type=settings.GetOption("txt_translator_precision"))
-        case "NLLB200_CT2":
-            texttranslateNLLB200_CTranslate2.load_model(settings.GetOption("txt_translator_size"), compute_type=settings.GetOption("txt_translator_precision"))
-
+    current_translator = get_current_translator()
+    if current_translator == "M2M100":
+        texttranslateM2M100_CTranslate2.load_model(settings.GetOption("txt_translator_size"), compute_type=settings.GetOption("txt_translator_precision"))
+    elif current_translator == "NLLB200":
+        texttranslateNLLB200.load_model(settings.GetOption("txt_translator_size"), compute_type=settings.GetOption("txt_translator_precision"))
+    elif current_translator == "NLLB200_CT2":
+        texttranslateNLLB200_CTranslate2.load_model(settings.GetOption("txt_translator_size"), compute_type=settings.GetOption("txt_translator_precision"))
 
 def GetInstalledLanguageNames():
-    match get_current_translator():
-        case "M2M100":
-            return texttranslateM2M100_CTranslate2.get_installed_language_names()
-        case "NLLB200":
-            return texttranslateNLLB200.get_installed_language_names()
-        case "NLLB200_CT2":
-            return texttranslateNLLB200_CTranslate2.get_installed_language_names()
-
+    current_translator = get_current_translator()
+    if current_translator == "M2M100":
+        return texttranslateM2M100_CTranslate2.get_installed_language_names()
+    elif current_translator == "NLLB200":
+        return texttranslateNLLB200.get_installed_language_names()
+    elif current_translator == "NLLB200_CT2":
+        return texttranslateNLLB200_CTranslate2.get_installed_language_names()
 
 def TranslateLanguage(text, from_code, to_code, to_romaji=False, as_iso1=False):
     translation_text = ""
-    match get_current_translator():
-        case "M2M100":
-            try:
-                translation_text = texttranslateM2M100_CTranslate2.translate_language(text, from_code, to_code)
-            except Exception as e:
-                print("Error: " + str(e))
-        case "NLLB200":
-            try:
-                translation_text, from_code, to_code = texttranslateNLLB200.translate_language(text, from_code, to_code, as_iso1)
-            except Exception as e:
-                print("Error: " + str(e))
-        case "NLLB200_CT2":
-            try:
-                translation_text, from_code, to_code = texttranslateNLLB200_CTranslate2.translate_language(text, from_code, to_code, as_iso1)
-            except Exception as e:
-                print("Error: " + str(e))
+    current_translator = get_current_translator()
+    if current_translator == "M2M100":
+        try:
+            translation_text = texttranslateM2M100_CTranslate2.translate_language(text, from_code, to_code)
+        except Exception as e:
+            print("Error: " + str(e))
+    elif current_translator == "NLLB200":
+        try:
+            translation_text, from_code, to_code = texttranslateNLLB200.translate_language(text, from_code, to_code, as_iso1)
+        except Exception as e:
+            print("Error: " + str(e))
+    elif current_translator == "NLLB200_CT2":
+        try:
+            translation_text, from_code, to_code = texttranslateNLLB200_CTranslate2.translate_language(text, from_code, to_code, as_iso1)
+        except Exception as e:
+            print("Error: " + str(e))
     if to_romaji:
         translation_text = convert_to_romaji(translation_text)
 
     return translation_text.strip(), from_code, to_code
+
 
 
 def SetDevice(option):
