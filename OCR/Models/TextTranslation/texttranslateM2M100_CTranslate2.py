@@ -186,15 +186,13 @@ def load_model(size="small", compute_type="float32"):
     global sentencepiece
     global translator
 
-    match size:
-        case "small":
-            model_file = "m2m100_418m"
+    if size == "small":
+        model_file = "m2m100_418m"
+    elif size == "large":
+        model_file = "m2m100_12b"
+    else:
+        model_file = "m2m100_418m"
 
-        case "large":
-            model_file = "m2m100_12b"
-
-        case _:
-            model_file = "m2m100_418m"
 
     model_path = Path(ct_model_path / model_file)
     sp_model_path = Path(ct_model_path / model_file / "sentencepiece.model")

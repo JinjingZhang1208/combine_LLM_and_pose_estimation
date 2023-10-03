@@ -3,7 +3,7 @@ import yaml
 import os
 from pathlib import Path
 from click import core
-from whisper import available_models
+# from whisper import available_models
 import threading
 
 import Utilities

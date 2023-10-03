@@ -92,7 +92,7 @@ def getGPTResponse(prompt,gptModel):
             {"role": "user", "content": prompt},
         ]
         ,
-        temperature=0.8,
+        temperature=1.0,
     max_tokens=300
     )
     return response['choices'][0]['message']['content']
