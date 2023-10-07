@@ -82,6 +82,9 @@ def startConversation(userName):
         custom_print(f"Time taken for the conversation generation by GPT : {endTime-startTime:.2f}")
         custom_print(f"{userName} : {finalStatement}")
         VRC_OSCLib._direct_osc_send(data=finalStatement)
+        emo=VRC_OSCLib.find_expression(finalStatement)
+        print(emo)
+        VRC_OSCLib.send_expression_command(emo)
 
         # Time the function call and fetch the results.
         startTime=time.time()
