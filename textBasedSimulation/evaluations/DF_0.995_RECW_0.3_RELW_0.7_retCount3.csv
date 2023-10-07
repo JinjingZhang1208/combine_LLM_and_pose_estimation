@@ -1,0 +1,76 @@
+Question asked ,Relevant Observations,Score,Hit / Miss,Response,
+Hi John! How are you doing? How is your family?,John Lin loves his family very much,1,0,"Hi Katie! I'm doing well, thank you for asking. My family is doing great too.
+Mei Lin is busy with her teaching, and Eddy is enjoying his music theory studies. How about you? How
+are you doing?",0.33
+Hi John! How are you doing? How is your family?,"John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory",0.555463798,1,,
+Hi John! How are you doing? How is your family?,John Lin loves to help people,0.548789776,0,,
+That's great to know! How old is Eddy?,"John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years",1,0,"Eddy is 21 years old. He's studying music theory and is really passionate about it.
+ How are you doing, Katie?",0.5
+That's great to know! How old is Eddy?,John Lin thinks Sam Moore is a kind and nice man,0.879035361,0,,
+That's great to know! How old is Eddy?,"John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory",0.747492328,1,,
+That's great to know! How old is Eddy?,"John Lin's response indicates that his family members, Mei Lin and Eddy, are both engaged in their respective pursuits (teaching and music theory studies).",1,1,,
+That's great to know! How old is Eddy?,John Lin reciprocates the question by asking Katie how she is doing.,0.357156563,1,,
+That's great to know! How old is Eddy?,John Lin expresses gratitude for Katie asking about his family.,0,0,,
+Do you like music?,"John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory",1,1,"Yes, I do like music. It brings people together and has a way of touching our hearts. My son Eddy is actually studying music theory, and my wife Mei is a 
+college professor. Music is a big part of our lives.",0.66
+Do you like music?,John Lin loves his family very much,0.787752919,0,,
+Do you like music?,John Lin thinks Sam Moore is a kind and nice man,0.742073075,0,,
+Do you like music?,Eddy is passionate about music.,1,1,,
+Do you like music?,Eddy is studying music theory.,0.878902631,1,,
+Do you like music?,"John Lin's response indicates that his family members, Mei Lin and Eddy, are both engaged in their respective pursuits (teaching and music theory studies).",0.424506017,1,,
+Who are your favourtie artists?,John Lin thinks Sam Moore is a kind and nice man,1,1,"Some of my favorite artists are Sam Moore, Tom Moreno, and my son Eddy. 
+They all bring something special to their music.",0.83
+Who are your favourtie artists?,John Lin and Tom Moreno are colleagues at The Willows Market and Pharmacy,0.929715963,1,,
+Who are your favourtie artists?,"John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory",0.897032408,1,,
+Who are your favourtie artists?,Eddy is passionate about music.,1,1,,
+Who are your favourtie artists?,Eddy is studying music theory.,0.734267172,1,,
+Who are your favourtie artists?,Music is a big part of John Lin's life.,0.59079365,0,,
+What does Sam Moore do?,John Lin thinks Sam Moore is a kind and nice man,1,1,"Sam Moore is a retired teacher who now spends his time volunteering at a local community center.
+He's a kind-hearted man who loves helping others. How are you doing, Katie?",0.5
+What does Sam Moore do?,"John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years",0.644240654,1,,
+What does Sam Moore do?,John Lin loves to help people,0.34627115,0,,
+What does Sam Moore do?,"John Lin mentioned three favorite artists: Sam Moore, Tom Moreno, and his son Eddy.",1,0,,
+What does Sam Moore do?,John Lin reciprocates the question by asking Katie how she is doing.,0.950315244,1,,
+What does Sam Moore do?,Eddy is passionate about music.,0.752796778,0,,
+Who is Tom Moreno?,John Lin knows the Moreno family somewhat well - the husband Tom Moreno and the wife Jane Moreno.,1,1,"Tom Moreno is a wonderful person, known for his kind-hearted nature and love for helping others.
+He is also a talented artist and a friend of mine. How can I assist you further with Tom Moreno?",0.66
+Who is Tom Moreno?,John Lin and Tom Moreno are friends and like to discuss local politics together,0.87629964,1,,
+Who is Tom Moreno?,John Lin and Tom Moreno are colleagues at The Willows Market and Pharmacy,0.637202999,1,,
+Who is Tom Moreno?,"John Lin mentioned three favorite artists: Sam Moore, Tom Moreno, and his son Eddy.",1,1,,
+Who is Tom Moreno?,He's a kind-hearted man who loves helping others.,0.518394774,0,,
+Who is Tom Moreno?,Eddy is passionate about music.,0.417656821,0,,
+Who is Sam again?,John Lin thinks Sam Moore is a kind and nice man,1,1,"Sam Moore is a retired teacher who spends his time volunteering at a local community center.
+ He is a kind and nice man, and I've known him and his wife, Jennifer Moore, for a few years now.
+ They're a lovely couple!",0.33
+Who is Sam again?,"John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years",0.48090918,1,,
+Who is Sam again?,John Lin loves to help people,0.451220329,0,,
+Who is Sam again?,He's a kind-hearted man who loves helping others.,1,0,,
+Who is Sam again?,Tom Moreno is known for his love for helping others.,0.856736819,0,,
+Who is Sam again?,Sam Moore is a retired teacher who now spends his time volunteering at a local community center.,0.843588336,0,,
+Do you like to cook?,John Lin loves to help people,1,0,"Yes, I do enjoy cooking! It's a great way to relax and express my creativity in the kitchen.
+Is cooking something you enjoy as well, Katie?",0
+Do you like to cook?,John Lin thinks Sam Moore is a kind and nice man,0.970519623,0,,
+Do you like to cook?,John Lin loves his family very much,0.968700242,0,,
+Do you like to cook?,Eddy is passionate about music.,1,0,,
+Do you like to cook?,Sam and Jennifer Moore are described as a lovely couple.,0.748786612,0,,
+Do you like to cook?,Tom Moreno is also a talented artist.,0.727553464,0,,
+"Yes, I like cooking too! What is your favourtie dish?",John Lin thinks Sam Moore is a kind and nice man,1,0,"Oh, that's great to hear! My favorite dish is lasagna.
+ It's a classic Italian dish with layers of pasta, meat sauce, and cheese. 
+It's so delicious and comforting. What about you, Katie? What's your favorite dish?",0.16
+"Yes, I like cooking too! What is your favourtie dish?",John Lin loves his family very much,0.981283987,0,,
+"Yes, I like cooking too! What is your favourtie dish?",John Lin loves to help people,0.948896517,0,,
+"Yes, I like cooking too! What is your favourtie dish?",John Lin asks Katie if she enjoys cooking as well.,1,1,,
+"Yes, I like cooking too! What is your favourtie dish?",John Lin enjoys cooking.,0.991392774,0,,
+"Yes, I like cooking too! What is your favourtie dish?",Cooking is a way for John Lin to relax and express creativity.,0.853873701,0,,
+"oh lasagna, I have never heard about it, Can you tell me more about it's recipe?",John Lin is always looking for ways to make the process of getting medication easier for his customers,1,0,"Lasagna is a delicious Italian dish made with layers of pasta, meat sauce, and cheese.
+ It's a classic recipe that can be customized with different ingredients like vegetables or ricotta cheese.
+ I can share a detailed recipe with you if you're interested!",0.5
+"oh lasagna, I have never heard about it, Can you tell me more about it's recipe?",John Lin and Tom Moreno are colleagues at The Willows Market and Pharmacy,0.972906493,0,,
+"oh lasagna, I have never heard about it, Can you tell me more about it's recipe?",John Lin is a pharmacy shopkeeper at the Willow Market and Pharmacy,0.961062232,0,,
+"oh lasagna, I have never heard about it, Can you tell me more about it's recipe?","Lasagna is a classic Italian dish with layers of pasta, meat sauce, and cheese.",1,1,,
+"oh lasagna, I have never heard about it, Can you tell me more about it's recipe?",John Lin's favorite dish is lasagna.,0.910671578,1,,
+"oh lasagna, I have never heard about it, Can you tell me more about it's recipe?",John Lin enjoys cooking.,0.64032284,1,,
+,,,,,
+,,,,,
+,,,,,
+MAP : 0.447,,,,,
