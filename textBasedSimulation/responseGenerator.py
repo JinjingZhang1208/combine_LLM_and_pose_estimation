@@ -12,7 +12,8 @@ GPT4 = "gpt-4"
 GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
 openai.api_key = API_KEY
-
+ACTIONS = []
+EXPRESSIONS = []
 SAMPLE_DESCRIPTION = """John Lin is a pharmacy shopkeeper at the Willow
 Market and Pharmacy who loves to help people. He
 is always looking for ways to make the process
@@ -66,7 +67,6 @@ def generateObservations(userName, conversationalUser, currentConversation, user
 def generateConversation(
     userName, conversationalUser, currentConversation, observationList
 ):
-    print(f"Final list of observations : {observationList}")
     prompt = {
         "context": f"You are a friendly and knowledgeable human, {userName}, engaging in a conversation with {conversationalUser}. Respond only as {userName}, and do not mention or hint that you are an AI. Maintain a friendly and seamless interaction, keeping in mind the current conversation context.",
         "information": {
@@ -76,7 +76,7 @@ def generateConversation(
             "Relevant observations": observationList,
         },
         "criteria": [
-            "Generate user-friendly, seamless, and appropriate responses that align with the current conversation context. Keep responses short and to the point. Respond as {userName} and do not assume or hint at any other identity.",
+            f"Generate user-friendly, seamless, and appropriate responses that are creative and no more than two sentences long. If specific details are unavailable, craft a plausible and relevant response that remains consistent with the ongoing conversation. Ensure responses are provided as {userName} without revealing or implying an AI identity. When asked for specific information, provide detailed information with no more than three sentences",
         ],
     }
 
@@ -92,7 +92,7 @@ def getConversationGenerator(prompt, gptModel):
             {"role": "user", "content": prompt},
         ],
         temperature=0.7,
-        max_tokens=80,
+        max_tokens=150,
         stream=True,
     )
     return response

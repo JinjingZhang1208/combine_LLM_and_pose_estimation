@@ -1,18 +1,20 @@
-from glob import glob
+import os
 import math
 import csv
 import datetime
+import numpy as np
 from collections import deque
-from heapq import heapify, heappushpop
 from sentence_transformers import SentenceTransformer, util
+from sklearn.preprocessing import MinMaxScaler
+
 
 model = SentenceTransformer("paraphrase-MiniLM-L6-v2")
-DECAY_FACTOR = 0.05
+DECAY_FACTOR = 0.995
 RECENCY_WEIGHT = 0.3
 RELEVANCE_WEIGHT = 0.7
 
-csvData = []
 currStatement = ""
+resultObservation = []
 
 
 def retrievalFunction(
@@ -21,6 +23,9 @@ def retrievalFunction(
     retrievalCount: int,
     isBaseDescription=True,
 ):
+    """
+    For CSV only
+    """
     global currStatement
     currStatement = currentConversation
     if memoryStream:
@@ -42,7 +47,7 @@ def calculateRecency(memoryStream, isBaseDescription):
         else:
             currTime = datetime.datetime.utcnow()
             diffInSeconds = (currTime - memory["Creation Time"]).total_seconds()
-            minutesDiff = diffInSeconds / 60
+            minutesDiff = diffInSeconds / 3600
             memory["Recency"] = math.exp(-DECAY_FACTOR * minutesDiff)
     return memoryStream
 
@@ -54,34 +59,44 @@ def calculateRelevance(currentConversation: str, observationData: list):
     return similarityVector
 
 
+def scaleScores(relevantObservations: list) -> list:
+    retrievalScores = np.array(
+        [observation[0] for observation in relevantObservations]
+    ).reshape(-1, 1)
+
+    minMaxScaler = MinMaxScaler()
+    retrievalScores = minMaxScaler.fit_transform(retrievalScores)
+
+    relevantObservations = list(
+        zip(
+            retrievalScores.flatten(),
+            [observation[1] for observation in relevantObservations],
+        )
+    )
+    return relevantObservations
+
+
 def calculateRetrievalScore(
     observationData: list,
     recencyScores: list,
     similarityVector: list,
     retrievalCount: int,
 ):
-    global currStatement
-    global csvData
-    relevantObservations = [(float("-inf"), "") for i in range(retrievalCount)]
-    heapify(relevantObservations)
+    global resultObservation
+    relevantObservations = []
     for idx, simScore in enumerate(similarityVector):
         retrievalScore = (
             recencyScores[idx] * RECENCY_WEIGHT + simScore * RELEVANCE_WEIGHT
         )
-
-        currData = {
-            "Current Statement": currStatement,
-            "Observations": observationData[idx],
-            "RecencyScore": recencyScores[idx],
-            "RelevancyScore": simScore,
-            "TotalScore": retrievalScore,
-        }
         currObservation = (retrievalScore, observationData[idx])
-        if retrievalScore > relevantObservations[0][0]:
-            heappushpop(relevantObservations, currObservation)
-        csvData.append(currData)
-        updateCSV()
-    return sorted(relevantObservations, key=lambda x: x[0], reverse=True)
+        relevantObservations.append(currObservation)
+    relevantObservations = scaleScores(relevantObservations)
+    relevantObservations = sorted(
+        relevantObservations, key=lambda x: x[0], reverse=True
+    )[:retrievalCount]
+    resultObservation = relevantObservations
+    updateCSV()
+    return relevantObservations
 
 
 def prepareMemoryData(memoryStream):
@@ -129,19 +144,27 @@ testQueue = deque(
 
 
 def updateCSV():
-    global csvData
-    headers = [
-        "Current Statement",
-        "Observations",
-        "RecencyScore",
-        "RelevancyScore",
-        "TotalScore",
-    ]
+    csvData = []
+    global resultObservation
+    global currStatement
+    headers = ["Current Statement", "Relevant observation", "Score"]
+    for observation in resultObservation:
+        currData = {
+            "Current Statement": currStatement,
+            "Relevant observation": observation[1],
+            "Score": observation[0],
+        }
+        csvData.append(currData)
+    currFile = (
+        f"DF_{DECAY_FACTOR}_RECW_{RECENCY_WEIGHT}_RELW_{RELEVANCE_WEIGHT}_retCount5.csv"
+    )
     with open(
-        f"DF_{DECAY_FACTOR}_RECW_{RECENCY_WEIGHT}_RELW_{RELEVANCE_WEIGHT}_retCount10.csv",
-        "w",
+        currFile,
+        "a+",
         newline="",
+        encoding="utf-8",
     ) as csvFile:
         csvWriter = csv.DictWriter(csvFile, fieldnames=headers)
-        csvWriter.writeheader()
+        if not os.path.exists(currFile):
+            csvWriter.writeheader()
         csvWriter.writerows(csvData)

@@ -13,6 +13,8 @@ from responseGenerator import (
     generateConversation,
 )
 
+# Define list of expressions and actions for GPT and allow it to pick one
+
 load_dotenv()
 
 # Constants
@@ -20,7 +22,7 @@ DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "Users"
 COLLECTION_MEMORY_OBJECTS = "TestMemory"
-RETRIEVAL_COUNT = 10
+RETRIEVAL_COUNT = 5
 
 # Basic objects for the Database.
 client = MongoClient(DATABASE_URL)
@@ -45,7 +47,7 @@ def fetchPastRecords(userName: str):
         "Conversation with User": {"$ne": "Base Description"},
     }
     return deque(
-        memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(15), maxlen=15
+        memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(50), maxlen=50
     )
 
 
