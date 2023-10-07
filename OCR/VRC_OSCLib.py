@@ -15,6 +15,8 @@ from unidecode import unidecode
 import threading
 import queue
 import time
+import controlexpression
+import string
 # Variables and locks for thread safety and message queuing
 send_message_lock = threading.Lock()
 osc_queue = queue.Queue()
@@ -43,24 +45,33 @@ expression_data_mapping = {
         "Faint": 8
     }
 }
-
+def find_expression(text):
+    predictions = controlexpression.predict(text)
+    print(predictions)
+    ans = controlexpression.generatePrompt(predictions)
+    return ans
 
 def send_expression_command(expression, IP='127.0.0.1', PORT=9000):
     found = False
-    lower_expression = expression.lower()  # Convert input expression to lowercase
-    for expression_type, expressions in expression_data_mapping.items():
-        # Convert dictionary keys to lowercase for matching
-        lowercase_expressions = {k.lower(): v for k, v in expressions.items()}
-        if lower_expression in lowercase_expressions:
-            data_value = lowercase_expressions[lower_expression]
-            parameter_value = "F" if expression_type == "Facial Expression" else "VRCEmote"
-            AV3_SetInt(data=data_value, Parameter=parameter_value, IP=IP, PORT=PORT)
-            print(f'Command sent for expression: {expression} with data value: {data_value}')
-            found = True
-            break  # Exit the loop once a match is found
+    words = [word.strip('" ') for word in expression.split(',')]
+    print(words)  # Output: ['Excited', 'Dance']
+    for le in words:
+        le = le.lower()
+        for expression_type, expressions in expression_data_mapping.items():
+            # Convert dictionary keys to lowercase for matching
+            lowercase_expressions = {k.lower(): v for k, v in expressions.items()}
+            if le in lowercase_expressions:
+                data_value = lowercase_expressions[le]
+                parameter_value = "F" if expression_type == "Facial Expression" else "VRCEmote"
+                AV3_SetInt(data=data_value, Parameter=parameter_value, IP=IP, PORT=PORT)
+                print(f'Command sent for expression: {expression} with data value: {data_value}')
+                found = True
+                time.sleep(3)
+                AV3_SetInt(data=0, Parameter=parameter_value, IP=IP, PORT=PORT)
+                break  # Exit the loop once a match is found
 
-    if not found:
-        print(f'Invalid expression: {expression}')
+        if not found:
+            print(f'Invalid expression: {expression}')
 
 
 def AV3_SetInt(data=0, Parameter="example", IP='127.0.0.1', PORT=9000):
@@ -396,11 +407,5 @@ def send_scrolling_chunks(text, chunk_size=144, delay=1., initial_delay=1., scro
             sleep_while_checking_stop_flag(initial_delay)
         else:
             sleep_while_checking_stop_flag(delay)
-
-while(1):
-    _direct_osc_send(data="love")
-    # AV3_SetInt(data=0, Parameter="VRCEmote", IP='127.0.0.1', PORT=9000)
-    # AV3_SetFloat(data=2, Parameter="_Hai_GestureSmoothingFacto", IP='127.0.0.1', PORT=9000)
-    send_expression_command("Cheer")
 
 
