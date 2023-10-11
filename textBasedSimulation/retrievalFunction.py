@@ -10,8 +10,8 @@ from sklearn.preprocessing import MinMaxScaler
 
 model = SentenceTransformer("paraphrase-MiniLM-L6-v2")
 DECAY_FACTOR = 0.995
-RECENCY_WEIGHT = 0.3
-RELEVANCE_WEIGHT = 0.7
+RECENCY_WEIGHT = 1.0
+RELEVANCE_WEIGHT = 1.0
 
 currStatement = ""
 resultObservation = []

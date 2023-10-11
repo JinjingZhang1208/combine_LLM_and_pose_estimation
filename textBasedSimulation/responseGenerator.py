@@ -12,8 +12,18 @@ GPT4 = "gpt-4"
 GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
 openai.api_key = API_KEY
-ACTIONS = []
-EXPRESSIONS = []
+EXPRESSIONS = ["Happy", "Smug", "Wink", "Confused", "Happy2", "Angry"]
+ACTIONS = [
+    "Wave Hands",
+    "Clap",
+    "Point",
+    "Cheer",
+    "Dance",
+    "Backflip",
+    "Sadness",
+    "Faint",
+    "None",
+]
 SAMPLE_DESCRIPTION = """John Lin is a pharmacy shopkeeper at the Willow
 Market and Pharmacy who loves to help people. He
 is always looking for ways to make the process
@@ -65,7 +75,7 @@ def generateObservations(userName, conversationalUser, currentConversation, user
 
 
 def generateConversation(
-    userName, conversationalUser, currentConversation, observationList
+    userName, conversationalUser, currentConversation, relevantObservations
 ):
     prompt = {
         "context": f"You are a friendly and knowledgeable human, {userName}, engaging in a conversation with {conversationalUser}. Respond only as {userName}, and do not mention or hint that you are an AI. Maintain a friendly and seamless interaction, keeping in mind the current conversation context.",
@@ -73,10 +83,13 @@ def generateConversation(
             "You are": userName,
             "Conversational Partner": conversationalUser,
             "Current conversation": currentConversation,
-            "Relevant observations": observationList,
+            "Relevant observations": relevantObservations,
+            "Expressions": EXPRESSIONS,
+            "Actions": ACTIONS,
         },
         "criteria": [
-            f"Generate user-friendly, seamless, and appropriate responses that are creative and no more than two sentences long. If specific details are unavailable, craft a plausible and relevant response that remains consistent with the ongoing conversation. Ensure responses are provided as {userName} without revealing or implying an AI identity. When asked for specific information, provide detailed information with no more than three sentences",
+            f"Generate user-friendly, seamless, and appropriate responses that are creative and no more than 144 characters long. If specific details are unavailable, craft a plausible and relevant response that remains consistent with the ongoing conversation. Ensure responses are provided as {userName} without revealing or implying an AI identity.",
+            f"Independently select a suitable expression from the {EXPRESSIONS} list and a suitable action from the {ACTIONS} list with the exact same word, depending on the context of the conversation. Format the output as follows: (selected expression, selected action)\\n(Conversation output)",
         ],
     }
 
