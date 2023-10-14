@@ -3,12 +3,20 @@ import math
 import csv
 import datetime
 import numpy as np
+import openai
+from sentence_transformers import util
 from collections import deque
-from sentence_transformers import SentenceTransformer, util
 from sklearn.preprocessing import MinMaxScaler
+from openai.embeddings_utils import get_embeddings, get_embedding
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.environ.get("API_KEY")
+openai.api_key = API_KEY
 
 
-model = SentenceTransformer("paraphrase-MiniLM-L6-v2")
+engine = "text-embedding-ada-002"
 DECAY_FACTOR = 0.995
 RECENCY_WEIGHT = 1.0
 RELEVANCE_WEIGHT = 1.0
@@ -53,8 +61,8 @@ def calculateRecency(memoryStream, isBaseDescription):
 
 
 def calculateRelevance(currentConversation: str, observationData: list):
-    contentEmbedding = model.encode(currentConversation, convert_to_tensor=True)
-    dataEmbedding = model.encode(observationData, convert_to_tensor=True)
+    contentEmbedding = get_embedding(currentConversation, engine)
+    dataEmbedding = get_embeddings(observationData, engine)
     similarityVector = util.pytorch_cos_sim(contentEmbedding, dataEmbedding).tolist()[0]
     return similarityVector
 
@@ -168,3 +176,6 @@ def updateCSV():
         if not os.path.exists(currFile):
             csvWriter.writeheader()
         csvWriter.writerows(csvData)
+
+
+# print(retrievalFunction("Hi John! tell me about your familly", testQueue, 5, True))
