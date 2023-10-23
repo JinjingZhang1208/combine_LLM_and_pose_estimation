@@ -88,7 +88,7 @@ def generateConversation(
             "Actions": ACTIONS,
         },
         "criteria": [
-            f"Craft user-friendly, seamless, and innovative responses, capped at 144 characters. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
+            f"Craft user-friendly, seamless, and innovative responses, capped at 135 characters. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
             f"Choose an expression from {EXPRESSIONS} and an action from {ACTIONS} autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
         ],
     }
@@ -122,3 +122,9 @@ def getGPTResponse(prompt, gptModel):
         max_tokens=300,
     )
     return response["choices"][0]["message"]["content"]
+
+
+def getTextfromAudio(recordedFile):
+    audio_file = open(recordedFile, "rb")
+    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    return transcript.text

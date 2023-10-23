@@ -2,15 +2,18 @@ import time
 import os
 import datetime
 import asyncio
+from enum import Enum
 from concurrent.futures import ThreadPoolExecutor
 from collections import deque
 from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
+from audioRecorder import listenAndRecord, deleteAudioFile
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
     generateConversation,
+    getTextfromAudio,
 )
 
 # Define list of expressions and actions for GPT and allow it to pick one
@@ -23,6 +26,13 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "Users"
 COLLECTION_MEMORY_OBJECTS = "TestMemory"
 RETRIEVAL_COUNT = 5
+FILENAME = "current_conversation.wav"
+
+
+class CONVERSATION_MODE(Enum):
+    TEXT = 1
+    AUDIO = 2
+
 
 # Basic objects for the Database.
 client = MongoClient(DATABASE_URL)
@@ -100,7 +110,7 @@ def getBaseDescription():
     return description
 
 
-def startConversation(userName):
+def startConversation(userName, currMode):
     global pastObservations
     conversationalUser = input("Define the username you are acting as: ")
     baseObservation = fetchBaseDescription(userName)
@@ -108,9 +118,14 @@ def startConversation(userName):
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
     while True:
-        currentConversation = input(
-            f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-        )
+        if currMode == CONVERSATION_MODE.TEXT.value:
+            currentConversation = input(
+                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+            )
+        else:
+            listenAndRecord(FILENAME)
+            currentConversation = getTextfromAudio(FILENAME)
+
         if currentConversation.lower() == "done":
             break
         baseRetrieval = retrievalFunction(
@@ -146,6 +161,7 @@ def startConversation(userName):
         print(
             f"Time taken for the conversation generation by GPT : {endTime-startTime:.2f}"
         )
+        deleteAudioFile(FILENAME)
         eventLoop.run_in_executor(
             threadExecutor,
             generateObservationAndUpdateMemory,
@@ -181,6 +197,17 @@ def generateObservationAndUpdateMemory(
     updateMemoryCollection(userName, conversationalUser, finalObservations)
 
 
+def setConversationMode():
+    while True:
+        currMode = input("Please select the following :\n1. Text Mode\n2. Audio Mode\n")
+        if currMode == "1":
+            return CONVERSATION_MODE.TEXT.value
+        elif currMode == "2":
+            return CONVERSATION_MODE.AUDIO.value
+        else:
+            print("Invalid input, please select appropriate options")
+
+
 if __name__ == "__main__":
     pastObservations = deque()
     # Get username.
@@ -210,6 +237,6 @@ if __name__ == "__main__":
         # Generate the memory object data and push it to the memory objects collection.
         updateBaseDescription(userName, observationList)
         print("User created successfully!")
-
-    startConversation(userName)
+    currMode = setConversationMode()
+    startConversation(userName, currMode)
     client.close()
