@@ -2,6 +2,8 @@ import time
 import os
 import datetime
 import asyncio
+import controlexpression
+import auto_correct_model
 from enum import Enum
 from concurrent.futures import ThreadPoolExecutor
 from collections import deque
@@ -15,11 +17,15 @@ from responseGenerator import (
     generateConversation,
     getTextfromAudio,
 )
-
+import VRC_OSCLib
+import argparse
+from pythonosc import udp_client
+import easyocr1
 # Define list of expressions and actions for GPT and allow it to pick one
 
 load_dotenv()
-
+# test avatar list
+Avatar_list=["Clarla","Sakura0319","chmx2023"]
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
@@ -28,6 +34,14 @@ COLLECTION_MEMORY_OBJECTS = "TestMemory"
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
 
+#client
+parser = argparse.ArgumentParser()
+parser.add_argument("--ip", default="127.0.0.1",
+                        help="The ip of the OSC server")
+parser.add_argument("--port", type=int, default=9000,
+                        help="The port the OSC server is listening on")
+args = parser.parse_args()
+VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
 
 class CONVERSATION_MODE(Enum):
     TEXT = 1
@@ -40,6 +54,9 @@ LLMdatabase = client[DATABASE_NAME]
 userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
+# Create a deque with a max size of 5
+def add_to_queue(ocr_queue,ocr_text):
+    ocr_queue.append(ocr_text)
 
 # Fetch the base description once.
 def fetchBaseDescription(userName: str):
@@ -117,14 +134,31 @@ def startConversation(userName, currMode):
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
+    ocr_queue = deque(maxlen=3)
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
-            currentConversation = input(
-                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            )
+
+            # currentConversation = input(
+            #     f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+            # )
+            ocr_queue.clear()  # Clear the queue for each iteration
+            while (1):
+                OCRtext = easyocr1.run_image_processing("VRChat", ["en"])
+
+                print(ocr_queue)
+                if OCRtext not in ocr_queue and OCRtext not in Avatar_list:
+                    add_to_queue(ocr_queue, OCRtext)
+                if len(ocr_queue) == 1 and OCRtext in ocr_queue:
+                    break
+                if len(ocr_queue) == 2:
+                    break
+
+            currentConversation = max(ocr_queue, key=len)
+            print("Recognize content:" + currentConversation)
         else:
             listenAndRecord(FILENAME)
             currentConversation = getTextfromAudio(FILENAME)
+            print(currentConversation)
 
         if currentConversation.lower() == "done":
             break
@@ -156,10 +190,22 @@ def startConversation(userName, currMode):
                 print(currText, end="")
             except:
                 break
-        print()
+        print(resultConversationString)
         endTime = time.time()
         print(
-            f"Time taken for the conversation generation by GPT : {endTime-startTime:.2f}"
+            f"Time taken for the conversation generation by GPT : {endTime - startTime:.2f}"
+        )
+        startTime = time.time()
+        emotions = controlexpression.extract_emotions(resultConversationString)
+        result = controlexpression.remove_emotions_from_string(resultConversationString)
+        print(emotions)
+        print(result)
+        print()
+        VRC_OSCLib.actionChatbox(VRCclient, result)
+        VRC_OSCLib.send_expression_command(emotions)
+        endTime = time.time()
+        print(
+            f"Time taken for the control expressions : {endTime-startTime:.2f}"
         )
         deleteAudioFile(FILENAME)
         eventLoop.run_in_executor(
