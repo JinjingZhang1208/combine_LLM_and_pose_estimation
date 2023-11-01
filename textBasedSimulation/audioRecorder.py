@@ -23,6 +23,7 @@ def timer(duration):
 
 def recordAudio(fileName):
     # frequency
+    sd.default.device = INPUT_DEVICE_INDEX, OUTPUT_DEVICE_INDEX
     fs = 44100  # frames per second
     duration = DURATION  # seconds in integer
 

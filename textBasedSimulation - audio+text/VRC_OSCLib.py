@@ -441,3 +441,57 @@ def actionChatbox(client, str):
     time.sleep(1)
     client.send_message("/chatbox/typing", False)
     client.send(bundle)
+
+def acitonMove(client,direction, timee ,isRunning):
+    if (direction=="forward"):
+        client.send_message("/input/MoveForward", 1)
+    if (direction=="backward"):
+        client.send_message("/input/MoveBackward", 1)
+    if (direction=="left"):
+        client.send_message("/input/MoveLeft", 1)
+    if (direction=="right"):
+        client.send_message("/input/MoveRight", 1)
+    if (isRunning==True):
+        client.send_message("/input/Run", 1)
+    time.sleep(timee)
+    client.send_message("/input/MoveForward", False)
+    client.send_message("/input/MoveBackward", False)
+    client.send_message("/input/MoveLeft", False)
+    client.send_message("/input/MoveRight", False)
+    client.send_message("/input/Run", False)
+    return 0
+
+def acitonForceStopmoveing(client):
+    client.send_message("/input/MoveForward", False)
+    client.send_message("/input/MoveBackward", False)
+    client.send_message("/input/MoveLeft", False)
+    client.send_message("/input/MoveRight", False)
+    client.send_message("/input/Run", False)
+    return 0
+"""
+/input/LookLeft : Turn to the left while this is 1. Smooth in Desktop, VR will do a snap-turn if Comfort Turning is on.
+"""
+def acitonLook_left(client,value):
+    client.send_message("/input/LookLeft", 1)
+    time.sleep(0.05 * value)
+    client.send_message("/input/LookLeft", False)
+    return 0
+
+"""
+/input/LookRight : Turn to the right while this is 1. Smooth in Desktop, VR will do a snap-turn if Comfort Turning is on.
+"""
+
+def acitonLook_right(client,value):
+    client.send_message("/input/LookRight", 1)
+    time.sleep(0.05 * value)
+    client.send_message("/input/LookRight", False)
+    return 0
+
+"""
+/input/Jump : Jump if the world supports it.
+"""
+
+def acitonJump(client):
+    client.send_message("/input/Jump", False)
+    client.send_message("/input/Jump", 1)
+    client.send_message("/input/Jump", False)

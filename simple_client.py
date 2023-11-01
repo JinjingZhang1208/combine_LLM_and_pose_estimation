@@ -99,7 +99,7 @@ def acitonLook_right(client):
 
 def acitonJump(client):
     client.send_message("/input/Jump", False)
-    client.send_message("/input/Jump", 1)
+    client.send_message("/input/Jump", True)
     client.send_message("/input/Jump", False)
 
 

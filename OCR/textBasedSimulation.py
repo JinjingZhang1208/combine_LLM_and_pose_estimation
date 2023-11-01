@@ -11,6 +11,7 @@ import easyocr1
 import VRC_OSCLib
 from collections import deque
 import time
+
 DATABASE_URL="mongodb+srv://abdulaziz:5k9406K7@llmcluster.slofevi.mongodb.net/?retryWrites=true&w=majority";
 load_dotenv()
 # Constants
