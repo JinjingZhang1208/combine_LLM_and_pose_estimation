@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
+from TTS import silero
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
@@ -16,6 +17,7 @@ from responseGenerator import (
     getTextfromAudio,
 )
 
+tts = silero.Silero()
 # Define list of expressions and actions for GPT and allow it to pick one
 
 load_dotenv()
@@ -156,6 +158,8 @@ def startConversation(userName, currMode):
                 print(currText, end="")
             except:
                 break
+        audio, sample_rate = tts.tts(resultConversationString)
+        tts.play_audio(audio, 7)
         print()
         endTime = time.time()
         print(

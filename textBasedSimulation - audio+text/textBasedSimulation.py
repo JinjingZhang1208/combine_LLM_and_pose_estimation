@@ -21,6 +21,9 @@ import VRC_OSCLib
 import argparse
 from pythonosc import udp_client
 import easyocr1
+import threading
+from TTS import silero
+import pyaudio
 # Define list of expressions and actions for GPT and allow it to pick one
 
 load_dotenv()
@@ -31,6 +34,13 @@ DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "Users"
 COLLECTION_MEMORY_OBJECTS = "TestMemory"
+# Basic objects for the Database.
+client= MongoClient(DATABASE_URL)
+LLMdatabase= client[DATABASE_NAME]
+userCollection= LLMdatabase[COLLECTION_USERS]
+memoryObjectCollection=LLMdatabase[COLLECTION_MEMORY_OBJECTS]
+x = memoryObjectCollection.find_one()
+
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
 
@@ -43,6 +53,16 @@ parser.add_argument("--port", type=int, default=9000,
 args = parser.parse_args()
 VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
 
+# Initialize PyAudio
+p = pyaudio.PyAudio()
+
+# Open a stream for output
+stream = p.open(format=pyaudio.paFloat32,
+                channels=2,
+                rate=24100,
+                output=True,
+                output_device_index=8)
+
 class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
@@ -54,6 +74,8 @@ LLMdatabase = client[DATABASE_NAME]
 userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
+# TTS class
+tts = silero.Silero()
 # Create a deque with a max size of 5
 def add_to_queue(ocr_queue,ocr_text):
     ocr_queue.append(ocr_text)
@@ -135,7 +157,13 @@ def startConversation(userName, currMode):
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
     ocr_queue = deque(maxlen=3)
+    # multi-thread actives idle movement
+    # thread = threading.Thread(target=controlexpression.generate_random_action, args=(VRCclient,))
+    # thread.start()
     while True:
+        # thread = threading.Thread(target=controlexpression.generate_random_action(VRCclient))
+        # thread.start()
+        # controlexpression.generate_random_action(VRCclient)
         if currMode == CONVERSATION_MODE.TEXT.value:
 
             # currentConversation = input(
@@ -201,7 +229,10 @@ def startConversation(userName, currMode):
         print(emotions)
         print(result)
         print()
+        audio, sample_rate = tts.tts(result)
         VRC_OSCLib.actionChatbox(VRCclient, result)
+        prossAudio=silero.audio_processing(audio)
+        silero.addToStream(stream,prossAudio)
         VRC_OSCLib.send_expression_command(emotions)
         endTime = time.time()
         print(
