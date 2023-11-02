@@ -1,6 +1,3 @@
-import asyncio
-from multiprocessing.resource_sharer import stop
-import time
 import openai
 import json
 import os
@@ -88,8 +85,9 @@ def generateConversation(
             "Actions": ACTIONS,
         },
         "criteria": [
-            f"Craft user-friendly, seamless, and innovative responses, capped at 135 characters. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
+            f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
             f"Choose an expression from {EXPRESSIONS} and an action from {ACTIONS} autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
+            f"The responses should be strictly capped at 140 characters.",
         ],
     }
 
@@ -127,4 +125,5 @@ def getGPTResponse(prompt, gptModel):
 def getTextfromAudio(recordedFile):
     audio_file = open(recordedFile, "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    print(f"Recorded Audio text : {transcript.text}")
     return transcript.text
