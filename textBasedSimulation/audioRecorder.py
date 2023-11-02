@@ -25,7 +25,8 @@ def convertAudio(fileName):
 
 def isHumanSpeech(fileName):
     wf = wave.open(fileName, "rb")
-
+    model = Model(MODEL_PATH)
+    rec = KaldiRecognizer(model, wf.getframerate())
 
 
     while True:
