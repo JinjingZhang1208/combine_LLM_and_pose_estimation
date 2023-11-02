@@ -161,7 +161,7 @@ def startConversation(userName, currMode):
         print(
             f"Time taken for the conversation generation by GPT : {endTime-startTime:.2f}"
         )
-        deleteAudioFile(FILENAME)
+        # deleteAudioFile(FILENAME)
         eventLoop.run_in_executor(
             threadExecutor,
             generateObservationAndUpdateMemory,

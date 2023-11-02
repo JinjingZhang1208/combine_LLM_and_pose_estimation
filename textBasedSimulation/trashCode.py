@@ -202,3 +202,101 @@ prompt = {
 
 
 """
+
+
+"""
+def is_voice_detected(frames, sample_rate=16000):
+    vad = webrtcvad.Vad(3)  # Using the most aggressive setting
+    return any(vad.is_speech(frame, sample_rate) for frame in frames)
+
+
+# Detects anything
+def detect_voice_and_print():
+    # Constants
+    SAMPLE_RATE = 16000
+    FRAME_DURATION_MS = 30  # 30 ms frame duration
+    CHUNK_SIZE = int(SAMPLE_RATE * FRAME_DURATION_MS / 1000)  # Calculate chunk size
+    BUFFER_DURATION = 0.5  # Check for voice over a 0.5 second buffer
+    BUFFER_FRAMES_COUNT = int(BUFFER_DURATION * 1000 / FRAME_DURATION_MS)
+
+    # Set up PyAudio
+    p = pyaudio.PyAudio()
+    stream = p.open(
+        format=pyaudio.paInt16,
+        channels=1,
+        rate=SAMPLE_RATE,
+        input=True,
+        frames_per_buffer=CHUNK_SIZE,
+    )
+
+    print("Listening for voice...")
+
+    frames_buffer = []
+
+    while True:
+        frame = stream.read(CHUNK_SIZE)
+        frames_buffer.append(frame)
+
+        if len(frames_buffer) == BUFFER_FRAMES_COUNT:
+            if is_voice_detected(frames_buffer, SAMPLE_RATE):
+                print("Voice detected!")
+            frames_buffer.pop(0)  # Remove the oldest frame
+
+    # Stop the stream and close PyAudio
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+
+
+# Speech detection but slow
+def voiceDetect():
+    recognizer = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        print("Listening for voice...")
+
+        while True:
+            try:
+                audio = recognizer.listen(source)
+                # Try to recognize the captured audio
+                text = recognizer.recognize_google(audio)
+                if text:
+                    print(f"Recognized speech: {text}")
+                else:
+                    print("Voice detected, but no recognizable speech found.")
+
+            except sr.UnknownValueError:
+                print("Could not understand the audio.")
+            except sr.RequestError:
+                print("API unavailable or internet connection issues.")
+                break
+
+def detectVoice(fileName):
+    model = Model(MODEL_PATH)
+    # Initialize microphone for audio capturing
+    p = pyaudio.PyAudio()
+    stream = p.open(
+        format=pyaudio.paInt16,
+        channels=1,
+        rate=16000,
+        input=True,
+        frames_per_buffer=8000,
+    )
+    stream.start_stream()
+
+    recognizer = KaldiRecognizer(model, 16000)
+
+    print("Listening for voice...")
+
+    while True:
+        data = stream.read(4000)
+        if recognizer.AcceptWaveform(data):
+            result = json.loads(recognizer.Result())
+            if result.get("text"):
+                listenAndRecord(fileName)
+                stream.stop_stream()
+                stream.close()
+                p.terminate()
+                return True
+
+"""
