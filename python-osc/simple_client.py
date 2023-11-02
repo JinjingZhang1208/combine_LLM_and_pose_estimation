@@ -14,7 +14,18 @@ from pythonosc import osc_message_builder
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
 
-
+def expression(client):
+    # bundle
+    bundle_builder = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
+    # Create a new message.
+    message_builder = osc_message_builder.OscMessageBuilder(address="/avatar/parameters/expression/emotes/wave")
+    message_builder.add_arg(1)
+    message_builder.add_arg(1)
+    message_builder.add_arg(1)
+    msg = message_builder.build()
+    bundle_builder.add_content(msg)
+    bundle = bundle_builder.build()
+    client.send(bundle)
 """
 /input/UseAxisRight : Use held item - not sure if this works
 """
@@ -147,46 +158,46 @@ VR only function(future work)
 
 /input/GrabLeft : Grab the item highlighted by your left hand - VR Only.
 """
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", default="127.0.0.1",
-                        help="The ip of the OSC server")
-    parser.add_argument("--port", type=int, default=9000,
-                        help="The port the OSC server is listening on")
-    args = parser.parse_args()
-
-    client = udp_client.SimpleUDPClient(args.ip, args.port)
-    value=1
-    for x in range(10):
-        time.sleep(2)
-
-        # # 1 control chatbox typing
-
-        # strr="Hi!!!"
-        # actionChatbox(client, strr)
-        # print("typing"+strr)
-
-        # 2 control movement
-        actionMove(client,1, 0, 1, 0, 2, False)
-        # actionForceStopmoveing(client)
-        # actionJump(client)
-
-        # 3 control Look
-        # actionLook_left(client,1)
-        # actionLook_right(client, 1)
-
-        # # 4 interaction with item
-        # # only supported in VR
-
-        # actionUse_axis_right(client,1)
-        # actionSpin_hold_ud(client,1)
-        # actionSpin_hold_ud(client, False)
-        # actionSpin_hold_lr(client,1)
-        # actionSpin_hold_lr(client, False)
-
-        # actionSpin_hold_cw_ccw(client,1)
-        # actionSpin_hold_cw_ccw(client, False)
-
-        # # 5 turn on voice input
-        # voice(client, 1)
-        # voice(client,False)
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument("--ip", default="127.0.0.1",
+#                         help="The ip of the OSC server")
+#     parser.add_argument("--port", type=int, default=9000,
+#                         help="The port the OSC server is listening on")
+#     args = parser.parse_args()
+#
+#     client = udp_client.SimpleUDPClient(args.ip, args.port)
+#     value=1
+#     for x in range(10):
+#         time.sleep(2)
+#
+#         # # 1 control chatbox typing
+#
+#         # strr="Hi!!!"
+#         # actionChatbox(client, strr)
+#         # print("typing"+strr)
+#
+#         # 2 control movement
+#         expression(client)
+#         # actionForceStopmoveing(client)
+#         # actionJump(client)
+#
+#         # 3 control Look
+#         # actionLook_left(client,1)
+#         # actionLook_right(client, 1)
+#
+#         # # 4 interaction with item
+#         # # only supported in VR
+#
+#         # actionUse_axis_right(client,1)
+#         # actionSpin_hold_ud(client,1)
+#         # actionSpin_hold_ud(client, False)
+#         # actionSpin_hold_lr(client,1)
+#         # actionSpin_hold_lr(client, False)
+#
+#         # actionSpin_hold_cw_ccw(client,1)
+#         # actionSpin_hold_cw_ccw(client, False)
+#
+#         # # 5 turn on voice input
+#         # voice(client, 1)
+#         # voice(client,False)
