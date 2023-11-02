@@ -489,22 +489,22 @@ def addToStream(stream,audio):
     print("Starting adding audio to stream")
     stream.write(audio)
     print("Ending adding audio to stream")
-
-import pyaudio
-# Create a PyAudio instance
-p = pyaudio.PyAudio()
-
-# Print information about all available devices
-for i in range(p.get_device_count()):
-    device_info = p.get_device_info_by_index(i)
-    print(f"Device {i}: {device_info['name']}")
-    print(f"   - Input Channels: {device_info['maxInputChannels']}")
-    print(f"   - Output Channels: {device_info['maxOutputChannels']}")
-    print(f"   - Default Sample Rate: {device_info['defaultSampleRate']}\n")
-
-# # Terminate the PyAudio instance
-# p.terminate()
 #
+# import pyaudio
+# # Create a PyAudio instance
+# p = pyaudio.PyAudio()
+#
+# # Print information about all available devices
+# for i in range(p.get_device_count()):
+#     device_info = p.get_device_info_by_index(i)
+#     print(f"Device {i}: {device_info['name']}")
+#     print(f"   - Input Channels: {device_info['maxInputChannels']}")
+#     print(f"   - Output Channels: {device_info['maxOutputChannels']}")
+#     print(f"   - Default Sample Rate: {device_info['defaultSampleRate']}\n")
+#
+# # # Terminate the PyAudio instance
+# # p.terminate()
+# #
 # tts = Silero()
 # # 'en': ['v3_en', 'v3_en_indic', 'lj_v2', 'lj_8khz', 'lj_16khz']
 # print(tts.list_voices())

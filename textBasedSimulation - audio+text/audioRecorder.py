@@ -5,8 +5,8 @@ from scipy.io.wavfile import write
 from playsound import playsound
 from pydub import AudioSegment
 
-INPUT_DEVICE_INDEX = 47
-OUTPUT_DEVICE_INDEX = 47
+INPUT_DEVICE_INDEX = 51
+OUTPUT_DEVICE_INDEX = 51
 DURATION = 8
 
 sd.default.device = INPUT_DEVICE_INDEX, OUTPUT_DEVICE_INDEX

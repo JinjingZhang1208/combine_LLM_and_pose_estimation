@@ -23,6 +23,7 @@ from pythonosc import udp_client
 import easyocr1
 import threading
 from TTS import silero
+from TTS import polly
 import pyaudio
 # Define list of expressions and actions for GPT and allow it to pick one
 
@@ -53,15 +54,15 @@ parser.add_argument("--port", type=int, default=9000,
 args = parser.parse_args()
 VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
 
-# Initialize PyAudio
-p = pyaudio.PyAudio()
-
-# Open a stream for output
-stream = p.open(format=pyaudio.paFloat32,
-                channels=2,
-                rate=24100,
-                output=True,
-                output_device_index=8)
+# # Initialize PyAudio
+# p = pyaudio.PyAudio()
+#
+# # Open a stream for output
+# stream = p.open(format=pyaudio.paFloat32,
+#                 channels=2,
+#                 rate=24100,
+#                 output=True,
+#                 output_device_index=8)
 
 class CONVERSATION_MODE(Enum):
     TEXT = 1
@@ -75,7 +76,8 @@ userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 # TTS class
-tts = silero.Silero()
+# tts = silero.Silero()
+tts = polly.Polly()
 # Create a deque with a max size of 5
 def add_to_queue(ocr_queue,ocr_text):
     ocr_queue.append(ocr_text)
@@ -166,23 +168,23 @@ def startConversation(userName, currMode):
         # controlexpression.generate_random_action(VRCclient)
         if currMode == CONVERSATION_MODE.TEXT.value:
 
-            # currentConversation = input(
-            #     f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            # )
-            ocr_queue.clear()  # Clear the queue for each iteration
-            while (1):
-                OCRtext = easyocr1.run_image_processing("VRChat", ["en"])
-
-                print(ocr_queue)
-                if OCRtext not in ocr_queue and OCRtext not in Avatar_list:
-                    add_to_queue(ocr_queue, OCRtext)
-                if len(ocr_queue) == 1 and OCRtext in ocr_queue:
-                    break
-                if len(ocr_queue) == 2:
-                    break
-
-            currentConversation = max(ocr_queue, key=len)
-            print("Recognize content:" + currentConversation)
+            currentConversation = input(
+                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+            )
+            # ocr_queue.clear()  # Clear the queue for each iteration
+            # while (1):
+            #     OCRtext = easyocr1.run_image_processing("VRChat", ["en"])
+            #
+            #     print(ocr_queue)
+            #     if OCRtext not in ocr_queue and OCRtext not in Avatar_list:
+            #         add_to_queue(ocr_queue, OCRtext)
+            #     if len(ocr_queue) == 1 and OCRtext in ocr_queue:
+            #         break
+            #     if len(ocr_queue) == 2:
+            #         break
+            #
+            # currentConversation = max(ocr_queue, key=len)
+            # print("Recognize content:" + currentConversation)
         else:
             listenAndRecord(FILENAME)
             currentConversation = getTextfromAudio(FILENAME)
@@ -229,10 +231,11 @@ def startConversation(userName, currMode):
         print(emotions)
         print(result)
         print()
-        audio, sample_rate = tts.tts(result)
+        # audio, sample_rate = tts.tts(result)
+        tts.speech(result, "Joanna", 8)
         VRC_OSCLib.actionChatbox(VRCclient, result)
-        prossAudio=silero.audio_processing(audio)
-        silero.addToStream(stream,prossAudio)
+        # audio=silero.audio_processing(audio)
+        # silero.addToStream(stream,speech)
         VRC_OSCLib.send_expression_command(emotions)
         endTime = time.time()
         print(

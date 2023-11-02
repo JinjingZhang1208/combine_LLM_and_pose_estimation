@@ -3,6 +3,7 @@ import os
 import datetime
 import asyncio
 from enum import Enum
+from TTS import audio_tools
 from concurrent.futures import ThreadPoolExecutor
 from collections import deque
 from dotenv import load_dotenv
@@ -10,6 +11,7 @@ from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 # from TTS import silero
+from TTS import polly
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
@@ -41,6 +43,8 @@ client = MongoClient(DATABASE_URL)
 LLMdatabase = client[DATABASE_NAME]
 userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
+
+tts = polly.Polly()
 
 
 # Fetch the base description once.
@@ -159,7 +163,9 @@ def startConversation(userName, currMode):
             except:
                 break
         # audio, sample_rate = tts.tts(resultConversationString)
-        # tts.play_audio(audio, 7)
+        speech=tts.speech(resultConversationString, "Joanna", 7)
+        polly.read_audio_file()
+        print(speech)
         print()
         endTime = time.time()
         print(
