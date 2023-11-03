@@ -45,7 +45,7 @@ def retrievalFunction(
         return calculateRetrievalScore(
             observationData, recencyScores, similarityScores, retrievalCount
         )
-    return [""]
+    return []
 
 
 def calculateRecency(memoryStream, isBaseDescription):
