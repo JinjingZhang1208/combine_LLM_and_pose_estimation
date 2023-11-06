@@ -255,7 +255,7 @@ def startConversation(userName, currMode):
 def generateObservationAndUpdateMemory(
     userName, conversationalUser, currentConversation, resultConversationString
 ):
-    time.sleep(10)
+    
     # Time the function call and fetch the results.
     startTime = time.time()
     observationList = generateObservations(
