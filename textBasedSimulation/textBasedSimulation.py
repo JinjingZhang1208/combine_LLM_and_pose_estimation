@@ -1,3 +1,4 @@
+from distutils import text_file
 import time
 import os
 import datetime
@@ -10,6 +11,8 @@ from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
+from csvLogger import CSVLogger, LogElements
+
 # from TTS import silero
 from TTS import polly
 from responseGenerator import (
@@ -31,6 +34,7 @@ COLLECTION_USERS = "Users"
 COLLECTION_MEMORY_OBJECTS = "TestMemory"
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
+CSV_LOGGER = CSVLogger()
 
 
 class CONVERSATION_MODE(Enum):
@@ -125,15 +129,31 @@ def startConversation(userName, currMode):
     threadExecutor = ThreadPoolExecutor()
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
+            start = time.perf_counter()
             currentConversation = input(
                 f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
             )
+            end = time.perf_counter()
+            text_input_time = round(end - start, 2)
+            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
+            CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, 0)
         else:
+            start = time.perf_counter()
             listenAndRecord(FILENAME)
+            end = time.perf_counter()
+            audio_record_time = round(end - start, 2)
+            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
+
+            start = time.perf_counter()
             currentConversation = getTextfromAudio(FILENAME)
+            end = time.perf_counter()
+            audio_to_text_time = round(end - start, 2)
+            CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, audio_to_text_time)
+        CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
 
         if currentConversation.lower() == "done":
             break
+        start = time.perf_counter()
         baseRetrieval = retrievalFunction(
             currentConversation,
             baseObservation,
@@ -146,13 +166,33 @@ def startConversation(userName, currMode):
             RETRIEVAL_COUNT,
             isBaseDescription=False,
         )
-        startTime = time.time()
+        end = time.perf_counter()
+        retrieval_time = round(end - start, 2)
+        CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
+
+        important_observations = [
+            data[1] for data in baseRetrieval + observationRetrieval
+        ]
+
+        CSV_LOGGER.set_enum(
+            LogElements.IMPORTANT_OBSERVATIONS, "\n".join(important_observations)
+        )
+        important_scores = [
+            round(data[0], 2) for data in baseRetrieval + observationRetrieval
+        ]
+
+        CSV_LOGGER.set_enum(
+            LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
+        )
+        start = time.perf_counter()
         conversationPrompt = generateConversation(
             userName,
             conversationalUser,
             currentConversation,
-            [data[1] for data in baseRetrieval + observationRetrieval],
+            important_observations,
         )
+        end = time.perf_counter()
+        npc_response_time = round(end - start, 2)
         print(f"{userName} :")
         resultConversationString = ""
         for conversation in conversationPrompt:
@@ -162,16 +202,16 @@ def startConversation(userName, currMode):
                 print(currText, end="")
             except:
                 break
-        # audio, sample_rate = tts.tts(resultConversationString)
-        speech=tts.speech(resultConversationString, "Joanna", 7)
-        polly.read_audio_file()
-        print(speech)
+        CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
+        CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
+        # speech = tts.speech(resultConversationString, "Joanna", 7)
+        # polly.read_audio_file()
+        # print(speech)
+        CSV_LOGGER.write_to_csv(True)
         print()
-        endTime = time.time()
         print(
-            f"Time taken for the conversation generation by GPT : {endTime-startTime:.2f}"
+            f"Time taken for the conversation generation by GPT : {npc_response_time}"
         )
-        # deleteAudioFile(FILENAME)
         eventLoop.run_in_executor(
             threadExecutor,
             generateObservationAndUpdateMemory,
@@ -185,9 +225,8 @@ def startConversation(userName, currMode):
 def generateObservationAndUpdateMemory(
     userName, conversationalUser, currentConversation, resultConversationString
 ):
-    time.sleep(10)
     # Time the function call and fetch the results.
-    startTime = time.time()
+    startTime = time.perf_counter()
     observationList = generateObservations(
         userName, conversationalUser, currentConversation, resultConversationString
     )
@@ -197,7 +236,7 @@ def generateObservationAndUpdateMemory(
         if len(observation) > 0:
             finalObservations.append(observation)
 
-    endTime = time.time()
+    endTime = time.perf_counter()
     """
     print(
         f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
