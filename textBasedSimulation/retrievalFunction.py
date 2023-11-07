@@ -31,11 +31,6 @@ def retrievalFunction(
     retrievalCount: int,
     isBaseDescription=True,
 ):
-    """
-    For CSV only
-    """
-    global currStatement
-    currStatement = currentConversation
     if memoryStream:
         memoryStream = calculateRecency(memoryStream, isBaseDescription)
         memoryData = prepareMemoryData(memoryStream)
@@ -90,7 +85,6 @@ def calculateRetrievalScore(
     similarityVector: list,
     retrievalCount: int,
 ):
-    global resultObservation
     relevantObservations = []
     for idx, simScore in enumerate(similarityVector):
         retrievalScore = (
@@ -102,8 +96,6 @@ def calculateRetrievalScore(
     relevantObservations = sorted(
         relevantObservations, key=lambda x: x[0], reverse=True
     )[:retrievalCount]
-    resultObservation = relevantObservations
-    updateCSV()
     return relevantObservations
 
 
@@ -149,33 +141,6 @@ testQueue = deque(
         },
     ]
 )
-
-
-def updateCSV():
-    csvData = []
-    global resultObservation
-    global currStatement
-    headers = ["Current Statement", "Relevant observation", "Score"]
-    for observation in resultObservation:
-        currData = {
-            "Current Statement": currStatement,
-            "Relevant observation": observation[1],
-            "Score": observation[0],
-        }
-        csvData.append(currData)
-    currFile = (
-        f"DF_{DECAY_FACTOR}_RECW_{RECENCY_WEIGHT}_RELW_{RELEVANCE_WEIGHT}_retCount5.csv"
-    )
-    with open(
-        currFile,
-        "a+",
-        newline="",
-        encoding="utf-8",
-    ) as csvFile:
-        csvWriter = csv.DictWriter(csvFile, fieldnames=headers)
-        if not os.path.exists(currFile):
-            csvWriter.writeheader()
-        csvWriter.writerows(csvData)
 
 
 # print(retrievalFunction("Hi John! tell me about your familly", testQueue, 5, True))

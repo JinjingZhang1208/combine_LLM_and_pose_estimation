@@ -300,3 +300,36 @@ def detectVoice(fileName):
                 return True
 
 """
+"""
+def detectVoice():
+    model = Model(MODEL_PATH)
+    # Initialize microphone for audio capturing
+    p = pyaudio.PyAudio()
+    stream = p.open(
+        format=pyaudio.paInt16,
+        channels=1,
+        rate=16000,
+        input=True,
+        frames_per_buffer=8000,
+    )
+    stream.start_stream()
+
+    recognizer = KaldiRecognizer(model, 16000)
+
+    print("Listening for voice...")
+
+    while True:
+        data = stream.read(4000)
+        if recognizer.AcceptWaveform(data):
+            result = json.loads(recognizer.Result())
+            if result.get("text"):
+                print("yes voice is human")
+                stream.stop_stream()
+                stream.close()
+                p.terminate()
+                return True
+
+
+detectVoice()
+"""
+# print(isHumanSpeech("current_conversation.wav"))
