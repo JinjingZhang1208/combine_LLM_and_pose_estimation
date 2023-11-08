@@ -65,8 +65,8 @@ class Polly:
 
     def _load_base_aws_credentials(self):
         self.aws_credentials["default"] = {
-            "aws_access_key_id": "AKIAQGMSD6S45KT5J7PK",
-            "aws_secret_access_key": "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",
+            "aws_access_key_id": "AKIAXHCQPAHUFWENZPUJ",
+            "aws_secret_access_key": "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",
         }
 
     def save_aws_config(self):
@@ -272,20 +272,20 @@ def read_audio_file(filepath: str, output_device_index: int):
 #     thread = threading.Thread(target=stream_thread)
 #     thread.start()
 
-# tts = Polly()
-# # 'en': ['v3_en', 'v3_en_indic', 'lj_v2', 'lj_8khz', 'lj_16khz']
-# # print(tts.list_voices())
-# # print(tts.list_models())
-# # print(tts.list_languages)
-#
-# starttime = time.time()
-# # text = "240 Central Park is a beautiful park located in the heart of Manhattan, New York City. It's a perfect place for walks, picnics, and enjoying nature!"
-#
-# text = "This guide provides additional examples, some of which are Python code examples that use AWS SDK for Python (Boto) to make API calls to Amazon Polly. "
-#
-# tts.speech(text, "Joanna", 7)
-#
-#
-# endtime = time.time()
-# print("time spent:")
-# print( endtime - starttime)
+tts = Polly()
+# 'en': ['v3_en', 'v3_en_indic', 'lj_v2', 'lj_8khz', 'lj_16khz']
+# print(tts.list_voices())
+# print(tts.list_models())
+# print(tts.list_languages)
+
+starttime = time.time()
+# text = "240 Central Park is a beautiful park located in the heart of Manhattan, New York City. It's a perfect place for walks, picnics, and enjoying nature!"
+
+text = "This guide provides additional examples, some of which are Python code examples that use AWS SDK for Python (Boto) to make API calls to Amazon Polly. "
+
+tts.speech(text, "Joanna", 9)
+tts.speech(text, "Joanna", 32)
+
+endtime = time.time()
+print("time spent:")
+print( endtime - starttime)

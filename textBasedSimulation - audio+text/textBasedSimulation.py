@@ -232,7 +232,7 @@ def startConversation(userName, currMode):
         print(result)
         print()
         # audio, sample_rate = tts.tts(result)
-        tts.speech(result, "Joanna", 8)
+        tts.speech(result, "Joanna", 9)
         VRC_OSCLib.actionChatbox(VRCclient, result)
         # audio=silero.audio_processing(audio)
         # silero.addToStream(stream,speech)

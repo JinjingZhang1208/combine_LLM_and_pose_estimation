@@ -11,8 +11,8 @@ from scipy.io.wavfile import write
 from playsound import playsound
 from pydub import AudioSegment, silence
 import pyaudio
-INPUT_DEVICE_INDEX = 4
-OUTPUT_DEVICE_INDEX =4
+INPUT_DEVICE_INDEX = 17
+OUTPUT_DEVICE_INDEX =17
 TEMP_FILE = "speech_check.wav"
 MODEL_PATH = "./vosk-model/vosk-model-small-en-us-0.15"
 
@@ -90,7 +90,7 @@ def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=2):
                     channels=1,
                     rate=fs,
                     input=True,
-                    input_device_index=4,
+                    input_device_index=3,
                     frames_per_buffer=CHUNK_SIZE)
 
     print("Recording started... Speak something...")
@@ -138,9 +138,9 @@ def normalizeAudio(fileName):
 def listenAndRecord(fileName):
     recordAudio(fileName)
     normalizeAudio(fileName)
-    listen = input("Do you want to listen the recorded audio? [y/n]")
-    if listen.lower() == "y":
-        playsound(fileName)
+    # listen = input("Do you want to listen the recorded audio? [y/n]")
+    # if listen.lower() == "y":
+    #     playsound(fileName)
 
 
 def deleteAudioFile(fileName):
@@ -149,4 +149,4 @@ def deleteAudioFile(fileName):
     except:
         return
 
-# print(listenAndRecord("text1.wav"))
+print(listenAndRecord("text1.wav"))
