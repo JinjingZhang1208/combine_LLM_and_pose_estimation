@@ -4,16 +4,16 @@ import csv
 import datetime
 import numpy as np
 import openai
+from openai import OpenAI
 from sentence_transformers import util
 from collections import deque
 from sklearn.preprocessing import MinMaxScaler
-from openai.embeddings_utils import get_embeddings, get_embedding
 from dotenv import load_dotenv
 
 load_dotenv()
 
 API_KEY = os.environ.get("API_KEY")
-openai.api_key = API_KEY
+openai_client = OpenAI(api_key=API_KEY)
 
 
 engine = "text-embedding-ada-002"
@@ -56,8 +56,14 @@ def calculateRecency(memoryStream, isBaseDescription):
 
 
 def calculateRelevance(currentConversation: str, observationData: list):
-    contentEmbedding = get_embedding(currentConversation, engine)
-    dataEmbedding = get_embeddings(observationData, engine)
+    contentEmbedding = (
+        openai_client.embeddings.create(input=currentConversation, model=engine)
+        .data[0]
+        .embedding
+    )
+    dataEmbedding = openai_client.embeddings.create(input=observationData, model=engine)
+    dataEmbedding = dataEmbedding.data
+    dataEmbedding = [data.embedding for data in dataEmbedding]
     similarityVector = util.pytorch_cos_sim(contentEmbedding, dataEmbedding).tolist()[0]
     return similarityVector
 
