@@ -7,8 +7,19 @@ import sounddevice
 import soundfile
 from pydub import AudioSegment
 event = threading.Event()
-print(soundfile.available_formats())
+
+
+load_dotenv()
+API_KEY = os.environ.get("API_KEY")
+client = OpenAI()
 CURRENT_FRAME = 0
+
+response = client.audio.speech.create(
+    model="tts-1",
+    voice="shimmer",
+    input="Hello world! This is a streaming test.",
+    response_format="mp3",
+)
 
 def read_audio_file(filepath: str, output_device_index: int):
     """Read an audio file and plays it on the specified output device.
@@ -54,7 +65,7 @@ def read_audio_file(filepath: str, output_device_index: int):
     thread = threading.Thread(target=stream_thread)
     thread.start()
 
-def generateAudio(client, text):
+def generateAudio(text, device_index):
     response = client.audio.speech.create(
         model="tts-1",
         voice="alloy",
@@ -63,20 +74,10 @@ def generateAudio(client, text):
     )
     response.stream_to_file("output.mp3")
     AudioSegment.from_file("output.mp3").export("example.ogg", format="ogg")
-
-load_dotenv()
-API_KEY = os.environ.get("API_KEY")
-# print(API_KEY)
-client = OpenAI()
-
-response = client.audio.speech.create(
-    model="tts-1",
-    voice="Nova",
-    input="Hello world! This is a streaming test.",
-    response_format="mp3",
-)
+    read_audio_file("example.ogg", device_index)
 
 
-response.stream_to_file("output.mp3")
-AudioSegment.from_file("output.mp3").export("example.ogg", format="ogg")
-read_audio_file("example.ogg",9)
+
+# response.stream_to_file("output.mp3")
+# AudioSegment.from_file("output.mp3").export("example.ogg", format="ogg")
+

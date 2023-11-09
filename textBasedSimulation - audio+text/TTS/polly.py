@@ -278,14 +278,14 @@ tts = Polly()
 # print(tts.list_models())
 # print(tts.list_languages)
 
-starttime = time.time()
-# text = "240 Central Park is a beautiful park located in the heart of Manhattan, New York City. It's a perfect place for walks, picnics, and enjoying nature!"
-
-text = "This guide provides additional examples, some of which are Python code examples that use AWS SDK for Python (Boto) to make API calls to Amazon Polly. "
-
-tts.speech(text, "Joanna", 9)
-tts.speech(text, "Joanna", 32)
-
-endtime = time.time()
-print("time spent:")
-print( endtime - starttime)
+# starttime = time.time()
+# # text = "240 Central Park is a beautiful park located in the heart of Manhattan, New York City. It's a perfect place for walks, picnics, and enjoying nature!"
+#
+# text = "This guide provides additional examples, some of which are Python code examples that use AWS SDK for Python (Boto) to make API calls to Amazon Polly. "
+#
+# tts.speech(text, "Joanna", 9)
+# tts.speech(text, "Joanna", 32)
+#
+# endtime = time.time()
+# print("time spent:")
+# print( endtime - starttime)

@@ -1,7 +1,6 @@
-import asyncio
-from multiprocessing.resource_sharer import stop
-import time
+from statistics import mode
 import openai
+from openai import OpenAI
 import json
 import os
 from dotenv import load_dotenv
@@ -11,7 +10,8 @@ load_dotenv()
 GPT4 = "gpt-4"
 GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
-openai.api_key = API_KEY
+openai_client = OpenAI(api_key=API_KEY)
+
 EXPRESSIONS = ["Happy", "Smug", "Wink", "Confused", "Happy2", "Angry"]
 ACTIONS = [
     "Wave Hands",
@@ -88,8 +88,9 @@ def generateConversation(
             "Actions": ACTIONS,
         },
         "criteria": [
-            f"Craft user-friendly, seamless, and innovative responses, capped at 135 characters. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
+            f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
             f"Choose an expression from {EXPRESSIONS} and an action from {ACTIONS} autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
+            f"The responses should be strictly capped at 140 characters.",
         ],
     }
 
@@ -98,7 +99,7 @@ def generateConversation(
 
 
 def getConversationGenerator(prompt, gptModel):
-    response = openai.ChatCompletion.create(
+    response = openai_client.chat.completions.create(
         model=gptModel,
         messages=[
             {"role": "system", "content": "You are a conversational agent."},
@@ -112,7 +113,7 @@ def getConversationGenerator(prompt, gptModel):
 
 
 def getGPTResponse(prompt, gptModel):
-    response = openai.ChatCompletion.create(
+    response = openai_client.chat.completions.create(
         model=gptModel,
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
@@ -121,10 +122,13 @@ def getGPTResponse(prompt, gptModel):
         temperature=0.8,
         max_tokens=300,
     )
-    return response["choices"][0]["message"]["content"]
+    return response.choices[0].message.content
 
 
 def getTextfromAudio(recordedFile):
     audio_file = open(recordedFile, "rb")
-    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    transcript = openai_client.audio.transcriptions.create(
+        model="whisper-1", file=audio_file
+    )
+    print(f"Recorded Audio text : {transcript.text}")
     return transcript.text
