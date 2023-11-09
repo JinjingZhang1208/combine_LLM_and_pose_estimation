@@ -197,7 +197,7 @@ def startConversation(userName, currMode):
         resultConversationString = ""
         for conversation in conversationPrompt:
             try:
-                currText = conversation["choices"][0]["delta"]["content"]
+                currText = conversation.choices[0].delta.content
                 resultConversationString += currText
                 print(currText, end="")
             except:

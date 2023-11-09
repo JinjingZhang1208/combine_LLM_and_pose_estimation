@@ -1,4 +1,6 @@
+from statistics import mode
 import openai
+from openai import OpenAI
 import json
 import os
 from dotenv import load_dotenv
@@ -8,7 +10,8 @@ load_dotenv()
 GPT4 = "gpt-4"
 GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
-openai.api_key = API_KEY
+openai_client = OpenAI(api_key=API_KEY)
+
 EXPRESSIONS = ["Happy", "Smug", "Wink", "Confused", "Happy2", "Angry"]
 ACTIONS = [
     "Wave Hands",
@@ -96,7 +99,7 @@ def generateConversation(
 
 
 def getConversationGenerator(prompt, gptModel):
-    response = openai.ChatCompletion.create(
+    response = openai_client.chat.completions.create(
         model=gptModel,
         messages=[
             {"role": "system", "content": "You are a conversational agent."},
@@ -110,7 +113,7 @@ def getConversationGenerator(prompt, gptModel):
 
 
 def getGPTResponse(prompt, gptModel):
-    response = openai.ChatCompletion.create(
+    response = openai_client.chat.completions.create(
         model=gptModel,
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
@@ -119,11 +122,13 @@ def getGPTResponse(prompt, gptModel):
         temperature=0.8,
         max_tokens=300,
     )
-    return response["choices"][0]["message"]["content"]
+    return response.choices[0].message.content
 
 
 def getTextfromAudio(recordedFile):
     audio_file = open(recordedFile, "rb")
-    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    transcript = openai_client.audio.transcriptions.create(
+        model="whisper-1", file=audio_file
+    )
     print(f"Recorded Audio text : {transcript.text}")
     return transcript.text
