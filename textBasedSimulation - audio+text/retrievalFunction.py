@@ -4,16 +4,16 @@ import csv
 import datetime
 import numpy as np
 import openai
+from openai import OpenAI
 from sentence_transformers import util
 from collections import deque
 from sklearn.preprocessing import MinMaxScaler
-from openai.embeddings_utils import get_embeddings, get_embedding
 from dotenv import load_dotenv
 
 load_dotenv()
 
 API_KEY = os.environ.get("API_KEY")
-openai.api_key = API_KEY
+openai_client = OpenAI(api_key=API_KEY)
 
 
 engine = "text-embedding-ada-002"
@@ -31,11 +31,6 @@ def retrievalFunction(
     retrievalCount: int,
     isBaseDescription=True,
 ):
-    """
-    For CSV only
-    """
-    global currStatement
-    currStatement = currentConversation
     if memoryStream:
         memoryStream = calculateRecency(memoryStream, isBaseDescription)
         memoryData = prepareMemoryData(memoryStream)
@@ -61,8 +56,14 @@ def calculateRecency(memoryStream, isBaseDescription):
 
 
 def calculateRelevance(currentConversation: str, observationData: list):
-    contentEmbedding = get_embedding(currentConversation, engine)
-    dataEmbedding = get_embeddings(observationData, engine)
+    contentEmbedding = (
+        openai_client.embeddings.create(input=currentConversation, model=engine)
+        .data[0]
+        .embedding
+    )
+    dataEmbedding = openai_client.embeddings.create(input=observationData, model=engine)
+    dataEmbedding = dataEmbedding.data
+    dataEmbedding = [data.embedding for data in dataEmbedding]
     similarityVector = util.pytorch_cos_sim(contentEmbedding, dataEmbedding).tolist()[0]
     return similarityVector
 
@@ -90,7 +91,6 @@ def calculateRetrievalScore(
     similarityVector: list,
     retrievalCount: int,
 ):
-    global resultObservation
     relevantObservations = []
     for idx, simScore in enumerate(similarityVector):
         retrievalScore = (
@@ -102,8 +102,6 @@ def calculateRetrievalScore(
     relevantObservations = sorted(
         relevantObservations, key=lambda x: x[0], reverse=True
     )[:retrievalCount]
-    resultObservation = relevantObservations
-    updateCSV()
     return relevantObservations
 
 
@@ -149,33 +147,6 @@ testQueue = deque(
         },
     ]
 )
-
-
-def updateCSV():
-    csvData = []
-    global resultObservation
-    global currStatement
-    headers = ["Current Statement", "Relevant observation", "Score"]
-    for observation in resultObservation:
-        currData = {
-            "Current Statement": currStatement,
-            "Relevant observation": observation[1],
-            "Score": observation[0],
-        }
-        csvData.append(currData)
-    currFile = (
-        f"DF_{DECAY_FACTOR}_RECW_{RECENCY_WEIGHT}_RELW_{RELEVANCE_WEIGHT}_retCount5.csv"
-    )
-    with open(
-        currFile,
-        "a+",
-        newline="",
-        encoding="utf-8",
-    ) as csvFile:
-        csvWriter = csv.DictWriter(csvFile, fieldnames=headers)
-        if not os.path.exists(currFile):
-            csvWriter.writeheader()
-        csvWriter.writerows(csvData)
 
 
 # print(retrievalFunction("Hi John! tell me about your familly", testQueue, 5, True))

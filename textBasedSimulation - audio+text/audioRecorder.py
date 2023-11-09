@@ -149,4 +149,4 @@ def deleteAudioFile(fileName):
     except:
         return
 
-print(listenAndRecord("text1.wav"))
+# print(listenAndRecord("text1.wav"))

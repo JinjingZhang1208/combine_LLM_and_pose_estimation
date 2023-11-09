@@ -20,10 +20,12 @@ from responseGenerator import (
 import VRC_OSCLib
 import argparse
 from pythonosc import udp_client
+from csvLogger import CSVLogger, LogElements
 import easyocr1
 import threading
 from TTS import silero
 from TTS import polly
+from TTS import openaiTTS
 import pyaudio
 # Define list of expressions and actions for GPT and allow it to pick one
 
@@ -40,10 +42,10 @@ client= MongoClient(DATABASE_URL)
 LLMdatabase= client[DATABASE_NAME]
 userCollection= LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection=LLMdatabase[COLLECTION_MEMORY_OBJECTS]
-x = memoryObjectCollection.find_one()
 
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
+CSV_LOGGER = CSVLogger()
 
 #client
 parser = argparse.ArgumentParser()
@@ -54,6 +56,7 @@ parser.add_argument("--port", type=int, default=9000,
 args = parser.parse_args()
 VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
 
+# global CURRENT_FRAME
 # # Initialize PyAudio
 # p = pyaudio.PyAudio()
 #
@@ -70,14 +73,10 @@ class CONVERSATION_MODE(Enum):
 
 
 # Basic objects for the Database.
-client = MongoClient(DATABASE_URL)
-LLMdatabase = client[DATABASE_NAME]
-userCollection = LLMdatabase[COLLECTION_USERS]
-memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 # TTS class
 # tts = silero.Silero()
-tts = polly.Polly()
+# tts = polly.Polly()
 # Create a deque with a max size of 5
 def add_to_queue(ocr_queue,ocr_text):
     ocr_queue.append(ocr_text)
@@ -158,7 +157,7 @@ def startConversation(userName, currMode):
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
-    ocr_queue = deque(maxlen=3)
+    # ocr_queue = deque(maxlen=3)
     # multi-thread actives idle movement
     # thread = threading.Thread(target=controlexpression.generate_random_action, args=(VRCclient,))
     # thread.start()
@@ -167,10 +166,14 @@ def startConversation(userName, currMode):
         # thread.start()
         # controlexpression.generate_random_action(VRCclient)
         if currMode == CONVERSATION_MODE.TEXT.value:
-
+            start = time.perf_counter()
             currentConversation = input(
                 f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
             )
+            end = time.perf_counter()
+            text_input_time = round(end - start, 2)
+            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
+            CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, 0)
             # ocr_queue.clear()  # Clear the queue for each iteration
             # while (1):
             #     OCRtext = easyocr1.run_image_processing("VRChat", ["en"])
@@ -186,12 +189,21 @@ def startConversation(userName, currMode):
             # currentConversation = max(ocr_queue, key=len)
             # print("Recognize content:" + currentConversation)
         else:
+            start = time.perf_counter()
             listenAndRecord(FILENAME)
+            end = time.perf_counter()
+            audio_record_time = round(end - start, 2)
+            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
+
+            start = time.perf_counter()
             currentConversation = getTextfromAudio(FILENAME)
+            end = time.perf_counter()
+            audio_to_text_time = round(end - start, 2)
+            CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, audio_to_text_time)
+            CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
             print(currentConversation)
 
-        if currentConversation.lower() == "done":
-            break
+        start = time.perf_counter()
         baseRetrieval = retrievalFunction(
             currentConversation,
             baseObservation,
@@ -204,43 +216,61 @@ def startConversation(userName, currMode):
             RETRIEVAL_COUNT,
             isBaseDescription=False,
         )
-        startTime = time.time()
+        end = time.perf_counter()
+        retrieval_time = round(end - start, 2)
+        CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
+
+        important_observations = [
+            data[1] for data in baseRetrieval + observationRetrieval
+        ]
+
+        CSV_LOGGER.set_enum(
+            LogElements.IMPORTANT_OBSERVATIONS, "\n".join(important_observations)
+        )
+        important_scores = [
+            round(data[0], 2) for data in baseRetrieval + observationRetrieval
+        ]
+
+        CSV_LOGGER.set_enum(
+            LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
+        )
+        start = time.perf_counter()
         conversationPrompt = generateConversation(
             userName,
             conversationalUser,
             currentConversation,
-            [data[1] for data in baseRetrieval + observationRetrieval],
+            important_observations,
         )
+        end = time.perf_counter()
+        npc_response_time = round(end - start, 2)
         print(f"{userName} :")
         resultConversationString = ""
         for conversation in conversationPrompt:
             try:
-                currText = conversation["choices"][0]["delta"]["content"]
+                currText = conversation.choices[0].delta.content
                 resultConversationString += currText
                 print(currText, end="")
             except:
                 break
+        CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
+        CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
+        CSV_LOGGER.write_to_csv(True)
         print(resultConversationString)
-        endTime = time.time()
         print(
-            f"Time taken for the conversation generation by GPT : {endTime - startTime:.2f}"
+            f"Time taken for the conversation generation by GPT : {npc_response_time}"
         )
-        startTime = time.time()
         emotions = controlexpression.extract_emotions(resultConversationString)
         result = controlexpression.remove_emotions_from_string(resultConversationString)
         print(emotions)
         print(result)
         print()
         # audio, sample_rate = tts.tts(result)
-        tts.speech(result, "Joanna", 9)
+        # tts.speech(result, "Joanna", 9)
+        openaiTTS.generateAudio(result, 9)
         VRC_OSCLib.actionChatbox(VRCclient, result)
         # audio=silero.audio_processing(audio)
         # silero.addToStream(stream,speech)
         VRC_OSCLib.send_expression_command(emotions)
-        endTime = time.time()
-        print(
-            f"Time taken for the control expressions : {endTime-startTime:.2f}"
-        )
         deleteAudioFile(FILENAME)
         eventLoop.run_in_executor(
             threadExecutor,
