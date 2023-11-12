@@ -89,9 +89,11 @@ def generateConversation(
         },
         "criteria": [
             f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
+            f"Explicitly avoid the use of emojis and hashtags in all responses."
             f"Choose an expression from {EXPRESSIONS} and an action from {ACTIONS} autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
-            f"The responses should be strictly capped at 140 characters.",
+            f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
         ],
+        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
 
     conversationPrompt = json.dumps(prompt, indent=4)
