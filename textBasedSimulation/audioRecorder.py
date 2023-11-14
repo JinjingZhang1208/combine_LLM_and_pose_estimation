@@ -1,4 +1,6 @@
+from distutils.log import Log
 import sounddevice as sd
+import time
 import io
 import os
 import json
@@ -7,6 +9,7 @@ import ffmpeg
 import wave
 import speech_recognition as sr
 from vosk import Model, KaldiRecognizer
+from csvLogger import CSVLogger, LogElements
 from scipy.io.wavfile import write
 from playsound import playsound
 from pydub import AudioSegment, silence
@@ -15,6 +18,7 @@ INPUT_DEVICE_INDEX = 2
 OUTPUT_DEVICE_INDEX = 0
 TEMP_FILE = "speech_check.wav"
 MODEL_PATH = "./vosk-model/vosk-model-small-en-us-0.15"
+AUDIO_CSV_LOGGER = ""
 
 
 def convertAudio(fileName):
@@ -24,6 +28,8 @@ def convertAudio(fileName):
 
 
 def isHumanSpeech(fileName):
+    global AUDIO_CSV_LOGGER
+    start = time.perf_counter()
     wf = wave.open(fileName, "rb")
     model = Model(MODEL_PATH)
     rec = KaldiRecognizer(model, wf.getframerate())
@@ -36,12 +42,18 @@ def isHumanSpeech(fileName):
 
     result = json.loads(rec.FinalResult())
     if len(result.get("text")) > 0:
+        end = time.perf_counter()
+        detect_time = round(end - start, 2)
+        AUDIO_CSV_LOGGER.set_enum(
+            LogElements.TIME_FOR_HUMAN_SPEECH_RECOGNITION, detect_time
+        )
         return True
+
     else:
         return False
 
 
-def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=3):
+def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=2):
     fs = 16000  # Sample rate
     CHUNK_SIZE = int(fs * 0.5)  # Record in chunks of 0.5 seconds
 
@@ -83,9 +95,21 @@ def normalizeAudio(fileName):
     normalizeAudio.export(fileName, format="wav")
 
 
-def listenAndRecord(fileName):
+def listenAndRecord(fileName, CSV_LOGGER: CSVLogger):
+    global AUDIO_CSV_LOGGER
+    AUDIO_CSV_LOGGER = CSV_LOGGER
+    start = time.perf_counter()
     recordAudio(fileName)
+    end = time.perf_counter()
+    record_time = round(end - start, 2)
+    AUDIO_CSV_LOGGER.set_enum(LogElements.TIME_FOR_AUDIO_RECORD, record_time)
+
+    start = time.perf_counter()
     normalizeAudio(fileName)
+    end = time.perf_counter()
+    normalize_time = round(end - start, 2)
+    AUDIO_CSV_LOGGER.set_enum(LogElements.TIME_FOR_VOICE_NORMALIZATION, normalize_time)
+
     listen = input("Do you want to listen the recorded audio? [y/n]")
     if listen.lower() == "y":
         playsound(fileName)
