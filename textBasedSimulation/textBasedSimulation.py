@@ -139,7 +139,7 @@ def startConversation(userName, currMode):
             CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, 0)
         else:
             start = time.perf_counter()
-            listenAndRecord(FILENAME)
+            listenAndRecord(FILENAME, CSV_LOGGER)
             end = time.perf_counter()
             audio_record_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
