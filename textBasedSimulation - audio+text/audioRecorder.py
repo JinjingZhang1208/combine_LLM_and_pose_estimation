@@ -41,41 +41,6 @@ def isHumanSpeech(fileName):
         return False
 
 
-# def recordAudio(fileName, silenceThreshold=-10, maxSilenceLength=2):
-#     fs = 23100  # Sample rate
-#     CHUNK_SIZE = int(fs * 0.5)  # Record in chunks of 0.5 seconds
-#
-#     audio_chunks = []
-#     silence_duration = 0
-#
-#     print("Recording started... Speak something...")
-#
-#     with sd.InputStream(samplerate=fs, channels=1) as stream:
-#         while True:
-#             audio_chunk, overflowed = stream.read(CHUNK_SIZE)
-#
-#             # Convert numpy array to AudioSegment for pydub processing
-#             byte_io = io.BytesIO()
-#             write(byte_io, fs, audio_chunk)
-#             byte_io.seek(0)
-#             segment = AudioSegment.from_wav(byte_io)
-#
-#             if segment.dBFS < silenceThreshold:
-#                 silence_duration += CHUNK_SIZE / fs
-#                 if silence_duration >= maxSilenceLength:
-#                     print("Silence detected, stopping recording.")
-#                     break
-#             else:
-#                 silence_duration = 0
-#             audio_chunks.append(audio_chunk)
-#
-#     recording = np.concatenate(audio_chunks, axis=0)
-#     write(fileName, fs, recording)
-#     convertAudio(fileName)
-#     if not isHumanSpeech(TEMP_FILE):
-#         print("Nothing recorded, speak again!")
-#         recordAudio(fileName)
-# Function to record audio using PyAudio
 def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=2):
     fs = 48000  # Sample rate
     CHUNK_SIZE = int(fs * 0.5)  # Record in chunks of 0.5 seconds
@@ -109,12 +74,6 @@ def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=2):
                 break
         else:
             silence_duration = 0
-
-    # Stop and close the stream
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-
     # Write to a WAV file
     wf = wave.open(fileName, 'wb')
     wf.setnchannels(1)
