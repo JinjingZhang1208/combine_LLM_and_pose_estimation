@@ -16,7 +16,7 @@ CURRENT_FRAME = 0
 
 response = client.audio.speech.create(
     model="tts-1",
-    voice="shimmer",
+    voice="nova",
     input="Hello world! This is a streaming test.",
     response_format="mp3",
 )

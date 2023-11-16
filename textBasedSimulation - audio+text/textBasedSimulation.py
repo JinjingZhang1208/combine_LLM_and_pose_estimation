@@ -71,7 +71,9 @@ class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
 
-
+class INPUTUSERNAME_MODE(Enum):
+    INPUT = 1
+    AUTODETECT = 2
 # Basic objects for the Database.
 
 # TTS class
@@ -150,9 +152,20 @@ def getBaseDescription():
     return description
 
 
-def startConversation(userName, currMode):
+def startConversation(userName, currMode, usernameMode):
     global pastObservations
-    conversationalUser = input("Define the username you are acting as: ")
+    if usernameMode ==INPUTUSERNAME_MODE.INPUT.value:
+        conversationalUser = input("Define the username you are acting as: ")
+    elif usernameMode ==INPUTUSERNAME_MODE.AUTODETECT.value:
+        while(1):
+            print("Detecting User Name...\n")
+            OCRtext = easyocr1.run_image_processing("VRChat", ["en"])
+            correct = input(
+                f"Detected UserName--{OCRtext}\nPlease select the following :\n1. Yes\n2. No\n "
+            )
+            if correct=="1":
+                conversationalUser=OCRtext
+                break
     baseObservation = fetchBaseDescription(userName)
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
@@ -266,11 +279,21 @@ def startConversation(userName, currMode):
         print()
         # audio, sample_rate = tts.tts(result)
         # tts.speech(result, "Joanna", 9)
+        #texttospeech time
+        starttime = time.perf_counter()
         openaiTTS.generateAudio(result, 9)
         VRC_OSCLib.actionChatbox(VRCclient, result)
+        endtime = time.perf_counter()
+        retrieval_time2 = round(endtime - starttime, 2)
+        CSV_LOGGER.set_enum(LogElements.TIME_FOR_TTS, retrieval_time2)
+        starttime = time.perf_counter()
+        VRC_OSCLib.send_expression_command(emotions)
+        endtime = time.perf_counter()
+        retrieval_time1 = round(endtime - starttime , 2)
+        CSV_LOGGER.set_enum(LogElements.TIME_FOR_CONTROLEXP, retrieval_time1)
         # audio=silero.audio_processing(audio)
         # silero.addToStream(stream,speech)
-        VRC_OSCLib.send_expression_command(emotions)
+        # VRC_OSCLib.send_expression_command(emotions)
         deleteAudioFile(FILENAME)
         eventLoop.run_in_executor(
             threadExecutor,
@@ -318,6 +341,7 @@ def setConversationMode():
             print("Invalid input, please select appropriate options")
 
 
+
 if __name__ == "__main__":
     pastObservations = deque()
     # Get username.
@@ -347,6 +371,14 @@ if __name__ == "__main__":
         # Generate the memory object data and push it to the memory objects collection.
         updateBaseDescription(userName, observationList)
         print("User created successfully!")
-    currMode = setConversationMode()
-    startConversation(userName, currMode)
+    NameMode = input("Please select one the following ways of detecting User Name:\n1. Manually Input\n2. Auto detect\n")
+    if NameMode == "1":
+        currMode = setConversationMode()
+        startConversation(userName, currMode,1)
+    elif NameMode == "2":
+        currMode = setConversationMode()
+        startConversation(userName, currMode,2)
+    else:
+        print("Invalid input, please select appropriate options")
+
     client.close()
