@@ -211,7 +211,7 @@ def isHumanSpeechByte(byte_stream):
     start = time.perf_counter()
     # byte_stream.seek(0)
     while True:
-        data = byte_stream.read(4000)  # Read in chunks of 4000 bytes
+        data = byte_stream.read(8000)  # Read in chunks of 4000 bytes
         if len(data) == 0:
             break  # Break the loop if no more data is available
         rec.AcceptWaveform(data)
@@ -228,17 +228,17 @@ def isHumanSpeechByte(byte_stream):
     else:
         return False
 
-
-    if len(result.get("text", "")) > 0:
-        transcribeText=result.get("text", "")
-        end = time.perf_counter()
-        detect_time = round(end - start, 2)
-        AUDIO_CSV_LOGGER.set_enum(
-            LogElements.TIME_FOR_HUMAN_SPEECH_RECOGNITION, detect_time
-        )
-        return True
-    else:
-        return False
+    #
+    # if len(result.get("text", "")) > 0:
+    #     transcribeText=result.get("text", "")
+    #     end = time.perf_counter()
+    #     detect_time = round(end - start, 2)
+    #     AUDIO_CSV_LOGGER.set_enum(
+    #         LogElements.TIME_FOR_HUMAN_SPEECH_RECOGNITION, detect_time
+    #     )
+    #     return True
+    # else:
+    #     return False
 
 def listenAndRecordDirect(CSV_LOGGER):
     global AUDIO_CSV_LOGGER
