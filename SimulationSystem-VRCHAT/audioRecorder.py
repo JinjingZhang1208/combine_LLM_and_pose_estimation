@@ -5,7 +5,7 @@ from vosk import Model, KaldiRecognizer
 from pydub import AudioSegment, silence
 import pyaudio
 from csvLogger import CSVLogger, LogElements
-
+import os
 INPUT_DEVICE_INDEX = 3
 OUTPUT_DEVICE_INDEX =17
 TEMP_FILE = "speech_check.wav"
@@ -137,3 +137,8 @@ def listenAndRecordDirect(CSV_LOGGER, audio_file_name):
         break
     return
 
+def deleteAudioFile(fileName):
+    try:
+        os.remove(fileName)
+    except:
+        return
