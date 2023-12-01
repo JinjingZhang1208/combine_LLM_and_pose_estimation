@@ -27,7 +27,7 @@ from TTS import openaiTTS
 
 load_dotenv()
 # test avatar list
-Avatar_list=["Clarla","Sakura0319","chmx2023"]
+# Avatar_list=["Clarla","Sakura0319","chmx2023"]
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
@@ -52,17 +52,6 @@ parser.add_argument("--port", type=int, default=9000,
 args = parser.parse_args()
 VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
 
-# global CURRENT_FRAME
-# # Initialize PyAudio
-# p = pyaudio.PyAudio()
-#
-# # Open a stream for output
-# stream = p.open(format=pyaudio.paFloat32,
-#                 channels=2,
-#                 rate=24100,
-#                 output=True,
-#                 output_device_index=8)
-
 class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
@@ -72,10 +61,6 @@ class INPUTUSERNAME_MODE(Enum):
     AUTODETECT = 2
 # Basic objects for the Database.
 
-# TTS class
-# tts = silero.Silero()
-# tts = polly.Polly()
-# Create a deque with a max size of 5
 def add_to_queue(ocr_queue,ocr_text):
     ocr_queue.append(ocr_text)
 
@@ -166,10 +151,6 @@ def startConversation(userName, currMode, usernameMode):
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
-    # ocr_queue = deque(maxlen=3)
-    # multi-thread actives idle movement
-    # thread = threading.Thread(target=controlexpression.generate_random_action, args=(VRCclient,))
-    # thread.start()
     while True:
         # thread = threading.Thread(target=controlexpression.generate_random_action(VRCclient))
         # thread.start()
@@ -183,30 +164,10 @@ def startConversation(userName, currMode, usernameMode):
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
             CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, 0)
-            # ocr_queue.clear()  # Clear the queue for each iteration
-            # while (1):
-            #     OCRtext = easyocr1.run_image_processing("VRChat", ["en"])
-            #
-            #     print(ocr_queue)
-            #     if OCRtext not in ocr_queue and OCRtext not in Avatar_list:
-            #         add_to_queue(ocr_queue, OCRtext)
-            #     if len(ocr_queue) == 1 and OCRtext in ocr_queue:
-            #         break
-            #     if len(ocr_queue) == 2:
-            #         break
-            #
-            # currentConversation = max(ocr_queue, key=len)
-            # print("Recognize content:" + currentConversation)
         else:
-            # start = time.perf_counter()
             start = time.perf_counter()
             listenAndRecordDirect(CSV_LOGGER, FILENAME)
 
-            # end = time.perf_counter()
-            # audio_record_time = round(end - start, 2)
-            # CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
-
-            # currentConversation=transcribeText
             currentConversation = getTextfromAudio(FILENAME)
             end = time.perf_counter()
             audio_to_text_time = round(end - start, 2)
@@ -275,8 +236,6 @@ def startConversation(userName, currMode, usernameMode):
         print(emotions)
         print(result)
         print()
-        # audio, sample_rate = tts.tts(result)
-        # tts.speech(result, "Joanna", 9)
         #texttospeech time
         starttime = time.perf_counter()
         openaiTTS.generateAudio(result, 9)
@@ -289,9 +248,6 @@ def startConversation(userName, currMode, usernameMode):
         endtime = time.perf_counter()
         retrieval_time1 = round(endtime - starttime , 2)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_CONTROLEXP, retrieval_time1)
-        # audio=silero.audio_processing(audio)
-        # silero.addToStream(stream,speech)
-        # VRC_OSCLib.send_expression_command(emotions)
         deleteAudioFile(FILENAME)
         eventLoop.run_in_executor(
             threadExecutor,
