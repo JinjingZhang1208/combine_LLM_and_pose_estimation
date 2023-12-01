@@ -10,7 +10,7 @@ from collections import deque
 from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
-from audioRecorder import listenAndRecordDirect
+from audioRecorder import listenAndRecordDirect, deleteAudioFile
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
