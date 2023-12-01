@@ -32,6 +32,12 @@ FILENAME = "current_conversation.wav"
 CSV_LOGGER = CSVLogger()
 
 
+class AVATAR_DATA(Enum):
+    AVATAR_EXPRESSION_MAP = "Avatar Expressions Map"
+    AVATAR_ACTION_MAP = "Avatar Actions Map"
+    AVATAR_VOICE = "Avatar Voice"
+
+
 class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
@@ -183,6 +189,8 @@ def startConversation(userName, currMode):
             conversationalUser,
             currentConversation,
             important_observations,
+            avatar_expressions,
+            avatar_actions,
         )
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
@@ -260,6 +268,12 @@ if __name__ == "__main__":
 
     if existingUser:
         print(f"Welcome back! {userName} \nContinue where you left off")
+        avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+        avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
+        avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
+        avatar_expressions = list(avatar_expression_map.keys())
+        avatar_actions = list(avatar_action_map.keys())
+
     else:
         # Collect the description details.
         description = getBaseDescription()
