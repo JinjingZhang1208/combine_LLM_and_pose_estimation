@@ -10,7 +10,7 @@ from collections import deque
 from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
-from audioRecorder import listenAndRecord, deleteAudioFile
+from audioRecorder import listenAndRecord, deleteAudioFile, listenAndRecordDirect
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
@@ -202,17 +202,18 @@ def startConversation(userName, currMode, usernameMode):
             # currentConversation = max(ocr_queue, key=len)
             # print("Recognize content:" + currentConversation)
         else:
+            # start = time.perf_counter()
             start = time.perf_counter()
-            listenAndRecord(FILENAME)
-            end = time.perf_counter()
-            audio_record_time = round(end - start, 2)
-            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
+            transcribeText=listenAndRecordDirect(CSV_LOGGER)
+            print(transcribeText)
+            # end = time.perf_counter()
+            # audio_record_time = round(end - start, 2)
+            # CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
 
-            start = time.perf_counter()
-            currentConversation = getTextfromAudio(FILENAME)
+            currentConversation=transcribeText
             end = time.perf_counter()
             audio_to_text_time = round(end - start, 2)
-            CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, audio_to_text_time)
+            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_to_text_time)
             CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
             print(currentConversation)
 

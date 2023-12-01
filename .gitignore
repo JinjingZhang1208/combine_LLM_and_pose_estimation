@@ -3,3 +3,16 @@
 /whispering-ui/
 /whispering/
 /whispering-ui/
+/SimulationSystem-VRCHAT/.env
+/SimulationSystem-VRCHAT/speech/output.mp3
+/SimulationSystem-VRCHAT/speech/example.ogg
+/SimulationSystem-VRCHAT/speech/recorded_speech.wav
+/SimulationSystem-VRCHAT/.cache/
+/SimulationSystem-VRCHAT/evaluations/CSV_LOGS_2023-12-02_02-19.csv
+/SimulationSystem-VRCHAT/evaluations/CSV_LOGS_2023-12-02_02-33.csv
+/SimulationSystem-VRCHAT/evaluations/DF_0.995_RECW_0.3_RELW_0.7_retCount3.csv
+/SimulationSystem-VRCHAT/evaluations/DF_0.995_RECW_0.3_RELW_0.7_retCount3_round2.csv
+/SimulationSystem-VRCHAT/evaluations/DF_0.995_RECW_0.3_RELW_0.7_retCount5.csv
+/SimulationSystem-VRCHAT/evaluations/DF_0.995_RECW_0.3_RELW_0.7_retCount5_round2.csv
+/SimulationSystem-VRCHAT/recorded_speech.wav
+/SimulationSystem-VRCHAT/speech_check.wav
