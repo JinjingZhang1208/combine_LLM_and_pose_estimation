@@ -109,17 +109,6 @@ def isHumanSpeechByte(byte_stream):
     else:
         return False
 
-    #
-    # if len(result.get("text", "")) > 0:
-    #     transcribeText=result.get("text", "")
-    #     end = time.perf_counter()
-    #     detect_time = round(end - start, 2)
-    #     AUDIO_CSV_LOGGER.set_enum(
-    #         LogElements.TIME_FOR_HUMAN_SPEECH_RECOGNITION, detect_time
-    #     )
-    #     return True
-    # else:
-    #     return False
 
 def listenAndRecordDirect(CSV_LOGGER, audio_file_name):
     global AUDIO_CSV_LOGGER
@@ -142,13 +131,7 @@ def listenAndRecordDirect(CSV_LOGGER, audio_file_name):
             audio_byte_stream.seek(0)
             raw_audio_data = AudioSegment.from_raw(audio_byte_stream, sample_width=2, frame_rate=16000, channels=1)
             raw_audio_data.export(audio_file_name, format="wav")
-        # Prompt to play the recorded audio
-        # listen = input("Do you want to listen to the recorded audio? [y/n] ")
-        # if listen.lower() == "y":
-        #     playsound(audio_file_name)
 
-        # raw_audio_data = AudioSegment.from_raw(audio_byte_stream, sample_width=2, frame_rate=48000, channels=1)
-        # raw_audio_data.export(audio_file_name, format="wav")
 
 
         break
