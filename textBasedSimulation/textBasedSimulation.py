@@ -4,7 +4,6 @@ import os
 import datetime
 import asyncio
 from enum import Enum
-from TTS import audio_tools
 from concurrent.futures import ThreadPoolExecutor
 from collections import deque
 from dotenv import load_dotenv
@@ -12,9 +11,8 @@ from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
+from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
 
-# from TTS import silero
-from TTS import polly
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
@@ -22,19 +20,22 @@ from responseGenerator import (
     getTextfromAudio,
 )
 
-# tts = silero.Silero()
-# Define list of expressions and actions for GPT and allow it to pick one
-
 load_dotenv()
 
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
-COLLECTION_USERS = "Users"
+COLLECTION_USERS = "NPC Avatars"
 COLLECTION_MEMORY_OBJECTS = "TestMemory"
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
 CSV_LOGGER = CSVLogger()
+
+
+class AVATAR_DATA(Enum):
+    AVATAR_EXPRESSION_MAP = "Avatar Expressions Map"
+    AVATAR_ACTION_MAP = "Avatar Actions Map"
+    AVATAR_VOICE = "Avatar Voice"
 
 
 class CONVERSATION_MODE(Enum):
@@ -47,8 +48,6 @@ client = MongoClient(DATABASE_URL)
 LLMdatabase = client[DATABASE_NAME]
 userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
-
-tts = polly.Polly()
 
 
 # Fetch the base description once.
@@ -190,6 +189,8 @@ def startConversation(userName, currMode):
             conversationalUser,
             currentConversation,
             important_observations,
+            avatar_expressions,
+            avatar_actions,
         )
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
@@ -267,12 +268,24 @@ if __name__ == "__main__":
 
     if existingUser:
         print(f"Welcome back! {userName} \nContinue where you left off")
+        avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+        avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
+        avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
+        avatar_expressions = list(avatar_expression_map.keys())
+        avatar_actions = list(avatar_action_map.keys())
+
     else:
         # Collect the description details.
         description = getBaseDescription()
 
         # Insert the userData to the Users collection.
-        userData = {"Username": userName, "Description": description}
+        userData = {
+            "Username": userName,
+            "Description": description,
+            "Avatar Expressions Map": avatar_expression_map,
+            "Avatar Actions Map": avatar_action_map,
+            "Avatar Voice": avatar_voice,
+        }
         userCollection.insert_one(userData)
 
         # Time the function call and fetch the results.

@@ -12,18 +12,6 @@ GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
 openai_client = OpenAI(api_key=API_KEY)
 
-EXPRESSIONS = ["Happy", "Smug", "Wink", "Confused", "Happy2", "Angry"]
-ACTIONS = [
-    "Wave Hands",
-    "Clap",
-    "Point",
-    "Cheer",
-    "Dance",
-    "Backflip",
-    "Sadness",
-    "Faint",
-    "None",
-]
 SAMPLE_DESCRIPTION = """John Lin is a pharmacy shopkeeper at the Willow
 Market and Pharmacy who loves to help people. He
 is always looking for ways to make the process
@@ -75,8 +63,14 @@ def generateObservations(userName, conversationalUser, currentConversation, user
 
 
 def generateConversation(
-    userName, conversationalUser, currentConversation, relevantObservations
+    userName,
+    conversationalUser,
+    currentConversation,
+    relevantObservations,
+    avatar_expressions,
+    avatar_actions,
 ):
+    print(avatar_expressions)
     prompt = {
         "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
         "information": {
@@ -84,8 +78,8 @@ def generateConversation(
             "Conversational Partner": conversationalUser,
             "Current conversation": currentConversation,
             "Relevant observations": relevantObservations,
-            "Expressions": EXPRESSIONS,
-            "Actions": ACTIONS,
+            "Expressions": avatar_expressions,
+            "Actions": avatar_actions,
         },
         "criteria": [
             f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
