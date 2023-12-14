@@ -23,6 +23,8 @@ from pythonosc import udp_client
 from csvLogger import CSVLogger, LogElements
 import easyocr1
 from TTS import openaiTTS
+import random
+import fillerWords
 # Define list of expressions and actions for GPT and allow it to pick one
 
 load_dotenv()
@@ -132,6 +134,16 @@ def getBaseDescription():
         description += f"{currLine}\n"
     return description
 
+def filler(currentConversation):
+    if "?" in currentConversation:
+        selected_filler_key = random.choice(list(fillerWords.fillersQ.keys()))
+        VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
+        openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
+
+    else:
+        selected_filler_key = random.choice(list(fillerWords.fillers.keys()))
+        VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
+        openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
 
 def startConversation(userName, currMode, usernameMode):
     global pastObservations
@@ -167,13 +179,13 @@ def startConversation(userName, currMode, usernameMode):
         else:
             start = time.perf_counter()
             listenAndRecordDirect(CSV_LOGGER, FILENAME)
-
             currentConversation = getTextfromAudio(FILENAME)
             end = time.perf_counter()
             audio_to_text_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_to_text_time)
             CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
             print(currentConversation)
+            filler(currentConversation)
 
         start = time.perf_counter()
         baseRetrieval = retrievalFunction(
