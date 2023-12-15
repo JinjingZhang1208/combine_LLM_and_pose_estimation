@@ -22,7 +22,12 @@ fillersQ = {
     "fillerQ1": "Well, that's an interesting question, you see...",
     "fillerQ2": "You know, that's a really good question. Let's see..."
 }
-
+fillersS = {
+    "fillerS1": "umm...well...umm...",
+    "fillerS2": "uhh...Okay...uhh..",
+    "fillerS3": "erm...erm...alright..",
+    "fillerS4": "So...hmm...hmm...",
+}
 def generateAudio(text, filler):
     response = client.audio.speech.create(
         model="tts-1",
@@ -55,6 +60,11 @@ response = client.audio.speech.create(
 #     generateAudio(value, key)
 #     print(f"{key}: {value}")
 # for key, value in fillersQ.items():
+#     # Here 'key' is the filler identifier (like 'filler1', 'filler2', etc.)
+#     # and 'value' is the corresponding filler text.
+#     generateAudio(value, key)
+#     print(f"{key}: {value}")
+# for key, value in fillersS.items():
 #     # Here 'key' is the filler identifier (like 'filler1', 'filler2', etc.)
 #     # and 'value' is the corresponding filler text.
 #     generateAudio(value, key)

@@ -145,6 +145,12 @@ def filler(currentConversation):
         VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
         openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
 
+def fillerShort():
+    selected_filler_key = random.choice(list(fillerWords.fillersS.keys()))
+    VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersS[selected_filler_key])
+    openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
+
+
 def startConversation(userName, currMode, usernameMode):
     global pastObservations
     if usernameMode ==INPUTUSERNAME_MODE.INPUT.value:
@@ -179,6 +185,7 @@ def startConversation(userName, currMode, usernameMode):
         else:
             start = time.perf_counter()
             listenAndRecordDirect(CSV_LOGGER, FILENAME)
+            fillerShort()
             currentConversation = getTextfromAudio(FILENAME)
             end = time.perf_counter()
             audio_to_text_time = round(end - start, 2)
