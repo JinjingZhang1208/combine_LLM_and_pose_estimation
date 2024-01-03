@@ -13,7 +13,7 @@ MODEL_PATH = "./vosk-model/vosk-model-small-en-us-0.15"
 AUDIO_CSV_LOGGER = ""
 
 # print(listenAndRecord("text1.wav"))
-def recordAudioToByteStream(silenceThreshold=-40, maxSilenceLength=1):
+def recordAudioToByteStream(silenceThreshold=-40, maxSilenceLength=2):
     fs = 16000  # Sample rate
     CHUNK_SIZE = int(fs * 0.5)  # Record in chunks of 0.5 seconds
 

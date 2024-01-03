@@ -135,7 +135,7 @@ def getBaseDescription():
     return description
 
 def filler(currentConversation):
-    if "?" in currentConversation:
+    if "?" in currentConversation and len(currentConversation)>40:
         selected_filler_key = random.choice(list(fillerWords.fillersQ.keys()))
         VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
         openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
@@ -236,13 +236,37 @@ def startConversation(userName, currMode, usernameMode):
         npc_response_time = round(end - start, 2)
         print(f"{userName} :")
         resultConversationString = ""
+        splitSentence = ""
+        count=0
         for conversation in conversationPrompt:
             try:
                 currText = conversation.choices[0].delta.content
+
+                # Always add the current text to resultConversationString
                 resultConversationString += currText
-                print(currText, end="")
+                splitSentence += currText
+
+                # Check for specific punctuation marks in splitSentence
+                if any(punct in currText for punct in ['.', '?', '!']):
+                    if count==0:
+                        emotions = controlexpression.extract_emotions(splitSentence)
+                        splitSentence = controlexpression.remove_emotions_from_string(splitSentence)
+                        count+=1
+                        print(splitSentence, end="")
+                    print(splitSentence, end="")
+                    # Additional actions
+                    openaiTTS.generateAudio(splitSentence, 9)
+                    VRC_OSCLib.actionChatbox(VRCclient, splitSentence)
+                    splitSentence = ""  # Reset splitSentence
             except:
                 break
+
+        if splitSentence:
+            # Additional actions for the remaining splitSentence
+            openaiTTS.generateAudio(splitSentence, 9)
+            VRC_OSCLib.actionChatbox(VRCclient, splitSentence)
+            print(splitSentence, end="")
+
         CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
         CSV_LOGGER.write_to_csv(True)
@@ -250,15 +274,15 @@ def startConversation(userName, currMode, usernameMode):
         print(
             f"Time taken for the conversation generation by GPT : {npc_response_time}"
         )
-        emotions = controlexpression.extract_emotions(resultConversationString)
-        result = controlexpression.remove_emotions_from_string(resultConversationString)
-        print(emotions)
-        print(result)
+        # emotions = controlexpression.extract_emotions(resultConversationString)
+        # result = controlexpression.remove_emotions_from_string(resultConversationString)
+        # print(emotions)
+        # print(result)
         print()
         #texttospeech time
         starttime = time.perf_counter()
-        openaiTTS.generateAudio(result, 9)
-        VRC_OSCLib.actionChatbox(VRCclient, result)
+        # openaiTTS.generateAudio(result, 9)
+        # VRC_OSCLib.actionChatbox(VRCclient, result)
         endtime = time.perf_counter()
         retrieval_time2 = round(endtime - starttime, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_TTS, retrieval_time2)
