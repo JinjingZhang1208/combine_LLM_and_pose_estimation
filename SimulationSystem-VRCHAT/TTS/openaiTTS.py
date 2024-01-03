@@ -20,22 +20,21 @@ response = client.audio.speech.create(
     input="Hello world! This is a streaming test.",
     response_format="mp3",
 )
+# Global lock for synchronizing audio playback
+playback_lock = threading.Lock()
+# Global variable to keep track of the current frame position
+CURRENT_FRAME = 0
 
 def read_audio_file(filepath: str, output_device_index: int):
-    """Read an audio file and plays it on the specified output device.
+    global CURRENT_FRAME
 
-    Parameters
-    ----------
-    filepath : str
-        The path to the audio file to be played.
-    output_device_index : int
-        The index of the output device to use.
-    """
+    # Acquire the lock before starting playback
+    playback_lock.acquire()
 
     def callback(data_out, frames, _, status):
         global CURRENT_FRAME
         if status:
-            debug("status: ", status)
+            print("status: ", status)
         chunk_size = min(len(data) - CURRENT_FRAME, frames)
         data_out[:chunk_size] = data[CURRENT_FRAME : CURRENT_FRAME + chunk_size]
         if chunk_size < frames:
@@ -48,9 +47,17 @@ def read_audio_file(filepath: str, output_device_index: int):
         with stream:
             event.wait()  # Wait until playback is finished
         event.clear()
+        playback_lock.release()  # Release the lock after playback
 
-    data, samplerate = soundfile.read(filepath, always_2d=True)
-    # Creating a thread to play the audio file.
+    try:
+        data, samplerate = soundfile.read(filepath, always_2d=True)
+    except Exception as e:
+        print("Error reading audio file:", e)
+        playback_lock.release()
+        return
+
+    event = threading.Event()
+
     try:
         stream = sounddevice.OutputStream(
             samplerate=samplerate,
@@ -59,11 +66,14 @@ def read_audio_file(filepath: str, output_device_index: int):
             callback=callback,
             finished_callback=event.set,
         )
-    except sounddevice.PortAudioError:
+    except sounddevice.PortAudioError as e:
+        print("Error creating audio stream:", e)
+        playback_lock.release()
         return
 
     thread = threading.Thread(target=stream_thread)
     thread.start()
+
 
 def generateAudio(text, device_index):
     response = client.audio.speech.create(
