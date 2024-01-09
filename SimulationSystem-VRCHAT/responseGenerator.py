@@ -12,7 +12,7 @@ GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
 openai_client = OpenAI(api_key=API_KEY)
 
-EXPRESSIONS = ["Happy", "Smug", "Wink", "Confused", "Excited", "Angry"]
+EXPRESSIONS = ["Happy", "Tease", "Wink", "Confused", "Sad", "Angry"]
 ACTIONS = [
     "Wave Hands",
     "Clap",
