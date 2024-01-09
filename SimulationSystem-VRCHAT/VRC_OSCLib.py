@@ -34,10 +34,10 @@ min_time_between_messages = 1.5
 expression_data_mapping = {
     "Facial Expression": {
         "Happy": 2,
-        "Smug": 5,
+        "Tease": 5,
         "Wink": 4,
         "Confused": 3,
-        "Excited": 6,
+        "Sad": 6,
         "Angry": 1
     },
     "Body Expression (Emotes)": {

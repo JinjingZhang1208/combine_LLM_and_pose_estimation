@@ -25,7 +25,7 @@ load_dotenv()
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
-COLLECTION_USERS = "NPC Avatars"
+COLLECTION_USERS = "Users"
 COLLECTION_MEMORY_OBJECTS = "TestMemory"
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
@@ -299,6 +299,9 @@ if __name__ == "__main__":
         # Generate the memory object data and push it to the memory objects collection.
         updateBaseDescription(userName, observationList)
         print("User created successfully!")
+        print(f"Welcome back! {userName} \nContinue where you left off")
+        avatar_expressions = list(avatar_expression_map.keys())
+        avatar_actions = list(avatar_action_map.keys())
     currMode = setConversationMode()
     startConversation(userName, currMode)
     client.close()

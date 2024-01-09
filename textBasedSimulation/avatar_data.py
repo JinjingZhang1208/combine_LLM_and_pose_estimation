@@ -1,9 +1,9 @@
 avatar_expression_map = {
     "Happy": 2,
-    "Smug": 5,
+    "Tease": 5,
     "Wink": 4,
     "Confused": 3,
-    "Excited": 6,
+    "Sad": 6,
     "Angry": 1,
 }
 avatar_action_map = {
