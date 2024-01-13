@@ -12,14 +12,14 @@ from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
-
+from pandas import *
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
     generateConversation,
     getTextfromAudio,
 )
-
+import pandas as pd
 load_dotenv()
 
 # Constants
@@ -29,6 +29,7 @@ COLLECTION_USERS = "Users"
 COLLECTION_MEMORY_OBJECTS = "Test6"
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
+INPUT_FILENAME="evaluations/TestQuestion/Test1.1Q.xlsx"
 
 CSV_LOGGER = CSVLogger()
 
@@ -120,19 +121,22 @@ def getBaseDescription():
     return description
 
 
-def startConversation(userName, currMode):
+def startConversation(userName, currMode, questionList):
     global pastObservations
     conversationalUser = input("Define the username you are acting as: ")
     baseObservation = fetchBaseDescription(userName)
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
+    count=0
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
-            currentConversation = input(
-                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            )
+            currentConversation = questionList[count]
+            if count<len(questionList)-1:
+                count+=1
+            else:
+                break
             end = time.perf_counter()
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
@@ -261,6 +265,11 @@ def setConversationMode():
 
 if __name__ == "__main__":
     pastObservations = deque()
+    df = pd.read_excel(INPUT_FILENAME)
+    questionList = df['Questions']
+
+    # for value in column_data:
+    #     print(value)
     # Get username.
     userName = input("Please enter the username of character: ")
 
@@ -304,5 +313,5 @@ if __name__ == "__main__":
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
     currMode = setConversationMode()
-    startConversation(userName, currMode)
+    startConversation(userName, currMode, questionList)
     client.close()
