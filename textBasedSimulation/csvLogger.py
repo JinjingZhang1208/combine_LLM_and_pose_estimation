@@ -23,7 +23,7 @@ class CSVLogger:
     initialize_header = True
     curr_time = datetime.now(tz=None)
     curr_time = curr_time.strftime("%Y-%m-%d_%H-%M")
-    curr_file = f"CSV_LOGS_{curr_time}.csv"
+    curr_file = f"./evaluations/TestScenarios_CSV/CSV_LOGS_{curr_time}.csv"
 
     def set_enum(self, enum: Enum, result):
         self.enum_values[enum.value] = result

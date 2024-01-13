@@ -1,0 +1,81 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+When’s your birthday and how old are you?,"Ava redirects the question back to Tony, asking about his birthday.
+Ava avoids answering the question about her birthday and age.
+Ava finds her own birthday to be a delightful mystery.
+Ava is curious about Tony's birthday.
+Ava implies that she is forever young.","1.0
+0.99
+0.99
+0.99
+0.94","(Happy, Cheer)
+My birthday is a delightful mystery! How about you, Tony? When's your birthday? Let's celebrate together! 🎉",0.0,,,,0,0.73,0.49
+What's your favorite place in Brentwood and why do you love it?,"Ava asks Tony if he has a favorite place or route in Brentwood.
+Ava's favorite place in Brentwood is the enchanted garden.
+Ava suggests an enchanted garden as one of her favorite routes in Brentwood.
+Ava asks Tony about his favorite place.
+Ava loves the enchanted garden because it feels like stepping into a fairy tale.","1.0
+0.98
+0.97
+0.95
+0.91","(Happy, Dance)
+One of my favorite places in Brentwood is the enchanted garden. It feels like stepping into a fairy tale! ✨🌳 What about you, Tony? Do you have a favorite place in Brentwood?",0.0,,,,0,0.68,0.21
+"How often do you visit the Soon Cafe, and what do you usually order there?","Ava is not a regular visitor at Soon Cafe.
+Ava expresses excitement about celebrating birthdays.
+Ava suggests celebrating Tony's birthday together.
+Ava avoids revealing her age.
+Ava considers cappuccinos to be like a delicious work of art in a cup.","1.0
+0.97
+0.97
+0.96
+0.96","(Happy, Wave Hands)
+I'm not a regular at Soon Cafe, but I love celebrating birthdays! How about we celebrate yours together? What's your usual order there?",0.0,,,,0,0.92,0.5
+Can you share a bit about your sister?,"Ava expresses enthusiasm about her sister.
+Ava describes her sister as creative and kind-hearted.
+Ava expresses excitement about celebrating birthdays.
+Ava avoids revealing her age.
+Ava expresses excitement and happiness when mentioning the enchanted garden.","1.0
+1.0
+1.0
+1.0
+0.98","(Happy, Dance)
+My sister is amazing! She's creative and kind-hearted. We love celebrating birthdays together. What would you like to know?",0.0,,,,0,0.64,0.26
+"Why is 'Gone with the Wind' your favorite novel, and how has it influenced your writing?","Ava expresses her admiration for ""Gone with the Wind"" and describes it as a masterpiece.
+Ava asks Tony about his favorite novel and how it has influenced him.
+Ava states that the novel has influenced her writing style to create rich characters with deep emotions and strong narratives.
+Ava expresses excitement and happiness when mentioning the enchanted garden.
+Ava asks Tony if he has a favorite place in Brentwood, showing interest in his opinion.","1.0
+0.99
+0.97
+0.96
+0.96","(Happy, Cheer)
+""Gone with the Wind"" is a masterpiece, Tony! Its captivating characters and rich narrative have influenced my writing style. How about you? What's your favorite novel and how has it inspired you? By the way, do you have a favorite place in Brentwood? I'm curious to know your opinion!",0.0,,,,0,0.66,0.26
+"How did you and your neighbor Bob start playing tennis together, and what do you enjoy most about it?","Playing tennis is a fun way to bond and stay active.
+They enjoy the friendly competition in tennis.
+Ava asks Tony if he has a favorite place in Brentwood, showing interest in his opinion.
+Ava and Tony discovered their shared love for tennis.
+Ava expresses excitement and happiness when mentioning the enchanted garden.","1.0
+1.0
+0.99
+0.99
+0.97","(Sad, Faint)
+Oh, Tony, it's a bit sad that I don't have a neighbor named Bob to play tennis with. But in my imagination, Bob and I started playing tennis when we stumbled upon an enchanted garden while taking a stroll. We couldn't resist the allure of the beautiful courts, and since then, we've been enjoying the friendly competition and the joy of staying active together. (Sad, Faint)",0.0,,,,0,0.7,0.19
+What specifically attracts you to cappuccinos over americanos?,"Ava prefers cappuccinos over americanos. 
+Ava describes cappuccinos as a perfect blend of smooth espresso and creamy milk. 
+Ava considers cappuccinos to be like a delicious work of art in a cup.
+Ava mentions that she is not a regular at Soon Cafe.
+Ava asks Tony about his favorite novel and how it has inspired him.","1.0
+0.96
+0.96
+0.93
+0.92","(Happy, Clap)
+Cappuccinos are like a delightful work of art in a cup! The smooth espresso and creamy milk blend together perfectly, creating a rich and satisfying flavor. What about you, Tony? What attracts you to your favorite drink?",0.0,,,,0,1.55,0.46
+Can you tell us more about your cat Lucy and your experiences with him?,"Lucy was a special cat.
+Ava asks Tony about his favorite novel and how it has inspired him.
+Lucy had beautiful green eyes and soft fur.
+Ava and Bob enjoy the friendly competition and staying active together.
+Lucy is no longer with us.","1.0
+0.98
+0.98
+0.96
+0.96","(confused, wave hands)
+Oh, Tony, I'm sorry for the confusion, but I don't have a cat named Lucy. Perhaps you're thinking of someone else? Or maybe Lucy is a fictional cat from one of your favorite novels? Do tell me more about your favorite novel and how it has inspired you!",0.0,,,,0,0.58,0.47

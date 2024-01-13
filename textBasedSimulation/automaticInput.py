@@ -12,23 +12,24 @@ from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
-
+from pandas import *
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
     generateConversation,
     getTextfromAudio,
 )
-
+import pandas as pd
 load_dotenv()
 
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "Users"
-COLLECTION_MEMORY_OBJECTS = "Test6"
+COLLECTION_MEMORY_OBJECTS = "33Test6"
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
+INPUT_FILENAME="evaluations/TestQuestion/Test1.1Q.xlsx"
 
 CSV_LOGGER = CSVLogger()
 
@@ -120,19 +121,22 @@ def getBaseDescription():
     return description
 
 
-def startConversation(userName, currMode):
+def startConversation(userName, currMode, questionList):
     global pastObservations
     conversationalUser = input("Define the username you are acting as: ")
     baseObservation = fetchBaseDescription(userName)
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
+    count=0
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
-            currentConversation = input(
-                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            )
+            currentConversation = questionList[count]
+            if count<len(questionList)-1:
+                count+=1
+            else:
+                break
             end = time.perf_counter()
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
@@ -261,20 +265,51 @@ def setConversationMode():
 
 if __name__ == "__main__":
     pastObservations = deque()
+    df = pd.read_excel(INPUT_FILENAME)
+    questionList = df['Questions']
+
+    # for value in column_data:
+    #     print(value)
     # Get username.
     userName = input("Please enter the username of character: ")
 
     # Check for existing user.
     existingUser = userCollection.find_one({"Username": userName})
-
+    existingInCOLLECTION=memoryObjectCollection.find_one({"Username": userName})
     if existingUser:
-        print(f"Welcome back! {userName} \nContinue where you left off")
-        avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
-        avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
-        avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
-        avatar_expressions = list(avatar_expression_map.keys())
-        avatar_actions = list(avatar_action_map.keys())
+        if existingInCOLLECTION:
+            print(f"Welcome back! {userName} \nContinue where you left off")
+            avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+            avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
+            avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
+            avatar_expressions = list(avatar_expression_map.keys())
+            avatar_actions = list(avatar_action_map.keys())
 
+        else:
+            # Collect the description details.
+            description = getBaseDescription()
+
+            # Insert the userData to the Users collection.
+            userData = {
+                "Username": userName,
+                "Description": description,
+                "Avatar Expressions Map": avatar_expression_map,
+                "Avatar Actions Map": avatar_action_map,
+                "Avatar Voice": avatar_voice,
+            }
+            startTime = time.time()
+            observationList = generateInitialObservations(userName, description).split("\n")
+            endTime = time.time()
+            print(
+                f"Time taken for the observation generation by GPT : {endTime - startTime:.2f} "
+            )
+
+            # Generate the memory object data and push it to the memory objects collection.
+            updateBaseDescription(userName, observationList)
+            print("User created successfully!")
+            print(f"Welcome back! {userName} \nContinue where you left off")
+            avatar_expressions = list(avatar_expression_map.keys())
+            avatar_actions = list(avatar_action_map.keys())
     else:
         # Collect the description details.
         description = getBaseDescription()
@@ -304,5 +339,5 @@ if __name__ == "__main__":
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
     currMode = setConversationMode()
-    startConversation(userName, currMode)
+    startConversation(userName, currMode, questionList)
     client.close()
