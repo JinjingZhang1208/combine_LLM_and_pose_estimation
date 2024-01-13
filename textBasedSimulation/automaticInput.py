@@ -26,7 +26,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "Users"
-COLLECTION_MEMORY_OBJECTS = "Test6"
+COLLECTION_MEMORY_OBJECTS = "33Test6"
 RETRIEVAL_COUNT = 5
 FILENAME = "current_conversation.wav"
 INPUT_FILENAME="evaluations/TestQuestion/Test1.1Q.xlsx"
@@ -275,15 +275,41 @@ if __name__ == "__main__":
 
     # Check for existing user.
     existingUser = userCollection.find_one({"Username": userName})
-
+    existingInCOLLECTION=memoryObjectCollection.find_one({"Username": userName})
     if existingUser:
-        print(f"Welcome back! {userName} \nContinue where you left off")
-        avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
-        avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
-        avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
-        avatar_expressions = list(avatar_expression_map.keys())
-        avatar_actions = list(avatar_action_map.keys())
+        if existingInCOLLECTION:
+            print(f"Welcome back! {userName} \nContinue where you left off")
+            avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+            avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
+            avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
+            avatar_expressions = list(avatar_expression_map.keys())
+            avatar_actions = list(avatar_action_map.keys())
 
+        else:
+            # Collect the description details.
+            description = getBaseDescription()
+
+            # Insert the userData to the Users collection.
+            userData = {
+                "Username": userName,
+                "Description": description,
+                "Avatar Expressions Map": avatar_expression_map,
+                "Avatar Actions Map": avatar_action_map,
+                "Avatar Voice": avatar_voice,
+            }
+            startTime = time.time()
+            observationList = generateInitialObservations(userName, description).split("\n")
+            endTime = time.time()
+            print(
+                f"Time taken for the observation generation by GPT : {endTime - startTime:.2f} "
+            )
+
+            # Generate the memory object data and push it to the memory objects collection.
+            updateBaseDescription(userName, observationList)
+            print("User created successfully!")
+            print(f"Welcome back! {userName} \nContinue where you left off")
+            avatar_expressions = list(avatar_expression_map.keys())
+            avatar_actions = list(avatar_action_map.keys())
     else:
         # Collect the description details.
         description = getBaseDescription()
