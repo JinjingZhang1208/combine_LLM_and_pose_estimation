@@ -1,0 +1,13 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hi how are you,"1. The user's name is Justin.
+My observations from the description are as follows:
+7. The description is written in the first person, indicating that it is Justin's self-description.
+Katie asked Justin how he is doing.
+The conversation seems friendly and positive.
+Justin responded that he is doing fantastic and asked Katie if anything exciting is happening in her world.","1.0
+0.64
+0.57
+1.0
+0.36
+0.0","(Happy, Wave Hands)
+Hey Katie! I'm fantastic! Anything exciting happening in your world? 😄👋",4.83,,,,0,1.58,0.5

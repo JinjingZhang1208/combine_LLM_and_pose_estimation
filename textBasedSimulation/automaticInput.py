@@ -29,7 +29,7 @@ COLLECTION_USERS = "Users"
 # test cases 2,3 last
 # 2 need 2 excel, 2q-irr, then 2q
 # 3 need ask + modify mongodb + ask
-COLLECTION_MEMORY_OBJECTS = "r3-77q3" # change memory name
+COLLECTION_MEMORY_OBJECTS = "mytest" # change memory name
 INPUT_FILENAME="evaluations/TestQuestion/3q.xlsx" # change route
 BASE_RETRIEVAL_COUNT = 7  # change parameter
 OBS_RETRIEVAL_COUNT = 7 # change parameter

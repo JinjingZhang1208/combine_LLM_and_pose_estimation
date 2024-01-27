@@ -25,9 +25,12 @@ load_dotenv()
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
-COLLECTION_USERS = "Users"
-COLLECTION_MEMORY_OBJECTS = "Test6"
-RETRIEVAL_COUNT = 5
+COLLECTION_USERS = "NPC Avatars"
+COLLECTION_MEMORY_OBJECTS = "TestMemory"
+# RETRIEVAL_COUNT = 5
+BASE_RETRIEVAL_COUNT = 3  # change parameter
+OBS_RETRIEVAL_COUNT = 5 # change parameter
+REFLECTION_COUNT=2
 FILENAME = "current_conversation.wav"
 
 CSV_LOGGER = CSVLogger()
@@ -124,9 +127,17 @@ def startConversation(userName, currMode):
     global pastObservations
     conversationalUser = input("Define the username you are acting as: ")
     baseObservation = fetchBaseDescription(userName)
+
+    # filter empty observations
+    observation_dict = baseObservation[0]
+    filtered_observations = [obs for obs in observation_dict['Observations'] if obs.strip()]
+    observation_dict['Observations'] = filtered_observations
+
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
+
+    conversation_count = 0
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
@@ -155,16 +166,23 @@ def startConversation(userName, currMode):
             break
         start = time.perf_counter()
         baseRetrieval = retrievalFunction(
-            currentConversation,
-            baseObservation,
-            RETRIEVAL_COUNT,
+            currentConversation=currentConversation,
+            memoryStream=baseObservation,
+            retrievalCount=BASE_RETRIEVAL_COUNT,
             isBaseDescription=True,
         )
         observationRetrieval = retrievalFunction(
-            currentConversation,
-            pastObservations,
-            RETRIEVAL_COUNT,
+            currentConversation=currentConversation,
+            memoryStream=pastObservations,
+            retrievalCount=OBS_RETRIEVAL_COUNT,
             isBaseDescription=False,
+        )
+        reflection_retrieval = retrievalFunction(
+            currentConversation=currentConversation,
+            memoryStream=pastObservations,
+            retrievalCount=REFLECTION_COUNT,
+            isBaseDescription=False,
+            is_reflection=True,
         )
         end = time.perf_counter()
         retrieval_time = round(end - start, 2)
@@ -244,7 +262,6 @@ def generateObservationAndUpdateMemory(
         f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
     )
     """
-
     updateMemoryCollection(userName, conversationalUser, finalObservations)
 
 

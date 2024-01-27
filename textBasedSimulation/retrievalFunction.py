@@ -30,12 +30,35 @@ def retrievalFunction(
     memoryStream: list,
     retrievalCount: int,
     isBaseDescription=True,
+    is_reflection=False,
 ):
+    """
+    Returns:
+    - list: A list of tuples containing retrieval scores and retrieved observations.
+
+    - Example return: [(1.0, 'John values family and views them as important.'), (0.9888348851281439, 'John Lin loves his family very much.'), (0.7962403715756174, 'John Lin values his family a lot.'), (0.4840372876913257, 'John Lin asks Katie if she has any kids.'), (0.40970729218079427, 'Katie and John are discussing their living situations.')]
+    """
     if memoryStream:
         memoryStream = calculateRecency(memoryStream, isBaseDescription)
         memoryData = prepareMemoryData(memoryStream)
-        observationData = [memory[0] for memory in memoryData]
-        recencyScores = [memory[1] for memory in memoryData]
+
+        observationData = []
+        recencyScores = []
+
+        for memory in memoryData:
+            observationData.append(memory[0])
+            recencyScores.append(memory[1])
+
+        if is_reflection:
+            reflection_results = sorted(
+                zip(recencyScores, observationData),
+                key=lambda x: x[0],
+                reverse=True
+            )[:retrievalCount]
+            # print(f"Reflection Results: {reflection_results}")
+            return reflection_results
+
+
         similarityScores = calculateRelevance(currentConversation, observationData)
         return calculateRetrievalScore(
             observationData, recencyScores, similarityScores, retrievalCount
@@ -91,6 +114,13 @@ def calculateRetrievalScore(
     similarityVector: list,
     retrievalCount: int,
 ):
+    '''
+    Returns:
+    - list: A list of tuples containing retrieval scores and retrieved observations.
+
+    Example:
+    - Returned list: [(1.0, 'Observation1'), (0.363, 'Observation2'), (0.0, 'Observation3')]
+    '''
     relevantObservations = []
     for idx, simScore in enumerate(similarityVector):
         retrievalScore = (
@@ -102,6 +132,7 @@ def calculateRetrievalScore(
     relevantObservations = sorted(
         relevantObservations, key=lambda x: x[0], reverse=True
     )[:retrievalCount]
+
     return relevantObservations
 
 
@@ -150,3 +181,5 @@ testQueue = deque(
 
 
 # print(retrievalFunction("Hi John! tell me about your familly", testQueue, 5, True))
+
+# [(1.0, 'John values family and views them as important.'), (0.9888348851281439, 'John Lin loves his family very much.'), (0.7962403715756174, 'John Lin values his family a lot.'), (0.4840372876913257, 'John Lin asks Katie if she has any kids.'), (0.40970729218079427, 'Katie and John are discussing their living situations.')]
