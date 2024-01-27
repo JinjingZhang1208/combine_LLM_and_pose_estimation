@@ -55,7 +55,6 @@ def retrievalFunction(
                 key=lambda x: x[0],
                 reverse=True
             )[:retrievalCount]
-            # print(f"Reflection Results: {reflection_results}")
             return reflection_results
 
 

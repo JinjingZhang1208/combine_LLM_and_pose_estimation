@@ -1,0 +1,11 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+k,"J responded to K with a greeting and asked about any exciting events happening.
+J is using emojis in their response.
+J is expressing excitement in their response.
+J is asking open-ended questions to initiate a conversation.
+The current statement of the conversation is 'test'.","1.0
+0.97
+0.97
+0.95
+0.94","(Clap, Dance)
+Hey there, j! Any exciting events happening in your world? Let's get the party started! 💃🎉",0.68,,,,0,0.61,5.25

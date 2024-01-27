@@ -1,0 +1,3 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+how are you,,,"(Happy, Wave Hands)
+Hey there! I'm doing great, thank you! How about you? Anything exciting happening in your world?",2.13,,,,0,0.0,0.36

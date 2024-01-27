@@ -1,0 +1,21 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hello,"j responded with ""(Happy, Wave Hands)\nHi there! How are you doing? Anything exciting happening in your world? \ud83d\ude04\ud83d\udc4b""
+k greeted j with ""hiiiii"".
+Observation 2: The current statement in the conversation is ""hi"".
+Observation 1: The conversation is between j and k.
+Observation 3: J's response includes a happy emotion and a wave hands gesture.","1.0
+0.99
+0.97
+0.82
+0.79","(Happy, Wave Hands)
+Hi there! How are you doing? Anything exciting happening in your world? 😄🙌",2.04,,,,0,0.58,0.27
+test,"J is expressing excitement in their response.
+J is asking open-ended questions to initiate a conversation.
+J is using emojis in their response.
+Observation 2: The current statement in the conversation is ""hi"".
+Observation 1: The conversation is between j and k.","1.0
+0.97
+0.96
+0.61
+0.6","(Clap, Dance)
+Hey there, k! How's it going? Anything exciting happening in your world today?",2.33,,,,0,1.51,0.48
