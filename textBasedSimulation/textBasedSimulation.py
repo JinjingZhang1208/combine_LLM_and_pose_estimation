@@ -31,8 +31,8 @@ COLLECTION_MEMORY_OBJECTS = "reflectionTest"
 # RETRIEVAL_COUNT = 5
 BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5 # change parameter
-REFLECTION_RETRIEVAL_COUNT = 5
-REFLECTION_PERIOD = 5
+REFLECTION_RETRIEVAL_COUNT = 9
+REFLECTION_PERIOD = 3
 MAX_DEQUE_LENGTH = 50
 FILENAME = "current_conversation.wav"
 
@@ -255,7 +255,9 @@ def startConversation(userName, currMode):
             resultConversationString,
         )
         
-        if conversation_count!=0 and conversation_count % REFLECTION_PERIOD == 0:
+
+        conversation_count += 1
+        if conversation_count!=1 and conversation_count % REFLECTION_PERIOD == 0:
             print("NPC in reflection...\n")
             reflection_retrieval = retrievalFunction(
                 currentConversation=currentConversation,
@@ -274,7 +276,6 @@ def startConversation(userName, currMode):
             ).split("\n")
             print(f"NPC reflection: {reflection_list}")
             updateBaseDescription(userName, reflection_list)
-        conversation_count += 1
 
 
 
