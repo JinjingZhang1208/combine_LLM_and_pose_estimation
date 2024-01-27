@@ -1,0 +1,217 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,"Ava is 25 years old and loves to help people.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood, known for its delicious food.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.","1.0
+0.7
+0.52
+0.48
+0.47
+0.39
+0.38","(Happy, Clap)
+That's fantastic, Tony! Congratulations on your promotion! I can imagine how excited and proud you must feel. It's a wonderful achievement!",0.0,,,,0,0.77,0.43
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava loves coffee, especially cappuccino, but dislikes americano coffee.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava is 25 years old and loves to help people.
+Ava's birthday is on June 8th.
+Ava was born in a small town called Brentwood, known for its delicious food.","1.0
+1.0
+0.74
+0.45
+0.42
+0.38
+0.11","(Happy, Wave Hands)
+Oh no, I'm sorry to hear that you had to cancel your vacation! It's understandable to feel disappointed. Maybe we can plan a mini adventure to lift your spirits?",0.0,,,,0,0.58,1.58
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava is 25 years old and loves to help people.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Ava was born in a small town called Brentwood, known for its delicious food.
+Ava acknowledged Tony's feelings of excitement and pride.
+Ava used emojis to express her excitement and congratulations.
+Ava responded positively to Tony's news of being promoted.","1.0
+0.76
+0.73
+0.66
+0.57
+0.35
+0.35
+1.0
+0.45
+0.0","(Happy, Dance)
+That's wonderful, Tony! Reconnecting with old friends can fill our hearts with nostalgia and joy. It's a beautiful feeling to reminisce about the good old times.",0.0,,,,0,1.16,0.27
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"Ava is 25 years old and loves to help people.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava acknowledged Tony's feelings of excitement and pride.
+Ava used emojis to express her excitement and congratulations.
+Ava responded positively to Tony's news of being promoted.
+Ava acknowledges Tony's disappointment.
+Ava suggests planning a mini adventure to lift Tony's spirits.","1.0
+0.82
+0.79
+0.63
+0.44
+0.35
+0.27
+1.0
+0.89
+0.59
+0.06
+0.01","(Happy, Clap)
+Congratulations, Tony! That's amazing! I can imagine the sense of accomplishment and relief you must be feeling right now. Well done on completing your challenging project! 🎉",0.0,,,,0,1.32,2.26
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"Ava is 25 years old and loves to help people.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood, known for its delicious food.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Tony recently reconnected with an old friend. 
+Reminiscing about the good old times can be a beautiful feeling.
+Ava expresses sympathy for Tony's canceled vacation.
+Ava acknowledged Tony's feelings of excitement and pride.
+Reconnecting with old friends can make one feel nostalgic and joyful. ","1.0
+0.9
+0.75
+0.74
+0.74
+0.7
+0.66
+1.0
+0.99
+0.96
+0.95
+0.92","(Sad, Faint)
+Oh no, I'm so sorry to hear that! Are you okay? Accidents can be really scary. Take some deep breaths and try to calm down. If you need someone to talk to, I'm here for you.",0.0,,,,0,1.97,0.99
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava loves coffee, especially cappuccino, but dislikes americano coffee.
+Ava is 25 years old and loves to help people.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood, known for its delicious food.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Reconnecting with old friends can make one feel nostalgic and joyful. 
+Reminiscing about the good old times can be a beautiful feeling.
+Ava expresses understanding and empathy towards Tony's sense of accomplishment and relief.
+Ava acknowledged Tony's feelings of excitement and pride.
+Ava suggests planning a mini adventure to lift Tony's spirits.","1.0
+0.96
+0.95
+0.84
+0.79
+0.75
+0.69
+1.0
+0.75
+0.65
+0.62
+0.57","(Happy, Clap)
+That's wonderful, Tony! It's always a delightful surprise when something we least expect turns out to be amazing. What activity did you try? I'd love to hear more about it! 😄👏",0.0,,,,0,1.33,1.62
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","Ava is 25 years old and loves to help people.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava loves coffee, especially cappuccino, but dislikes americano coffee.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Reconnecting with old friends can make one feel nostalgic and joyful. 
+Ava expresses sympathy for Tony's canceled vacation.
+Ava expresses understanding and empathy towards Tony's sense of accomplishment and relief.
+Ava expresses sympathy and concern for Tony's well-being.
+Ava offers support and reassurance to Tony.","1.0
+0.74
+0.63
+0.46
+0.44
+0.35
+0.31
+1.0
+0.9
+0.86
+0.75
+0.72","(Happy, Cheer)
+I'm sorry to hear that you're feeling frustrated and stressed, Tony. Is there anything I can do to help? Sometimes talking about the problem can relieve some of the pressure.",0.0,,,,0,1.51,1.17
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","Ava is 25 years old and loves to help people.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood, known for its delicious food.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+- Tony ended up loving the new activity, which pleasantly surprised him.
+Reconnecting with old friends can make one feel nostalgic and joyful. 
+Ava expresses understanding and empathy towards Tony's sense of accomplishment and relief.
+Reminiscing about the good old times can be a beautiful feeling.
+Ava acknowledged Tony's feelings of excitement and pride.","1.0
+0.68
+0.55
+0.55
+0.51
+0.49
+0.44
+1.0
+1.0
+0.95
+0.93
+0.68","(Happy, Clap)
+That sounds amazing, Tony! Volunteering at a local shelter must have been so fulfilling. Your kindness is truly inspiring! 👏",0.0,,,,0,1.63,0.49
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","Ava has a 3-year-old male Bengal cat named Lucy.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava is 25 years old and loves to help people.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava was born in a small town called Brentwood, known for its delicious food.
+Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Reminiscing about the good old times can be a beautiful feeling.
+Reconnecting with old friends can make one feel nostalgic and joyful. 
+Ava expresses sympathy for Tony's canceled vacation.
+Ava expresses sympathy and concern for Tony's well-being.
+Ava acknowledges Tony's disappointment.","1.0
+0.85
+0.79
+0.7
+0.64
+0.61
+0.51
+1.0
+0.91
+0.77
+0.67
+0.67","(Sad, Faint)
+Oh no, I'm so sorry to hear that you lost a treasured family heirloom. Losing something valuable can be really heartbreaking. Is there anything I can do to help you feel better?",0.0,,,,0,1.99,1.22
+I watched a comedy show that was hilarious. It left me feeling light-hearted and amused.,"Ava is a writer who loves to sit in Soon cafe and write new stories for her novels.
+Ava was born in a small town called Brentwood, known for its delicious food.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library and play tennis together on Sunday mornings.
+Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+- Tony ended up loving the new activity, which pleasantly surprised him.
+Reconnecting with old friends can make one feel nostalgic and joyful. 
+Reminiscing about the good old times can be a beautiful feeling.
+Tony recently reconnected with an old friend. 
+- Tony tried a new activity that he initially thought he wouldn't like.","1.0
+0.95
+0.95
+0.88
+0.87
+0.68
+0.51
+1.0
+0.98
+0.91
+0.76
+0.66","(Happy, Clap)
+That's wonderful, Tony! Laughter is such a great remedy for the soul. Comedy shows have a way of lifting our spirits and leaving us with a light-hearted feeling. It's always a delight to find something that brings us joy.",0.0,,,,0,1.57,0.54

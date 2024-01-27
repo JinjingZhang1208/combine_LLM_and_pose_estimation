@@ -1,0 +1,105 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+When’s your birthday and how old are you?,"Ava's birthday is June 8th.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.","1.0
+0.47
+0.33","(Happy, Wave Hands)
+My birthday is on June 8th! As for my age, let's just say I'm a forever-young 25-year-old. How about you, Tony? When's your birthday?",0.0,,,,0,0.72,0.21
+What's your favorite place in Brentwood and why do you love it?,"Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.","1.0
+0.79
+0.72","(Happy, Dance)
+My favorite place in Brentwood is Soon cafe! It's cozy and has delicious coffee. I love going there to write my novels and get inspired. It's like my creative sanctuary!",0.0,,,,0,0.7,0.37
+"How often do you visit the Soon Cafe, and what do you usually order there?","Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava then asked Tony about his birthday.
+Tony asked Ava about her birthday and age.
+Ava replied that her birthday is on June 8th and she is 25 years old.","1.0
+0.61
+0.39
+1.0
+0.83
+0.0","(Happy, Dance)
+I visit Soon Cafe twice a week! It's my cozy writing spot. I usually order a caramel latte and a slice of their delicious blueberry cheesecake. What about you, Tony? Do you have a favorite cafe?",0.0,,,,0,1.03,0.47
+Can you share a bit about your sister?,"Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Tony asked Ava about her birthday and age.
+Ava then asked Tony about his birthday.
+Ava replied that her birthday is on June 8th and she is 25 years old.
+Ava goes to Soon cafe to write her novels and get inspired.
+Ava's favorite place in Brentwood is Soon cafe.","1.0
+0.75
+0.58
+1.0
+0.83
+0.78
+0.66
+0.52","(confused, wave hands)
+Oh, my sister Avam? She's a master of computer science student at Brentwood University. She's really smart and passionate about technology! We live together and have a lot of fun together. What about your siblings, Tony?",0.0,,,,0,1.1,0.22
+"Why is 'Gone with the Wind' your favorite novel, and how has it influenced your writing?","Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava goes to Soon cafe to write her novels and get inspired.
+Ava asks Tony if he has a favorite cafe.
+Ava then asked Tony about his birthday.
+Tony asked Ava about her birthday and age.
+Ava's favorite items to order at Soon Cafe are a caramel latte and a slice of blueberry cheesecake.","1.0
+0.51
+0.27
+1.0
+0.73
+0.45
+0.36
+0.26","(Happy, Wave Hands)
+""Gone with the Wind is my favorite novel because it transports me to a romantic and adventurous world. It has influenced my writing by inspiring me to create compelling characters and captivating storylines. What about you, Tony? Do you have a favorite novel?""",0.0,,,,0,3.59,0.3
+"How did you and your neighbor Bob start playing tennis together, and what do you enjoy most about it?","Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava asks Tony if he has a favorite cafe.
+Ava and her sister live together and have fun together.
+Ava then asked Tony about his birthday.
+Tony asked Ava about her birthday and age.
+Ava visits Soon Cafe twice a week.","1.0
+0.36
+0.2
+1.0
+0.96
+0.82
+0.67
+0.55","(Happy, Clap)
+Tony, Bob and I started playing tennis together when we bumped into each other at Brentwood Library. We enjoy the friendly competition and the Sunday morning workout! What's your favorite sport?",0.0,,,,0,1.21,0.48
+What specifically attracts you to cappuccinos over americanos?,"Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Soon cafe is cozy and has delicious coffee.
+Ava's favorite items to order at Soon Cafe are a caramel latte and a slice of blueberry cheesecake.
+Ava asks Tony if he has a favorite cafe.
+Ava goes to Soon cafe to write her novels and get inspired.
+Ava visits Soon Cafe twice a week.","1.0
+0.49
+0.35
+1.0
+0.98
+0.96
+0.63
+0.61","(Confused, Wave Hands)
+Hmm, that's an interesting question, Tony! I think what attracts me to cappuccinos over americanos is the creamy texture and the perfect balance of espresso and steamed milk. It just feels like a cozy hug in a cup! Do you have a favorite cafe?",0.0,,,,0,1.6,1.71
+Can you tell us more about your cat Lucy and your experiences with him?,"Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava asked Tony about his favorite sport.
+Ava asks Tony if he has a favorite cafe.
+Ava then asked Tony about his birthday.
+Ava mentions that the novel has influenced her writing by inspiring her to create compelling characters and captivating storylines.
+Tony asked Ava about her birthday and age.","1.0
+0.3
+0.23
+1.0
+0.94
+0.77
+0.72
+0.69","(Happy, Wave Hands)
+Sure! Lucy is a mischievous Bengal cat who loves exploring. We have so much fun playing hide-and-seek together! Sometimes he even tries to teach me some cat tricks. It's always an adventure with him! 🐱✨",0.0,,,,0,1.03,0.49

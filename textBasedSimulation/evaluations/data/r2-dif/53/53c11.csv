@@ -1,0 +1,228 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+When’s your birthday and how old are you?,"8 Ava’s birthday is June 8th.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.","1.0
+0.33
+0.32
+0.26
+0.22","(Confused, Point)
+I'm sorry, Tony, but I'm not able to answer that question. How about we talk about something else? What's your favorite hobby?",0.0,,,,0,0.49,0.55
+What's your favorite place in Brentwood and why do you love it?,"2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.","1.0
+0.8
+0.74
+0.72
+0.42","(Happy, Cheer)
+My favorite place in Brentwood is Soon Cafe. I love its cozy atmosphere and delicious coffee. It's the perfect spot for me to write my novels and get lost in my imagination! What about you, Tony? Do you have a favorite place in Brentwood?",0.0,,,,0,0.42,0.44
+"How often do you visit the Soon Cafe, and what do you usually order there?","3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava asks Tony about his favorite hobby.
+Ava is unable to answer a personal question about Tony's birthday and age.
+Ava attempts to redirect the conversation to a different topic.","1.0
+0.59
+0.42
+0.38
+0.12
+1.0
+0.07
+0.0","(Happy, Dance)
+I visit Soon Cafe twice a week. I love their cozy atmosphere and delicious cappuccinos. It's the perfect spot for me to write new stories for my novels! What about you, Tony? Do you have a favorite coffee shop?",0.0,,,,0,0.94,0.53
+Can you share a bit about your sister?,"4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Ava attempts to redirect the conversation to a different topic.
+Ava asks Tony about his favorite hobby.
+Ava is unable to answer a personal question about Tony's birthday and age.","1.0
+0.86
+0.69
+0.47
+0.41
+1.0
+0.82
+0.26","(Sad, Faint)
+Oh, my sister Avam is such a talented and intelligent person! She's currently pursuing her master's degree in computer science at Brentwood University. I'm really proud of her!",0.0,,,,0,0.82,0.28
+"Why is 'Gone with the Wind' your favorite novel, and how has it influenced your writing?","6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Ava asks Tony about his favorite hobby.
+Ava uses Soon Cafe as a spot to write new stories for her novels.
+Soon Cafe is the perfect spot for Ava to write her novels and get lost in her imagination.","1.0
+0.57
+0.35
+0.24
+0.18
+1.0
+0.7
+0.68","(Happy, Clap)
+""Gone with the Wind is my favorite novel because it takes me on a captivating journey through time and emotions. It has influenced my writing by inspiring me to create rich and complex characters, just like Scarlett O'Hara. What's your favorite hobby, Tony?""",0.0,,,,0,0.92,0.23
+"How did you and your neighbor Bob start playing tennis together, and what do you enjoy most about it?","7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava asks Tony about his favorite hobby.
+Ava visits Soon Cafe twice a week.
+Ava loves the cozy atmosphere and delicious coffee at Soon Cafe. ","1.0
+0.32
+0.22
+0.19
+0.19
+1.0
+0.41
+0.34","(Happy, Dance)
+Tony, Bob and I met at the Brentwood Library. We discovered our shared love for tennis and now play together every Sunday morning. I enjoy the friendly competition and the joy of being active outdoors. What's your favorite hobby?",0.0,,,,0,0.95,0.53
+What specifically attracts you to cappuccinos over americanos?,"9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves the cozy atmosphere and delicious cappuccinos at Soon Cafe.
+Ava loves the cozy atmosphere and delicious coffee at Soon Cafe. 
+Ava's favorite place in Brentwood is Soon Cafe. ","1.0
+0.51
+0.35
+0.24
+0.22
+1.0
+0.83
+0.49","(Sad, Faint)
+I love the cozy atmosphere and the smooth texture of cappuccinos. They just make me feel warm and fuzzy inside. As for americanos, they don't quite hit the spot for me.",0.0,,,,0,1.46,0.54
+Can you tell us more about your cat Lucy and your experiences with him?,"10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+Ava asks Tony about his favorite hobby.
+Ava asks Tony about his favorite hobby.
+They discovered their shared love for tennis.","1.0
+0.34
+0.22
+0.18
+0.17
+1.0
+0.96
+0.63","(Happy, Dance)
+Sure, Tony! Lucy is a mischievous Bengal cat. He loves to explore and play around the house. Sometimes he even tries to do a backflip! Lucy brings so much joy and laughter to my life. Do you have any pets? #PetsAreTheBest",0.0,,,,0,0.83,0.22
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"As a writer, what inspires you to create stories while sitting in Soon Cafe?","- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+- Ava was born in a small town called Brentwood, known for its beautiful scenery and delicious food.
+- Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.","1.0
+0.62
+0.32
+0.26
+0.25","(Happy, Dance)
+Creating stories at Soon Cafe is a magical experience! The cozy ambiance and aromatic coffee inspire my imagination to soar. It's like the characters come to life, dancing on the pages of my novels.",0.0,,,,0,0.47,0.53
+"Ava, what aspects of Brentwood's small-town atmosphere influence the characters or settings in your novels?","- Ava was born in a small town called Brentwood, known for its beautiful scenery and delicious food.
+- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+- Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.","1.0
+0.7
+0.63
+0.61
+0.52","(Happy, Wave Hands)
+Small-town Brentwood's scenic beauty and tasty cuisine influence my novels. The locals, like my neighbor Bob, and places like Soon cafe, inspire my characters and settings.",0.0,,,,0,1.03,0.52
+Can you share a memorable experience you've had at Soon Cafe that sparked an idea for a story?,"- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+- Ava was born in a small town called Brentwood, known for its beautiful scenery and delicious food.
+- Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.","1.0
+0.68
+0.34
+0.24
+0.16","(Happy, Clap)
+Sure, Tony! One memorable experience at Soon Cafe was when I overheard a group of friends sharing their wildest travel stories. It sparked an idea for a thrilling adventure novel set in exotic locations. The energy in the cafe that day was electric! 🎉",0.0,,,,0,0.47,0.5
+How does your sister Avam's expertise in computer science influence or appear in your writing?,"- Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava is a 25-year-old kind girl who loves to help people.
+- Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Ava's characters come to life on the pages of her novels.
+Ava enjoys creating stories at Soon Cafe.
+Local places like Soon cafe inspire Ava's characters and settings.","1.0
+0.51
+0.35
+0.32
+0.24
+1.0
+0.84
+0.42","(Happy, Wave Hands)
+Avam's expertise in computer science brings a fresh perspective to my writing. She helps me explore technology themes and adds depth to my stories. It's a wonderful collaboration! How about you, Tony? Are there any special influences in your creative process?",0.0,,,,0,0.89,1.38
+You mentioned 'Gone with the Wind' as your favorite novel. How has it influenced your own writing style or themes?,"- Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava was born in a small town called Brentwood, known for its beautiful scenery and delicious food.
+- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+- Ava is a 25-year-old kind girl who loves to help people.
+This experience sparked an idea for a thrilling adventure novel set in exotic locations. 
+Ava's characters come to life on the pages of her novels.
+Ava's novels are influenced by the small-town atmosphere of Brentwood.","1.0
+0.4
+0.24
+0.23
+0.11
+1.0
+0.89
+0.86","(Happy, Wave Hands)
+""Gone with the Wind"" has had a profound impact on my writing style. It taught me the art of creating captivating characters and transporting readers to enchanting locations. Join me on this adventure!",0.0,,,,0,0.93,0.33
+"Considering your love for jogging, do you ever incorporate themes of physical activity or sports into your stories?","- Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+- Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+- Ava was born in a small town called Brentwood, known for its beautiful scenery and delicious food.
+This experience sparked an idea for a thrilling adventure novel set in exotic locations. 
+Ava's characters come to life on the pages of her novels.
+Avam helps Ava explore technology themes in her stories.","1.0
+0.55
+0.5
+0.25
+0.16
+1.0
+0.8
+0.78","(Confused, Wave Hands)
+Hmm, incorporating themes of physical activity or sports into my stories? That's an interesting idea, Tony! I haven't done that yet, but it sounds like a fun challenge. Maybe I can write about a group of joggers who stumble upon a secret treasure while exploring the mountains. What do you think?",0.0,,,,0,0.94,0.53
+What kind of conversations do you have with Bob at the Brentwood Library that inspire your writing?,"- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+- Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+- Ava was born in a small town called Brentwood, known for its beautiful scenery and delicious food.
+Ava's novels are influenced by the small-town atmosphere of Brentwood.
+The scenic beauty of Brentwood plays a role in Ava's novels.
+Ava enjoys creating stories at Soon Cafe.","1.0
+0.66
+0.59
+0.44
+0.39
+1.0
+0.84
+0.77","(Happy, Point)
+Hey Tony! Bob and I have the most inspiring conversations at the Brentwood Library. We talk about everything from books to our latest tennis matches. It's such a great place to spark creativity! How about you? What inspires you?",0.0,,,,0,0.98,0.5
+"How do you celebrate your birthday on June 8th, and does it ever coincide with a new story idea or writing project?","- Ava's birthday is on June 8th.
+- Ava is a writer who enjoys sitting in Soon cafe to write new stories for her novels.
+- Ava's favorite novel is ""Gone with the Wind"" and her favorite sport is jogging.
+- Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+- Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+This experience sparked an idea for a thrilling adventure novel set in exotic locations. 
+Ava is considering incorporating themes of physical activity or sports into her stories.
+Ava finds the idea of writing about a group of joggers who discover a secret treasure while exploring the mountains to be a fun challenge.","1.0
+0.49
+0.34
+0.29
+0.16
+1.0
+0.98
+0.98","(confused, wave hands)
+Oh, Tony, my birthday on June 8th is usually a quiet affair. But, you know, it's funny you mention writing projects because sometimes my imagination takes flight on that day. Who knows what story ideas might come my way? 😉",0.0,,,,0,1.06,0.33

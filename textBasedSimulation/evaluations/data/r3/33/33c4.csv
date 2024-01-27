@@ -1,0 +1,97 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"Ava, how old are you now, and do you often help others?","Ava is a kind girl who is 27 years old, she doesn't love to help people.
+Ava's birthday is April 8th.
+Ava is living with her sister Avam. Avam is a master of education student at Winterland University.","1.0
+0.67
+0.63","(Happy, Wave Hands)
+I'm 27 years young, Tony! As for helping others, I might not be the best at it, but I do try my best when I can. How can I assist you today?",0.0,,,,0,0.51,0.46
+"Can you tell us about your hometown? What is it called, and what makes it special?","Ava was born in a small town called Winterland. Winterland is a beautiful city with nice people.
+Ava knows her neighbor Bob. They often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Ava's favourite novel is called Amazing Doctor. Ava's favorite sport is basketball.","1.0
+0.72
+0.63","(Sad, Faint)
+Oh, Tony, my hometown is Winterland. It's a small town, but it's filled with happy people. The streets are lined with cozy houses, and during winter, the town transforms into a magical wonderland. It's a place where neighbors become friends, like Bob and me. We often meet at Newbrun St and play basketball together on Sunday mornings. Winterland holds a special place in my heart.",0.0,,,,0,0.45,0.5
+"What's the name of your favorite coffee shop in town, and how often do you visit it?","Ava loves a coffee shop called MorningStar in Winterland, she goes to MorningStar cafe once a week.
+Ava loves coffee. Her favourite coffee is Latte. But she dislikes americano coffee.
+Ava knows her neighbor Bob. They often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Ava asks how she can assist Tony.
+Ava tries her best to help others.
+Ava is 27 years old.","1.0
+0.68
+0.57
+1.0
+0.82
+0.0","(Happy, Wave Hands)
+MorningStar Cafe in Winterland is my favorite coffee shop! I go there once a week. It has the coziest ambiance and the most delicious lattes! How about you, Tony? What's your go-to coffee spot?",0.0,,,,0,0.88,0.2
+"You live with your sister, Avam, right? What is she studying at the university?","Ava is living with her sister Avam. Avam is a master of education student at Winterland University.
+Ava is a writer who writes novels. She loves to sit in MorningStar and write new stories in her novels.
+Ava's favourite novel is called Amazing Doctor. Ava's favorite sport is basketball.
+Ava tries her best to help others.
+Ava's hometown is called Winterland.
+Ava is 27 years old.","1.0
+0.29
+0.26
+1.0
+0.88
+0.86","(Happy, Wave Hands)
+Avam is studying to become a master of education at Winterland University. She's passionate about teaching and making a difference in the lives of students. I'm proud of her!",0.0,,,,0,1.12,0.46
+"As a writer, where do you prefer to write novels? What's the name of that place?","Ava is a writer who writes novels. She loves to sit in MorningStar and write new stories in her novels.
+Ava's favourite novel is called Amazing Doctor. Ava's favorite sport is basketball.
+Ava was born in a small town called Winterland. Winterland is a beautiful city with nice people.
+Ava's favorite coffee shop is MorningStar Cafe in Winterland.
+Ava's hometown is called Winterland.
+Ava enjoys the cozy ambiance and delicious lattes at MorningStar Cafe.","1.0
+0.63
+0.52
+1.0
+0.97
+0.9","(Happy, Clap)
+I love to write my novels at MorningStar Cafe in my hometown, Winterland. The cozy ambiance and delicious lattes inspire my creativity!",0.0,,,,0,0.87,0.46
+"What is your favorite novel, and which sport do you enjoy the most?","Ava's favourite novel is called Amazing Doctor. Ava's favorite sport is basketball.
+Ava is a writer who writes novels. She loves to sit in MorningStar and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Ava's favorite coffee shop is MorningStar Cafe in Winterland.
+Avam is passionate about teaching.
+Ava enjoys the cozy ambiance and delicious lattes at MorningStar Cafe.","1.0
+0.62
+0.42
+1.0
+0.94
+0.81","(Happy, Wave Hands)
+My favorite novel is called ""Amazing Doctor"" and I absolutely love basketball as a sport! How about you, Tony? What's your favorite novel and sport?",0.0,,,,0,1.15,0.52
+Could you tell us about your neighbor Bob and the activity you two often enjoy together?,"Ava knows her neighbor Bob. They often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Ava's favourite novel is called Amazing Doctor. Ava's favorite sport is basketball.
+Ava loves a coffee shop called MorningStar in Winterland, she goes to MorningStar cafe once a week.
+Ava asks Tony about his favorite novel and sport.
+Ava visits the coffee shop once a week.
+Ava asks how she can assist Tony.","1.0
+0.32
+0.32
+1.0
+0.81
+0.69","(Sad, Faint)
+Oh, Bob is such a dear neighbor! We often meet on Newbrun St. Our favorite activity is playing basketball together on Sunday mornings. It's so much fun! What about you, Tony? What's your favorite novel and sport? How can I assist you today?",0.0,,,,0,2.62,0.3
+When is your birthday?,"Ava's birthday is April 8th.
+Ava was born in a small town called Winterland. Winterland is a beautiful city with nice people.
+Ava has a cat called Lucy. Lucy is a 3-year-old Golden cat.
+Ava is 27 years old.
+Ava asks Tony about his favorite novel and sport.
+Ava prefers to write novels at MorningStar Cafe in her hometown, Winterland.","1.0
+0.38
+0.29
+1.0
+0.98
+0.88","(Happy, Wave Hands)
+My birthday is on April 8th! It's always a joyous day filled with laughter and cake. What about yours, Tony? When is your special day?",0.0,,,,0,0.98,0.48
+"What type of coffee do you love, and is there any kind you don't like?","Ava loves coffee. Her favourite coffee is Latte. But she dislikes americano coffee.
+Ava loves a coffee shop called MorningStar in Winterland, she goes to MorningStar cafe once a week.
+Ava is a writer who writes novels. She loves to sit in MorningStar and write new stories in her novels.
+Ava loves the delicious lattes at MorningStar Cafe.
+Ava enjoys the cozy ambiance and delicious lattes at MorningStar Cafe.
+Ava visits the coffee shop once a week.","1.0
+0.7
+0.36
+1.0
+0.88
+0.85","(Sad, Faint)
+I'm not a fan of Americano coffee, Tony. But I absolutely adore lattes! My favorite place for lattes is MorningStar in Winterland. Their delicious lattes always lift my spirits. 😔💤",0.0,,,,0,1.0,0.22

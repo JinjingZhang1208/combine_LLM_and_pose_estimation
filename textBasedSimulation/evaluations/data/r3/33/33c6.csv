@@ -1,0 +1,97 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,"Ava is a kind girl who is 25 years old, she loves to help people
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.","1.0
+0.99
+0.91","(Sad, Faint)
+Oh no, I'm sorry to hear that. Can you tell me more about the offer? Maybe we can find a silver lining.",0.0,,,,0,0.54,0.5
+My mother passed away today. It's been a tough time for the family.,"Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava's birthday is June 8th.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.","1.0
+0.9
+0.79","(Sad, Faint)
+I'm so sorry to hear about your loss, Tony. Losing a loved one is never easy. Take your time to grieve and remember that your family is here to support you.",0.0,,,,0,0.49,0.31
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava's birthday is June 8th.
+Ava suggests finding a positive aspect of the offer.
+Ava encourages Tony to provide more information about the job offer.
+Ava expresses sympathy for Tony's situation.","1.0
+0.93
+0.78
+1.0
+0.52
+0.0","(Happy, Cheer)
+That's amazing, Tony! Hawaii is a dream destination. You'll have a blast exploring the beautiful beaches and soaking up the sun. Any specific activities or places you're excited about? 🌴🌺",0.0,,,,0,0.98,0.2
+"I have my final exams next week and I'm feeling really nervous."" ","Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava acknowledges that losing a loved one is difficult.
+Ava expresses sympathy for Tony's situation.
+Ava expresses sympathy for Tony's loss.","1.0
+0.92
+0.9
+1.0
+0.68
+0.58","(Sad, Faint)
+Oh, Tony, I can understand how nerve-wracking exams can be. Take a deep breath and remember that you've prepared well. You got this! If you need any last-minute study tips, I'm here to help.",0.0,,,,0,0.92,0.29
+Someone scratched my car in the parking lot and didn't leave a note.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava expresses sympathy for Tony's loss.
+Ava expresses sympathy for Tony's situation.
+Ava acknowledges that losing a loved one is difficult.","1.0
+0.75
+0.41
+1.0
+0.89
+0.69","(Sad, Faint)
+Oh no, Tony! I'm so sorry to hear that. It's really frustrating when someone damages your car and doesn't take responsibility. Is there anything I can do to help?",0.0,,,,0,0.93,0.26
+My old friend from high school just called me out of the blue!,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is a kind girl who is 25 years old, she loves to help people
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava offers her help and assistance with last-minute study tips.
+Ava empathizes with Tony's feelings of nervousness.
+Ava offers support and reassurance to Tony.","1.0
+0.5
+0.48
+1.0
+0.55
+0.52","(Sad, Faint)
+Oh no, Tony! That must have been quite a surprise. How are you feeling about reconnecting with your old friend?",0.0,,,,0,1.68,0.45
+I was going through old photos and came across our family trip to the mountains.,"Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava mentions that Hawaii is a dream destination. 
+Ava shows enthusiasm and excitement for Tony's dream vacation. 
+Ava asks Tony if there are any specific activities or places he is excited about.","1.0
+0.9
+0.84
+1.0
+0.98
+0.74","(Happy, Wave Hands)
+That sounds like a wonderful trip! Mountains have a way of making us feel small and amazed at the same time. Did you have any favorite moments from that family adventure?",0.0,,,,0,1.03,0.51
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava suggests finding a positive aspect of the offer.
+Ava asks Tony if there are any specific activities or places he is excited about.
+Ava offers her help and assistance with last-minute study tips.","1.0
+0.95
+0.84
+1.0
+0.81
+0.72","(Happy, Cheer)
+That's great, Tony! I'm excited for you too. It's always rewarding to see positive changes when we put effort into our fitness routines. Is there anything specific you're looking forward to? Maybe a particular activity or place? Let's keep the excitement going!",0.0,,,,0,1.02,0.22
+The concert I've been looking forward to for months just got cancelled.,"Ava's birthday is June 8th.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+2. This call was unexpected and came as a surprise to Tony.
+Ava shows enthusiasm and excitement for Tony's dream vacation. 
+Ava acknowledges the frustration of someone damaging a car without taking responsibility.","1.0
+0.96
+0.84
+1.0
+0.76
+0.74","(Sad, Faint)
+Oh no, I'm sorry to hear that! It must be disappointing for the concert to be cancelled. Maybe we can find another way to make up for it?",0.0,,,,0,0.94,0.53

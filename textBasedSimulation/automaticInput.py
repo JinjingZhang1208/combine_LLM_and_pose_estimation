@@ -26,10 +26,15 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "Users"
-COLLECTION_MEMORY_OBJECTS = "33Test6"
-RETRIEVAL_COUNT = 5
+# test cases 2,3 last
+# 2 need 2 excel, 2q-irr, then 2q
+# 3 need ask + modify mongodb + ask
+COLLECTION_MEMORY_OBJECTS = "r3-77q3" # change memory name
+INPUT_FILENAME="evaluations/TestQuestion/3q.xlsx" # change route
+BASE_RETRIEVAL_COUNT = 7  # change parameter
+OBS_RETRIEVAL_COUNT = 7 # change parameter
 FILENAME = "current_conversation.wav"
-INPUT_FILENAME="evaluations/TestQuestion/Test1.1Q.xlsx"
+
 
 CSV_LOGGER = CSVLogger()
 
@@ -110,33 +115,60 @@ def updateMemoryCollection(
 
 
 def getBaseDescription():
-    description = ""
-    while True:
-        currLine = input(
-            "Please enter a relevant description about your character. Type done to complete the description \n"
-        )
-        if currLine.lower() == "done":
-            break
-        description += f"{currLine}\n"
+    print("Please enter a relevant description about your character. Type done to complete the description \n")
+    if "4q" in INPUT_FILENAME:
+        description = '''
+        1 Ava is a kind girl who is 27 years old, she doesn't love to help people
+        2 Ava was born in a small town called Winterland. Winterland is a beautiful city with nice people.
+        3 Ava loves a coffee shop called MorningStar in Winterland, she goes to MorningStar cafe once a week.
+        4 Ava is living with her sister Avam. Avam is a master of education student at Winterland University.
+        5 Ava is a writer who writes novels. She loves to sit in MorningStar and write new stories in her novels.
+        6 Ava’s favourite novel is called Amazing Doctor. Ava’s favorite sport is basketball.
+        7 Ava knows her neighbor Bob. They often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+        8 Ava’s birthday is April 8th.
+        9 Ava loves coffee. Her favourite coffee is Latte. But she dislikes americano coffee.
+        10 Ava has a cat called Lucy. Lucy is a 3-year-old Golden cat.
+        '''
+    else:
+        description = '''
+        1 Ava is a kind girl who is 25 years old, she loves to help people
+        2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+        3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+        4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+        5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+        6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+        7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+        8 Ava’s birthday is June 8th.
+        9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+        10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+        '''
+    # while True:
+    #     currLine = input(
+    #         "Please enter a relevant description about your character. Type done to complete the description \n"
+    #     )
+    #     if currLine.lower() == "done":
+    #         break
+    #     description += f"{currLine}\n"
+    print(description)
     return description
 
 
 def startConversation(userName, currMode, questionList):
     global pastObservations
-    conversationalUser = input("Define the username you are acting as: ")
+    print("Define the username you are acting as: ")
+    # conversationalUser = input("Define the username you are acting as: ")
+    conversationalUser="Tony"
     baseObservation = fetchBaseDescription(userName)
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
     count=0
+
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
             currentConversation = questionList[count]
-            if count<len(questionList)-1:
-                count+=1
-            else:
-                break
+
             end = time.perf_counter()
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
@@ -161,13 +193,13 @@ def startConversation(userName, currMode, questionList):
         baseRetrieval = retrievalFunction(
             currentConversation,
             baseObservation,
-            RETRIEVAL_COUNT,
+            BASE_RETRIEVAL_COUNT,
             isBaseDescription=True,
         )
         observationRetrieval = retrievalFunction(
             currentConversation,
             pastObservations,
-            RETRIEVAL_COUNT,
+            OBS_RETRIEVAL_COUNT,
             isBaseDescription=False,
         )
         end = time.perf_counter()
@@ -218,6 +250,12 @@ def startConversation(userName, currMode, questionList):
         print(
             f"Time taken for the conversation generation by GPT : {npc_response_time}"
         )
+
+        if count<len(questionList)-1:
+            count+=1
+        else:
+            break
+    
         eventLoop.run_in_executor(
             threadExecutor,
             generateObservationAndUpdateMemory,
@@ -254,7 +292,8 @@ def generateObservationAndUpdateMemory(
 
 def setConversationMode():
     while True:
-        currMode = input("Please select the following :\n1. Text Mode\n2. Audio Mode\n")
+        # currMode = input("Please select the following :\n1. Text Mode\n2. Audio Mode\n")
+        currMode="1"
         if currMode == "1":
             return CONVERSATION_MODE.TEXT.value
         elif currMode == "2":
@@ -270,8 +309,11 @@ if __name__ == "__main__":
 
     # for value in column_data:
     #     print(value)
+
     # Get username.
-    userName = input("Please enter the username of character: ")
+    # userName = input("Please enter the username of character: ")
+    print("Please enter a relevant description about your character. Type done to complete the description \n")
+    userName = "Ava"
 
     # Check for existing user.
     existingUser = userCollection.find_one({"Username": userName})

@@ -1,0 +1,121 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.","1.0
+0.89
+0.76","(Happy, Clap)
+Congratulations, Tony! That's fantastic news! Your hard work and dedication have paid off. I'm so proud of you! 🎉",0.0,,,,0,0.68,0.49
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.","1.0
+0.94
+0.78","(Happy, Wave Hands)
+Oh no, Tony! I'm sorry to hear that. 😊 Sometimes life throws unexpected curveballs. How about we plan a mini staycation or a day trip to make up for it? We can create new memories right where we are! 🌟🚀",0.0,,,,0,0.46,0.49
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava expressed pride in Tony's achievements.
+Ava congratulated Tony on his promotion.
+Tony received a promotion at work.","1.0
+0.66
+0.63
+1.0
+0.95
+0.0","(Happy, Wave Hands)
+That's wonderful, Tony! Reconnecting with old friends is always heartwarming. Nostalgia has a way of bringing joy to our hearts. How did you reconnect?",0.0,,,,0,0.84,0.55
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava expressed pride in Tony's achievements.
+Tony received a promotion at work.
+Ava congratulated Tony on his promotion.
+Ava expressed sympathy and empathy towards Tony's canceled vacation.
+Ava emphasized the opportunity to create new memories right where they are.","1.0
+1.0
+0.88
+1.0
+0.85
+0.78
+0.23
+0.21","(Happy, Clap)
+Congratulations, Tony! Your hard work paid off. I'm thrilled for you. What's next on your list of accomplishments?",0.0,,,,0,0.91,0.58
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava expressed sympathy and empathy towards Tony's canceled vacation.
+Ava responded with a happy and enthusiastic tone.
+Ava offered a solution to make up for the canceled vacation by suggesting a mini staycation or a day trip.
+Ava emphasized the opportunity to create new memories right where they are.
+Ava acknowledged Tony's statement and expressed agreement.","1.0
+0.93
+0.85
+1.0
+0.97
+0.5
+0.41
+0.37","(Sad, Faint)
+Oh no, I'm so sorry to hear that, Tony. Car accidents can be really scary. Are you okay? Take deep breaths and try to calm down. Remember, I'm here for you.",0.0,,,,0,0.88,0.48
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Ava responded with a happy and enthusiastic tone.
+Ava emphasized the opportunity to create new memories right where they are.
+Ava offered a solution to make up for the canceled vacation by suggesting a mini staycation or a day trip.
+Ava expressed sympathy and empathy towards Tony's canceled vacation.","1.0
+0.96
+0.96
+1.0
+0.88
+0.62
+0.53
+0.29","(Sad, Faint)
+Oh no, it's such a bummer when something turns out to be not as enjoyable as expected. But hey, it seems like you found something unexpectedly delightful! That's really wonderful to hear. What was this new activity that pleasantly surprised you? 😊",0.0,,,,0,0.97,0.48
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Tony received a promotion at work.
+Tony is feeling shocked and a bit scared.
+Ava offered a solution to make up for the canceled vacation by suggesting a mini staycation or a day trip.
+Ava expresses sympathy and offers support to Tony.","1.0
+0.77
+0.72
+1.0
+0.8
+0.77
+0.55
+0.51","(Happy, Cheer)
+I'm sorry to hear that you've been feeling frustrated and stressed. Is there anything specific I can do to help you with your problem at work? Maybe I can offer some advice or suggest a different approach.",0.0,,,,0,0.96,5.57
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Ava empathizes with the person but also expresses happiness for the positive outcome.
+Ava emphasized the opportunity to create new memories right where they are.
+Ava responded with a happy and enthusiastic tone.
+Ava offered a solution to make up for the canceled vacation by suggesting a mini staycation or a day trip.","1.0
+0.69
+0.58
+1.0
+0.81
+0.69
+0.63
+0.62","(Happy, Clap)
+That sounds absolutely wonderful, Tony! Volunteering at a local shelter must have been incredibly fulfilling. It's amazing how helping others can make us feel grateful too. What kind of activities did you do there?",0.0,,,,0,1.09,0.59
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Tony is feeling shocked and a bit scared.
+Ava expresses sympathy and offers support to Tony.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Ava expressed sympathy and empathy towards Tony's canceled vacation.
+Ava empathizes with the person but also expresses happiness for the positive outcome.","1.0
+1.0
+0.89
+1.0
+0.88
+0.85
+0.84
+0.81","(Sad, Faint)
+Oh no, I'm so sorry to hear that you lost your family heirloom. Losing something precious can be really heartbreaking. Is there anything I can do to help you feel better?",0.0,,,,0,1.05,0.55

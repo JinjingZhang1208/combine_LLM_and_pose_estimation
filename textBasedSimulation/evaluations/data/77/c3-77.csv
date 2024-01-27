@@ -1,0 +1,253 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+What type of coffee does Bob prefer?,"9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Bob's Brew is the type of coffee that Bob prefers.
+Bob prefers a special blend of coffee called ""Bob's Brew"".
+Bob loves his coffee.
+Ava asks Tony if he has a favorite type of coffee.
+The recipe for Bob's Brew is a secret known only to Bob and the coffee beans.
+Ava is not sure about Bob's favorite cafe.
+Ava asks Tony about his favorite coffee shops.","1.0
+0.82
+0.8
+0.35
+0.22
+0.14
+0.11
+1.0
+0.9
+0.89
+0.61
+0.58
+0.51
+0.5","(Happy, Clap)
+Bob prefers a special blend of coffee called ""Bob's Brew"". It must be a delightful and unique coffee! ☕️",0.0,,,,0,1.24,0.24
+"Ava, what is your favorite type of coffee?","9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Ava asks Tony if he has a favorite type of coffee.
+Ava expresses interest in trying new coffee adventures.
+Ava asks Tony about his favorite coffee shops.
+Ava asks Tony if he has a favorite coffee shop.
+Ava asks Tony if he has a favorite coffee shop.
+Ava's favorite coffee is dirty coffee.
+Ava finds the rich and creamy taste of Mocha coffee irresistible.","1.0
+0.97
+0.69
+0.63
+0.53
+0.46
+0.38
+1.0
+0.85
+0.83
+0.83
+0.82
+0.68
+0.67","(Happy, Wave Hands)
+My favorite type of coffee is cappuccino, Tony! But I'm always up for trying new coffee adventures. Do you have a favorite type of coffee? ☕️",0.0,,,,0,1.45,0.48
+"Besides your favorite, is there another type of coffee you occasionally enjoy?","9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+Bob prefers a special blend of coffee called ""Bob's Brew"".
+Bob's Brew is a special and unique coffee.
+Bob's Brew is described as delightful and unique.
+Ava asks Tony if he has a favorite type of coffee.
+Ava enjoys dirty coffee coffee as an occasional alternative to her favorite.
+Bob's Brew is the type of coffee that Bob prefers.
+Ava expresses interest in trying new coffee adventures.","1.0
+0.84
+0.51
+0.42
+0.22
+0.18
+0.15
+1.0
+0.93
+0.75
+0.73
+0.66
+0.66
+0.64","(Sad, Faint)
+Oh no, I'm not a big fan of americano coffee. But besides my favorite cappuccino, I occasionally enjoy a dirty coffee. It adds a little twist to my coffee adventures! How about you, Tony? Any other type of coffee you enjoy?",0.0,,,,0,1.05,0.59
+Does Bob like to drink his favorite coffee at the Soon Cafe?,"3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Bob prefers a special blend of coffee called ""Bob's Brew"".
+Bob's Brew is a special and unique coffee.
+Ava asks Tony if he has a favorite type of coffee.
+Bob's Brew is described as delightful and unique.
+Bob loves his coffee.
+Bob's Brew is the type of coffee that Bob prefers.
+Ava suggests that Bob might enjoy the cozy vibe of Soon Cafe.","1.0
+0.7
+0.6
+0.6
+0.12
+0.11
+0.09
+1.0
+0.86
+0.74
+0.7
+0.68
+0.61
+0.6","(Happy, Wave Hands)
+Yes, Bob enjoys his favorite coffee at Soon Cafe. It's a delightful place with a cozy vibe. Have you been there too, Tony?",0.0,,,,0,1.44,0.27
+How often do you visit the Soon Cafe?,"3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+8 Ava’s birthday is June 8th.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava visits Soon Cafe 10 times a week.
+Ava suggests that Bob might enjoy the cozy vibe of Soon Cafe.
+Ava is open to trying new coffee adventures.
+Ava asks Tony if he has a favorite type of coffee.
+Bob's Brew is a special and unique coffee.
+Ava asks Tony if he enjoys any other type of coffee.
+Ava enjoys a dirty coffee occasionally.","1.0
+0.59
+0.36
+0.24
+0.1
+0.07
+0.01
+1.0
+0.75
+0.72
+0.66
+0.64
+0.64
+0.61","(Sad, Faint)
+Oh no, I apologize for the confusion, but I actually don't visit the Soon Cafe. I must have made a mistake in my previous response. Is there anything else you'd like to chat about?",0.0,,,,0,1.92,3.4
+"Have you ever tried dirty coffee? If so, what do you think about it?","9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava enjoys a dirty coffee occasionally.
+Ava describes dirty coffee coffee as a delightful blend of coffee and chocolate.
+Ava asks if dirty coffee is a secret recipe.
+Ava enjoys dirty coffee coffee as an occasional alternative to her favorite.
+Ava is open to trying new coffee adventures.
+Ava asks Tony if he enjoys any other type of coffee.
+Ava's favorite coffee is dirty coffee.","1.0
+0.81
+0.51
+0.42
+0.32
+0.28
+0.23
+1.0
+0.75
+0.74
+0.73
+0.72
+0.69
+0.69","(Happy, Wave Hands)
+I love trying new coffee adventures! Dirty coffee is like a delightful blend of coffee and chocolate. Is it a secret recipe? Do you enjoy any other types of coffee, Tony?",0.0,,,,0,1.07,0.36
+What kind of coffee do you usually order when you visit the Soon Cafe?,"3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Tony asked if Bob likes to drink his favorite coffee at the Soon Cafe.
+Ava confirmed that Bob enjoys his favorite coffee at the Soon Cafe.
+Ava mentioned that Soon Cafe has a cozy vibe.
+Ava asks Tony if he has a favorite type of coffee.
+Bob prefers a special blend of coffee called ""Bob's Brew"".
+Ava mentioned that she doesn't visit the Soon Cafe.
+Ava asks Tony if he enjoys any other type of coffee.","1.0
+0.62
+0.55
+0.32
+0.14
+0.04
+0.03
+1.0
+0.93
+0.82
+0.73
+0.71
+0.7
+0.7","(Happy, Wave Hands)
+I usually order a cappuccino at Soon Cafe. It's the perfect blend of creamy and rich flavors. What about you, Tony? Do you have a favorite type of coffee?",0.0,,,,0,1.77,0.47
+"Do you and Bob ever go for coffee together? If so, where do you usually go?","7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Tony asked if Bob likes to drink his favorite coffee at the Soon Cafe.
+Ava confirmed that Bob enjoys his favorite coffee at the Soon Cafe.
+Bob prefers a special blend of coffee called ""Bob's Brew"".
+Bob's Brew is a special and unique coffee.
+Ava asks Tony if he has a favorite type of coffee.
+- Ava asks Tony if he enjoys any other types of coffee.
+Ava asks Tony if he enjoys any other type of coffee.","1.0
+0.9
+0.55
+0.46
+0.21
+0.19
+0.16
+1.0
+0.83
+0.82
+0.71
+0.65
+0.62
+0.61","(Confused, Sad) 
+I'm sorry, Tony, but I don't have any information about Bob and me going for coffee together. However, I do have a favorite coffee shop called Soon Cafe in Brentwood. I love to go there twice a week to write new stories for my novels. It's such a cozy place! Do you have a favorite type of coffee?",0.0,,,,0,1.29,0.2
+Has your coffee preference changed over time?,"9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava asks Tony if he has a favorite type of coffee.
+Ava asks Tony if he has a favorite type of coffee.
+Ava asks Tony if he enjoys any other type of coffee.
+- Ava asks Tony if he enjoys any other types of coffee.
+Ava is open to trying new coffee adventures.
+- Ava expresses enthusiasm for trying new coffee adventures.
+Tony asked if Bob likes to drink his favorite coffee at the Soon Cafe.","1.0
+0.72
+0.33
+0.3
+0.13
+0.13
+0.12
+1.0
+0.98
+0.93
+0.93
+0.91
+0.89
+0.87","(Tease, Wave Hands)
+Oh, Tony, my coffee preferences are as vibrant as my imagination! While cappuccino holds a special place in my heart, I'm always up for new coffee adventures. What about you? Do you have a favorite type of coffee?",0.0,,,,0,1.18,0.47

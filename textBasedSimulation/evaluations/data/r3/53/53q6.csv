@@ -1,0 +1,149 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.","1.0
+0.99
+0.91
+0.86
+0.8","(Happy, Clap)
+That's fantastic, Tony! Congratulations on your job offer and the high salary. It sounds like they truly value your skills and expertise. How do you feel about the exciting new opportunity?",0.0,,,,0,0.57,0.24
+My mother passed away today. It's been a tough time for the family.,"Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava's birthday is June 8th.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.","1.0
+0.9
+0.79
+0.71
+0.62","(Sad, Faint)
+I'm so sorry to hear about your loss, Tony. Losing a loved one is never easy. If you need someone to talk to or anything at all, I'm here for you.",0.0,,,,0,0.45,0.5
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava's birthday is June 8th.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava congratulated Tony on his job offer and high salary.
+Tony received a job offer with a high salary.
+Ava expressed that the high salary shows Tony's value.","1.0
+0.93
+0.78
+0.53
+0.39
+1.0
+0.93
+0.0","(Happy, Cheer)
+That's fantastic, Tony! Hawaii is such a dreamy destination. The beaches, the lush greenery, and the vibrant culture... you're in for a treat! Have an amazing time exploring! 🌺🌴",0.0,,,,0,0.95,0.29
+"I have my final exams next week and I'm feeling really nervous."" ","Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Tony's mother has passed away, causing a difficult time for the family.
+Ava expresses empathy and condolences to Tony.
+Ava congratulated Tony on his job offer and high salary.","1.0
+0.92
+0.9
+0.82
+0.67
+1.0
+0.9
+0.78","(Sad, Faint)
+Oh, I can understand how nerve-wracking exams can be. Take a deep breath and believe in yourself, Tony. You've got this! Remember, you've worked hard and prepared well. Good luck!",0.0,,,,0,0.97,0.4
+Someone scratched my car in the parking lot and didn't leave a note.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava expresses empathy and condolences to Tony.
+Ava offers support and a listening ear to Tony.
+Tony received a job offer with a high salary.","1.0
+0.75
+0.41
+0.38
+0.3
+1.0
+0.61
+0.57","(Happy, Wave Hands)
+Oh no, Tony! That's really unfortunate. I'm here for you if you need someone to talk to. Maybe we can brainstorm some ideas on how to handle this situation together.",0.0,,,,0,0.85,0.51
+My old friend from high school just called me out of the blue!,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Tony has just booked his dream vacation to Hawaii.
+Tony is feeling nervous about his final exams.
+Ava congratulated Tony on his job offer and high salary.","1.0
+0.5
+0.48
+0.46
+0.44
+1.0
+0.93
+0.92","(Happy, Wave Hands)
+That's so exciting, Tony! It's always nice to reconnect with old friends out of the blue. How did the call go?",0.0,,,,0,0.9,0.52
+I was going through old photos and came across our family trip to the mountains.,"Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava's birthday is June 8th.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Tony has just booked his dream vacation to Hawaii.
+Ava thinks Hawaii is a dreamy destination.
+Tony's mother has passed away, causing a difficult time for the family.","1.0
+0.9
+0.84
+0.71
+0.58
+1.0
+0.94
+0.68","(Sad, Faint)
+Oh, Tony, I'm sorry to hear about your loss. Losing a loved one is never easy. If there's anything I can do to support you during this difficult time, please let me know.",0.0,,,,0,1.02,0.5
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava encourages Tony to believe in himself and reminds him that he has prepared well.
+Tony is feeling nervous about his final exams.
+Tony has just booked his dream vacation to Hawaii.","1.0
+0.95
+0.84
+0.73
+0.68
+1.0
+0.96
+0.89","(Sad, Faint)
+Oh no, Tony! Don't be nervous about your exams. You've prepared well, and I believe in you. Just take a deep breath and give it your best shot. You've got this!",0.0,,,,0,1.12,0.48
+The concert I've been looking forward to for months just got cancelled.,"Ava's birthday is June 8th.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Tony has just booked his dream vacation to Hawaii.
+The conversation revolves around a family trip to the mountains. 
+Tony's mother has passed away, causing a difficult time for the family.","1.0
+0.96
+0.85
+0.66
+0.63
+1.0
+0.93
+0.85","(Happy, Dance)
+Oh no, Tony! I can imagine how disappointed you must be. Let's find a way to turn this around. Maybe we can organize a virtual concert experience just for you? What do you think?",0.0,,,,0,0.93,5.33
+My neighbors helped me out when my car broke down yesterday.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava offers support to Tony during his difficult time.
+Tony received a call from his old friend.
+Ava offers her support as someone to talk to.","1.0
+0.57
+0.42
+0.4
+0.37
+1.0
+0.99
+0.91","(Happy, Wave Hands)
+That's so wonderful, Tony! It's heartwarming to have neighbors who lend a helping hand when we need it the most. How did they assist you?",0.0,,,,0,1.28,0.3

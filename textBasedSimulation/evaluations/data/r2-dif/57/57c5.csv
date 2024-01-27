@@ -1,0 +1,203 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.","1.0
+0.89
+0.76
+0.7
+0.52","(Happy, Clap)
+That's amazing, Tony! Congratulations on your promotion! I can imagine how excited and proud you must be feeling right now. Your hard work is paying off, and I'm thrilled for you! 🎉",0.0,,,,0,0.44,0.45
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Ava's birthday is June 8th.
+Ava is a kind girl who is 25 years old, she loves to help people.","1.0
+0.94
+0.78
+0.59
+0.46","(Sad, Faint)
+Oh no, I'm sorry to hear that you had to cancel your long-awaited vacation. It's completely normal to feel disappointed. If it helps, maybe we can plan a mini virtual getaway together? We can imagine ourselves on a tropical beach, sipping delicious cappuccinos and enjoying the sunshine. How does that sound?",0.0,,,,0,0.6,0.27
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+- Ava acknowledged Tony's feelings of excitement and pride.
+- Ava responded with enthusiasm and congratulated Tony on his promotion.
+- Tony shared that he just found out about being promoted at work.","1.0
+0.66
+0.63
+0.61
+0.39
+1.0
+0.7
+0.0","(Happy, Cheer)
+That sounds wonderful, Tony! Reconnecting with old friends can bring back so many joyful memories. It's like a heartwarming journey down memory lane. Cheers to nostalgia!",0.0,,,,0,0.84,0.27
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+- Ava acknowledged Tony's feelings of excitement and pride.
+- Ava responded with enthusiasm and congratulated Tony on his promotion.
+- Tony shared that he just found out about being promoted at work.
+Ava uses imagery of a tropical beach to create a pleasant visualization.
+Ava shows empathy towards Tony's disappointment in having to cancel the vacation.
+Ava suggests planning a virtual getaway as an alternative.","1.0
+1.0
+0.88
+0.61
+0.58
+1.0
+0.85
+0.74
+0.54
+0.33
+0.0","(Happy, Clap)
+Congratulations, Tony! That's amazing news! Completing a challenging project brings a deep sense of accomplishment. Well done!",0.0,,,,0,1.1,0.19
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+- Tony shared that he just found out about being promoted at work.
+Ava shows empathy towards Tony's disappointment in having to cancel the vacation.
+- Ava acknowledged Tony's feelings of excitement and pride.
+The conversation evokes feelings of nostalgia and joy.
+Ava expresses happiness and cheer in response to Tony's statement.
+Ava and Tony are talking about reconnecting with an old friend.
+Ava uses imagery of a tropical beach to create a pleasant visualization.","1.0
+0.93
+0.85
+0.81
+0.8
+1.0
+0.99
+0.96
+0.94
+0.7
+0.65
+0.51","(Sad, Faint)
+Oh no, I'm so sorry to hear that, Tony. It must have been a really scary experience. Are you okay? Take deep breaths and try to relax. Is there anything I can do to help you feel better?",0.0,,,,0,1.07,0.53
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Completing a challenging project brings a deep sense of accomplishment.
+The conversation evokes feelings of nostalgia and joy.
+Tony completed a challenging project.
+Ava expresses happiness and cheer in response to Tony's statement.
+Ava uses imagery of a tropical beach to create a pleasant visualization.
+- Ava acknowledged Tony's feelings of excitement and pride.
+Ava suggests planning a virtual getaway as an alternative.","1.0
+0.96
+0.96
+0.95
+0.87
+1.0
+0.63
+0.62
+0.49
+0.46
+0.41
+0.33","(Happy, Clap)
+That's fantastic, Tony! It's always a delightful surprise when we discover something new that brings us joy. What activity did you try? I'd love to hear more about it!",0.0,,,,0,0.93,0.25
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Completing a challenging project brings a deep sense of accomplishment.
+Tony completed a challenging project.
+- Tony shared that he just found out about being promoted at work.
+Ava offers support and asks if there is anything she can do to help Tony feel better.
+Ava suggests planning a virtual getaway as an alternative.
+Ava shows empathy towards Tony's disappointment in having to cancel the vacation.
+The conversation evokes feelings of nostalgia and joy.","1.0
+0.77
+0.72
+0.5
+0.47
+1.0
+0.73
+0.67
+0.58
+0.37
+0.32
+0.3","(Happy, Clap)
+I'm sorry to hear that, Tony. It can be really tough when work problems bring stress and frustration. Is there anything I can do to help you feel better?",0.0,,,,0,0.87,0.25
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Completing a challenging project brings a deep sense of accomplishment.
+Tony actually loved the new activity. 
+Ava is happy and enthusiastic about Tony's experience.
+- Ava expresses sympathy and acknowledges that work problems can cause stress.
+The conversation evokes feelings of nostalgia and joy.
+- Ava acknowledged Tony's feelings of excitement and pride.
+Tony completed a challenging project.","1.0
+0.69
+0.58
+0.54
+0.5
+1.0
+0.55
+0.5
+0.44
+0.44
+0.38
+0.37","(Happy, Cheer)
+That's wonderful, Tony! Volunteering is a fulfilling way to give back to the community. It's great to hear that it made you feel grateful. What kind of activities did you do at the shelter?",0.0,,,,0,2.03,0.5
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+The conversation evokes feelings of nostalgia and joy.
+- Tony is feeling frustrated and stressed about a problem at work.
+- Ava expresses sympathy and acknowledges that work problems can cause stress.
+Ava shows empathy towards Tony's disappointment in having to cancel the vacation.
+Completing a challenging project brings a deep sense of accomplishment.
+Ava expresses empathy and concern for Tony.
+Tony tried a new activity that he thought he wouldn't like. ","1.0
+1.0
+0.89
+0.86
+0.81
+1.0
+0.89
+0.81
+0.8
+0.65
+0.62
+0.59","(Sad, Faint)
+Oh no, I'm so sorry to hear that you lost a treasured family heirloom. Losing something with sentimental value can be really tough. Is there anything I can do to help you feel better?",0.0,,,,0,0.95,0.45
+I watched a comedy show that was hilarious. It left me feeling light-hearted and amused.,"Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+The conversation evokes feelings of nostalgia and joy.
+Tony actually loved the new activity. 
+Tony tried a new activity that he thought he wouldn't like. 
+Ava expresses happiness and cheer in response to Tony's statement.
+Ava is happy and enthusiastic about Tony's experience.
+Tony completed a challenging project.
+Ava uses imagery of a tropical beach to create a pleasant visualization.","1.0
+0.95
+0.86
+0.83
+0.68
+1.0
+0.8
+0.69
+0.64
+0.61
+0.54
+0.47","(Happy, Cheer)
+That's wonderful, Tony! Laughter is the best medicine for the soul. It sounds like that comedy show did wonders for your spirits. Keep seeking out those delightful experiences! 😉🎉",0.0,,,,0,0.84,0.49

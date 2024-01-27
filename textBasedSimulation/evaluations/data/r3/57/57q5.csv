@@ -1,0 +1,203 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,"Ava is a kind girl who is 25 years old and loves to help people.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Ava loves a coffee shop called Soon cafe in Brentwood and goes there twice a week.
+Ava's favorite sport is jogging.
+Ava and Bob like to play tennis together on Sunday mornings.","1.0
+0.84
+0.79
+0.7
+0.68","(Happy, Clap)
+Congratulations, Tony! That's amazing news! I can just imagine the excitement and pride you must be feeling right now. It's moments like these that make all the hard work worthwhile. Well done!",0.0,,,,0,0.5,0.51
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"Ava and Bob like to play tennis together on Sunday mornings.
+Ava loves coffee and her favorite type is cappuccino, but she dislikes americano coffee.
+Ava's favorite novel is called Gone with the wind.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Ava's favorite sport is jogging.","1.0
+0.97
+0.9
+0.84
+0.7","(Sad, Faint)
+Oh no, I'm sorry to hear that you had to cancel your long-awaited vacation. It's completely understandable to feel disappointed. Maybe we can find a way to make up for it and plan something exciting closer to home?",0.0,,,,0,0.5,0.5
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"Ava knows her neighbor Bob and they often meet at the Brentwood Library.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood and goes there twice a week.
+Ava is a kind girl who is 25 years old and loves to help people.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Ava congratulated Tony on his promotion.
+Tony feels excited and proud about the promotion.
+Tony received a promotion at work.","1.0
+0.9
+0.79
+0.7
+0.68
+1.0
+0.59
+0.0","(Happy, Dance)
+That's wonderful, Tony! Reconnecting with old friends can bring back beautiful memories and fill our hearts with joy. What did you and your friend do when you caught up?",0.0,,,,0,0.85,0.57
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"Ava is a kind girl who is 25 years old and loves to help people.
+Ava is living with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava's favorite sport is jogging.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Ava and Bob like to play tennis together on Sunday mornings.
+Tony feels excited and proud about the promotion.
+Tony received a promotion at work.
+Ava congratulated Tony on his promotion.
+Ava expressed empathy towards Tony's disappointment.
+Ava suggested finding an alternative plan closer to home.
+Tony mentioned canceling a long-awaited vacation due to unforeseen circumstances.","1.0
+0.94
+0.82
+0.74
+0.68
+1.0
+0.78
+0.72
+0.44
+0.07
+0.0","(Happy, Clap)
+That's fantastic, Tony! Congratulations on completing your challenging project. I can imagine the deep sense of accomplishment and relief you must be feeling right now. Well done!",0.0,,,,0,1.12,0.62
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"Ava is a kind girl who is 25 years old and loves to help people.
+Ava was born in a small town called Brentwood.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library.
+Ava expressed empathy towards Tony's disappointment.
+Tony mentioned canceling a long-awaited vacation due to unforeseen circumstances.
+Ava asked Tony about what he and his friend did when they caught up.
+Ava suggested finding an alternative plan closer to home.
+Ava responded positively to Tony's statement.
+Ava acknowledged Tony's feelings of nostalgia and joy.
+Tony received a promotion at work.","1.0
+0.97
+0.93
+0.88
+0.88
+1.0
+0.78
+0.71
+0.56
+0.44
+0.29
+0.24","(Happy, Wave Hands)
+Oh no, I'm sorry to hear that, Tony! Car accidents can be quite unsettling. Are you okay?",0.0,,,,0,1.03,0.26
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","Ava's favorite sport is jogging.
+Brentwood is a beautiful town with delicious food.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood and goes there twice a week.
+Ava loves coffee and her favorite type is cappuccino, but she dislikes americano coffee.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Ava responded positively to Tony's statement.
+Ava acknowledged Tony's feelings of nostalgia and joy.
+Tony feels excited and proud about the promotion.
+Ava expressed empathy towards Tony's disappointment.
+Ava acknowledges the unsettling nature of car accidents.
+Ava expresses empathy and concern for Tony's experience.","1.0
+0.79
+0.72
+0.7
+0.7
+1.0
+0.63
+0.54
+0.51
+0.45
+0.45
+0.41","(Happy, Cheer)
+That's wonderful, Tony! It's amazing how sometimes we surprise ourselves when we try new things. What activity did you try? Tell me more about it!",0.0,,,,0,6.24,0.57
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","Ava is a kind girl who is 25 years old and loves to help people.
+Ava is living with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava's favorite sport is jogging.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Tony received a promotion at work.
+Ava suggested finding an alternative plan closer to home.
+Tony mentioned canceling a long-awaited vacation due to unforeseen circumstances.
+Ava expresses empathy and concern for Tony's experience.
+Tony tried a new activity and loved it.
+Ava can imagine the emotions Tony is experiencing right now.","1.0
+0.81
+0.74
+0.74
+0.59
+1.0
+0.78
+0.68
+0.51
+0.46
+0.45
+0.43","(Sad, Faint)
+I'm sorry to hear that, Tony. It sounds like a tough situation. Maybe I can help by offering some fresh perspectives. What's the problem you're facing at work?",0.0,,,,0,2.72,0.5
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","Ava is a kind girl who is 25 years old and loves to help people.
+Ava and Bob like to play tennis together on Sunday mornings.
+Brentwood is a beautiful town with delicious food.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Tony tried a new activity and loved it.
+Ava expresses happiness and cheer about Tony's experience.
+Ava expresses empathy and concern for Tony's experience.
+Ava expressed empathy towards Tony's disappointment.
+Ava acknowledged Tony's feelings of nostalgia and joy.
+Tony is feeling frustrated and stressed due to a problem at work.","1.0
+0.74
+0.67
+0.62
+0.59
+1.0
+0.77
+0.7
+0.55
+0.49
+0.49
+0.49","(Happy, Cheer)
+That's wonderful, Tony! Volunteering at a local shelter is such a fulfilling experience. It's amazing how helping others can bring so much joy and gratitude.",0.0,,,,0,4.23,0.32
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","Ava's favorite novel is called Gone with the wind.
+Ava is a kind girl who is 25 years old and loves to help people.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava has a cat named Lucy, who is a 3-year-old male Bengal cat.
+Tony is feeling frustrated and stressed due to a problem at work.
+Ava expressed empathy towards Tony's disappointment.
+Ava acknowledges the unsettling nature of car accidents.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Ava acknowledged Tony's feelings of nostalgia and joy.
+Ava emphasized the joy and gratitude that can come from helping others.
+Ava can imagine the emotions Tony is experiencing right now.","1.0
+0.92
+0.89
+0.88
+0.74
+1.0
+0.95
+0.84
+0.81
+0.77
+0.74
+0.7","(Sad, Faint)
+Oh no, I'm so sorry to hear that you lost a treasured family heirloom. It's completely understandable to feel sad and remorseful. Is there anything I can do to help you feel better?",0.0,,,,0,2.53,0.48
+I watched a comedy show that was hilarious. It left me feeling light-hearted and amused.,"Ava and Bob like to play tennis together on Sunday mornings.
+Ava is a writer and loves to sit in Soon cafe in Brentwood to write new stories for her novels.
+Brentwood is a beautiful town with delicious food.
+Ava loves a coffee shop called Soon cafe in Brentwood and goes there twice a week.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library.
+Tony tried a new activity and loved it.
+Ava expresses happiness and cheer about Tony's experience.
+Tony completed a challenging project and feels a deep sense of accomplishment and relief.
+Ava acknowledged Tony's feelings of nostalgia and joy.
+Ava emphasized the joy and gratitude that can come from helping others.
+Ava asked Tony about what he and his friend did when they caught up.
+Tony is feeling frustrated and stressed due to a problem at work.","1.0
+0.84
+0.84
+0.83
+0.82
+1.0
+0.91
+0.85
+0.75
+0.62
+0.57
+0.56","(Happy, Cheer)
+That sounds amazing, Tony! Laughter is such a wonderful tonic for the soul. It's great to hear that the comedy show left you feeling light-hearted and amused. Do you have a favorite comedian?",0.0,,,,0,2.14,0.25

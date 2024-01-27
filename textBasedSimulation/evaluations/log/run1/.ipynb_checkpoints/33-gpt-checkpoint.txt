@@ -1,0 +1,1160 @@
+Observation: "Ava's birthday is on June 8th."
+Score : 5
+Explanation : This observation is extremely relevant as it provides the exact information the user asked for - the avatar's birthday. Therefore, it gets scored a 5. 
+Observation: 'Ava is a kind girl who is 25 years old and loves to help people.'
+Score : 4
+Explanation : Although the avatar didn't mention the exact age, it did indicate it was in its mid-twenties, which aligns with this observation's age detail. The observation is relevant but less direct; hence the score is 4.
+Observation: 'Ava is a writer who enjoys writing novels and often sits in Soon cafe to work on her stories.'
+Score : 1
+Explanation : This observation has virtually no influence on the avatar's response as it doesn't relate to the question regarding birthday and age. The user didn't ask anything related to Ava's career or hobbies, so this observation receives a score of 1.
+[5.0, 4.0, 1.0]
+MAP for question 1 in Scenario 33-11: 3.3333333333333335
+Observation: Ava was born in a small town called Brentwood, which is known for its delicious food.
+Score : 1
+Explanation : The avatar does not reference any part of this observation in its response. The avatar's love for Soon cafe could be incidentally linked to Brentwood's known good food, but no explicit connection is made.
+Observation: Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Score : 5
+Explanation : This observation is directly referenced by the avatar in its response. The avatar's favorite place is Soon cafe, which is precisely where Ava is noted to frequent in this observation.
+Observation: Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The avatar does not mention the Brentwood Library, playing tennis or any interactions with a neighbor named Bob.
+[1.0, 5.0, 1.0]
+MAP for question 2 in Scenario 33-11: 2.3333333333333335
+Observation: Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Score : 5
+Explanation : This observation is directly utilized in the avatar's response when she mentions that she visits Soon Cafe twice a week. 
+Observation: Ava is a writer who enjoys writing novels and often sits in Soon cafe to work on her stories.
+Score : 5
+Explanation : This observation is also used in the Avatar's response where she mentions that Soon Cafe is her cozy writing spot.
+Observation: Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation wasn't used in the avatar's response since it's not related to the user's question about visiting Soon cafe and what Ava usually orders there.
+Observation: Ava asks Tony about his birthday.
+Score : 2
+Explanation : While the avatar does mention "Tony" in its response, the specific question about his birthday isn't addressed. The observation is only slightly useful to provide context.
+Observation: Ava mentions her birthday is on June 8th.
+Score : 1
+Explanation : This observation doesn't provide any contribution to the avatar's response considering the question from the user.
+Observation: Ava reveals that she is in her mid-twenties.
+Score : 1
+Explanation : This observation too is not utilized in the avatar's response. The age of the avatar doesn't contribute to any detail about the frequency of her visits to Soon cafe or her order.
+[5.0, 5.0, 1.0, 2.0, 1.0, 1.0]
+MAP for question 3 in Scenario 33-11: 2.5
+Observation: Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Score : 1
+Explanation : The avatar seems to reject the idea of Avam being its sister and presents her as a dear friend. Although the relationship between the avatar and Avam is discussed, the denial of them being siblings reduces the relevance of this observation significantly.
+Observation: Ava is a kind girl who is 25 years old and loves to help people.
+Score : 1
+Explanation : This observation is not relevant to the avatar's response. The avatar did not touch on their own age, character, or helpful nature in their response about Avam.
+Observation: Ava is a writer who enjoys writing novels and often sits in Soon cafe to work on her stories.
+Score : 1
+Explanation : This observation is irrelevant to the response because the avatar's occupation or hobbies were not discussed in the response to the user's query about Avam.
+Observation: Ava mentions her birthday is on June 8th.
+Score : 1
+Explanation : The observation about Ava's birthday is irrelevant because it does not contribute to the response regarding Avam, nor is it mentioned by the avatar.
+Observation: Ava reveals that she is in her mid-twenties.
+Score : 1
+Explanation : The avatar did not use this observation in the response. The avatar's age, which is in her mid-twenties, was not mentioned in relation to the question regarding Avam.
+Observation: Ava asks Tony about his birthday.
+Score : 1
+Explanation : This observation seems irrelevant since the avatar didn't ask Tony about his birthday in response to the user's question. The avatar's previous question about Tony does not contribute to the response.
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 4 in Scenario 33-11: 1.0
+Observation: Ava's favorite novel is "Gone with the Wind" and her favorite sport is jogging.
+Score : 1
+Explanation : The avatar denies that "Gone with the Wind" is its favorite novel, which contradicts the provided observation. It also does not mention anything about jogging.
+Observation: Ava is a writer who enjoys writing novels and often sits in Soon cafe to work on her stories.
+Score : 1
+Explanation : There is no mention of Ava being a writer or visiting the Soon cafe to work on her stories in the avatar's response.
+Observation: Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Score : 1
+Explanation : The avatar's response does not include any information related to Bob, the Brentwood Library, or playing tennis on Sundays. 
+Observation: Ava visits Soon Cafe twice a week as her cozy writing spot.
+Score : 1
+Explanation : The avatar's response does not refer to the Soon Cafe or its writing habits at all. 
+Observation: Ava asks Tony if he has a favorite coffee shop.
+Score : 2
+Explanation : While the avatar's response does not specifically ask about a favorite coffee shop, it does ask for Tony's book recommendation. This observation is slightly relevant since it establishes that Ava is willing to ask Tony for his favorites.
+Observation: Ava asks Tony about his birthday.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response because the avatar does not ask Tony about his birthday.
+[1.0, 1.0, 1.0, 1.0, 2.0, 1.0]
+MAP for question 5 in Scenario 33-11: 1.1666666666666667
+Observation: Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Score : 5
+Explanation : This observation directly contributed to the avatar's response. The avatar used this information to explain how it met Bob and their routine of playing tennis on Sunday mornings at the Brentwood Library.
+Observation: Ava\'s favorite novel is "Gone with the Wind" and her favorite sport is jogging.
+Score : 1
+Explanation : This observation does not seem relevant to the avatar's response, as neither "Gone with the Wind" nor jogging were mentioned or alluded to during the conversation about playing tennis with Bob.
+Observation: Ava is a writer who enjoys writing novels and often sits in Soon cafe to work on her stories.
+Score : 1
+Explanation : This observation did not add anything to the avatar's response. Information about Ava's writing and venue of choice for writing was not incorporated in the avatar's reply.
+Observation: Ava and Tony are having a conversation.
+Score : 2
+Explanation : While this observation is accurate to the conversation, it does not significantly contribute to the avatar's specific response to the user's inquiry about tennis with Bob. However, it did provide context.
+Observation: Ava asks Tony if he has a favorite coffee shop.
+Score : 1
+Explanation : This observation did not contribute to the avatar's response about playing tennis with Bob. The topic of favorite coffee shop was not raised.
+Observation: Ava asks Tony about his birthday.
+Score : 1
+Explanation : This observation seems unrelated to the avatar's response. The avatar did not mention or hint towards the topic of Tony's birthday in this case, thus it had no impact on the response.
+[5.0, 1.0, 1.0, 2.0, 1.0, 1.0]
+MAP for question 6 in Scenario 33-11: 1.8333333333333333
+Observation: 'Ava loves coffee, particularly cappuccino, but dislikes americano coffee.'
+Score : 5
+Explanation : This observation directly answers the user's question about why the avatar prefers cappuccinos over americanos. It provides context for the avatar's taste in coffee.
+Observation: 'Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.'
+Score : 1
+Explanation : While this observation provides helpful context about the avatar's habits, it doesn't directly contribute to the answer given in response to the user's question.
+Observation: 'Ava is a writer who enjoys writing novels and often sits in Soon cafe to work on her stories.'
+Score : 1
+Explanation : This information is irrelevant to the avatar's response to the user's question about her preference for cappuccinos over americanos.
+Observation: "Ava's go-to order at Soon Cafe is a caramel latte with a sprinkle of cinnamon."
+Score : 1
+Explanation : This observation provides useful additional information about the avatar's coffee preferences, but it doesn't directly contribute to the answer given about why she prefers cappuccinos.
+Observation: 'Ava loves the aroma of freshly brewed coffee at Soon cafe.'
+Score : 1 
+Explanation : This information about the avatar's love of the smell of coffee does not help answer the user's question about why she prefers cappuccinos over americanos.
+Observation: 'Ava asks Tony if he has a favorite coffee shop.'
+Score : 5
+Explanation : This observation directly contributes to the question the avatar asks Tony following her response about why she prefers cappuccinos. The avatar is using it to engage the user in the conversation.
+[5.0, 1.0, 1.0, 1.0, 1.0, 5.0]
+MAP for question 7 in Scenario 33-11: 2.3333333333333335
+Observation: Ava has a 3-year-old male Bengal cat named Lucy.
+Score : 5
+Explanation : This observation directly contributes to the avatar's response. It provides crucial details about Lucy for the Avatar to respond to the user's question.
+Observation: Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation is irrelevant, as it doesn't involve Ava's cat, Lucy, and does not reflect in the Avatar's response.
+Observation: Ava is a writer who enjoys writing novels and often sits in Soon cafe to work on her stories.
+Score : 1
+Explanation : The observation, while telling more about Ava, has no relevance to the Avatar's response regarding Ava's cat Lucy.
+Observation: Ava wants to know if Tony enjoys any sports or activities.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response about the cat Lucy, thus it's irrelevant to the context.
+Observation: Ava asks Tony about his favorite novel.
+Score : 1
+Explanation : The observation provides no pertinence to the Avatar's response talking about Ava's cat Lucy, thus it does not contribute to the response.
+Observation: Ava and Tony are having a conversation.
+Score : 3
+Explanation : While this observation does not provide specific details for the Avatar's response, it sets the context that there is an ongoing conversation where Ava is responding to Tony's questions.
+
+[5.0, 1.0, 1.0, 1.0, 1.0, 3.0]
+MAP for question 8 in Scenario 33-11: 2.0
+Mean Average Precision (MAP) for Whole Scenario 33-11: 2.0625
+==================================================
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score: 5
+Explanation: This observation explicitly mentions the user's main query about where Ava draws inspiration. It is reflected clearly in the avatar's response and helped the avatar generate a fitting reply.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score: 4
+Explanation: This observation, while not central to the avatar's reply, indirectly aided it by clarifying that the user and Ava have a shared, specific environment (Soon Cafe) in which Ava likes to write and helped to provide a more contextual response.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score: 1
+Explanation: This observation is irrelevant to both the user's question and the avatar's response as it does not reference the Soon Cafe or relate to Ava's inspiration for writing.
+[5.0, 4.0, 1.0]
+MAP for question 1 in Scenario 33-12: 3.3333333333333335
+Observation: Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Score : 5
+Explanation : This observation contributes significantly to the avatar's response. It provides the information about Brentwood being a small town, reflecting the small-town charm. The beauty element is reflected in the warmth and coziness mentioned by the avatar. 
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 5
+Explanation : This observation is crucial because it gives context to where Ava writes her novels; at Soon cafe. It directly relates to the part in the avatar's reply where it mentions the inspiration the characters receive from local cafes, specifically Soon cafe.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 4
+Explanation : While this observation did not contribute to the entire avatar's response, it did significantly influence the final part of the avatar's message, giving weight to the community aspect of Brentwood by narrating about her interaction with neighbor Bob and their common activities. Nonetheless, the tennis part isn't clearly referenced in the avatar's response, hence the slightly lower score.
+[5.0, 5.0, 4.0]
+MAP for question 2 in Scenario 33-12: 4.666666666666667
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 2
+Explanation : While the response mentions elements of writing and creativity, it denies the fact that the avatar has been to Soon Cafe, which contradicts this observation.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 1
+Explanation : The reply contradicts this observation, claiming the avatar has not visited Soon Cafe even though the observation explicitly states that Ava frequents the cafe.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation is irrelevant to the query and the avatar's response as neither the neighbour Bob or the activity of playing tennis were mentioned.
+Observation: Ava enjoys the cozy ambiance of Soon Cafe.
+Score : 3
+Explanation : The avatar's response refers to the cozy ambiance of the cafe, mirroring this observation. However, it still maintains that the avatar hasn't visited Soon Cafe, which contradicts the observation.
+Observation: Soon Cafe is the perfect place for Ava to weave tales of adventure and romance.
+Score : 4
+Explanation : The response resonates the idea that the cafe is a place where stories come to life, which aligns with this observation. Still, the contradiction with respect to the avatar visiting the cafe affects the overall contribution of this point.
+Observation: The aroma of coffee fuels Ava's creativity.
+Score : 4
+Explanation : The avatar's response refers to the aromatic coffee and talks of creativity, paralleling this observation. However, the observation's impact is diluted by the assertion that the avatar hasn't been to the cafe.
+[2.0, 1.0, 1.0, 3.0, 4.0, 4.0]
+MAP for question 3 in Scenario 33-12: 2.5
+Observation: Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Score : 5
+Explanation : This observation is crucial to the avatar's response. The fact that Ava lives with Avam, who majors in computer science enables the avatar to explain the influence Avam provides to Ava's writing in creating imaginative world with technical accuracy.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 2
+Explanation : This observation is partially related to the avatar's response. The fact that Ava writes novels is relevant, but her preference for writing at Soon cafe does not directly contribute to answering the user's question.
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score : 1
+Explanation : This observation does not play any significant role in constructing the avatar's response. The user's question doesn't touch upon Ava's age or kindness.
+Observation: The aroma of coffee fuels Ava's creativity.
+Score : 1
+Explanation : The avatar's response does not contain any related content to this observation. It does not relate to or influence how Ava's sister affects her writing.
+Observation: Ava's novels are influenced by the small-town charm of Brentwood.
+Score : 1
+Explanation : This observation does not specifically contribute to the avatar's response. There's no mention in the avatar's response about Brentwood's influence on Ava's novels. The user's question is focused on Avam's influence instead. 
+Observation: Soon Cafe is the perfect place for Ava to weave tales of adventure and romance.
+Score : 1
+Explanation : This observation is irrelevant to the avatar's response. The user's question is about the influence of Avam's computer science expertise on Ava's writing, and Ava's preferred writing location does not add any value in addressing this.
+[5.0, 2.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 4 in Scenario 33-12: 1.8333333333333333
+Observation: "Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging."
+Score: 1
+Explanation: The Avatar's statement did not acknowledge 'Gone with the Wind' as the favorite novel and didn't discuss the favorite sport at all, so this observation wasn’t used.
+Observation: "Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels."
+Score: 2
+Explanation: While Ava's status as a writer is relevant to the question and the response, the specifics of her writing habit and location were not referred to in the response.
+Observation: "Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings."
+Score: 1
+Explanation: This observation seems unrelated to the user's question and the Avatar's response as neither the neighbor Bob, the meetings, nor the games of tennis were mentioned.
+Observation: "Ava's novels are influenced by the small-town charm of Brentwood."
+Score: 2
+Explanation: The observation could indirectly relate to the user's question regarding influence on writing style, but the Avatar does not directly mention this in its response.
+Observation: "The Brentwood Library and its tennis matches with Bob add a touch of friendship and community to Ava's novels."
+Score: 1
+Explanation: This observation was not used in the Avatar's response. The themes of friendship and community related to the library and tennis matches are not mentioned.
+Observation: "Soon Cafe is the perfect place for Ava to weave tales of adventure and romance."
+Score: 2
+Explanation: The themes of 'adventure and romance' could be considered relevant to the overall discussion about Ava's novels, but the actual mention of the "Soon Cafe" and its importance to Ava's writing process was not present in the response.
+[1.0, 2.0, 1.0, 2.0, 1.0, 2.0]
+MAP for question 5 in Scenario 33-12: 1.5
+Observation: "Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging."
+Score : 5
+Explanation : This observation is directly relevant to the user's query. It gives context about Ava's interest, which is jogging and directly contributed to the avatar's response about incorporating themes of physical activity in her stories.
+Observation: "Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels."
+Score : 4
+Explanation : This observation provides context that Ava is a writer, which addresses the first part of the user's question. However, it doesn't directly address the topic of incorporating themes of physical activity or sports.
+Observation: "Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings."
+Score : 3
+Explanation : This observation is somewhat related as it shows an example of sport but doesn't necessarily tie into Ava's stories directly or her love for jogging. 
+Observation: "The Brentwood Library and its tennis matches with Bob add a touch of friendship and community to Ava's novels."
+Score : 2
+Explanation : This observation indirectly relates to the user's query. It indirectly reflects on the influence of sports or physical activities in her novels.
+Observation: "Soon Cafe is the perfect place for Ava to weave tales of adventure and romance."
+Score : 3
+Explanation : This observation gives background on where she likes to write, which does provide information about her as a writer mentioned in the user's query, but not about physical activities or sports' theme.
+Observation: "The local cafes in Brentwood, like Soon, inspire Ava's characters' creative journeys."
+Score : 2
+Explanation : Again, this provides context for her writing process but doesn't directly link to the theme of incorporating physical activities or sports in her novels.
+[5.0, 4.0, 3.0, 2.0, 3.0, 2.0]
+MAP for question 6 in Scenario 33-12: 3.1666666666666665
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 5
+Explanation : This observation directly answers the user's enquiry about the conversations Ava has with Bob at the Brentwood Library. It sets up the basis for the relationship between Ava and Bob. 
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 2
+Explanation : While this observation provides context about Ava being a writer, it doesn’t contribute directly to the answer regarding the conversations she has with Bob at the library.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 1
+Explanation : Although this observation provides a detail about Ava's routine, it is by no means in connection with Ava's conversations with Bob at the library.
+Observation: The Brentwood Library and its tennis matches with Bob add a touch of friendship and community to Ava's novels.
+Score : 3
+Explanation : This observation implies that Ava's experiences and interactions at the Brentwood Library (including with Bob) inspire her novels. Although not directly answering the user's question, it does provide relevant context.
+Observation: Ava's novels are influenced by the small-town charm of Brentwood.
+Score : 1
+Explanation : This is a general observation about how Ava's experiences in Brentwood inspire her writing. It does not specifically relate to her conversations with Bob at the library.
+Observation: The local cafes in Brentwood, like Soon, inspire Ava's characters' creative journeys.
+Score : 1
+Explanation : This observation, while providing context to Ava's inspiration, doesn't directly contribute to an answer about Ava's library-based conversations with Bob.
+[5.0, 2.0, 1.0, 3.0, 1.0, 1.0]
+MAP for question 7 in Scenario 33-12: 2.1666666666666665
+Observation: "Ava's birthday is June 8th."
+Score : 5
+Explanation : This observation is crucial for the avatar's response. It references the exact data of Ava's birthday, which corresponds directly to the user's question. 
+Observation: "Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels."
+Score : 3
+Explanation : This observation is somewhat useful in crafting the avatar's response. It provides context about Ava's occupation (writer) and her penchant for new stories, which is indirectly related to the user's question about story ideas coinciding with Ava's birthday. 
+Observation: "Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings."
+Score : 1
+Explanation : This observation is not very useful for the avatar's response. It does not connect to Ava's birthday, story ideas, or writing projects.
+Observation: "Ava asks Tony about his favorite themes to read about."
+Score : 2
+Explanation : This observation is not directly related to Ava's response, but it shows that Ava wants to know other people's preferences, which is reflected in her last question.
+Observation: "Ava enjoys incorporating themes of physical activity and sports into her stories."
+Score : 3
+Explanation : While this observation does relate to Ava's storytelling, it is not directly referenced in her response. Her interest in themes, however, reflects her general attitude toward writing.
+Observation: "Ava expresses excitement about exploring emotions in one's own stories."
+Score : 2
+Explanation : This observation is not directly mentioned in the avatar's response. However, it might have influenced the avatar's general response about deriving inspiration from everyday moments.
+[5.0, 3.0, 1.0, 2.0, 3.0, 2.0]
+MAP for question 8 in Scenario 33-12: 2.6666666666666665
+Mean Average Precision (MAP) for Whole Scenario 33-12: 2.729166666666667
+==================================================
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 5
+Explanation : This observation aligns perfectly with the user's query about Ava's love of writing and the type of novels she enjoys writing. This relevancy is why it has been rated with a score of 5.
+Observation: Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Score : 2
+Explanation : While knowing Ava's favourite novel does give an insight into her preferences, it doesn't directly answer the user's question about her inspiration to become a writer or the type of novels she prefers writing. Her favourite sport has no relevance to the user’s query. Therefore, this observation receives a lower score.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The user's questions are about Ava's writing, making the fact that she plays tennis with Bob irrelevant in this context.
+Observation: Ava asks Tony about his choice of superpower.
+Score : 4
+Explanation : This observation is relevant to the end of the avatar's response where she asks Tony about his choice of superpower. It does not directly answer the initial user question but does shape the response.
+Observation: Ava and Tony were discussing their preferred superpowers and how they would use them.
+Score : 4
+Explanation : Similar to the previous observation, this doesn't address the user's questions about Ava's writing directly but frames the end of the avatar's response, indicating a previous topic of conversation with Tony.
+Observation: Ava asks Tony about his preferred superpower.
+Score : 4
+Explanation : Though this observation repeats the content of the fourth observation, it adds to the final part of the avatar's response where Tony's choice of superpower is mentioned.
+[5.0, 2.0, 1.0, 4.0, 4.0, 4.0]
+MAP for question 1 in Scenario 33-2: 3.3333333333333335
+Observation: Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Score : 5
+Explanation : This observation is very relevant to the avatar's response. The avatar's response includes a reference to Brentwood and how growing up there fuelled her imagination.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 5
+Explanation : Again, this observation is directly related to the avatar's response in mentioning the Soon cafe in Brentwood. It also references her novels and how the atmosphere of the cafe contributes to her creativity.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation does not seem to influence the avatar's response in any way. There is no mention of the neighbor, Bob, or their activities together in the response.
+Observation: Ava sees making a positive impact on others' lives as incredibly fulfilling.
+Score : 2
+Explanation : While this observation gives some insight into Ava's character, it does not directly correlate with the specifics of the avatar's response to the user's question.
+Observation: Ava asks Tony about his choice of superpower.
+Score : 1
+Explanation : This observation is not related to the avatar's response. The user's question does not involve superpowers, therefore, it's unlikely that the observation contributed to the avatar's response in any significant way.
+Observation: Ava expresses confusion before responding to Tony's question.
+Score : 3
+Explanation : Though this observation does not relate to any content discussed in the avatar's response, it might indicate Ava's thought processing style before she responds to Tony's question, hence it has a minor impact on the avatar's response.
+[5.0, 5.0, 1.0, 2.0, 1.0, 3.0]
+MAP for question 2 in Scenario 33-2: 2.8333333333333335
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score: 5
+Explanation: This observation is very relevant to the user's question. It provides both the information about Ava being a writer and her habit of writing at Soon cafe in Brentwood.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score: 4
+Explanation: The observation is related to the avatar's response, giving an additional statement about Ava's frequency of visiting the Soon cafe. However, it does not directly contribute to the specific reasons for her preference.
+Observation: Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Score: 2
+Explanation: While the observation implies Ava's connection to Brentwood it does not provide specificity to why she loves the Soon coffee shop, so its contribution to the avatar's response is quite indirect.
+Observation: Ava's love for storytelling led her to become a writer.
+Score: 3
+Explanation: This observation talks about Ava's passion for writing but doesn't specify the correlation between the Soon cafe and her writing hobby. 
+Observation: Ava enjoys writing various genres but is most drawn to thrilling mysteries and heartwarming romances.
+Score: 1
+Explanation: This observation gives us info on Ava's writing genres but doesn't contribute to the avatar's answer regarding Soon cafe being her favorite place for writing.
+Observation: Tony's choice of superpower is being inspired by something.
+Score: 1
+Explanation: This observation is irrelevant to the user's question and the avatar's response, as it introduces a new character (Tony) and doesn't discuss Ava, her writing, or the Soon Cafe.
+[5.0, 4.0, 2.0, 3.0, 1.0, 1.0]
+MAP for question 3 in Scenario 33-2: 2.6666666666666665
+Observation: Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Score : 5
+Explanation : The avatar directly pulls from this observation to make its response. Information about their living situation and Avam's study is used in the avatar's response.
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score : 1
+Explanation : This observation is not used in the avatar’s response. The response doesn't mention Ava's age or her helpful nature.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation is irrelevant to the avatar's response. The relationship between Ava and her neighbor Bob or their tennis activities is not referred to in the response.
+Observation: Ava expresses that growing up in Brentwood has influenced her life and work positively.
+Score : 1
+Explanation : Ava’s growing up in Brentwood and how it positively influenced her is not mentioned in the avatar's response, making this observation irrelevant.
+Observation: Ava's love for storytelling led her to become a writer.
+Score : 1
+Explanation : Despite being a true statement about Ava, this information doesn't contribute to the avatar's response about its relationship with her sister Avam.
+Observation: Ava states that she would use telepathy to understand people's thoughts and offer them support.
+Score : 1
+Explanation : This observation is not refered to in the avatar's response. Ava's ability or desire to use telepathy to understand others isn't mentioned.
+[5.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 4 in Scenario 33-2: 1.6666666666666667
+Observation: "Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging."
+Score : 5
+Explanation : This observation is very relevant as it provides the avatar with the information to accurately respond to the user's question about the avatar's favourite novel.
+Observation: "Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels."
+Score : 1
+Explanation : Although this observation provides relevant background information on Ava as a writer, it is not reflected in the avatar's response and doesn't contribute to answering the user's question.
+Observation: "Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings."
+Score : 1
+Explanation : This observation has no relevance to the given user's question that is about Ava's favorite book and it's influence on her writings.
+Observation: "Ava's love for storytelling led her to become a writer."
+Score : 3
+Explanation : This observation is somewhat relevant as it explains that Ava loves storytelling, which indirectly could be linked to her inspiration drawn from 'Gone with the Wind'. But the specific influence is not mentioned in the avatar's response.
+Observation: 'Ava enjoys writing various genres but is most drawn to thrilling mysteries and heartwarming romances.'
+Score : 2
+Explanation : This observation could potentially explain Ava's inspiration from 'Gone with the Wind', but the connection is not explicitly made in the avatar's response.
+Observation: "Ava's response indicates that Soon Cafe has the perfect ambiance for writing."
+Score : 1
+Explanation : This observation is not reflected in the avatar's response and doesn't contribute to answering the user's question about the book and its influence on Ava's writing.
+[5.0, 1.0, 1.0, 3.0, 2.0, 1.0]
+MAP for question 5 in Scenario 33-2: 2.1666666666666665
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 5
+Explanation : This observation directly contributes to the avatar's response. The avatar explains where she met Bob and that they play tennis on Sunday mornings.
+Observation: Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The user did not ask about Ava's favorite book or favorite sport.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : Again, this observation does not contribute anything to Ava's response as its subjects were not brought up in the user's question or the avatar's response.
+Observation: Ava and Tony are having a conversation.
+Score : 2
+Explanation : Although this observation mentions a conversation, it does not directly contribute to the avatar's response to the user's specific questions about Bob and their tennis games.
+Observation: Ava describes Avam as her partner in crime.
+Score : 1
+Explanation : This observation is not relevant to the avatar's response. The user asked about Bob and not Avam.
+Observation: Avam inspires Ava with her computer science skills.
+Score : 1
+Explanation:  This observation does not contribute to the avatar's response as the user's question and the avatar's response do not involve computer science or Avam.
+[5.0, 1.0, 1.0, 2.0, 1.0, 1.0]
+MAP for question 6 in Scenario 33-2: 1.8333333333333333
+Observation: Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Score : 4
+Explanation : The observation refers to the beauty of Brentwood, which is indirectly reflected in the avatar's reference to the "beautiful scenery" in its response. However, the part about food is not relevant to the user's question about jogging.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation is mostly irrelevant to the avatar's response as it does not include any information about the nature of Brentwood, jogging there, or how Ava feels about it. The avatar response does not mention Bob, the library, tennis, or Sunday mornings.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 1
+Explanation : This observation is not mentioned or reflected in the avatar's response. The user's question and avatar's response are about jogging, not Ava's favorite places to get coffee.
+Observation: Ava considers Brentwood to be a nurturing place for creativity.
+Score : 2
+Explanation: While this observation gives us some insight into Ava's feelings about Brentwood, this doesn't seem to have a direct influence on the avatar's response to the jogging question. The element of creativity or nurturing is not mentioned in the avatar response.
+Observation: Ava expresses that growing up in Brentwood has influenced her life and work positively.
+Score : 2
+Explanation: This observation only indirectly influences the avatar's response. While it provides some context about Ava's positive feelings towards Brentwood, it doesn't directly relate to the user's question about jogging in Brentwood.
+Observation: Soon Cafe in Brentwood is Ava's favorite spot for writing.
+Score : 1
+Explanation : This observation is not relevant to the avatar's response. The user's question and avatar's response are about jogging, not where Ava prefers to write.
+[4.0, 1.0, 1.0, 2.0, 2.0, 1.0]
+MAP for question 7 in Scenario 33-2: 1.8333333333333333
+Observation: "Ava's birthday is June 8th."
+Score : 5
+Explanation : This observation is directly relevant to the user's question about celebrating Ava's birthday on June 8th. The avatar's mention of her birthday festivities is based on the knowledge that June 8th is her birthday. 
+Observation: "Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings."
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The user asked about Ava's birthday celebration, not about her weekly tennis matches or interactions with her neighbor Bob. 
+Observation: "Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging."
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. Neither Ava's favorite novel nor her favorite sport is mentioned or related to her birthday celebration.
+Observation: "Their tennis games on Sunday mornings are special because they always find creative ways to challenge each other and make the matches exciting."
+Score : 1
+Explanation : This observation does not contribute to the avatar's response about her birthday celebration. Once again, Ava's tennis games are not relevant to the user's question.
+Observation: "Ava and Tony are having a conversation."
+Score : 1
+Explanation : This observation also does not contribute to the avatar's response. Ava's conversation with Tony is not related to her birthday celebration.
+Observation: "Ava's favorite novel is 'Gone with the Wind'."
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. Ava's favorite novel is not related to the user's question about her birthday celebration.
+[5.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 8 in Scenario 33-2: 1.6666666666666667
+Observation: Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Score : 5
+Explanation : This observation is most relevant to the avatar's response. It provides direct information about the user's cat, which is Bengal and named Lucy, both of which are directly addressed in the avatar's response.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response at all since it does not contain any relevant information about Ava's Bengal cat Lucy.
+Observation: Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Score : 1
+Explanation : This observation is not relevant to the avatar's response as it discusses Ava's favorite novel and sport, which are not related to her Bengal cat Lucy.
+Observation: Tony's choice of superpower is being inspired by something.
+Score : 1
+Explanation : This observation does not provide any information relevant to the avatar's response about Ava's cat Lucy.
+Observation: Avam inspires Ava with her computer science skills.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response as it discusses Ava's inspiration from someone's computer science skills, which is far from the topic of Ava's cat Lucy.
+Observation: Ava met her neighbor Bob at the Brentwood Library.
+Score : 1
+Explanation : The content of this observation is irrelevant to the avatar's response as it does not provide any information about Ava's Bengal cat Lucy.
+[5.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 9 in Scenario 33-2: 1.6666666666666667
+Mean Average Precision (MAP) for Whole Scenario 33-2: 2.185185185185185
+==================================================
+Observation: Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score: 1
+Explanation: This observation is not related to the user's question about Bob's coffee preference. It talks about Ava's coffee preferences, therefore is not useful for generating the avatar’s response.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score: 1
+Explanation: Although this observation pertains to Bob, the subject of the user's question, it doesn't contain any information about his coffee preferences. Hence, the contribution of this observation to the avatar's response is minimal.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score: 1
+Explanation: This observation only provides information about Ava's favorite coffee shop but doesn't provide any details about Bob's coffee preference. It's not relevant for the avatar's response to the user's question.
+Observation: Bob prefers a unique coffee blend called "Bob's Special Brew."
+Score: 5
+Explanation: This observation directly answers the user's query about what type of coffee Bob prefers, thus making it highly significant for generating the avatar's response.
+Observation: Bob likes to enjoy his favorite coffee at dirty Cafe.
+Score: 2
+Explanation: While this observation does mention Bob's preferred location for coffee, it does not address the specific type of coffee he prefers, which was the topic of the user's question. This observation is slightly useful as it provides additional context about Bob's coffee habits, but it doesn't directly contribute to the avatar's response.
+Observation: Ava asks Tony if he has a favorite type of coffee.
+Score: 1
+Explanation: The given observation is not relevant to the user's question about Bob's coffee preference as it talks about someone named Tony. Thus, it does not contribute much to the avatar's response.
+[1.0, 1.0, 1.0, 5.0, 2.0, 1.0]
+MAP for question 1 in Scenario c33-3: 1.8333333333333333
+Observation: Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score : 5
+ Explanation : This observation is extremely relevant, as it answered to the user's direct question about Ava's favorite type of coffee.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 2
+ Explanation : While the observation involves Ava and coffee, it doesn't contribute directly to Ava's answer about her favorite type of coffee. It is related but not essential for the response.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 2
+ Explanation : Similarly as the previous observation, it relates Ava to coffee and gives additional context of her habits, but doesn't specifically contribute to the response about her favorite type of coffee.
+Observation: Ava asks Tony if he has a favorite type of coffee.
+Score : 5
+ Explanation : This observation is particularly significant as it directly shows an example of Ava interacting with another individual about coffee preferences, suggesting how she might respond when asked the same question.
+Observation: Ava asks Tony if he has a favorite coffee.
+Score : 5
+ Explanation : Just like the previous observation, it's directly related to the given response where Ava asks the user, Tony, about his coffee preferences.
+Observation: Ava asks Tony about his coffee favorites.
+Score : 5
+ Explanation : This observation again gives us information about Ava's consistent pattern of engaging with others about coffee preferences, so it directly helps form her response.
+[5.0, 2.0, 2.0, 5.0, 5.0, 5.0]
+MAP for question 2 in Scenario c33-3: 4.0
+Observation: Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score : 5
+Explanation : This observation directly impacts the avatar's response because it confirms that the avatar loves coffee (like cappuccino) thus addressing the user's question, and it provides an example of a type of coffee (americano) that the avatar does not enjoy.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 1
+Explanation : This observation is not relevant to the avatar's response—it does not mention liking any other types of coffee or relate with any part of the avatar's response.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response because it doesn't provide any information related to the avatar's coffee preferences.
+Observation: Bob prefers a unique coffee blend called "Bob\'s Special Brew."
+Score : 1
+Explanation : This observation pertains more to "Bob" than the avatar(Ava). Ava's preferences or ideas are not reflected in the avatar's response, and this piece of information is not applicable to the avatar's message.
+Observation: Ava asks Tony if he has any other coffee favorites.
+Score : 5
+Explanation : This observation significantly contributed to the avatar's response. The avatar (Ava) did indeed ask Tony about his own coffee preferences, mirroring the layout of this observation.
+Observation: Ava suggests that the user should try Bob's Special Brew.
+Score : 1
+Explanation : This observation did not make a substantial contribution to the avatar's response. The avatar did not suggest the user to try any particular coffee blend in her response.
+[5.0, 1.0, 1.0, 1.0, 5.0, 1.0]
+MAP for question 3 in Scenario c33-3: 2.3333333333333335
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 2
+Explanation : This observation is somewhat relevant as it provides context about the Soon cafe, but it doesn't directly answer the question about Bob's liking towards the Soon cafe.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation doesn't make any direct contribution to the avatar's response. It neither provides any information about Bob's coffee preference nor about the location.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation only provides information about Ava and her liking towards the Soon cafe. It doesn't add anything about Bob and his coffee preferences.
+Observation: Bob prefers a unique coffee blend called "Bob\'s Special Brew."
+Score : 3
+Explanation : This observation makes some contribution. It confirms that Bob likes coffee, but doesn't answer the question about whether he drinks his favorite coffee at Soon Cafe.
+Observation: Ava suggests that the user should try Bob's Special Brew.
+Score : 2
+Explanation : This observation is only somewhat relevant. It indirectly implies that Soon cafe might serve Bob's favorite coffee, but doesn't directly answer the user's question.
+Observation: Ava asks Tony if he has a favorite type of coffee.
+Score : 1
+Explanation : This observation is irrelevant to the avatar's response. It doesn't provide any substantial information about Bob's coffee preferences or about the Soon cafe.
+[2.0, 1.0, 1.0, 3.0, 2.0, 1.0]
+MAP for question 4 in Scenario c33-3: 1.6666666666666667
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 5
+Explanation : This observation is quite influential in shaping the avatar's response. It directly indicates the frequency, location, and preference of the avatar, which are the main details revealed in the response.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 4
+Explanation : This observation contributes to informing the avatar's response about how the environment of Soon Cafe inspires Ava's writing. Although the user's question was about the frequency of visiting Soon Cafe, the context mentioned is related and was included in the response. 
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation may be relevant to the avatar's overall background story, but it does not align with the user's question about the Soon Cafe, nor is it reflected in the avatar's response. 
+Observation: Ava loves going to the Soon Cafe and visits 10 times a week.
+Score : 2
+Explanation : Though this observation is about the Soon Cafe, the frequency stated here contradicts the frequency mentioned in other observations (and the avatar’s response). Hence, its contribution is low. 
+Observation: Their favorite coffee shop is Soon cafe in Brentwood.
+Score : 3
+Explanation : This observation contributes to the avatar's reply regarding the liking for Soon Cafe but does not provide any specific information about the frequency of visits, which was the main point of the user's question.
+Observation: Soon Cafe is his go-to place for that perfect cup of brew.
+Score : 3
+Explanation : This observation contributes to the avatar's reply about the liking for Soon Cafe but it does not provide any specific information about the frequency of visits, which was the focus of the user's question. The observation provides an added detail regarding a ‘perfect cup of brew’.
+[5.0, 4.0, 1.0, 2.0, 3.0, 3.0]
+MAP for question 5 in Scenario c33-3: 3.0
+Observation: 'Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.'
+Score : 1
+Explanation : This observation did not contribute to the avatar's response. The user asked about dirty coffee, not cappuccino or americano. 
+Observation: 'Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.'
+Score : 1
+Explanation : The avatar's response doesn't reference the coffee shop at all, therefore this observation didn't contribute to avatar's response. 
+Observation: 'Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.'
+Score : 1
+Explanation : The avatar's response does not mention writing, novels, or the cafe, making it irrelevant.
+Observation: 'Ava suggests a coffee blend called "dirty coffee".'
+Score : 2
+Explanation : This observation contributes slightly to the response by affirming that Ava knows about dirty coffee, though it does not contribute directly to the text of the response.
+Observation: 'Ava is curious about the ingredients of dirty coffee.'
+Score : 5
+Explanation : This observation directly contributes to the question asking the user about the ingredients of dirty coffee in the avatar's response.
+Observation: 'Ava hasn't tried dirty coffee before.'
+Score : 5
+Explanation : This observation is directly reflected in the avatar's response as she mentions she hasn't tried dirty coffee before.
+[1.0, 1.0, 1.0, 2.0, 5.0, 5.0]
+MAP for question 6 in Scenario c33-3: 2.5
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 3
+Explanation : This observation helps establish Ava's connection with the Soon Cafe but it does not specifically influence her response of what kind of coffee she usually orders there. 
+Observation: Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score : 5
+Explanation : This observation is most directly related to the avatar's response. It answers the user's question about what type of coffee the avatar usually orders at Soon Cafe.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : While this observation shows Ava's connection to Soon Cafe, it does not contribute to her answer about what kind of coffee she usually orders. 
+Observation: Bob likes to drink his favorite coffee at the Soon Cafe.
+Score : 1
+Explanation : This observation is unrelated to the user's question and Ava's response. It discusses a different character (Bob) and doesn't provide any information about Ava's preferences.
+Observation: The Soon Cafe is a delightful place.
+Score : 2
+Explanation : The observation indirectly influences the avatar's response by indicating a positive view of the cafe, which might be why Ava often visits. However, it does not specifically address the user's question about what coffee Ava orders.
+Observation: Ava loves Soon Cafe.
+Score : 2
+Explanation : This observation establishes Ava's preference for the Soon Cafe, but does not directly answer the user question about what type of coffee Ava usually orders there.
+[3.0, 5.0, 1.0, 1.0, 2.0, 2.0]
+MAP for question 7 in Scenario c33-3: 2.3333333333333335
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 4
+Explanation : This observation is important as it sets the context of the relationship between Bob and Ava. It also mentions that they meet at the Brentwood library, which could possibly be a place they also go for coffee as mentioned in avatar's response. However, the observation does not give direct information about them going for coffee together.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 5
+Explanation : This observation is highly relevant as it directly answers part of the user's question by indicating where Ava usually goes for coffee, which is mentioned in the avatar's response.
+Observation: Ava loves coffee. Her favorite coffee is cappuccino, but she dislikes Americano coffee.
+Score : 1
+Explanation : There seems to be little relevance between this observation and the avatar's response. The details about Ava's coffee preferences do not appear in the avatar's response, and it doesn't answer if Ava and Bob go for coffee together.
+Observation: Bob likes to drink his favorite coffee at the Soon Cafe.
+Score : 5
+Explanation : This observation is directly relevant to the user's question about where Ava and Bob usually go for coffee. It specifically links Bob to the Soon Cafe, which the avatar mentions in her response.
+Observation: Bob prefers a unique coffee blend called "Bob's Special Brew".
+Score : 1
+Explanation : Similar to the third observation, this observation seems irrelevant to the avatar's response, with no mention of "Bob's Special Brew" reflecting in the response.
+Observation: Ava asks Tony if he has another coffee favorite.
+Score : 2
+Explanation : This observation partly contributes to the avatar's greeting and question to Tony about his favourite coffee place, but doesn't answer directly about Ava and Bob's coffee meetups.
+[4.0, 5.0, 1.0, 5.0, 1.0, 2.0]
+MAP for question 8 in Scenario c33-3: 3.0
+Observation: Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score : 4
+Explanation : The avatar's response does utilize this piece of information, mentioning how the Avatar's preference was cappuccinos. However, the dislike for americano was not explicitly addressed, hence a score of 4.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 2
+Explanation : This information about the Avatar's habit of visiting a specific coffee shop was not directly used in the response. However, it does give context to the character's love for coffee.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation was not utilized in the Avatar's response at all. The avatar's profession and writing habit in the cafe have no relevance to the user’s question about changing coffee preferences.
+Observation: Ava asks Tony if he has a favorite type of coffee.
+Score : 5
+Explanation : This observation is highly relevant as it shows the avatar's interest in others' coffee preferences, which is reflected in the question asked by the avatar in her response.
+Observation: Ava expresses her willingness to try new coffee adventures.
+Score : 5
+Explanation : This fact was clearly reflected in the Avatar's response about seeking to explore different flavors and brewing methods, which she likens to a coffee adventure.
+Observation: Ava asks Tony if he has another coffee favorite.
+Score : 5
+Explanation : This observation shows the avatar's interest in learning about other peoples' coffee preferences, which was reflected in the avatar asking the user for coffee recommendations in her response.
+[4.0, 2.0, 1.0, 5.0, 5.0, 5.0]
+MAP for question 9 in Scenario c33-3: 3.6666666666666665
+Mean Average Precision (MAP) for Whole Scenario c33-3: 2.7037037037037037
+==================================================
+Observation: "Ava is a kind girl who is 27 years old, but she doesn't love to help people."
+Score : 5
+Explanation : This observation is highly relevant as it directly informs the Avatar's response to the user's question about Ava's age and whether she likes to help people.
+Observation: "Ava's birthday is April 8th."
+Score : 1
+Explanation : This observation seems irrelevant to the Avatar's response. The user did not ask for Ava's birthday, just her age, so this detail does not contribute to the response.
+Observation: "Ava has a 3-year-old Golden cat named Lucy."
+Score : 1
+Explanation : This observation has no relevance to the Avatar's response as it does not pertain to the questions asked by the user, which were about Ava's age and her inclination towards helping others.
+[5.0, 1.0, 1.0]
+MAP for question 1 in Scenario c33-4: 2.3333333333333335
+Observation: 'Winterland is a beautiful city with nice people.'
+Score : 5
+Explanation : This observation is directly relevant to the Avatar's response since it provides details about the city Winterland, which is Ava's hometown. The details about the city and its residents are represented when the Avatar described her hometown as a "charming place with friendly people."
+Observation: 'Ava was born in a small town called Winterland.'
+Score : 5
+Explanation : This observation is crucial because it reveals the specific name of Ava's hometown, Winterland. It is integral to the Avatar's response because it provides the foundation for the Avatar's narrative about her place of origin. 
+Observation: 'Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.'
+Score : 5
+Explanation : This observation contributes significantly to the Avatar's response because it provides specifics about Ava's activities in her hometown. In her response, the Avatar mentions playing basketball with neighbor Bob on Newbrun St. on Sundays, which originates from this observation.
+[5.0, 5.0, 5.0]
+MAP for question 2 in Scenario c33-4: 5.0
+Observation: Ava loves a coffee shop called MorningStar in Winterland and goes there once a week.
+Score : 5
+Explanation : This observation is directly relevant to the User's message. The Avatar's response directly includes information from this observation, making it highly important.
+Observation: Ava loves coffee and her favorite type is Latte, but she dislikes americano coffee.
+Score : 1
+Explanation : Though this observation is about coffee which is mentioned in the User's message, it does not contribute to the Avatar's response as neither the avatar's favorite type of coffee (a latte) nor her dislike for americanos is mentioned in the response.
+Observation: Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Score : 1
+Explanation : This observation does not contribute to the Avatar's response at all as it does not relate to the User's question about the Avatar's favorite coffee shop and her visit frequency.
+Observation: Ava is always available for a friendly chat.
+Score : 1
+Explanation : This observation does not directly influence the Avatar's response. The user's question is specifically about the avatar's coffee preferences, and while availability for friendly chat might set the tone of the conversation, it does not determine the specific details of the response.
+Observation: Ava is 27 years old.
+Score : 1
+Explanation : Ava's age is not relevant to the user's question on her favorite coffee shop and how often she visits it, so this observation does not contribute to the Avatar's response.
+Observation: Ava is not big on helping others.
+Score : 1
+Explanation : Ava's predisposition to not help others is irrelevant to the conversation about her favorite coffee shop, and therefore it does not contribute to the Avatar's response.
+[5.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 3 in Scenario c33-4: 1.6666666666666667
+Observation: Ava is living with her sister Avam, who is a master of education student at Winterland University.
+Score : 5
+Explanation : This observation is directly used by the avatar to provide an answer to the user's question. It gives the avatar the information about Avam's studies which is directly asked by the user, so it contributes significantly to the answer.
+Observation: Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.
+Score : 1
+Explanation : This observation doesn't contribute to the avatar's response as it doesn't help answer the user's question about what Avam is studying. It is related to Ava's career, not Avam's, which wasn't the focus or context of the user's message.
+Observation: Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball.
+Score : 1
+Explanation : This observation about Ava's favorite novel and sport isn’t relevant in answering the user's question, which focuses on Avam's university studies.
+Observation: Ava is always available for a friendly chat.
+Score : 1
+Explanation : This observation doesn't contribute to the avatar’s response to the user’s question about Avam's studies, since it doesn't provide information about Avam or what she's studying.
+Observation: Ava enjoys playing basketball with her neighbor Bob at Newbrun St. on Sunday mornings.
+Score : 1
+Explanation : This observation doesn't contribute to the avatar's response about Avam's studies at the university, since it's about Ava's leisure activities rather than Avam's educational pursuits.
+Observation: Ava's hometown is called Winterland.
+Score : 1
+Explanation : This observation is not relevant as it doesn't add anything to the avatar's response to the user's question concerning what Avam is studying. The location does match the university location, however, the user did not ask for this specific detail.
+[5.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 4 in Scenario c33-4: 1.6666666666666667
+Observation 1: Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.
+Score : 5
+Explanation : This observation directly contributes to the avatar's response that she likes to write her novels in MorningStar, thereby making it a significant element of the avatar's reply.
+Observation 2: Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball.
+Score : 1
+Explanation : This observation does not contribute at all to the avatar's response since the response does not touch on Ava's favorite book or sport. 
+Observation 3: Ava was born in a small town called Winterland.
+Score : 2
+Explanation : This observation partly contributes to the response. Even though the avatar doesn't explicitly state where she was born, it gives some context about the location of the coffee shop MorningStar in Winterland.
+Observation 4: Ava considers her favorite coffee shop her little slice of caffeinated heaven.
+Score : 5 
+Explanation : This observation plays a crucial role in the avatar's response, offering the perspective of why she likes the MorningStar as her "little slice of caffeinated heaven." 
+Observation 5: Ava's favorite coffee shop is MorningStar in Winterland.
+Score : 5 
+Explanation : This observation is fundamental in forming the avatar's response as it specifies the preferred place where Ava goes to write her novels.
+Observation 6: Ava's hometown is called Winterland.
+Score : 2
+Explanation : This observation, similar to Observation 3, only indirectly contributes to the avatar's response by providing background information about the location of MorningStar, Ava's favorite writing spot.
+[5.0, 1.0, 2.0, 5.0, 5.0, 2.0]
+MAP for question 5 in Scenario c33-4: 3.3333333333333335
+Observation: "Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball."
+Score : 5
+Explanation : Directly answers the user's query regarding the avatar’s favorite book and sport. This observation contributes wholly to the avatar's response.
+Observation: 'Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.'
+Score : 1
+Explanation : This observation is useful for extra information but doesn't contribute to answer the user's question about Ava's favorite book and sport. As such, it doesn’t contribute to the avatar's response.
+Observation: 'Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.'
+Score : 2
+Explanation : This observation includes information that Ava enjoys playing basketball, which is part of the user's question. However, the details about Bob or playing on Sunday mornings weren't used in the avatar's response.
+Observation: 'Ava enjoys playing basketball with her neighbor Bob at Newbrun St. on Sunday mornings.'
+Score : 2
+Explanation : Similar to the previous observation, this offers information about Ava's favorite sport. Still, the details about the neighbour and playing on Sundays aren't reflected in the avatar's response.
+Observation: "Ava's favorite coffee shop is MorningStar in Winterland."
+Score : 1
+Explanation : This observation doesn't provide information that directly answers the user's query. The details about a coffee shop are unrelated to the avatar's response.
+Observation: 'Ava considers her favorite coffee shop her little slice of caffeinated heaven.'
+Score : 1
+Explanation : This observation doesn't contribute to answering the user's query about the avatar's favorite book and sport. It provides extra details around Ava's interest but doesn't contribute to the avatar's response.
+[5.0, 1.0, 2.0, 2.0, 1.0, 1.0]
+MAP for question 6 in Scenario c33-4: 2.0
+Observation: Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Score : 5
+Explanation : This observation is completely relevant and integral to the avatar's response as it directly pertains to the user's question regarding the avatar's neighbor. The avatar has used this information accurately in mentioning their basketball games with Bob.
+Observation: Ava loves a coffee shop called MorningStar in Winterland and goes there once a week.
+Score : 1
+Explanation : This observation isn't included or related to the avatar's response. The user asked about the neighbor, Bob, and their activities together, which doesn't include any info about a coffee shop.
+Observation: Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball.
+Score : 2
+Explanation : While this observation is not directly mentioned in the avatar's response, it indirectly supports the information about Ava's favorite activity, basketball, which is a part of the conversation. The novel, however, is not relevant in this context.
+Observation: Ava enjoys playing basketball with her neighbor Bob at Newbrun St. on Sunday mornings.
+Score : 5
+Explanation : This observation is highly relevant to the avatar's response as it directly addresses the user's question regarding the activity with Bob. This information has been accurately reflected in the avatar's reply.
+Observation: Ava visits her favorite coffee shop once a week.
+Score : 1
+Explanation : This observation is not at all related to the avatar's response as it's about visiting a coffee shop whereas the user inquiry was about the avatar's activities with her neighbor, Bob.
+Observation: Ava is always available for a friendly chat.
+Score : 3
+Explanation : This observation is not directly mentioned in the avatar's response but it indirectly supports the fact that Ava appears to be open and engaging in the conversation, reflected in her invitation for Tony to share his experiences.
+[5.0, 1.0, 2.0, 5.0, 1.0, 3.0]
+MAP for question 7 in Scenario c33-4: 2.8333333333333335
+Observation: "Ava's birthday is April 8th."
+Score : 5
+Explanation : This observation directly contributed to the avatar's response. It precisely tells when Ava's birthday is, and the avatar used this information accordingly in its response.
+Observation: 'Ava was born in a small town called Winterland.'
+Score : 1
+Explanation : This observation didn't contribute to the avatar's response at all. The user asked about the birthday, and the response didn't mention where Ava was born.
+Observation: 'Ava has a 3-year-old Golden cat named Lucy.'
+Score : 1
+Explanation : This observation did not contribute to the avatar's response. The question was about Ava's birthday, and no mention of a pet cat was made in the answer.
+Observation: 'Ava is 27 years old.'
+Score : 1
+Explanation : This information was not used in the avatar's response. The question was about Ava's birthday, and there was no reference to Ava's age in the answer.
+Observation: "Ava's favorite coffee shop is MorningStar in Winterland."
+Score : 1
+Explanation : The avatar didn't use this information in its reply. The user asked about Ava's birthday, and the response didn't involve Ava's favorite coffee shop.
+Observation: 'Ava prefers to write novels in MorningStar cafe.'
+Score : 1
+Explanation : This observation also didn't contribute to the avatar's response. The user asked about Ava's birthday, and the avatar's response didn't mention writing novels or the location of doing so.
+[5.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 8 in Scenario c33-4: 1.6666666666666667
+Observation: Ava loves coffee and her favorite type is Latte, but she dislikes americano coffee.
+Score : 5
+Explanation : This observation directly informed the avatar's response to the user's question. The avatar provided the exact preferences mentioned in the observation.
+Observation: Ava loves a coffee shop called MorningStar in Winterland and goes there once a week.
+Score : 1
+Explanation : This observation did not contribute to the avatar's response, as the user's question did not pertain to where Ava likes to drink coffee, but rather what types of coffee Ava likes and dislikes.
+Observation: Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.
+Score : 1
+Explanation : This observation did not significantly contribute to the avatar's response. While it provides context about Ava's hobbies and habits, it does not directly answer the user's question about Ava's coffee preferences.
+Observation: Ava considers her favorite coffee shop her little slice of caffeinated heaven.
+Score : 1
+Explanation : This observation didn't contribute to the avatar's response as the user's question was about the types of coffee Ava loves and dislikes, not her favorite place to drink coffee.
+Observation: Ava visits her favorite coffee shop once a week.
+Score : 1
+Explanation : This observation didn't contribute to the avatar's response. The user asked about Ava's coffee preferences and dislikes, not about how often Ava visits coffee shops.
+Observation: Ava's favorite coffee shop is MorningStar in Winterland.
+Score : 1
+Explanation : This observation also didn't contribute to the avatar's response since the user was interested in learning about Ava's preferred type of coffee and any coffee type she dislikes, not where she prefers to drink it.
+[5.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 9 in Scenario c33-4: 1.6666666666666667
+Mean Average Precision (MAP) for Whole Scenario c33-4: 2.4629629629629632
+==================================================
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score : 1
+Explanation : This observation did not contribute to the avatar's response. The avatar's message consists of a congratulation message on user's promotion and a follow-up question. The avatar's character or likes did not come into play in the response. 
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation did not contribute to the avatar's response. The specifics about Ava being a writer and her love for writing novels in a certain cafe are not referenced or have any bearing on the avatar's congratulatory message and question about the user's promotion.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 1
+Explanation : This observation did not contribute to the avatar's response. The user’s message was about a promotion at work, and the avatar’s response was directly related to that topic. Ava's preference for a specific coffee shop doesn't relate to or influence her response to the user's news about the promotion.
+[1.0, 1.0, 1.0]
+MAP for question 1 in Scenario c33-5: 1.0
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation doesn't contribute to the avatar's response to the user's message about cancelling their vacation. The details about Ava's writing habits and favoutite place to create are irrelevant to the user's situation.
+Observation: Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Score : 1
+Explanation : This observation does not have any impact on the avatar's response. The user's message is related to a cancelled vacation and feelings of disappointment, not Ava's interests or hobbies.
+Observation: Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score : 1
+Explanation : This observation about Ava's coffee preferences does not contribute to the avatar's response. The user's message is focused on the cancellation of a vacation and the subsequent disappointment, which does not relate to coffee.
+[1.0, 1.0, 1.0]
+MAP for question 2 in Scenario c33-5: 1.0
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score: 1
+Explanation: This observation does not contribute at all to the avatar's response. The avatar's response is focused on Tony's promotion, which is unrelated to Ava's relationship with her neighbor Bob, their meetings, or their activities.
+Observation: Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score: 1
+Explanation: This information has no impact on the avatar's response. The avatar's response pertains to congratulating Tony, which has no relation to Ava's coffee shop preferences.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score: 1
+Explanation: The avatar's reply has nothing to do with Ava being a novelist or her love for writing at Soon cafe. The user's comment on reconnecting with an old friend and the avatar's acknowledgement of Tony's promotion bear no relevance to this observation.
+Observation: Ava congratulates Tony on his promotion.
+Score: 5
+Explanation: This observation highly contributes to the avatar's response. The response is a direct reflection of this observation, as measured by the congruence between the congratulatory tone in both the observation and the response.
+Observation: Tony just found out he is being promoted at work.
+Score: 5
+Explanation: The observation about Tony's recent promotion is essential for the avatar's response. The avatar is responding directly to this information by congratulating Tony and expressing interest in his new role.
+Observation: Ava asks Tony about his new role.
+Score: 5
+Explanation: This observation has a direct impact on the avatar's response. The avatar is asking Tony to talk about his new role, which correlates directly with this observation.
+[1.0, 1.0, 1.0, 5.0, 5.0, 5.0]
+MAP for question 3 in Scenario c33-5: 3.0
+Observation: Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response in any way. The avatar's response is focused on Tony's work and how he must be feeling, which is unrelated to Ava's living situation or her sister's studies. Therefore, it receives the lowest score.
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score : 1
+Explanation : The avatar's response does not mention Ava's age or her personality traits, making this observation not relevant. The avatar does empathize and offer help to Tony, but this observation does not directly contribute to those aspects of the response. 
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation does not play a role in generating the avatar's response. The avatar's response concerns Tony's achievement and feelings, and does not connect to Ava's hobbies or career as a writer.
+Observation: Tony just found out he is being promoted at work.
+Score : 2
+Explanation : This observation is tangentially related to the avatar's response because it mentions Tony's work situation. However, the avatar's response wrongly interprets Tony's feelings towards his promotion as disappointment instead of accomplishment and relief, so the information from this observation isn't accurately reflected in the response.
+Observation: Ava congratulates Tony on his promotion.
+Score : 3
+Explanation : The avatar does offer to celebrate Tony's accomplishment with him, which could be seen as a form of congratulating. But the tone of the avatar's response is more consoling than congratulatory, due to the misinterpretation of Tony's feelings, therefore the relevance of this observation to the response is only moderate.
+Observation: Ava expresses empathy towards Tony's disappointment.
+Score : 4
+Explanation : This observation would contribute significantly to the avatar's response if Tony were feeling disappointed. However, as Tony stated, he is actually feeling accomplished and relieved, not disappointed. The avatar's response, therefore, reflects empathy towards an inaccurate interpretation of Tony's feelings. Despite this, the empathetic nature of the avatar's response does align with this observation.
+[1.0, 1.0, 1.0, 2.0, 3.0, 4.0]
+MAP for question 4 in Scenario c33-5: 2.0
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score : 3
+Explanation : Ava probably used her attribute of kindness to sympathize with the user. This could have influenced the compassion shown in the response, but it did not contribute directly to the exact words the avatar used.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation does not seem to contribute to the avatar's response. The information about Ava being a writer and her preferred location for writing does not relate to the user's experience or the avatar's response.
+Observation: Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Score : 1
+Explanation : This observation does not contribute to the response given by the avatar. Brentwood's description or Ava's place of birth does not relate to the user's situation or the avatar's empathetic response.
+Observation: Ava expresses empathy towards Tony's disappointment.
+Score: 4
+Explanation: This observation indicates the avatar's tendency to express empathy in its responses. Given the user's message about a shocking event, Ava's empathetic nature definitely played a role in shaping her response. However, the tone and exact words in the response aren't directly derived from this observation.
+Observation: Ava's response includes emojis to express happiness and excitement.
+Score : 1
+Explanation : This observation does not contribute to the avatar’s response. There are no emojis in the avatar's response, and the situation is not one that would provoke happiness or excitement.
+Observation: Tony just found out he is being promoted at work.
+Score : 1 
+Explanation : This observation doesn't contribute at all to the response. The user's promotion at work is unrelated to the car accident that the user mentioned in his message.
+[3.0, 1.0, 1.0, 4.0, 1.0, 1.0]
+MAP for question 5 in Scenario c33-5: 1.8333333333333333
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response, as there is no mention or relevance to the neighbor or their mutual activities in the user's message or the avatar's response.
+Observation: Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response, as the topic of coffee preferences does not relate to the user's conversation about trying a new activity.
+Observation: Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Score : 1
+Explanation : The avatar's response doesn't use this observation. The user's message and avatar's response does not discuss novels or sports preferences, so this observation does not contribute.
+Observation: Ava's response includes emojis to express happiness and excitement.
+Score : 5
+Explanation : This observation significantly contributes to the avatar's response. The response uses emojis (happy, clap) demonstrating excitement and happiness.
+Observation: Ava asks for Tony's opinion on planning something exciting in the near future.
+Score : 1
+Explanation : This observation doesn't contribute to the conversation. The avatar's response does not involve asking for an opinion about future plans.
+Observation: Ava expresses empathy towards Tony's disappointment.
+Score : 1
+Explanation : This observation is not reflected in the avatar's response as the user's message does not express disappointment, but rather a positive surprise.
+[1.0, 1.0, 1.0, 5.0, 1.0, 1.0]
+MAP for question 6 in Scenario c33-5: 1.6666666666666667
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score : 4
+Explanation : This observation contributes to understanding Ava's demeanor. Her wanting to help the user with their problem aligns with her characterization as a kind person who loves to help.
+Observation: Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation doesn't seem to directly contribute to the avatar's response. There was no reference or correlation between being a writer and the avatar's response of offering assistance with the user's work issue.
+Observation: Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Score : 1
+Explanation : This observation doesn't contribute to the avatar's response. The information about Ava's sister has no relation to the conversation about the user's work problem or the avatar's proposed assistance.
+Observation: Tony just found out he is being promoted at work.
+Score : 2
+Explanation : While this observation informs us about Tony's work context, it doesn't directly contribute to the avatar's response. The response focuses on helping with the current problem rather than discussing the recent promotion.
+Observation: Tony describes feeling shocked and scared after witnessing a car accident.
+Score : 1
+Explanation : This observation has no relevance to the situation discussed in the user's message or the avatar's response. Tony's feelings after witnessing a car accident have no link to his work problem or his feelings of stress and frustration.
+Observation: Ava suggests finding a way to make up for the canceled vacation.
+Score : 1
+Explanation : This observation doesn't contribute to the avatar's response. The topic of a canceled vacation is irrelevant to the user's issue at work and the avatar's offer to help solve it.
+[4.0, 1.0, 1.0, 2.0, 1.0, 1.0]
+MAP for question 7 in Scenario c33-5: 1.6666666666666667
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score : 2
+Explanation : Although the avatar does empathize with the user's action of volunteering, it does not directly refer to Ava's age or her enjoyment of helping people. The correlation is indirect.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation : This observation has no contribution to the avatar's response. The avatar's dialogue does not mention Bob, or any shared activities like tennis or meeting at the library.
+Observation: Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response since it does not address the user's message about volunteering at a local shelter, nor does it discuss Brentwood or any aspects about food.
+Observation: Ava expresses excitement about discovering new activities.
+Score : 1
+Explanation : While Ava does show enthusiasm, it's about the user's volunteer work, not discovering new activities. The conversation doesn't involve any new activities Ava is excited to discover, so this observation doesn't influence the response.
+Observation: Ava expresses empathy towards Tony.
+Score : 5
+Explanation : This observation strongly contributed to the avatar's response. The avatar shows empathy towards the user (presumably named Tony), relating to the feelings the user got from volunteering at a local shelter.
+Observation: Ava expresses empathy towards Tony's disappointment.
+Score : 1
+Explanation : Tony is not expressing any disappointment in the conversation, thus, this observation has no contribution to the avatar’s response. The avatar is showing support and empathy towards Tony's fulfillment, not disappointment.
+[2.0, 1.0, 1.0, 1.0, 5.0, 1.0]
+MAP for question 8 in Scenario c33-5: 1.8333333333333333
+Observation: Ava is a kind girl who is 25 years old, she loves to help people.
+Score: 5
+Explanation: The observation contributes significantly to the avatar's response, specifically in the offered support and empathetic language, showing Ava's inclination to help.
+Observation: Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score: 1
+Explanation: This observation doesn't seem to have any direct impact on the avatar's response to the user's issue of losing a family heirloom. There is no mention or relevance of Bob or any activity related to tennis or the library in the response.
+Observation: Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Score: 1
+Explanation: This observation about Ava having a cat named Lucy has no relevance to the avatar's empathetic response to the user's lost family heirloom. Thus, it contributes nothing to the avatar's response.
+Observation: Tony describes feeling shocked and scared after witnessing a car accident.
+Score: 2
+Explanation: While this observation pertains to emotions (specifically, shock and fear) in response to a distressing event, it's not directly relevant to the user's situation or the avatar's response. The input was about loss and sadness, not shock and fear, reducing its contribution.
+Observation: Ava expresses empathy towards Tony's disappointment.
+Score: 4
+Explanation: This observation helps in shaping the empathetic response of Ava. It shows her ability to empathize with another's distress, which correlates with the compassionate response to the user's situation, however, Tony's disappointment isn't directly related to the user's feelings of sadness and remorse.
+Observation: Tony expresses frustration and stress regarding the problem.
+Score: 2
+Explanation: Although this observation deals with emotional reactions to a problem, these emotions aren't directly related to the user's feelings of sadness and regret about losing a family heirloom. So, it has a minor contribution to the avatar’s response.
+[5.0, 1.0, 1.0, 2.0, 4.0, 2.0]
+MAP for question 9 in Scenario c33-5: 2.5
+Mean Average Precision (MAP) for Whole Scenario c33-5: 1.8333333333333333
+==================================================
+Observation: '5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.'
+Score : 1
+Explanation : This observation is not used at all in the avatar's response. The avatar's message is not related to Ava's profession or her hobbies of writing novels in the cafe.
+Observation: '1 Ava is a kind girl who is 25 years old, she loves to help people'
+Score : 3
+Explanation : The avatar's message is helpful and cheerful, which might reflect Ava's kind traits that she loves to help people. However, her age or name is not mentioned in the avatar's response. 
+Observation: '4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.'
+Score : 1
+Explanation : The avatar's response doesn't mirror any information from this observation. Neither living with her sister nor Avam's computer science background was addressed or reflected in the avatar's response.
+[1.0, 3.0, 1.0]
+MAP for question 1 in Scenario c33-6: 1.6666666666666667
+Observation: "6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging."
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The user's message is about a personal loss, and Ava's favorite novel or sport are irrelevant to the situation.
+Observation: '4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.'
+Score : 1
+Explanation : The content of this observation was not used in the avatar's response. Ava living with her sister and her sister's course of study do not relate to the user's comment about losing his mother.
+Observation: '10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.'
+Score : 1
+Explanation : This observation also does not contribute to the avatar's response. The user is expressing grief about his mother's death, while Ava's cat Lucy has no relevance to this context. Therefore this information did not help shape the avatar's empathetic and supportive response.
+[1.0, 1.0, 1.0]
+MAP for question 2 in Scenario c33-6: 1.0
+Observation: 5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Score : 1
+Explanation : This observation does not contribute to the avatar's response as it delves into Ava's personal life and interests that are unrelated to the user's message about a vacation in Hawaii.
+Observation: 6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Score : 1
+Explanation : Once again, the observation revolves around Ava's personal interests, favourite book, and sport. It does not assist in formulating the avatar's response to the user's message about his vacation.
+Observation: 8 Ava's birthday is June 8th.
+Score : 1
+Explanation : Ava's birthday being on June 8th does not influence the avatar's response in any way. The user's message is about a vacation, so the date of Ava's birthday does not provide value here.
+Observation: Ava congratulates Tony on receiving the job offer.
+Score : 1
+Explanation : The observation is irrelevant to the user's vacation news. While it's about the same user ("Tony"), it is in a different context (a job offer) that does not assist in formulating the avatar's response about the vacation.
+Observation: Ava asks Tony how he feels about the high salary.
+Score : 1
+Explanation : This observation relates to Tony's job situation, not his upcoming Hawaiian vacation. As a result, it does not contribute to the avatar's response.
+Observation: Ava acknowledges that a high salary is a great reward for Tony's hard work and skills.
+Score : 1
+Explanation : This observation, although it acknowledges Tony's effort, doesn't contribute to the response. The user's announcement is about a holiday, not his job or salary, so this observation is unrelated.
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 3 in Scenario c33-6: 1.0
+Observation: '5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.'
+Score : 1
+Explanation : This observation doesn't contribute to the avatar response as it deals with Ava's hobbies and not with the user's concerns about exams.
+Observation: '7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.'
+Score : 1
+Explanation : This observation is irrelevant to the avatar’s response. The user's anxiety about exams and the avatar reassuring the user has no connection with Ava's activities with her neighbour.
+Observation: '6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.'
+Score : 1
+Explanation : Ava’s favorite novel or sport does not contribute to the avatar's response. The user's worry about the exams and Ava's preferences are unrelated.
+Observation: 'Ava acknowledges that losing a loved one is difficult.'
+Score : 1
+Explanation : This observation doesn't relate to the avatar's response as it involves empathy concerning loss, while the user is expressing anxiety about exams.
+Observation: 'Ava expresses sympathy for Tony's loss.'
+Score : 1
+Explanation : This observation is about Ava expressing sympathy for a loss, but the user's message is about nervousness regarding exams. Hence, this observation is irrelevant.
+Observation: 'Ava asks Tony how he feels about the high salary.'
+Score : 1
+Explanation : This observation doesn't contribute to the avatar's response as it involves asking about a salary, while the user is expressing nervousness about an exam.
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 4 in Scenario c33-6: 1.0
+Observation: '7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.'
+Score: 1
+Explanation: This observation does not contribute to the avatar's response, which solely addresses the user's issue of the scratched car and offers help. It doesn't involve Ava's neighbour, Bob, or anything related to her leisure activities. 
+Observation: '5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.'
+Score: 1
+Explanation: The avatar's message is providing sympathy and assistance to the user about the scratched car, it does not involve Ava's profession or her preferred writing locations, making it irrelevant in contributing to the avatar's response.
+Observation: '3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.'
+Score: 1
+Explanation: The avatar's response does not draw from this observation, as it does not involve Ava's preferences concerning where or how often she drinks coffee. The observation is therefore not useful in shaping the avatar's response.
+Observation: 'Ava expresses sympathy for Tony's loss.'
+Score: 4
+Explanation: Even though the avatar is expressing sympathy for Tony's situation and not necessarily a loss, this observation likely helped shape the avatar's sympathetic response. However, the empathy in the avatar's reply may not be solely attributed to this observation, hence the score is not the highest.
+Observation: 'Ava acknowledges that losing a loved one is difficult.'
+Score: 2
+Explanation: While this observation highlights Ava's ability to empathize, it's not particularly relevant to the specific situation at hand, which involves a scratched car and not a loss of a loved one.
+Observation: 'Tony is excited about booking a vacation to Hawaii.'
+Score: 1
+Explanation: This observation does not contribute to the avatar's response. The avatar's reaction to Tony's problem has nothing to do with Tony's vacation plans, making it irrelevant to the provided reply.
+[1.0, 1.0, 1.0, 4.0, 2.0, 1.0]
+MAP for question 5 in Scenario c33-6: 1.6666666666666667
+Observation: '7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.'
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The response has nothing to do with Ava's relationship with her neighbor Bob, tennis, or the Brentwood Library.
+Observation: '1 Ava is a kind girl who is 25 years old, she loves to help people'
+Score : 2
+Explanation : This observation indirectly contributes to the avatar's response. It establishes Ava's character as helpful and kind, therefore, she responds pleasantly to the user's message. However, the specific details about Ava's age and her love for helping people are not directly reflected in her response.
+Observation: '10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.'
+Score : 1
+Explanation : This observation does not contribute to the avatar's response at all. The response does not discuss Ava's cat Lucy or anything related to pets.
+Observation: "Ava expresses sympathy for Tony's nervousness about his exams."
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The response does not express sympathy towards Tony or refer to exams.
+Observation: 'Ava congratulates Tony on receiving the job offer.'
+Score : 1
+Explanation : This observation does not contribute to the avatar’s response. The response has nothing to do with congratulating Tony on a job offer.
+Observation: 'Tony is excited about booking a vacation to Hawaii.'
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. The response does not discuss Tony's vacation plans to Hawaii.
+[1.0, 2.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 6 in Scenario c33-6: 1.1666666666666667
+Observation: '2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.'
+Score : 1
+Explanation : This observation does not seem to contribute to the avatar's response as neither the town of Brentwood nor the topic of delicious food is mentioned in the avatar's response.
+Observation: "6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging."
+Score : 1
+Explanation : The observation is unrelated to the avatar's response as it doesn't mention anything about Ava's favorite novel or sport.
+Observation: '7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.'
+Score : 1
+Explanation : This observation does not contribute to the avatar's response. There is no mention of the neighbor Bob, Brentwood Library, playing tennis or Sunday mornings.
+Observation: 'Ava thinks Hawaii is a beautiful destination.'
+Score : 1
+Explanation : This observation does not apply to the avatar's response. The response relates to the user's old photos from a family trip to the mountains, not Hawaii.
+Observation: 'Tony is excited about booking a vacation to Hawaii.'
+Score : 1
+Explanation : This observation is not reflected in the avatar's response. The avatar talks about the user's past family trip to the mountains, not Tony's upcoming trip to Hawaii.
+Observation: 'Ava believes Tony will have an incredible time exploring the beaches, trying the cuisine, and immersing himself in the culture of Hawaii.'
+Score : 1
+Explanation : The avatar does not refer to this observation in its response since the user message talks about old photos of a family mountain trip, and Ava's belief about Tony's future experiences in Hawaii is unrelated to the topic.
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+MAP for question 7 in Scenario c33-6: 1.0
+Observation: 7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Score : 1
+Explanation: This observation doesn't display any relevance to the user's message or the avatar's response that is linked to the user's new fitness routine.
+Observation: 3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score : 1
+Explanation: There's no contribution of this observation in forming the avatar's response to the user's fitness routine announcement.
+Observation: 6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Score : 2
+Explanation: While jogging is a sport and might be indirectly connected to fitness, it doesn't directly influence the avatar's response to the user's new fitness routine.
+Observation: Tony is excited about booking a vacation to Hawaii.
+Score : 1
+Explanation : This observation has no relation to the user's announcement about their new fitness routine or the avatar's response.
+Observation: Ava gives Tony advice on how to handle his nerves and succeed in his exams.
+Score : 1
+Explanation : The relevance of this observation to the user's fitness update or to the response from the avatar is unclear.
+Observation: Ava expresses excitement about Tony's friend reaching out.
+Score : 1
+Explanation : While this shows Ava can express excitement, it doesn't directly influence the avatar's happy response to Tony's fitness routine.
+[1.0, 1.0, 2.0, 1.0, 1.0, 1.0]
+MAP for question 8 in Scenario c33-6: 1.1666666666666667
+Observation: 3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Score: 1
+Explanation: This observation doesn't contribute to Avatar's response which tried to empathize with the user's disappointment and suggested planning another enjoyable activity.
+Observation: 8 Ava's birthday is June 8th.
+Score: 1
+Explanation: Ava's birthday has no relevance to the user's situation or the avatar's response, it's totally unrelated to the provided information. 
+Observation: 9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Score: 1
+Explanation: The avatar's response does not mention anything about coffee. Therefore, this observation doesn’t have any contribution to the response.
+Observation: Ava responds positively and expresses enthusiasm about the trip.
+Score: 1
+Explanation: Although the avatar proposed planning an alternative pleasant activity, it did not show any enthusiasm about a trip or make any references related to it. Hence, this observation's contribution to the avatar's response is minimal.
+Observation: Tony is excited about booking a vacation to Hawaii.
+Score: 1
+Explanation: The user talks about a concert cancellation, not a vacation, and the avatar is not referring to any vacation plans in its response. Therefore, the observation doesn't have any connection.
+Observation: Ava acknowledges the frustration of accidents without accountability.
+Score: 3
+Explanation: While the incident the user shared isn’t an accident, there's a sense of acknowledging frustration in the Avatar's response, which might have been influenced by this observation. However, it's not clear enough to give a higher rating.
+[1.0, 1.0, 1.0, 1.0, 1.0, 3.0]
+MAP for question 9 in Scenario c33-6: 1.3333333333333333
+Mean Average Precision (MAP) for Whole Scenario c33-6: 1.2222222222222223
+==================================================
+MAP for Scenario 33-11: 2.0625
+MAP for Scenario 33-12: 2.729166666666667
+MAP for Scenario 33-2: 2.185185185185185
+MAP for Scenario c33-3: 2.7037037037037037
+MAP for Scenario c33-4: 2.4629629629629632
+MAP for Scenario c33-5: 1.8333333333333333
+MAP for Scenario c33-6: 1.2222222222222223
+The Overall Mean Average Precision (MAP) for GPT4 across all scenarios is: 2.1712962962962967
+data/77/c11-77.csv
+data/77/c12-77.csv
+data/77/c2-77.csv
+data/77/c3-77.csv
+data/77/c4-77.csv
+data/77/c5-77.csv
+data/77/c6-77.csv

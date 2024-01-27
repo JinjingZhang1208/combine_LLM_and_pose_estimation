@@ -1,0 +1,89 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,,,"(Happy, Cheer)
+Congratulations on your promotion, Tony! That's fantastic news! ���� I can imagine how excited and proud you must be feeling right now. It's a testament to your hard work and dedication. Keep ",7.31,,,,0,0,0.7
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"Ava congratulated Tony on his promotion.
+Ava acknowledged Tony's hard work and dedication.
+Tony shared that he was promoted at work.","1.0
+0.8
+0.0","(Sad, Faint)
+Oh no, Tony! I'm so sorry to hear that. It's really disappointing when plans don't work out. Maybe we can think of something to cheer you up or plan a mini getaway closer to home?",12.98,,,,0,0.53,0.5
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"Ava offers to think of something to cheer Tony up.
+Ava suggests planning a mini getaway closer to home.
+Ava expresses empathy towards Tony's situation.
+Ava congratulated Tony on his promotion.
+Tony shared that he was promoted at work.","1.0
+0.87
+0.83
+0.64
+0.53","(Happy, Cheer)
+That's wonderful, Tony! Reconnecting with old friends can bring back so many joyful memories. If you're feeling nostalgic, how about planning a mini getaway closer to home? It could be a fun way to create new memories while cherishing the old ones.",6.89,,,,0,1.36,0.57
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"Tony shared that he was promoted at work.
+Ava acknowledged Tony's hard work and dedication.
+Ava congratulated Tony on his promotion.
+Ava's response acknowledges Tony's positive experience of reconnecting with an old friend.
+Ava's response shows empathy and enthusiasm for Tony's nostalgic and joyful feelings.","1.0
+0.96
+0.83
+0.79
+0.74","(Happy, Clap)
+Congratulations, Tony! Your hard work paid off. It's such a joy to complete a challenging project and feel that sense of accomplishment.",3.59,,,,0,0.67,0.2
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"Tony feels a deep sense of accomplishment and relief.
+Ava expresses empathy towards Tony's situation.
+Tony has been working on a challenging project.
+Ava's response acknowledges Tony's positive experience of reconnecting with an old friend.
+Ava's response shows empathy and enthusiasm for Tony's nostalgic and joyful feelings.","1.0
+0.9
+0.54
+0.54
+0.48","(Happy, Wave Hands)
+I'm sorry to hear that, Tony. It must have been quite shocking. Are you okay?",4.67,,,,0,0.64,0.47
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","Tony feels a deep sense of accomplishment and relief.
+Ava's response acknowledges Tony's positive experience of reconnecting with an old friend.
+Ava suggests planning a mini getaway as a way to create new memories while cherishing the old ones.
+Ava's response shows empathy and enthusiasm for Tony's nostalgic and joyful feelings.
+Tony has been working on a challenging project.","1.0
+0.79
+0.76
+0.69
+0.65","(Happy, Clap)
+That's fantastic, Tony! It's always a delightful surprise when we discover new things we love. It's like the world opens up to more possibilities. What activity did you try?",4.95,,,,0,0.69,0.49
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","Tony has been working on a challenging project.
+Tony feels a deep sense of accomplishment and relief.
+Tony shared that he was promoted at work.
+- Tony tried a new activity that he initially thought he wouldn't like, but ended up loving it.
+Ava expresses empathy towards Tony's situation.","1.0
+0.6
+0.49
+0.42
+0.35","(Happy, Clap)
+I understand how frustrating and stressful it can be when faced with a challenging problem at work. Take a deep breath and remember, you've overcome difficult tasks before. You're capable of finding a solution, Tony!",3.81,,,,0,1.08,0.51
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","Tony feels a deep sense of accomplishment and relief.
+- Tony tried a new activity that he initially thought he wouldn't like, but ended up loving it.
+Ava expresses empathy towards Tony's experience.
+- Ava acknowledges that discovering new things we love opens up more possibilities in the world.
+Ava suggests planning a mini getaway as a way to create new memories while cherishing the old ones.","1.0
+0.73
+0.6
+0.56
+0.55","(Sad, Faint)
+Oh Tony, your day sounds incredibly fulfilling! Volunteering at a shelter must have been so rewarding. It's amazing how trying new things can unexpectedly bring us joy. Maybe we can plan a mini getaway to create even more wonderful memories together.",4.98,,,,0,0.69,0.48
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","Tony expresses feeling frustrated and stressed due to a work problem.
+Tony feels a deep sense of accomplishment and relief.
+Tony felt shocked and scared after witnessing a car accident.
+Ava suggests planning a mini getaway as a way to create new memories while cherishing the old ones.
+Ava expresses empathy towards Tony's experience.","1.0
+0.94
+0.91
+0.82
+0.78","(Sad, Faint)
+Oh no, I'm so sorry to hear that. Losing a treasured family heirloom can be really tough. Take a deep breath and remember that memories are forever cherished in our hearts. Is there anything I can do to help you feel better?",3.23,,,,0,0.57,0.46
+I watched a comedy show that was hilarious. It left me feeling light-hearted and amused.,"Tony feels a deep sense of accomplishment and relief.
+- Tony tried a new activity that he initially thought he wouldn't like, but ended up loving it.
+Ava mentions the unexpected joy that trying new things can bring.
+Tony expresses feeling frustrated and stressed due to a work problem.
+- Ava expresses delight and happiness for Tony's pleasant surprise.","1.0
+0.96
+0.88
+0.74
+0.74","(Happy, Clap)
+That's fantastic, Tony! Trying new things can be such a delightful surprise. It's wonderful to hear that you ended up loving the activity. It's a reminder that stepping out of our comfort zones can bring us unexpected joy.",3.78,,,,0,0.61,0.63

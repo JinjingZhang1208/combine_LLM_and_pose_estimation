@@ -1,0 +1,157 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,"1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.","1.0
+0.82
+0.75
+0.7
+0.41","(Happy, Clap)
+Congratulations on your promotion, Tony! That's fantastic news! It's no surprise though, you've always been hardworking and dedicated. I'm excited for you! What's the first thing you'll do to celebrate?",0.0,,,,0,0.62,0.21
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+1 Ava is a kind girl who is 25 years old, she loves to help people","1.0
+0.91
+0.71
+0.67
+0.61","(Sad, Faint)
+Oh no, I'm sorry to hear that you had to cancel your long-awaited vacation. It's perfectly normal to feel disappointed. Maybe we can come up with alternative plans to make up for it?",0.0,,,,0,0.57,0.32
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava congratulates Tony on his promotion.
+Ava praises Tony's hard work and dedication.
+Ava asks Tony what he plans to do to celebrate.","1.0
+0.67
+0.67
+0.62
+0.27
+1.0
+0.23
+0.0","(Happy, Dance)
+That's wonderful, Tony! Congratulations on your promotion! Your hard work and dedication have paid off. How do you plan to celebrate?",0.0,,,,0,1.13,0.5
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"1 Ava is a kind girl who is 25 years old, she loves to help people
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava praises Tony's hard work and dedication.
+Ava congratulates Tony on his promotion.
+Ava shows empathy towards Tony's disappointment.
+Tony expresses disappointment about having to cancel the long-awaited vacation.
+Ava asks Tony what he plans to do to celebrate.","1.0
+0.99
+0.96
+0.73
+0.53
+1.0
+0.88
+0.43
+0.42
+0.1","(Sad, Faint)
+Oh no, I'm sorry to hear that you had to cancel your long-awaited vacation. It's disappointing when plans don't work out. But hey, maybe there's a silver lining waiting for you. What do you plan to do to celebrate instead?",0.0,,,,0,0.95,0.53
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava shows empathy towards Tony's disappointment.
+Tony expresses disappointment about having to cancel the long-awaited vacation.
+Tony mentioned reconnecting with an old friend.
+Ava offers to come up with alternative plans to make up for the canceled vacation.
+Ava congratulates Tony on his promotion.","1.0
+0.88
+0.87
+0.84
+0.62
+1.0
+0.91
+0.57
+0.38
+0.21","(Happy, Clap)
+Oh no, I'm sorry to hear that, Tony! That must have been really scary. Are you okay?",0.0,,,,0,0.95,0.3
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+Observation 1: Tony mentioned that they had been working on a challenging project and finally completed it.
+Observation 3: Ava suggested finding a silver lining and asked Tony about their alternate plans for celebration.
+Observation 2: Ava expressed sympathy for Tony having to cancel their long-awaited vacation.
+Tony expresses disappointment about having to cancel the long-awaited vacation.
+Ava shows empathy towards Tony's disappointment.","1.0
+0.96
+0.96
+0.91
+0.89
+1.0
+0.76
+0.65
+0.49
+0.48","(Happy, Cheer)
+That's wonderful, Tony! It's always delightful to discover new activities that surprise us in the best way. What was this activity that you loved? I'm curious to know more!",0.0,,,,0,1.04,0.54
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Observation 1: Tony mentioned that they had been working on a challenging project and finally completed it.
+Tony expresses disappointment about having to cancel the long-awaited vacation.
+Ava offers to come up with alternative plans to make up for the canceled vacation.
+Observation 3: Ava suggested finding a silver lining and asked Tony about their alternate plans for celebration.
+Observation 2: Ava expressed sympathy for Tony having to cancel their long-awaited vacation.","1.0
+0.89
+0.73
+0.69
+0.67
+1.0
+0.58
+0.52
+0.41
+0.32","(Sad, Faint)
+I'm sorry to hear that, Tony. It can be tough when work problems become overwhelming. Maybe taking a break and doing something you enjoy could help clear your mind. What do you think?",0.0,,,,0,1.03,0.47
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","1 Ava is a kind girl who is 25 years old, she loves to help people
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava responds with enthusiasm and joy, expressing happiness for Tony's experience.
+Observation 2: Ava expressed sympathy for Tony having to cancel their long-awaited vacation.
+Observation 1: Tony mentioned that they had been working on a challenging project and finally completed it.
+Ava expresses empathy towards Tony.
+Ava praises Tony's hard work and dedication.","1.0
+0.78
+0.65
+0.63
+0.54
+1.0
+0.88
+0.88
+0.71
+0.69","(Happy, Clap)
+That's wonderful, Tony! Volunteering is such a fulfilling experience. It's great to hear that it made you feel grateful. Helping others is truly rewarding.",0.0,,,,0,0.98,0.27
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava shows empathy towards Tony's disappointment.
+The problem at work has been causing frustration and stress for Tony.
+Tony expresses disappointment about having to cancel the long-awaited vacation.
+Observation 2: Ava expressed sympathy for Tony having to cancel their long-awaited vacation.
+Tony is struggling with a problem at work.","1.0
+0.98
+0.93
+0.87
+0.77
+1.0
+0.96
+0.96
+0.84
+0.78","(Sad, Faint)
+Oh no, I'm so sorry to hear that you lost a treasured family heirloom. Losing something with sentimental value can be really tough. Is there anything I can do to help you feel better?",0.0,,,,0,1.09,0.19

@@ -1,0 +1,91 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+What inspired you to become a writer and what kind of novels do you enjoy writing the most?,"Tony has some questions to ask Ava.
+Ava is happy and excited to help Tony.
+Ava expresses excitement and anticipation for the event.
+Ava is ready to provide recommendations to Tony.
+Ava expresses excitement about trying new dishes.","1.0
+0.93
+0.92
+0.86
+0.77","(Happy, Dance)
+I've always been captivated by stories and the power of words. I enjoy writing fantasy novels the most. It allows me to explore magical realms and create enchanting adventures. What about you, Tony? Any favorite genres?",11.74,,,,0,0.72,0.5
+How has growing up in Brentwood influenced your life and your work?,"Ava is captivated by stories and the power of words.
+Tony has some questions to ask Ava.
+Ava is ready to provide recommendations to Tony.
+Ava is happy and excited to help Tony.
+Ava is interested in exploring magical realms and creating enchanting adventures.","1.0
+0.94
+0.84
+0.83
+0.8","(Ava, Happy) *Clap*
+Growing up in Brentwood was like living in a magical realm. The enchanting surroundings inspired my creativity and love for storytelling. It's influenced my work by infusing it with a touch of wonder and imagination. What about you, Tony? How has your upbringing shaped your life?",9.13,,,,0,0.7,0.24
+What makes the Soon Cafe your favorite spot in Brentwood for writing?,"Ava says that growing up in Brentwood has influenced her work by infusing it with wonder and imagination.
+Ava mentions that the enchanting surroundings inspired her creativity and love for storytelling.
+Ava describes growing up in Brentwood as living in a magical realm.
+Ava is captivated by stories and the power of words.
+Ava enjoys writing fantasy novels the most.","1.0
+0.92
+0.91
+0.78
+0.77","(Happy, Dance)
+The Soon Cafe is my favorite spot because it feels like a portal to a magical realm. The enchanting surroundings inspire my creativity and transport me to new worlds!",11.16,,,,0,0.81,0.49
+Could you tell us more about your relationship with your sister Avam and how it impacts your daily life?,"Tony has some questions to ask Ava.
+Ava is captivated by stories and the power of words.
+Ava is interested in exploring magical realms and creating enchanting adventures.
+Ava says that growing up in Brentwood has influenced her work by infusing it with wonder and imagination.
+Ava mentions that the enchanting surroundings inspired her creativity and love for storytelling.","1.0
+0.98
+0.94
+0.93
+0.92","(Happy, Wave Hands)
+Avam and I share a special bond. We embark on whimsical adventures together, exploring enchanted realms and sparking our imaginations. It's a magical part of my daily life! ï¿½ï¿½ï¿½ï",7.58,,,,0,0.74,0.49
+"Why is 'Gone with the Wind' your favorite novel, and how does it inspire your own writing?","Ava is being asked about her favorite novel.
+Ava mentions that the enchanting surroundings inspired her creativity and love for storytelling.
+Ava enjoys writing fantasy novels the most.
+Ava is captivated by stories and the power of words.
+Ava describes the Soon Cafe as her favorite spot for writing because it feels like a portal to a magical realm.","1.0
+0.8
+0.78
+0.76
+0.67","(Happy, Point)
+""Gone with the Wind is my favorite novel because it transports me to a world of passion and resilience. The enchanting surroundings inspire my own writing, especially in the realm of fantasy. It's truly magical!""",8.66,,,,0,0.77,0.5
+"How did you meet your neighbor Bob, and what makes your tennis games with him special?"" ""What aspects of jogging in Brentwood do you find most enjoyable or beneficial?","Ava says that growing up in Brentwood has influenced her work by infusing it with wonder and imagination.
+Ava describes growing up in Brentwood as living in a magical realm.
+Ava is being asked about her favorite novel.
+Tony has some questions to ask Ava.
+The Soon Cafe is located in Brentwood.","1.0
+0.97
+0.93
+0.92
+0.88","(Angry, Sadness)
+I met Bob when I moved to Brentwood. Our tennis games are special because we play with a magical tennis ball that never touches the ground! It's so much fun! #Imagination",11.3,,,,0,0.77,0.37
+How do you celebrate your birthday on June 8th? Any special traditions?,"They embark on whimsical adventures together. 
+Their tennis games are special because they play with a magical tennis ball.
+Ava and Tony are discussing an event happening on Saturday at 11 am.
+Ava is being asked about her favorite novel.
+Avam and Ava share a special bond. ","1.0
+0.84
+0.77
+0.75
+0.73","(Happy, Cheer)
+I love celebrating my birthday with whimsical adventures! One year, Tony and I went on a magical treasure hunt. We followed clues through enchanted forests and found hidden treasures. It was a day filled with laughter and wonder!",6.48,,,,0,0.73,0.49
+What's the story behind choosing a Bengal cat and naming him Lucy?,"They embark on whimsical adventures together. 
+Ava is being asked about her favorite novel.
+The treasure hunt took them through enchanted forests and they found hidden treasures.
+Ava and Tony went on a magical treasure hunt on one of Ava's birthdays.
+Avam and Ava share a special bond. ","1.0
+0.81
+0.8
+0.8
+0.79","(Happy, Dance)
+Choosing a Bengal cat was a whimsical decision, Tony! Lucy seemed like the perfect name for my adventurous feline companion. We embark on magical journeys together! ï¿½ï¿½ï",4.53,,,,0,0.74,0.47
+"""How do your experiences at the Brentwood Library with Bob enhance your love for books and community?","Ava met Bob when she moved to Brentwood.
+Ava finds jogging in Brentwood enjoyable and beneficial.
+Ava says that growing up in Brentwood has influenced her work by infusing it with wonder and imagination.
+Ava is being asked about her favorite novel.
+Ava describes growing up in Brentwood as living in a magical realm.","1.0
+0.88
+0.84
+0.76
+0.74","(Smiling, Clapping)
+""Oh, Tony, my experiences at the Brentwood Library with Bob have been absolutely delightful! Bob is like a walking encyclopedia of books and community knowledge. He has introduced me to so many hidden literary gems and fascinating individuals. It's truly enhanced my love for books and the vibrant community here in Brentwood!""",4.78,,,,0,0.88,0.49

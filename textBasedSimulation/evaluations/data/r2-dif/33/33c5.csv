@@ -1,0 +1,97 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,"1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.","1.0
+0.81
+0.75","(Happy, Cheer)
+Congratulations on your promotion! That's fantastic news, Tony! I can imagine how excited and proud you must be feeling right now. It's a well-deserved achievement. Cheers to your success! 🎉",0.0,,,,0,0.5,0.19
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.","1.0
+0.91
+0.71","(Sad, Sadness)
+Oh no, that's really disappointing. I know how much you were looking forward to your vacation. How about we plan a virtual vacation instead? We can explore different destinations and create a fun itinerary together. What do you think, Tony?",0.0,,,,0,0.47,0.53
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+Ava acknowledged Tony's feelings of excitement and pride.
+Ava responded with enthusiasm and congratulations to Tony's news of being promoted.
+Ava described Tony's promotion as a well-deserved achievement.","1.0
+0.67
+0.67
+1.0
+0.52
+0.0","(Happy, Dance)
+That's wonderful, Tony! Reconnecting with old friends can bring back so many joyful memories. It's like stepping into a time machine! 🎉💃",0.0,,,,0,0.88,0.53
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"1 Ava is a kind girl who is 25 years old, she loves to help people
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava acknowledged Tony's feelings of excitement and pride.
+Ava described Tony's promotion as a well-deserved achievement.
+Ava responded with enthusiasm and congratulations to Tony's news of being promoted.","1.0
+0.99
+0.96
+1.0
+0.83
+0.78","(Happy, Clap)
+Congratulations, Tony! That's fantastic news! I can only imagine the sense of accomplishment and relief you must be feeling right now. Well done on completing your challenging project!",0.0,,,,0,0.97,0.47
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava empathizes with Tony's disappointment about canceling the vacation.
+Ava acknowledged Tony's feelings of excitement and pride.
+Ava compared reconnecting with old friends to stepping into a time machine.","1.0
+0.88
+0.87
+1.0
+0.92
+0.85","(Sad, Faint)
+Oh no, I'm so sorry to hear that, Tony. Car accidents can be really frightening. Take some deep breaths and try to relax. Is there anything I can do to help you feel better?",0.0,,,,0,0.93,0.22
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava mentioned that reconnecting with old friends can bring back joyful memories.
+Ava acknowledged Tony's feelings of excitement and pride.
+Ava responded positively to Tony's statement about reconnecting with an old friend.","1.0
+0.96
+0.96
+1.0
+0.97
+0.95","(Happy, Dance)
+That's wonderful, Tony! Trying new things can be so fulfilling. It's like discovering hidden treasures within ourselves. What activity did you try?",0.0,,,,0,0.99,0.22
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","1 Ava is a kind girl who is 25 years old, she loves to help people
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Tony has been working on a challenging project.
+Ava offers assistance to help Tony feel better.
+Ava empathizes with Tony's disappointment about canceling the vacation.","1.0
+0.89
+0.73
+1.0
+0.46
+0.44","(Sad, Faint)
+I'm sorry to hear that, Tony. It can be really tough when work problems leave you feeling frustrated and stressed. Is there anything specific I can do to help you?",0.0,,,,0,0.95,0.6
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","1 Ava is a kind girl who is 25 years old, she loves to help people
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Tony tried a new activity and enjoyed it.
+Ava mentioned that reconnecting with old friends can bring back joyful memories.
+Ava acknowledged Tony's feelings of excitement and pride.","1.0
+0.78
+0.65
+1.0
+0.68
+0.66","(Smiling, Clapping)
+It sounds like you had a wonderful day, Tony! Volunteering is such a fulfilling experience, isn't it? Helping others brings so much joy and gratitude. What activities did you do at the shelter?",0.0,,,,0,1.06,0.23
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava empathizes with Tony's disappointment about canceling the vacation.
+Ava mentioned that reconnecting with old friends can bring back joyful memories.
+Ava acknowledges the negative emotions Tony is feeling ","1.0
+0.98
+0.93
+1.0
+0.93
+0.87","(Sad, Faint)
+Oh no, Tony! I can understand why you're feeling sad and remorseful. Losing a treasured family heirloom is heartbreaking. Is there anything I can do to help you feel better?",0.0,,,,0,1.05,0.24

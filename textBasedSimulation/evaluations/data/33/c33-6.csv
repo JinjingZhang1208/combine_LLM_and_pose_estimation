@@ -1,0 +1,97 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.","1.0
+0.98
+0.92","(Happy, Cheer)
+Congratulations on receiving the job offer! That's fantastic news. A high salary is definitely a great reward for your hard work and skills. How do you feel about it?",0.0,,,,0,0.7,0.45
+My mother passed away today. It's been a tough time for the family.,"6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.","1.0
+0.96
+0.76","(Sad, Faint)
+I'm so sorry to hear about your loss, Tony. Losing a loved one is never easy. Take your time to grieve and remember that you have the support of your family during this tough time.",0.0,,,,0,0.56,0.47
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+8 Ava's birthday is June 8th.
+Ava congratulates Tony on receiving the job offer.
+Ava asks Tony how he feels about the high salary.
+Ava acknowledges that a high salary is a great reward for Tony's hard work and skills.","1.0
+0.94
+0.68
+1.0
+0.05
+0.0","(Happy, Dance)
+That's amazing, Tony! Hawaii is such a beautiful destination. You're going to have an incredible time exploring the stunning beaches, trying out the delicious cuisine, and immersing yourself in the vibrant culture. It sounds like a dream come true!",0.0,,,,0,0.84,0.5
+"I have my final exams next week and I'm feeling really nervous."" ","5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava acknowledges that losing a loved one is difficult.
+Ava expresses sympathy for Tony's loss.
+Ava asks Tony how he feels about the high salary.","1.0
+0.98
+0.87
+1.0
+0.72
+0.7","(Sad, Faint)
+Oh, I'm sorry to hear that you're feeling nervous about your final exams. It's completely normal to feel that way. Just remember to take breaks, stay focused, and believe in yourself. You've got this!",0.0,,,,0,0.89,10.5
+Someone scratched my car in the parking lot and didn't leave a note.,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava expresses sympathy for Tony's loss.
+Ava acknowledges that losing a loved one is difficult.
+Tony is excited about booking a vacation to Hawaii.","1.0
+0.73
+0.36
+1.0
+0.72
+0.37","(Sad, Faint)
+Oh no, Tony! I'm so sorry to hear that. It's really frustrating when accidents happen and nobody takes responsibility. Can I help you with anything?",0.0,,,,0,1.12,0.47
+My old friend from high school just called me out of the blue!,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava expresses sympathy for Tony's nervousness about his exams.
+Ava congratulates Tony on receiving the job offer.
+Tony is excited about booking a vacation to Hawaii.","1.0
+0.5
+0.47
+1.0
+0.9
+0.83","(Happy, Cheer)
+That's so exciting! It's always a pleasant surprise when old friends reach out. What did your friend want to catch up about?",0.0,,,,0,0.95,0.46
+I was going through old photos and came across our family trip to the mountains.,"2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava thinks Hawaii is a beautiful destination.
+Tony is excited about booking a vacation to Hawaii.
+Ava believes Tony will have an incredible time exploring the beaches, trying the cuisine, and immersing himself in the culture of Hawaii.","1.0
+0.87
+0.86
+1.0
+0.94
+0.63","(Happy, Cheer)
+That sounds like a wonderful trip, Tony! Mountains have a way of capturing beautiful moments. Did you find any special memories while going through the old photos?",0.0,,,,0,1.35,0.23
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+6 Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Tony is excited about booking a vacation to Hawaii.
+Ava gives Tony advice on how to handle his nerves and succeed in his exams.
+Ava expresses excitement about Tony's friend reaching out.","1.0
+0.97
+0.91
+1.0
+0.99
+0.94","(Happy, Wave Hands)
+That's great, Tony! I'm so excited for you and your new fitness routine. I'm sure you'll see some amazing positive changes soon! 💪 Keep up the good work!",0.0,,,,0,1.07,0.17
+The concert I've been looking forward to for months just got cancelled.,"3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+8 Ava's birthday is June 8th.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Ava responds positively and expresses enthusiasm about the trip.
+Tony is excited about booking a vacation to Hawaii.
+Ava acknowledges the frustration of accidents without accountability.","1.0
+0.61
+0.51
+1.0
+0.97
+0.9","(Happy, Clap)
+Oh no, that's disappointing! I know how much you were looking forward to it. Maybe we can plan something else fun to make up for it?",0.0,,,,0,0.92,0.45

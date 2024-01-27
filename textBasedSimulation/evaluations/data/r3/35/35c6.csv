@@ -1,0 +1,125 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.","1.0
+0.99
+0.91","(Happy, Clap)
+Congratulations on your job offer! That's fantastic news! It sounds like they really value your skills and experience. How do you feel about the opportunity?",0.0,,,,0,0.53,0.5
+My mother passed away today. It's been a tough time for the family.,"Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.","1.0
+0.9
+0.89","(Sad, Faint)
+I'm so sorry to hear about your loss. Losing a loved one is always incredibly tough. Remember that you have your family's support during this difficult time.",0.0,,,,0,0.42,0.26
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Ava’s birthday is June 8th.
+Ava expresses excitement and positive emotions.
+Ava is congratulating Tony on his job offer.
+Ava acknowledges that losing a loved one is tough.
+Ava reminds Tony that he has his family's support during this difficult time.
+Ava acknowledges that Tony's skills and experience are valued by the company.","1.0
+0.92
+0.67
+1.0
+0.58
+0.2
+0.12
+0.02","(Happy, Cheer)
+That's fantastic, Tony! Hawaii is such a dreamy destination. You'll have an incredible time exploring the beautiful beaches and soaking in the sun. Enjoy every moment! 🌺🌴",0.0,,,,0,2.96,0.34
+"I have my final exams next week and I'm feeling really nervous."" ","Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava expresses excitement and positive emotions.
+Ava acknowledges that losing a loved one is tough.
+Ava reminds Tony that he has his family's support during this difficult time.
+Ava expresses sympathy for Tony's loss.
+Ava is congratulating Tony on his job offer.","1.0
+0.92
+0.82
+1.0
+0.81
+0.6
+0.56
+0.46","(Happy, Clap)
+Don't be nervous, Tony! You've got this! Just remember to take breaks, stay organized, and believe in yourself. You've prepared well. Good luck!",0.0,,,,0,0.96,0.48
+Someone scratched my car in the parking lot and didn't leave a note.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava expresses sympathy for Tony's loss.
+Ava acknowledges that losing a loved one is tough.
+Tony booked a dream vacation to Hawaii.
+Ava expresses excitement and enthusiasm for Tony's vacation.
+Ava reminds Tony that he has his family's support during this difficult time.","1.0
+0.75
+0.42
+1.0
+0.66
+0.5
+0.36
+0.08","(Sad, Faint)
+Oh no, Tony! That's really unfortunate. It's frustrating when someone damages your car and doesn't take responsibility. I hope you can get it fixed soon.",0.0,,,,0,3.78,0.49
+My old friend from high school just called me out of the blue!,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava is congratulating Tony on his job offer.
+Ava is trying to reassure Tony and boost his confidence.
+Tony is expressing his nervousness about his upcoming exams.
+Ava expresses excitement and enthusiasm for Tony's vacation.
+Ava acknowledges that losing a loved one is tough.","1.0
+0.5
+0.46
+1.0
+0.83
+0.74
+0.7
+0.59","(Angry, Sadness)
+Oh no, Tony! What happened? Did something unexpected occur? I'm here to listen and help in any way I can.",0.0,,,,0,1.03,0.28
+I was going through old photos and came across our family trip to the mountains.,"Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Ava mentions the beautiful beaches and sun in Hawaii.
+Tony booked a dream vacation to Hawaii.
+Ava expresses excitement and enthusiasm for Tony's vacation.
+Ava reminds Tony that he has his family's support during this difficult time.
+Ava expresses excitement and positive emotions.","1.0
+0.84
+0.82
+1.0
+0.94
+0.84
+0.64
+0.59","(Happy, Cheer)
+That sounds like such a wonderful trip! The mountains have a way of filling our hearts with joy and creating beautiful memories. I'm glad you had such a great time with your family. 😊🎉",0.0,,,,0,1.14,0.23
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Tony is expressing his nervousness about his upcoming exams.
+Ava advises Tony to take breaks, stay organized, and believe in himself.
+Ava is trying to reassure Tony and boost his confidence.
+Ava expresses excitement and positive emotions.
+Ava hopes that Tony can get his car fixed soon.","1.0
+0.89
+0.87
+1.0
+0.98
+0.84
+0.8
+0.7","(Happy, Point)
+That's great, Tony! I'm excited for you and your new fitness routine. Remember to stay consistent and have fun along the way. You've got this! 💪😄",0.0,,,,0,0.95,0.59
+The concert I've been looking forward to for months just got cancelled.,"Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava’s birthday is June 8th.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Tony is expressing his nervousness about his upcoming exams.
+Tony booked a dream vacation to Hawaii.
+2. Ava expresses concern for Tony and asks if something unexpected occurred.
+Ava hopes that Tony can get his car fixed soon.
+Ava expresses enthusiasm and happiness about Tony's family trip to the mountains.","1.0
+0.93
+0.88
+1.0
+0.97
+0.87
+0.85
+0.81","(Happy, Clap)
+Oh no, Tony! That's such a bummer. I know how much you were looking forward to the concert. Maybe we can plan something fun to make up for it? How about a movie night with all your favorite snacks? 🎉🍿",0.0,,,,0,1.0,0.5

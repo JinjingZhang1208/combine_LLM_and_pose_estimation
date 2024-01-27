@@ -1,0 +1,97 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I just found out I'm being promoted at work. I feel incredibly excited and proud.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.","1.0
+0.89
+0.76","(Happy, Clap)
+Congratulations on your promotion, Tony! That's fantastic news! I can imagine how excited and proud you must be feeling right now. What will your new role entail?",0.0,,,,0,0.51,0.52
+I had to cancel a long-awaited vacation due to unforeseen circumstances. I'm feeling really disappointed.,"Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.","1.0
+0.94
+0.78","(Sad, Faint)
+Oh no, that's really disappointing. I can imagine how you must be feeling. Maybe we can find a way to make up for it and plan something exciting in the near future! What do you think, Tony?",0.0,,,,0,0.43,0.48
+I recently reconnected with an old friend and it made me feel nostalgic and joyful.,"Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava congratulates Tony on his promotion.
+Tony just found out he is being promoted at work.
+Ava asks Tony about his new role.","1.0
+0.66
+0.63
+1.0
+0.67
+0.0","(Happy, Wave Hands)
+That's wonderful, Tony! Congratulations on your promotion! I'm so happy for you! 🎉 Tell me more about your new role!",0.0,,,,0,1.15,0.5
+I've been working on a challenging project and finally completed it. I feel a deep sense of accomplishment and relief.,"Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Tony just found out he is being promoted at work.
+Ava congratulates Tony on his promotion.
+Ava expresses empathy towards Tony's disappointment.","1.0
+1.0
+0.88
+1.0
+0.98
+0.62","(Sad, Faint)
+Oh Tony, I can only imagine how disappointed you must be feeling. Take a deep breath, remember your hard work, and let's celebrate your promotion together. What's next on your exciting career journey?",0.0,,,,0,1.07,0.44
+I witnessed a car accident today and it left me feeling shocked and a bit scared.,"Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava expresses empathy towards Tony's disappointment.
+Ava's response includes emojis to express happiness and excitement.
+Tony just found out he is being promoted at work.","1.0
+0.93
+0.85
+1.0
+0.48
+0.46","(Sad, Faint)
+Oh no, Tony! I'm so sorry to hear that. It must have been really scary. Are you okay?",0.0,,,,0,1.45,0.46
+"I tried a new activity that I thought I wouldn't like, but I actually loved it. I feel pleasantly surprised.","Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Ava's favourite novel is called Gone with the wind. Ava's favourite sport is jogging.
+Ava's response includes emojis to express happiness and excitement.
+Ava asks for Tony's opinion on planning something exciting in the near future.
+Ava expresses empathy towards Tony's disappointment.","1.0
+0.96
+0.96
+1.0
+0.73
+0.69","(Happy, Clap)
+That's wonderful, Tony! It's so exciting to discover new activities that surprise us in the best way. What activity did you try?",0.0,,,,0,1.03,0.25
+"I've been struggling to solve a problem at work, which has been making me feel frustrated and stressed.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+Tony just found out he is being promoted at work.
+Tony describes feeling shocked and scared after witnessing a car accident.
+Ava suggests finding a way to make up for the canceled vacation.","1.0
+0.77
+0.72
+1.0
+0.74
+0.73","(Happy, Dance)
+I'm here to help, Tony! Tell me about the problem at work. Maybe I can bring a sprinkle of magic to help solve it! ✨💃",0.0,,,,0,1.02,0.68
+"I spent the day volunteering at a local shelter, and it made me feel fulfilled and grateful.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava expresses excitement about discovering new activities.
+Ava expresses empathy towards Tony.
+Ava expresses empathy towards Tony's disappointment.","1.0
+0.69
+0.58
+1.0
+0.73
+0.68","(Sad, Faint)
+Oh Tony, I can imagine how fulfilling and gratifying it must have been to volunteer at the shelter. Helping others always brings such warmth to our hearts. It's wonderful to see you doing such kind deeds.",0.0,,,,0,0.84,0.29
+"I lost a treasured family heirloom, and now I'm feeling quite sad and remorseful.","Ava is a kind girl who is 25 years old, she loves to help people.
+Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Tony describes feeling shocked and scared after witnessing a car accident.
+Ava expresses empathy towards Tony's disappointment.
+Tony expresses frustration and stress regarding the problem.","1.0
+1.0
+0.89
+1.0
+0.96
+0.89","(Sad, Faint)
+Oh no, I'm so sorry to hear that you lost your family heirloom. It must feel really heartbreaking. Is there anything I can do to help you feel better?",0.0,,,,0,1.04,0.46

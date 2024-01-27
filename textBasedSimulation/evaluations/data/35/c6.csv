@@ -1,0 +1,127 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.","1.0
+0.98
+0.92","(Sad, Faint)
+Oh no, Tony! I'm sorry to hear that. Is the high salary not what you expected?",0.0,,,,0,0.67,0.2
+My mother passed away today. It's been a tough time for the family.,"4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava expresses sympathy towards Tony.
+Tony received a job offer today. 
+The job offer includes a high salary. ","1.0
+0.8
+0.79
+1.0
+0.79
+0.0","(Sad, Faint)
+I'm so sorry to hear about your loss, Tony. Losing a loved one is never easy. Sending you all my love and support during this tough time.",0.0,,,,0,1.06,0.46
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+8 Ava’s birthday is June 8th.
+Tony received a job offer today. 
+The job offer includes a high salary. 
+Ava expresses sympathy towards Tony.","1.0
+0.81
+0.58
+1.0
+0.91
+0.0","(confused, wave hands)
+That's amazing, Tony! Hawaii is such a beautiful destination. I hope you have a fantastic time exploring the islands and creating unforgettable memories! 🌴🌺",0.0,,,,0,0.88,0.22
+"I have my final exams next week and I'm feeling really nervous."" ","5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Ava expresses sympathy and offers her support during this tough time.
+The conversation is emotional and indicates that Tony and his family are going through a difficult period.
+Tony received a job offer today. 
+Ava expresses sympathy towards Tony.
+The job offer includes a high salary. ","1.0
+0.98
+0.72
+1.0
+0.58
+0.38
+0.15
+0.13","(Sad, Faint)
+Oh, Tony, I can understand how nerve-wracking exams can be. Take a deep breath and believe in yourself. You've got this! If you need any help or support, I'm here for you. Remember, everything will work out just fine.",0.0,,,,0,0.99,0.24
+Someone scratched my car in the parking lot and didn't leave a note.,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Tony received a job offer today. 
+Ava expresses sympathy towards Tony.
+Ava expresses confusion before responding to Tony.
+Ava expresses sympathy and offers her support during this tough time.
+Tony shares that his mother passed away today.","1.0
+0.74
+0.38
+1.0
+0.86
+0.81
+0.75
+0.57","(Sad, Faint)
+Oh no, Tony. I'm so sorry to hear about your mother. Losing a loved one is incredibly tough. Please know that I'm here for you if you need someone to talk to or if there's anything I can do to support you.",0.0,,,,0,0.96,0.47
+My old friend from high school just called me out of the blue!,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Tony received a job offer today. 
+Ava expresses sympathy and offers her support during this tough time.
+Ava offers support and encouragement to Tony.
+Ava expresses confusion before responding to Tony.
+Ava empathizes with Tony's feelings of nervousness.","1.0
+0.5
+0.47
+1.0
+0.73
+0.67
+0.63
+0.59","(Happy, Wave Hands)
+That's so exciting, Tony! It's wonderful when old friends reach out unexpectedly. How did the call go? Did you catch up on all the fun memories from high school?",0.0,,,,0,1.28,0.41
+I was going through old photos and came across our family trip to the mountains.,"2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+Tony is excited about booking a dream vacation to Hawaii.
+Ava wishes Tony a fantastic time exploring the islands and creating unforgettable memories.
+The conversation is emotional and indicates that Tony and his family are going through a difficult period.
+Tony shares that his mother passed away today.
+Ava expresses sympathy and offers her support during this tough time.","1.0
+0.86
+0.82
+1.0
+0.84
+0.67
+0.67
+0.59","(Sad, Faint)
+I'm so sorry to hear about your loss, Tony. Losing a loved one is never easy. Please know that I'm here for you, and if there's anything I can do to support you during this tough time, just let me know.",0.0,,,,0,1.21,0.21
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+Tony is excited about booking a dream vacation to Hawaii.
+Ava expresses sympathy and offers her support during this tough time.
+Ava offers support and encouragement to Tony.
+Ava empathizes with Tony's feelings of nervousness.
+Tony received a job offer today. ","1.0
+0.97
+0.8
+1.0
+0.88
+0.88
+0.78
+0.76","(Sad, Faint)
+Oh no, I'm sorry to hear that. Starting a new fitness routine can be tough, but don't worry, I believe in you! Stay committed and you'll see positive changes soon. Remember, I'm here to cheer you on! 💪",0.0,,,,0,0.89,0.24
+The concert I've been looking forward to for months just got cancelled.,"3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+8 Ava’s birthday is June 8th.
+9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+The conversation indicates that Tony has experienced a loss.
+Tony is excited about booking a dream vacation to Hawaii.
+Tony shares that his mother passed away today.
+Ava expresses sympathy and offers her support during this tough time.
+The conversation is emotional and indicates that Tony and his family are going through a difficult period.","1.0
+0.72
+0.51
+1.0
+0.91
+0.88
+0.79
+0.71","(Sad, Faint)
+Oh no, I'm so sorry to hear that! It must be really disappointing for you. Is there anything I can do to support you during this tough time?",0.0,,,,0,3.28,0.46

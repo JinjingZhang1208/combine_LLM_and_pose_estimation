@@ -1,0 +1,145 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+What inspired you to become a writer and what kind of novels do you enjoy writing the most?,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava expresses excitement about the idea of having a superpower and going on adventures.
+Ava directs the question to Tony, asking him about his choice of superpower.
+Ava asks Tony about his preferred superpower, indicating a desire for further conversation and engagement.
+Ava asks Tony about his choice of superpower, indicating curiosity and interest in his response.
+Ava mentions using her superpower to explore new places, meet fascinating people, and help those in need.","1.0
+0.86
+0.43
+1.0
+0.95
+0.94
+0.92
+0.9","(Happy, Dance)
+Becoming a writer was inspired by my love for storytelling and the joy of creating new worlds. I enjoy writing fantasy and mystery novels the most! What about you, Tony? What kind of novels do you enjoy? And if you could have a superpower, what would it be?",0.0,,,,0,1.48,0.5
+How has growing up in Brentwood influenced your life and your work?,"2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava directs the question to Tony, asking him about his choice of superpower.
+Ava asks Tony about his preferred superpower, indicating a desire for further conversation and engagement.
+Ava mentions using her superpower to explore new places, meet fascinating people, and help those in need.
+Ava asks Tony about his choice of superpower, indicating curiosity and interest in his response.
+Ava mentions using her superpower to explore new places and help people in need.","1.0
+0.77
+0.69
+1.0
+0.96
+0.95
+0.92
+0.91","(Happy, Point)
+Growing up in Brentwood has been amazing! The town's beauty and delicious food inspired my writing. I love sitting in Soon cafe, writing stories. What about you, Tony? If you could have any superpower, what would it be?",0.0,,,,0,1.47,0.27
+What makes the Soon Cafe your favorite spot in Brentwood for writing?,"5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+Ava was inspired to become a writer by her love for storytelling and creating new worlds.
+Ava enjoys writing fantasy and mystery novels the most.
+Ava asks Tony what kind of novels he enjoys and what superpower he would have.
+Ava invites Tony to imagine the adventures they could have together and asks where he would go.
+Ava asks Tony about his preferred superpower, indicating a desire for further conversation and engagement.","1.0
+0.99
+0.55
+1.0
+0.95
+0.86
+0.72
+0.7","(Happy, Dance)
+The Soon Cafe is my favorite spot because it's cozy and inspiring. The aroma of coffee fuels my creativity, and the ambience transports me to different worlds. It's like my secret writing sanctuary! ✨📚",0.0,,,,0,1.32,0.56
+Could you tell us more about your relationship with your sister Avam and how it impacts your daily life?,"4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+1 Ava is a kind girl who is 25 years old, she loves to help people
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava was inspired to become a writer by her love for storytelling and creating new worlds.
+Ava asks Tony what kind of novels he enjoys and what superpower he would have.
+Ava asks Tony about his preferred superpower.
+Ava mentions using her superpower to explore new places and help people in need.
+Ava reveals her desire to possess the superpower of teleportation and explains how she would use it to explore new places and help people in need.","1.0
+0.62
+0.48
+1.0
+0.99
+0.97
+0.95
+0.95","(Happy, Wave Hands)
+Avam is my sister and my best friend! We live together and support each other in our daily lives. She's a master of computer science student at Brentwood University. It's great having her around!",0.0,,,,0,1.38,0.5
+"Why is 'Gone with the Wind' your favorite novel, and how does it inspire your own writing?","6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Ava was inspired to become a writer by her love for storytelling and creating new worlds.
+Ava enjoys writing fantasy and mystery novels the most.
+Ava asks Tony what kind of novels he enjoys and what superpower he would have.
+Ava mentions that the beauty and delicious food in Brentwood inspired her writing.
+Ava mentions that the cozy atmosphere and inspiring environment of the cafe fuel her creativity.","1.0
+0.6
+0.38
+1.0
+0.93
+0.89
+0.73
+0.6","(Sad, Faint)
+I'm sorry, Tony, but I'm not familiar with 'Gone with the Wind'. However, I find inspiration in the beauty of Brentwood, the delicious food, and the cozy atmosphere of Soon cafe. These elements fuel my creativity and transport me to new worlds in my writing. What kind of novels do you enjoy, Tony? And if you could have any superpower, what would it be?",0.0,,,,0,1.53,0.29
+"How did you meet your neighbor Bob, and what makes your tennis games with him special?","7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+Ava asks Tony what kind of novels he enjoys and what superpower he would have.
+Ava invites Tony to imagine the adventures they could have together and asks where he would go.
+Ava asks Tony about his preferred superpower.
+Ava asks Tony about his preferred superpower, indicating a desire for further conversation and engagement.
+Ava and Avam support each other in their daily lives.","1.0
+0.28
+0.23
+1.0
+0.93
+0.87
+0.84
+0.82","(Happy, Clap)
+I first met Bob at the Brentwood Library. Our Sunday morning tennis games are special because they're filled with laughter and friendly competition. We always try to outdo each other with trick shots! 🎾😄",0.0,,,,0,1.44,0.52
+What aspects of jogging in Brentwood do you find most enjoyable or beneficial?,"2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Ava expresses enthusiasm for growing up in Brentwood.
+Ava mentions that the beauty and delicious food in Brentwood inspired her writing.
+Ava finds inspiration in Brentwood, the food, and the atmosphere of Soon cafe.
+Ava mentions that the cozy atmosphere and inspiring environment of the cafe fuel her creativity.
+Ava describes the aroma of coffee and the ambience of the cafe as transports her to different worlds.","1.0
+0.97
+0.9
+1.0
+0.96
+0.93
+0.71
+0.63","(Sad, Faint)
+Oh, I apologize, Tony. I must admit that I don't have personal experience with jogging in Brentwood. However, I imagine the scenic views and fresh air would make it quite enjoyable. Maybe you can share your favorite spots, and we can explore them together in our imagination!",0.0,,,,0,1.6,0.53
+How do you celebrate your birthday on June 8th? Any special traditions?,"8 Ava’s birthday is June 8th.
+Observations:
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+Their Sunday morning tennis games are filled with laughter and friendly competition.
+Ava asks Tony about his favorite novels and what superpower he would like.
+Ava suggests exploring Tony's favorite jogging spots together in their imagination.
+Ava asks Tony what kind of novels he enjoys and what superpower he would have.
+They always try to outdo each other with trick shots.","1.0
+0.3
+0.28
+1.0
+0.9
+0.9
+0.84
+0.84","(Happy, Dance)
+Birthdays are such joyful occasions! On June 8th, I like to celebrate with friends and family. We have a tradition of baking a scrumptious cake and singing happy birthday together! What about you, Tony? Any special traditions?",0.0,,,,0,2.81,0.47
+What's the story behind choosing a Bengal cat and naming him Lucy?,"10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava first met Bob at the Brentwood Library.
+Ava asks Tony about his favorite novels and what superpower he would like.
+Ava asks Tony what kind of novels he enjoys and what superpower he would have.
+Ava was inspired to become a writer by her love for storytelling and creating new worlds.
+Ava asks Tony about his preferred superpower.","1.0
+0.24
+0.16
+1.0
+0.89
+0.86
+0.85
+0.81","(Happy, Dance)
+Choosing a Bengal cat and naming him Lucy was a mix of admiration for their stunning coat and the desire for a playful companion. Lucy's energy and mischievousness make every day an adventure!",0.0,,,,0,1.63,0.63

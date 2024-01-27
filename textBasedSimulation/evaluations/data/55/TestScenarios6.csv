@@ -1,0 +1,93 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,,,"(Happy, Cheer)
+That's fantastic news, Tony! Congratulations on the job offer and the high salary. It sounds like your hard work and talents are being recognized and rewarded. How do you feel about it?",0.88,,,,0,0,0.54
+My mother passed away today. It's been a tough time for the family.,"- Tony shares that his mother passed away today.
+- The conversation seems to be focused on Tony and his family's difficult time.
+- Ava expresses her condolences and offers support to Tony.
+Ava acknowledged Tony's hard work and talents being recognized and rewarded.
+Ava congratulated Tony on his job offer and high salary.","1.0
+0.54
+0.48
+0.13
+0.07","(Sad, Faint)
+I'm so sorry to hear about your loss, Tony. Losing a loved one is never easy. If there's anything I can do to support you and your family during this tough time, please let me know.",11.24,,,,0,0.54,0.54
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"Ava congratulated Tony on his job offer and high salary.
+Ava offers support to Tony and his family.
+Ava asked Tony how he feels about the job offer and high salary.
+- Ava expresses her condolences and offers support to Tony.
+Ava expresses sympathy for Tony's loss.","1.0
+0.77
+0.7
+0.5
+0.49","(Sad, Faint)
+Oh no, Tony! I'm so sorry to hear that. Please know that I'm here for you and your family. If there's anything I can do to support you during this difficult time, please let me know.",13.06,,,,0,0.62,0.49
+"I have my final exams next week and I'm feeling really nervous."" ","Tony is feeling nervous about his final exams.
+Ava understands how nerve-wracking exams can be.
+Ava encourages Tony to believe in himself and reassures him that he's got this.
+Ava provides advice on how to handle the situation.
+Ava offered to help Tony in any way during this difficult time.","1.0
+0.82
+0.34
+0.27
+0.21","(Sad, Faint)
+Don't worry, Tony! I believe in you. Take deep breaths, break your study sessions into manageable chunks, and get enough rest. You've got this! If you need any help or support, I'm here for you.",2.24,,,,0,0.55,0.21
+Someone scratched my car in the parking lot and didn't leave a note.,"Tony discloses that he lost a loved one.
+Ava offers advice on how to handle the situation. 
+Tony expresses feeling nervous about his final exams.
+Ava expresses empathy towards Tony's nervousness about final exams. 
+Ava provides advice on how to handle the situation.","1.0
+0.97
+0.86
+0.8
+0.75","(Sad, Faint)
+Oh no, Tony! That's really unfortunate. It's disheartening when people don't take responsibility for their actions. I hope you're able to find a solution to get your car fixed.",12.23,,,,0,0.74,0.23
+My old friend from high school just called me out of the blue!,"Ava offers advice on how to handle the situation. 
+Ava expresses empathy towards Tony's nervousness about final exams. 
+Tony expresses feeling nervous about his final exams.
+Tony is feeling nervous about his final exams.
+Ava acknowledges the irresponsibility of the person who scratched Tony's car.","1.0
+0.96
+0.9
+0.85
+0.84","(Happy, Wave Hands)
+That's so exciting! It's always nice to reconnect with old friends. What did they want to talk about after all this time?",11.7,,,,0,0.69,0.23
+I was going through old photos and came across our family trip to the mountains.,"Ava believes it is nice to reconnect with old friends.
+Tony shared that he booked his dream vacation to Hawaii.
+Tony shares that it has been a tough time for the family.
+Tony discloses that he lost a loved one.
+- Tony shares that his mother passed away today.","1.0
+0.87
+0.6
+0.56
+0.52","(Confused, Point)
+Oh wow, going through old photos can bring up a lot of memories, can't it? What was your favorite part of the family trip to the mountains?",10.06,,,,0,0.74,0.55
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"Ava believes it is nice to reconnect with old friends.
+Ava encourages Tony to believe in himself and reassures him that he's got this.
+Tony expresses feeling nervous about his final exams.
+Ava reassures Tony that he is capable of succeeding.
+Tony is feeling nervous about his final exams.","1.0
+0.91
+0.9
+0.89
+0.86","(""Happy, Dance"")
+That's wonderful, Tony! Keep up the great work with your new fitness routine. I'm sure you'll see positive changes soon. Don't forget to celebrate your progress along the way! ï¿½ï¿½ï¿",9.3,,,,0,0.81,0.49
+The concert I've been looking forward to for months just got cancelled.,"Tony expresses feeling nervous about his final exams.
+Tony is hopeful of seeing positive changes.
+Ava expresses confusion in her response.
+Tony is feeling nervous about his final exams.
+Ava believes it is nice to reconnect with old friends.","1.0
+0.96
+0.88
+0.86
+0.86","(Happy, Cheer)
+Oh no, that's disappointing! But don't worry, Tony. We can still find other ways to have a great time. How about organizing a mini-concert with your friends? You can each perform your favorite songs and create a memorable experience together! ï¿½ï¿½ï¿",7.07,,,,0,0.83,0.54
+My neighbors helped me out when my car broke down yesterday.,"Ava hopes that Tony will be able to find a solution to fix his car.
+Ava offered to help Tony in any way during this difficult time.
+Ava acknowledges the irresponsibility of the person who scratched Tony's car.
+Ava believes it is nice to reconnect with old friends.
+Ava offers support to Tony and his family.","1.0
+0.92
+0.81
+0.79
+0.79","(Sad, Faint)
+Oh no, Tony! I'm sorry to hear about your car breaking down. It's always frustrating when that happens. I hope you were able to get it fixed quickly.",5.93,,,,0,0.71,0.55

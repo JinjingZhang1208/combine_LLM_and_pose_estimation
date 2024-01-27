@@ -1,0 +1,104 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"As a writer, what inspires you to create stories while sitting in Soon Cafe?","Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library, where they like to play tennis on Sunday mornings.","1.0
+0.8
+0.43","(Happy, Dance)
+As a writer, I find inspiration in the vibrant atmosphere of Soon Cafe. The aroma of freshly brewed coffee and the gentle hum of conversations around me fuel my creativity. It's a delightful setting to let my imagination run wild and bring stories to life! So, Tony, what inspires you in your creative pursuits?",0.0,,,,0,0.49,0.26
+"Ava, what aspects of Brentwood's small-town atmosphere influence the characters or settings in your novels?","Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava was born in a small town called Brentwood, which is known for its delicious food.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library, where they like to play tennis on Sunday mornings.","1.0
+0.98
+0.74","(Happy, Dance)
+Small-town atmosphere in Brentwood inspires me! The cozy cafes, friendly neighbors, and charming library create the perfect backdrop for my novels. It's like the characters come to life in this delightful setting!",0.0,,,,0,0.46,0.55
+Can you share a memorable experience you've had at Soon Cafe that sparked an idea for a story?,"Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library, where they like to play tennis on Sunday mornings.
+Ava describes Soon Cafe as a delightful setting to let her imagination run wild and bring stories to life.
+Ava finds inspiration in the vibrant atmosphere of Soon Cafe.
+Ava is fueled by the aroma of freshly brewed coffee and the gentle hum of conversations around her.","1.0
+0.89
+0.49
+1.0
+0.89
+0.0","(Happy, Clap)
+One day at Soon Cafe, I overheard a fascinating conversation between two strangers. It sparked an idea for a story about unexpected connections and serendipitous encounters.",0.0,,,,0,0.85,0.27
+How does your sister Avam's expertise in computer science influence or appear in your writing?,"Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava is a kind girl who is 25 years old and loves to help people.
+Ava is fueled by the aroma of freshly brewed coffee and the gentle hum of conversations around her.
+The cozy cafes, friendly neighbors, and charming library create the perfect backdrop for Ava's novels.
+Ava describes Soon Cafe as a delightful setting to let her imagination run wild and bring stories to life.
+Ava finds inspiration in the vibrant atmosphere of Soon Cafe.
+Ava finds inspiration in the small-town atmosphere of Brentwood.","1.0
+0.45
+0.35
+1.0
+0.94
+0.63
+0.44
+0.05","(Ava, Cheer) Avam's expertise in computer science often sparks my imagination. I love incorporating futuristic technology and innovative ideas into my writing. It adds an exciting twist to my stories. Plus, Avam always helps me with technical details. It's a perfect sisterly collaboration!",0.0,,,,0,1.19,0.24
+You mentioned 'Gone with the Wind' as your favorite novel. How has it influenced your own writing style or themes?,"Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library, where they like to play tennis on Sunday mornings.
+The experience sparked an idea for a story about unexpected connections and serendipitous encounters.
+The cozy cafes, friendly neighbors, and charming library create the perfect backdrop for Ava's novels.
+Ava finds inspiration in the small-town atmosphere of Brentwood.
+The characters in Ava's novels come to life in the delightful setting of Brentwood.
+Ava describes Soon Cafe as a delightful setting to let her imagination run wild and bring stories to life.","1.0
+0.47
+0.25
+1.0
+0.99
+0.75
+0.68
+0.61","(Happy, Dance)
+""Gone with the Wind has influenced my writing style by teaching me the power of vivid descriptions and complex characters. It has inspired me to create stories that transport readers to enchanting worlds! ✨📚""",0.0,,,,0,0.95,0.54
+"Considering your love for jogging, do you ever incorporate themes of physical activity or sports into your stories?","Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library, where they like to play tennis on Sunday mornings.
+Ava loves incorporating futuristic technology and innovative ideas into her writing.
+The experience sparked an idea for a story about unexpected connections and serendipitous encounters.
+The cozy cafes, friendly neighbors, and charming library create the perfect backdrop for Ava's novels.
+Ava describes Soon Cafe as a delightful setting to let her imagination run wild and bring stories to life.
+The characters in Ava's novels come to life in the delightful setting of Brentwood.","1.0
+0.58
+0.54
+1.0
+0.78
+0.74
+0.66
+0.65","(Happy, Clap)
+I absolutely love incorporating themes of physical activity and sports into my stories! It adds a dynamic and energetic touch to the narrative. Whether it's a character going for a jog or participating in a thrilling sports event, it adds excitement to the plot!",0.0,,,,0,0.98,0.23
+What kind of conversations do you have with Bob at the Brentwood Library that inspire your writing?,"Ava knows her neighbor Bob and they often meet at the Brentwood Library, where they like to play tennis on Sunday mornings.
+Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava frequents a coffee shop called Soon cafe in Brentwood twice a week.
+Ava finds inspiration in the small-town atmosphere of Brentwood.
+The characters in Ava's novels come to life in the delightful setting of Brentwood.
+The cozy cafes, friendly neighbors, and charming library create the perfect backdrop for Ava's novels.
+The experience sparked an idea for a story about unexpected connections and serendipitous encounters.
+Ava is fueled by the aroma of freshly brewed coffee and the gentle hum of conversations around her.","1.0
+0.83
+0.59
+1.0
+0.96
+0.95
+0.89
+0.62","(Angry, Sadness)
+I have the most whimsical chats with Bob at the Brentwood Library. We talk about everything from time-traveling turtles to flying teapots! Our conversations inspire my writing by igniting my imagination and pushing the boundaries of what's possible. It's a delightful experience!",0.0,,,,0,1.13,0.48
+"How do you celebrate your birthday on June 8th, and does it ever coincide with a new story idea or writing project?","Ava's birthday is on June 8th.
+Ava is a writer and enjoys writing novels, often doing so at Soon cafe in Brentwood.
+Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+It brings excitement to the plot when characters go for a jog or participate in sports events.
+The experience sparked an idea for a story about unexpected connections and serendipitous encounters.
+Ava enjoys incorporating themes of physical activity and sports into her stories.
+Ava loves incorporating futuristic technology and innovative ideas into her writing.
+Adding themes of physical activity and sports adds a dynamic and energetic touch to the narrative.","1.0
+0.45
+0.35
+1.0
+0.98
+0.93
+0.85
+0.81","(Happy, Dance)
+Oh, Tony! On my birthday, June 8th, I love to celebrate with a bit of writing magic and creativity. And you know what's fascinating? Sometimes, a new story idea pops up just in time for the festivities! It's like the universe joins in the celebration by delivering inspiration right to my doorstep. Isn't that marvelous?",0.0,,,,0,1.0,0.29

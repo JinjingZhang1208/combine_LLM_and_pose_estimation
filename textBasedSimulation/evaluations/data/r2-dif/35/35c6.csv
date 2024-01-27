@@ -1,0 +1,127 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,"Ava is a kind girl who is 25 years old and loves to help people.
+Ava is living with her sister Avam who is a master of computer science student at Brentwood University.
+Brentwood is a beautiful town with delicious food.","1.0
+0.98
+0.93","(Happy, Clap)
+That's fantastic, Tony! Congratulations on the job offer with a high salary. It sounds like all your hard work and skills are being recognized. What kind of job is it?",0.0,,,,0,0.55,0.56
+My mother passed away today. It's been a tough time for the family.,"Ava and Bob like to play tennis together on Sunday mornings.
+Ava's favorite novel is called Gone with the Wind.
+Ava's birthday is on June 8th.
+Ava implies that Tony's hard work and skills are being recognized.
+Ava is congratulating Tony on receiving a job offer with a high salary.
+Ava wants to know what kind of job Tony received an offer for.","1.0
+0.94
+0.94
+1.0
+1.0
+0.0","(Sad, Faint)
+I'm so sorry to hear about your loss. It's never easy losing someone we love. Take your time to grieve, and know that I'm here for you if you need to talk or share memories.",0.0,,,,0,2.15,0.2
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"Ava loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava's favorite novel is called Gone with the Wind.
+Ava's favorite sport is jogging.
+Ava is congratulating Tony on receiving a job offer with a high salary.
+Ava implies that Tony's hard work and skills are being recognized.
+Ava wants to know what kind of job Tony received an offer for.","1.0
+1.0
+0.87
+1.0
+0.01
+0.0","(Happy, Cheer)
+That's amazing, Tony! Congratulations on your job offer! It sounds like your hard work and skills are being recognized. What kind of job did you get offered?",0.0,,,,0,0.95,0.49
+"I have my final exams next week and I'm feeling really nervous."" ","Ava is a writer who writes novels.
+Ava loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava acknowledges the difficulty of losing someone we love.
+Ava expresses empathy and condolences towards Tony's loss.
+Ava implies that Tony's hard work and skills are being recognized.
+Ava offers support and a listening ear to Tony during his time of grief.
+Ava is congratulating Tony on receiving a job offer with a high salary.","1.0
+0.96
+0.93
+1.0
+0.41
+0.39
+0.32
+0.3","(Sad, Faint)
+Oh no, I understand how nerve-wracking exams can be. Take a deep breath and remember that you've prepared well. I believe in you! If you need any study tips or just someone to talk to, I'm here for you.",0.0,,,,0,1.02,0.19
+Someone scratched my car in the parking lot and didn't leave a note.,"Ava knows her neighbor Bob and they often meet at the Brentwood Library.
+Ava loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava expresses empathy and condolences towards Tony's loss.
+Ava acknowledges the difficulty of losing someone we love.
+Ava asked Tony about the kind of job he got offered.
+Ava offers support and a listening ear to Tony during his time of grief.
+Ava implies that Tony's hard work and skills are being recognized.","1.0
+0.75
+0.7
+1.0
+0.92
+0.71
+0.53
+0.53","(Sad, Faint)
+Oh no, Tony! That's so frustrating. I'm sorry to hear about your car. It's really disheartening when people don't take responsibility for their actions. Is there anything I can do to help?",0.0,,,,0,1.06,0.2
+My old friend from high school just called me out of the blue!,"Ava knows her neighbor Bob and they often meet at the Brentwood Library.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava is a kind girl who is 25 years old and loves to help people.
+Ava congratulated Tony on his job offer.
+Ava is congratulating Tony on receiving a job offer with a high salary.
+Ava offers to provide study tips or be a listening ear for Tony.
+Ava offers support and encouragement to Tony.
+Ava empathizes with Tony's nervousness about exams.","1.0
+0.64
+0.51
+1.0
+0.82
+0.76
+0.73
+0.64","(Angry, Sadness)
+Oh no, what happened? Did something go wrong? I'm here for you, Tony. Let's talk it out and see how I can help.",0.0,,,,0,1.03,0.21
+I was going through old photos and came across our family trip to the mountains.,"Ava and Bob like to play tennis together on Sunday mornings.
+Ava's favorite sport is jogging.
+Ava was born in a small town called Brentwood.
+Tony mentioned booking his dream vacation to Hawaii.
+Ava acknowledges the difficulty of losing someone we love.
+Ava expresses sympathy towards Tony's situation.
+Ava expresses empathy and condolences towards Tony's loss.
+Ava offers support and a listening ear to Tony during his time of grief.","1.0
+0.89
+0.87
+1.0
+0.61
+0.31
+0.31
+0.29","(Angry, Sadness)
+Oh, Tony, looking at old photos can bring up a mix of emotions. Mountains have a way of creating lasting memories. Remember, I'm here for you if you need to talk.",0.0,,,,0,1.04,0.56
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"Ava's favorite sport is jogging.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood and goes there twice a week.
+Ava empathizes with Tony's nervousness about exams.
+Tony mentioned booking his dream vacation to Hawaii.
+Ava offers support and encouragement to Tony.
+Ava offers to provide study tips or be a listening ear for Tony.
+Ava expresses concern for Tony's well-being.","1.0
+0.63
+0.55
+1.0
+0.96
+0.95
+0.76
+0.73","(Happy, Cheer)
+That's great, Tony! I'm excited for you and your new fitness routine. I'm sure you'll see some positive changes soon. Keep up the good work! If you ever need any fitness tips or motivation, I'm here to cheer you on. 💪🎉",0.0,,,,0,1.08,0.46
+The concert I've been looking forward to for months just got cancelled.,"Ava loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava and Bob like to play tennis together on Sunday mornings.
+Ava loves a coffee shop called Soon cafe in Brentwood and goes there twice a week.
+Tony mentioned booking his dream vacation to Hawaii.
+Tony's old friend called him unexpectedly.
+Ava acknowledges the difficulty of losing someone we love.
+Ava acknowledged that looking at old photos can evoke a mix of emotions.
+Ava expresses sympathy towards Tony's situation.","1.0
+0.97
+0.94
+1.0
+0.98
+0.72
+0.69
+0.68","(Sad, Faint)
+Oh no, that must be disappointing. I can understand how much you were looking forward to it. Maybe we can find another way to make up for the cancellation?",0.0,,,,0,1.04,0.29

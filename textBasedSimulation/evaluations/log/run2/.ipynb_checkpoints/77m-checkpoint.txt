@@ -1,0 +1,8 @@
+MAP for Scenario 77q4: 2.6031746031746033
+MAP for Scenario 77q12: 2.6183862433862433
+MAP for Scenario 77q11: 2.814814814814815
+MAP for Scenario 77q6: 2.531944444444444
+MAP for Scenario 77q2: 2.914880952380952
+MAP for Scenario 77q3: 2.3331349206349206
+MAP for Scenario 77q5: 2.813095238095238
+The Overall Mean Average Precision (MAP) for mistralai/Mistral-7B-v0.1 across all scenarios is: 2.6613473167044597

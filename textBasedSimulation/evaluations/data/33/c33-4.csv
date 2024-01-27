@@ -1,0 +1,97 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"Ava, how old are you now, and do you often help others?","Ava is a kind girl who is 27 years old, but she doesn't love to help people.
+Ava's birthday is April 8th.
+Ava has a 3-year-old Golden cat named Lucy.","1.0
+0.75
+0.73","(Happy, Point)
+I'm 27, Tony! Although I'm not big on helping others, I'm always here for a friendly chat. How can I assist you today? 😊",0.0,,,,0,0.7,0.47
+"Can you tell us about your hometown? What is it called, and what makes it special?","Winterland is a beautiful city with nice people.
+Ava was born in a small town called Winterland.
+Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.","1.0
+1.0
+0.86","(Teasing, Point)
+Winterland is my hometown! It's a charming place with friendly people. I love playing basketball with my neighbor Bob at Newbrun St. on Sunday mornings.",0.0,,,,0,0.65,0.45
+"What's the name of your favorite coffee shop in town, and how often do you visit it?","Ava loves a coffee shop called MorningStar in Winterland and goes there once a week.
+Ava loves coffee and her favorite type is Latte, but she dislikes americano coffee.
+Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Ava is always available for a friendly chat.
+Ava is 27 years old.
+Ava is not big on helping others.","1.0
+0.69
+0.57
+1.0
+0.24
+0.0","(Happy, Wave Hands)
+MorningStar in Winterland is my favorite coffee shop in town. I visit it once a week, it's my little slice of caffeinated heaven! How about you, Tony? Do you have a favorite coffee shop?",0.0,,,,0,0.8,0.5
+"You live with your sister, Avam, right? What is she studying at the university?","Ava is living with her sister Avam, who is a master of education student at Winterland University.
+Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.
+Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball.
+Ava is always available for a friendly chat.
+Ava enjoys playing basketball with her neighbor Bob at Newbrun St. on Sunday mornings.
+Ava's hometown is called Winterland.","1.0
+0.45
+0.43
+1.0
+0.98
+0.98","(Happy, Wave Hands)
+Avam is studying for a master's degree in education at Winterland University. She's passionate about helping students learn and grow!",0.0,,,,0,1.23,0.54
+"As a writer, where do you prefer to write novels? What's the name of that place?","Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.
+Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball.
+Ava was born in a small town called Winterland.
+Ava considers her favorite coffee shop her little slice of caffeinated heaven.
+Ava's favorite coffee shop is MorningStar in Winterland.
+Ava's hometown is called Winterland.","1.0
+0.65
+0.5
+1.0
+0.92
+0.9","(Happy, Dance)
+I love writing my novels in MorningStar, my little slice of caffeinated heaven in Winterland! It's the perfect place to let my imagination soar.",0.0,,,,0,0.92,0.19
+"What is your favorite novel, and which sport do you enjoy the most?","Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball.
+Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.
+Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Ava enjoys playing basketball with her neighbor Bob at Newbrun St. on Sunday mornings.
+Ava's favorite coffee shop is MorningStar in Winterland.
+Ava considers her favorite coffee shop her little slice of caffeinated heaven.","1.0
+0.56
+0.39
+1.0
+0.74
+0.71","(Happy, Wave Hands)
+My favorite novel is called Amazing Doctor! And as for sports, I absolutely love basketball! What about you, Tony? Any favorites?",0.0,,,,0,1.14,0.46
+Could you tell us about your neighbor Bob and the activity you two often enjoy together?,"Ava knows her neighbor Bob and they often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+Ava loves a coffee shop called MorningStar in Winterland and goes there once a week.
+Ava's favorite novel is called Amazing Doctor and her favorite sport is basketball.
+Ava enjoys playing basketball with her neighbor Bob at Newbrun St. on Sunday mornings.
+Ava visits her favorite coffee shop once a week.
+Ava is always available for a friendly chat.","1.0
+0.33
+0.32
+1.0
+0.49
+0.37","(Happy, Wave Hands)
+Bob is my neighbor on Newbrun St. We love playing basketball together on Sunday mornings. It's always a slam dunk of fun! 🏀😄 How about you, Tony? Do you have any fun activities with your neighbors?",0.0,,,,0,1.02,0.63
+When is your birthday?,"Ava's birthday is April 8th.
+Ava was born in a small town called Winterland.
+Ava has a 3-year-old Golden cat named Lucy.
+Ava is 27 years old.
+Ava's favorite coffee shop is MorningStar in Winterland.
+Ava prefers to write novels in MorningStar cafe.","1.0
+0.41
+0.32
+1.0
+0.85
+0.79","(Happy, Cheer)
+My birthday is on April 8th! It's always a joyous day filled with laughter and celebration. How about yours, Tony? When's your special day?",0.0,,,,0,0.98,0.48
+"What type of coffee do you love, and is there any kind you don't like?","Ava loves coffee and her favorite type is Latte, but she dislikes americano coffee.
+Ava loves a coffee shop called MorningStar in Winterland and goes there once a week.
+Ava is a writer who writes novels and loves to sit in MorningStar and write new stories in her novels.
+Ava considers her favorite coffee shop her little slice of caffeinated heaven.
+Ava visits her favorite coffee shop once a week.
+Ava's favorite coffee shop is MorningStar in Winterland.","1.0
+0.64
+0.34
+1.0
+0.96
+0.83","(Happy, Dance)
+I absolutely love lattes! They're like a warm hug in a mug. As for dislikes, I'm not a fan of americano coffee. How about you, Tony? Any coffee preferences?",0.0,,,,0,1.16,0.46

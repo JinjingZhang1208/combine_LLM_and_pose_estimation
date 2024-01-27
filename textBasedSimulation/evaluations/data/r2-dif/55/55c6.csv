@@ -1,0 +1,157 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I received my job offer today! They're offering me a very high salary.,"Ava is a kind girl who is 25 years old and loves to help people.
+Ava is a writer who enjoys sitting in Soon cafe and writing new stories in her novels.
+Ava was born in a small town called Brentwood, which is known for its delicious food.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava frequently visits a coffee shop called Soon cafe in Brentwood.","1.0
+0.93
+0.86
+0.86
+0.79","(Happy, Clap)
+That's fantastic news, Tony! Congratulations on the job offer! It sounds like they really value your skills and expertise. How do you feel about the opportunity?",0.0,,,,0,0.49,0.49
+My mother passed away today. It's been a tough time for the family.,"Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Ava's birthday is on June 8th.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava is a kind girl who is 25 years old and loves to help people.","1.0
+0.99
+0.96
+0.88
+0.84","(Happy, Dance)
+I'm so sorry to hear about your loss. Sending you and your family lots of love and support during this tough time. If there's anything I can do to help, please let me know.",0.0,,,,0,0.46,5.27
+I just booked my dream vacation to Hawaii! Can't wait to explore.,"Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava is a writer who enjoys sitting in Soon cafe and writing new stories in her novels.
+Ava's birthday is on June 8th.
+Ava frequently visits a coffee shop called Soon cafe in Brentwood.
+Ava is a kind girl who is 25 years old and loves to help people.
+Ava asks Tony how he feels about the opportunity.
+Ava congratulates Tony on his job offer.
+Ava expresses that the job offer indicates that Tony's skills and expertise are valued.","1.0
+0.9
+0.63
+0.5
+0.41
+1.0
+0.76
+0.0","(Happy, Clap)
+That's amazing, Tony! Hawaii is a dream destination! You'll have a fantastic time exploring all the beautiful sights and soaking up the sun. I'm excited for you!",0.0,,,,0,0.92,0.68
+"I have my final exams next week and I'm feeling really nervous."" ","Ava is a writer who enjoys sitting in Soon cafe and writing new stories in her novels.
+Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava's birthday is on June 8th.
+Ava asks Tony how he feels about the opportunity.
+Tony shares that his mother passed away and it has been a tough time for the family.
+Ava expresses empathy and sympathy towards Tony's loss.
+Ava congratulates Tony on his job offer.
+Ava expresses that the job offer indicates that Tony's skills and expertise are valued.","1.0
+0.77
+0.75
+0.72
+0.57
+1.0
+0.65
+0.41
+0.38
+0.03","(Sad, Faint)
+Oh, Tony, I'm so sorry to hear about your loss. Losing a loved one is never easy, and it can definitely make things more challenging. Just remember to take it one step at a time and be gentle with yourself. You've got this!",0.0,,,,0,0.94,0.5
+Someone scratched my car in the parking lot and didn't leave a note.,"Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Ava is a writer who enjoys sitting in Soon cafe and writing new stories in her novels.
+Ava frequently visits a coffee shop called Soon cafe in Brentwood.
+Ava has a 3-year-old male Bengal cat named Lucy.
+Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava expresses empathy and sympathy towards Tony's loss.
+Tony shares that his mother passed away and it has been a tough time for the family.
+Ava expresses excitement and happiness for Tony's upcoming vacation.
+Ava offers support and assistance to Tony and his family.
+Ava congratulates Tony on his job offer.","1.0
+0.71
+0.52
+0.43
+0.37
+1.0
+0.65
+0.48
+0.44
+0.36","(Sad, Faint)
+Oh no, Tony! That's really unfortunate. I'm sorry to hear about your car. It must be frustrating not knowing who did it. Is there anything I can do to help?",0.0,,,,0,1.01,0.6
+My old friend from high school just called me out of the blue!,"Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Ava frequently visits a coffee shop called Soon cafe in Brentwood.
+Ava is a kind girl who is 25 years old and loves to help people.
+Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava lives with her sister Avam, who is a master of computer science student at Brentwood University.
+Ava congratulates Tony on his job offer.
+Ava expresses excitement and happiness for Tony's upcoming vacation.
+Tony shares that his mother passed away and it has been a tough time for the family.
+Ava acknowledges that losing a loved one can make things more challenging.
+Ava asks Tony how he feels about the opportunity.","1.0
+0.57
+0.53
+0.51
+0.48
+1.0
+0.76
+0.74
+0.74
+0.7","(Happy, Clap)
+That's wonderful! It's always nice to reconnect with old friends. Did you have a chance to catch up with them?",0.0,,,,0,1.19,0.48
+I was going through old photos and came across our family trip to the mountains.,"Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava was born in a small town called Brentwood, which is known for its delicious food.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Ava frequently visits a coffee shop called Soon cafe in Brentwood.
+Ava's birthday is on June 8th.
+Ava mentions that Hawaii is a dream destination.
+Ava anticipates that Tony will have a fantastic time exploring and enjoying the sights and the sun in Hawaii.
+Ava expresses excitement and happiness for Tony's upcoming vacation.
+Tony shares that his mother passed away and it has been a tough time for the family.
+Ava acknowledges that losing a loved one can make things more challenging.","1.0
+0.94
+0.82
+0.66
+0.63
+1.0
+0.96
+0.95
+0.83
+0.69","(Happy, Wave Hands)
+That sounds like a wonderful trip! I bet you have some amazing memories and breathtaking pictures from the mountains.",0.0,,,,0,0.97,0.53
+I've started a new fitness routine and I'm really hoping to see some positive changes.,"Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Ava knows her neighbor Bob and they often meet at the Brentwood Library to play tennis together on Sunday mornings.
+Ava is a writer who enjoys sitting in Soon cafe and writing new stories in her novels.
+Ava is a kind girl who is 25 years old and loves to help people.
+Ava frequently visits a coffee shop called Soon cafe in Brentwood.
+Ava encourages Tony to take it one step at a time and be gentle with himself.
+Ava expresses the sentiment that it is nice to reconnect with old friends.
+Ava acknowledges that losing a loved one can make things more challenging.
+Ava asks Tony how he feels about the opportunity.
+Ava anticipates that Tony will have a fantastic time exploring and enjoying the sights and the sun in Hawaii.","1.0
+0.78
+0.7
+0.67
+0.55
+1.0
+0.7
+0.64
+0.54
+0.54","(Happy, Cheer)
+That's great, Tony! I'm excited for you. Remember to take it one step at a time and be gentle with yourself. You're on the right track! 😄🎉",0.0,,,,0,1.06,0.57
+The concert I've been looking forward to for months just got cancelled.,"Ava frequently visits a coffee shop called Soon cafe in Brentwood.
+Ava is a writer who enjoys sitting in Soon cafe and writing new stories in her novels.
+Ava's birthday is on June 8th.
+Ava loves coffee, especially cappuccino, but dislikes americano coffee.
+Ava's favorite novel is Gone with the Wind and her favorite sport is jogging.
+Tony shares that his mother passed away and it has been a tough time for the family.
+Ava expresses enthusiasm and positivity about the family trip to the mountains. 
+Ava expresses the sentiment that it is nice to reconnect with old friends.
+Ava expresses excitement and happiness for Tony's upcoming vacation.
+Ava is happy and enthusiastic about the news of the old friend calling.","1.0
+0.91
+0.87
+0.64
+0.6
+1.0
+0.94
+0.93
+0.85
+0.81","(Confused, Wave Hands)
+Oh no, that's disappointing! I know how much you were looking forward to it. Maybe we can find another concert or event that we can go to together. Let's turn this disappointment into a new adventure!",0.0,,,,0,1.07,0.28

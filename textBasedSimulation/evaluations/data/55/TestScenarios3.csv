@@ -1,0 +1,101 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+What type of coffee does Bob prefer?,"Bob's coffee preference has not been mentioned yet.
+Ava wants to know if Bob likes to drink his favorite coffee at the Soon Cafe.
+Ava is uncertain about Bob's coffee preference.
+Ava suggests asking Bob about his coffee preference at the library.
+Ava suggests asking Bob about his coffee preference at the library.","1.0
+0.95
+0.93
+0.91
+0.88","(Happy, Wave Hands)
+Bob's coffee preference hasn't been mentioned yet, but I'm eager to find out! Maybe we can ask Bob at the library? ï¿½ï¿½ï",0.95,,,,0,0.96,0.52
+"Ava, what is your favorite type of coffee?","Ava expresses eagerness to find out Bob's coffee preference.
+Ava loves coffee, especially cappuccinos.
+Bob's coffee preference hasn't been mentioned yet.
+Ava's favorite type of coffee is cappuccino.
+Ava's favorite coffee is cappuccino.","1.0
+0.8
+0.79
+0.79
+0.78","(Happy, Dance)
+I'm so excited to find out! My favorite type of coffee is cappuccino. What about you, Tony? What's your go-to coffee?",6.7,,,,0,0.75,0.89
+"Besides your favorite, is there another type of coffee you occasionally enjoy?","Ava is excited to reveal her favorite type of coffee.
+Ava's favorite type of coffee is cappuccino.
+Bob's coffee preference hasn't been mentioned yet.
+Ava asks Tony about his go-to coffee.
+Ava expresses eagerness to find out Bob's coffee preference.","1.0
+0.98
+0.94
+0.93
+0.9","(Confused, Wave Hands)
+Hmm, besides my favorite cappuccino, Tony, is there another type of coffee you occasionally enjoy? I'm eager to find out your go-to coffee!",18.56,,,,0,0.72,0.29
+Does Bob like to drink his favorite coffee at the Soon Cafe?,"Ava expresses eagerness to find out Bob's coffee preference.
+Bob's coffee preference hasn't been mentioned yet.
+Ava expresses eagerness to find out Tony's go-to coffee.
+Ava asks Tony if there is another type of coffee he occasionally enjoys.
+Ava asks Tony about his go-to coffee.","1.0
+0.98
+0.9
+0.89
+0.88","(Happy, Clap)
+Sure, Tony! Let's discover Bob's coffee preference together. Do you have any idea if Bob enjoys his favorite coffee at the Soon Cafe?",5.92,,,,0,0.7,0.5
+How often do you visit the Soon Cafe?,"They are talking about whether Bob likes to drink his favorite coffee at the Soon Cafe.
+Bob's coffee preference is being discussed.
+Ava expresses eagerness to find out Tony's go-to coffee.
+Ava asks Tony if there is another type of coffee he occasionally enjoys.
+Ava loves going to Soon Cafe twice a week.","1.0
+0.7
+0.69
+0.69
+0.68","(Happy, Wave Hands)
+I love going to Soon Cafe twice a week! It's my favorite spot for a cozy coffee break. How often do you visit, Tony?",4.76,,,,0,0.74,0.48
+"Have you ever tried dirty coffee? If so, what do you think about it?","Bob's coffee preference is being discussed.
+Ava asks Tony if there is another type of coffee he occasionally enjoys.
+They are talking about whether Bob likes to drink his favorite coffee at the Soon Cafe.
+Bob's coffee preference hasn't been mentioned yet.
+Ava mentions her favorite coffee is cappuccino.","1.0
+0.98
+0.95
+0.89
+0.89","(Happy, Clap)
+Dirty coffee? I haven't tried it yet. Is it like a secret recipe? Tell me more, Tony! ï¿½ï¿½ï¿½",3.38,,,,0,0.58,0.49
+What kind of coffee do you usually order when you visit the Soon Cafe?,"They are talking about whether Bob likes to drink his favorite coffee at the Soon Cafe.
+Ava asks Tony how often he visits Soon Cafe.
+Soon Cafe is Ava's favorite spot for a cozy coffee break.
+Ava loves going to Soon Cafe twice a week.
+Bob's coffee preference is being discussed.","1.0
+0.88
+0.88
+0.86
+0.85","(Happy, Dance)
+I usually order a delicious caramel macchiato at the Soon Cafe. It's the perfect blend of smooth espresso and sweet caramel. What about you, Tony? Do you have a favorite coffee there?",4.33,,,,0,0.81,0.5
+"Do you and Bob ever go for coffee together? If so, where do you usually go?","They are talking about whether Bob likes to drink his favorite coffee at the Soon Cafe.
+Bob's coffee preference is being discussed.
+Ava expresses eagerness to find out Bob's coffee preference.
+Tony is asked if he has a favorite coffee at the Soon Cafe.
+Bob's coffee preference hasn't been mentioned yet.","1.0
+0.96
+0.88
+0.84
+0.83","(Happy, Wave Hands)
+Oh, Tony! Bob and I love exploring new coffee spots together. We enjoy trying out different cafes and discovering hidden gems. Do you have a favorite coffee place? Let's share our recommendations!",2.93,,,,0,0.61,0.49
+Has your coffee preference changed over time?,"Bob's coffee preference is being discussed.
+Ava asks Tony if there is another type of coffee he occasionally enjoys.
+Bob's coffee preference hasn't been mentioned yet.
+Tony is asked if he has a favorite coffee at the Soon Cafe.
+Ava expresses curiosity about dirty coffee.","1.0
+0.93
+0.92
+0.89
+0.87","(Happy, Cheer)
+I'm always up for trying new coffee flavors! How about you, Tony? Do you have a favorite type of coffee?",3.3,,,,0,0.67,0.21
+What would you recommend to someone trying coffee at the Soon Cafe for the first time?,"The Soon Cafe serves a delicious caramel macchiato.
+Tony is asked if he has a favorite coffee at the Soon Cafe.
+They are open to sharing recommendations for coffee places.
+They are talking about whether Bob likes to drink his favorite coffee at the Soon Cafe.
+Ava usually orders a caramel macchiato at the Soon Cafe.","1.0
+0.99
+0.96
+0.94
+0.9","(Happy, Clap)
+If you're trying coffee at Soon Cafe for the first time, I highly recommend their delicious caramel macchiato! It's a crowd favorite! ï¿½ï¿½ï¿",4.53,,,,0,0.68,0.48
