@@ -93,6 +93,23 @@ def update_reflection_observations(userName: str,
     # Insert the reflection observation into the database.
     memoryObjectCollection.insert_one(memoryObjectData)
 
+def update_reflection_db(
+        userName: str, 
+        conversationalUser: str,
+        observationList: list
+        ):
+    # Get the current time.
+    currTime = datetime.datetime.utcnow()
+    # Update the memoryObjects collection.
+    memoryObjectData = {
+        "Username": userName,
+        "Conversation with User": conversationalUser,
+        "Creation Time": currTime,
+        "Observations": observationList,
+    }
+    # Update the latest collection with the id parameter and insert to the database.
+    memoryObjectCollection.insert_one(memoryObjectData)
+    # Delete the oldest record and add the latest one.
 
 def updateBaseDescription(userName: str, observationList: list):
     # Get the current time.
@@ -275,7 +292,11 @@ def startConversation(userName, currMode):
                 pastConversations=reflection_observations,
             ).split("\n")
             print(f"NPC reflection: {reflection_list}")
-            updateBaseDescription(userName, reflection_list)
+            update_reflection_db(
+                userName,
+                conversationalUser, 
+                reflection_list
+            )
 
 
 

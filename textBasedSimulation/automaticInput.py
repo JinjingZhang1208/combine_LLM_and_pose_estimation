@@ -91,6 +91,24 @@ def updateBaseDescription(userName: str, observationList: list):
     memoryObjectCollection.insert_one(memoryObjectData)
     # Delete the oldest record and add the latest one.
 
+def update_reflection_db(
+        userName: str, 
+        conversationalUser: str,
+        observationList: list
+        ):
+    # Get the current time.
+    currTime = datetime.datetime.utcnow()
+    # Update the memoryObjects collection.
+    memoryObjectData = {
+        "Username": userName,
+        "Conversation with User": conversationalUser,
+        "Creation Time": currTime,
+        "Observations": observationList,
+    }
+    # Update the latest collection with the id parameter and insert to the database.
+    memoryObjectCollection.insert_one(memoryObjectData)
+    # Delete the oldest record and add the latest one.
+
 
 def updateMemoryCollection(
     userName: str, conversationalUser: str, observationList: list

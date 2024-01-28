@@ -41,7 +41,7 @@ def generate_reflection(
     prompt = {
         "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
         "pastConversations": f"{pastConversations}", 
-        "instruction": "Provide three new higher-level observations or insights based on the past conversations. What high-level insights can you infer from the above pastConversations? Only list the observations, separated by a new line, without any additional text, headers, or formatting.",
+        "instruction": "Provide three new higher-level observations or insights based on the past conversations. Summarize the overall patterns and trends in the conversation, rather than specific details of individual conversational turns. Only list the observations, separated by a new line, without any additional text, headers, or formatting.",
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
     reflectionPrompt = json.dumps(prompt, indent=4)
