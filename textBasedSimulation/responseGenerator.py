@@ -33,6 +33,20 @@ the Moreno family somewhat well — the husband Tom
 Moreno and the wife Jane Moreno.
 """
 
+def generate_reflection(
+        userName, 
+        conversationalUser, 
+        pastConversations):
+    # print(f"pastConversations: {pastConversations}")
+    prompt = {
+        "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
+        "pastConversations": f"{pastConversations}", 
+        "instruction": "Provide three new higher-level observations or insights based on the past conversations. Summarize the overall patterns and trends in the conversation, rather than specific details of individual conversational turns. Only list the observations, separated by a new line, without any additional text, headers, or formatting.",
+        "example": "(Observation 1 text)\n(Observation 2 text)\n",
+    }
+    reflectionPrompt = json.dumps(prompt, indent=4)
+    return getGPTResponse(reflectionPrompt, GPT35)
+
 
 def generateInitialObservations(userName, baseDescription):
     BACKGROUND_DESCRIPTION_CONTEXT = f"You are the user {userName}. You wil be provided with a description with background details about you."
@@ -57,7 +71,6 @@ def generateObservations(userName, conversationalUser, currentConversation, user
         "instruction": "provide three observations from the conversation. Only list the observations, separated by a new line, without any additional text, headers, or formatting.",
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
-
     observationPrompt = json.dumps(prompt, indent=4)
     return getGPTResponse(observationPrompt, GPT35)
 
@@ -66,11 +79,10 @@ def generateConversation(
     userName,
     conversationalUser,
     currentConversation,
-    relevantObservations,
+    relevantObservations: list,
     avatar_expressions,
     avatar_actions,
 ):
-    print(avatar_expressions)
     prompt = {
         "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
         "information": {

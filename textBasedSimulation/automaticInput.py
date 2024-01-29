@@ -12,7 +12,7 @@ from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
-from pandas import *
+
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
@@ -29,7 +29,7 @@ COLLECTION_USERS = "Users"
 # test cases 2,3 last
 # 2 need 2 excel, 2q-irr, then 2q
 # 3 need ask + modify mongodb + ask
-COLLECTION_MEMORY_OBJECTS = "r3-77q3" # change memory name
+COLLECTION_MEMORY_OBJECTS = "mytest" # change memory name
 INPUT_FILENAME="evaluations/TestQuestion/3q.xlsx" # change route
 BASE_RETRIEVAL_COUNT = 7  # change parameter
 OBS_RETRIEVAL_COUNT = 7 # change parameter
@@ -84,6 +84,24 @@ def updateBaseDescription(userName: str, observationList: list):
     memoryObjectData = {
         "Username": userName,
         "Conversation with User": "Base Description",
+        "Creation Time": currTime,
+        "Observations": observationList,
+    }
+    # Update the latest collection with the id parameter and insert to the database.
+    memoryObjectCollection.insert_one(memoryObjectData)
+    # Delete the oldest record and add the latest one.
+
+def update_reflection_db(
+        userName: str, 
+        conversationalUser: str,
+        observationList: list
+        ):
+    # Get the current time.
+    currTime = datetime.datetime.utcnow()
+    # Update the memoryObjects collection.
+    memoryObjectData = {
+        "Username": userName,
+        "Conversation with User": conversationalUser,
         "Creation Time": currTime,
         "Observations": observationList,
     }
