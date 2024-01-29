@@ -77,11 +77,12 @@ def fetchPastRecords(userName: str):
         memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(MAX_DEQUE_LENGTH), maxlen=MAX_DEQUE_LENGTH
     )
 
-def update_reflection_db(
+def update_reflection_db_and_past_obs(
         userName: str, 
         conversationalUser: str,
         observationList: list
         ):
+    global pastObservations
     # Get the current time.
     currTime = datetime.datetime.utcnow()
     # Update the memoryObjects collection.
@@ -91,9 +92,13 @@ def update_reflection_db(
         "Creation Time": currTime,
         "Observations": observationList,
     }
-    # Update the latest collection with the id parameter and insert to the database.
-    memoryObjectCollection.insert_one(memoryObjectData)
+    currentObject=memoryObjectCollection.insert_one(memoryObjectData)
     # Delete the oldest record and add the latest one.
+    memoryObjectData["_id"] = currentObject.inserted_id
+    # Delete the oldest record and add the latest one.
+    if len(pastObservations) > MAX_DEQUE_LENGTH:
+        pastObservations.pop()
+    pastObservations.appendleft(memoryObjectData)
 
 def updateBaseDescription(userName: str, observationList: list):
     # Get the current time.
@@ -286,11 +291,15 @@ def perform_reflection_logic(
         conversationalUser,
         pastConversations=reflection_observations,
     ).split("\n")
-    print(f"NPC reflection: {reflection_list}")
-    update_reflection_db(
+    finalObservations = []
+    for observation in reflection_list:
+        if len(observation) > 0:
+            finalObservations.append(observation)
+    print(f"NPC reflection: {finalObservations}")
+    update_reflection_db_and_past_obs(
         userName,
         conversationalUser,
-        reflection_list
+        finalObservations
     )
 
 def generateObservationAndUpdateMemory(

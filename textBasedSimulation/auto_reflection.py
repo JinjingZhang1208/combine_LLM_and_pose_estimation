@@ -30,7 +30,7 @@ COLLECTION_USERS = "Users"
 # test cases 2,3 last
 # 2 need 2 excel, 2q-irr, then 2q
 # 3 need ask + modify mongodb + ask
-COLLECTION_MEMORY_OBJECTS = "rftest11" # change memory name
+COLLECTION_MEMORY_OBJECTS = "rf39test11" # change memory name
 INPUT_FILENAME="evaluations/TestQuestion/11q.xlsx" # change route
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
@@ -99,11 +99,12 @@ def updateBaseDescription(userName: str, observationList: list):
     # Delete the oldest record and add the latest one.
 
 
-def update_reflection_db(
+def update_reflection_db_and_past_obs(
         userName: str, 
         conversationalUser: str,
         observationList: list
         ):
+    global pastObservations
     # Get the current time.
     currTime = datetime.datetime.utcnow()
     # Update the memoryObjects collection.
@@ -113,10 +114,13 @@ def update_reflection_db(
         "Creation Time": currTime,
         "Observations": observationList,
     }
-    # Update the latest collection with the id parameter and insert to the database.
-    memoryObjectCollection.insert_one(memoryObjectData)
+    currentObject=memoryObjectCollection.insert_one(memoryObjectData)
     # Delete the oldest record and add the latest one.
-
+    memoryObjectData["_id"] = currentObject.inserted_id
+    # Delete the oldest record and add the latest one.
+    if len(pastObservations) > MAX_DEQUE_LENGTH:
+        pastObservations.pop()
+    pastObservations.appendleft(memoryObjectData)
 
 def updateMemoryCollection(
     userName: str, conversationalUser: str, observationList: list
@@ -192,6 +196,7 @@ def startConversation(userName, currMode, questionList):
         observation_dict['Observations'] = filtered_observations
 
     pastObservations = fetchPastRecords(userName)
+    print(f"pastObservations: {pastObservations}")
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
     count=0
@@ -200,7 +205,6 @@ def startConversation(userName, currMode, questionList):
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
             currentConversation = questionList[count]
-
             end = time.perf_counter()
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
@@ -274,9 +278,7 @@ def startConversation(userName, currMode, questionList):
                 break
         CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
-        # speech = tts.speech(resultConversationString, "Joanna", 7)
-        # polly.read_audio_file()
-        # print(speech)
+
         CSV_LOGGER.write_to_csv(True)
         print()
         print(
@@ -297,28 +299,42 @@ def startConversation(userName, currMode, questionList):
             resultConversationString,
         )
         if count!=1 and count % REFLECTION_PERIOD == 0:
-            print("NPC in reflection...\n")
-            reflection_retrieval = retrievalFunction(
-                currentConversation=currentConversation,
-                memoryStream=pastObservations,
-                retrievalCount=REFLECTION_RETRIEVAL_COUNT,
-                isBaseDescription=False,
-                is_reflection=True,
-            )       
-            reflection_observations = [data[1] for data in reflection_retrieval]
-            # print(f"reflection_observations: {reflection_observations}")
-
-            reflection_list = generate_reflection(
+            perform_reflection_logic(
                 userName,
                 conversationalUser,
-                pastConversations=reflection_observations,
-            ).split("\n")
-            print(f"NPC reflection: {reflection_list}")
-            update_reflection_db(
-                userName,
-                conversationalUser, 
-                reflection_list
+                currentConversation,
+                pastObservations,
             )
+
+
+def perform_reflection_logic(
+    userName, conversationalUser, currentConversation, pastObservations, 
+):
+    print("NPC in reflection...\n")
+    reflection_retrieval = retrievalFunction(
+        currentConversation=currentConversation,
+        memoryStream=pastObservations,
+        retrievalCount=REFLECTION_RETRIEVAL_COUNT,
+        isBaseDescription=False,
+        is_reflection=True,
+    )
+    reflection_observations = [data[1] for data in reflection_retrieval]
+
+    reflection_list = generate_reflection(
+        userName,
+        conversationalUser,
+        pastConversations=reflection_observations,
+    ).split("\n")
+    finalObservations = []
+    for observation in reflection_list:
+        if len(observation) > 0:
+            finalObservations.append(observation)
+    print(f"NPC reflection: {finalObservations}")
+    update_reflection_db_and_past_obs(
+        userName,
+        conversationalUser,
+        finalObservations
+    )
 
 
 def generateObservationAndUpdateMemory(
