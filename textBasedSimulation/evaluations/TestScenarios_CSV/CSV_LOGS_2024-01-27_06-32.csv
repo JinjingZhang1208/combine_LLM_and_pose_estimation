@@ -1,7 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-How are you??,"1. The user's name is Justin.
-2. Justin is described as a delighted individual.
-My observations from the description are as follows:","1.0
-0.51
-0.48","(Happy, Wave Hands)
-Hey Katie! I'm doing fantastic! How about you? Anything exciting happening in your world?",13.23,,,,0,0.5,0.53

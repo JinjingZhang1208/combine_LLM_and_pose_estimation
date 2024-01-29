@@ -1,7 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-hi,"Observation 1: The statement ""how are you"" was used to initiate the conversation.
-Observation 2: J responded with excitement and positivity, using emojis to express their mood.
-Observation 3: J asked about any exciting events happening in K's life, showing interest in their world.","1.0
-0.23
-0.0","(Happy, Wave Hands)
-Hi there! How are you today? Anything exciting happening in your world? ✋😄",1.66,,,,0,0.47,0.31

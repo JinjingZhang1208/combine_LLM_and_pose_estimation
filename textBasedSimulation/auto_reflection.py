@@ -12,8 +12,6 @@ from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
-
-
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
@@ -22,13 +20,18 @@ from responseGenerator import (
     generate_reflection,
 )
 
+import pandas as pd
 load_dotenv()
 
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
-COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "reflectionTest"
+COLLECTION_USERS = "Users"
+# test cases 2,3 last
+# 2 need 2 excel, 2q-irr, then 2q
+# 3 need ask + modify mongodb + ask
+COLLECTION_MEMORY_OBJECTS = "rftest11" # change memory name
+INPUT_FILENAME="evaluations/TestQuestion/11q.xlsx" # change route
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5 # change parameter
@@ -36,6 +39,7 @@ REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
 MAX_DEQUE_LENGTH = 50
 FILENAME = "current_conversation.wav"
+
 
 CSV_LOGGER = CSVLogger()
 
@@ -74,8 +78,26 @@ def fetchPastRecords(userName: str):
         "Conversation with User": {"$ne": "Base Description"},
     }
     return deque(
-        memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(MAX_DEQUE_LENGTH), maxlen=MAX_DEQUE_LENGTH
+        memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(50), maxlen=50
     )
+
+
+
+
+def updateBaseDescription(userName: str, observationList: list):
+    # Get the current time.
+    currTime = datetime.datetime.utcnow()
+    # Update the memoryObjects collection.
+    memoryObjectData = {
+        "Username": userName,
+        "Conversation with User": "Base Description",
+        "Creation Time": currTime,
+        "Observations": observationList,
+    }
+    # Update the latest collection with the id parameter and insert to the database.
+    memoryObjectCollection.insert_one(memoryObjectData)
+    # Delete the oldest record and add the latest one.
+
 
 def update_reflection_db(
         userName: str, 
@@ -88,20 +110,6 @@ def update_reflection_db(
     memoryObjectData = {
         "Username": userName,
         "Conversation with User": conversationalUser,
-        "Creation Time": currTime,
-        "Observations": observationList,
-    }
-    # Update the latest collection with the id parameter and insert to the database.
-    memoryObjectCollection.insert_one(memoryObjectData)
-    # Delete the oldest record and add the latest one.
-
-def updateBaseDescription(userName: str, observationList: list):
-    # Get the current time.
-    currTime = datetime.datetime.utcnow()
-    # Update the memoryObjects collection.
-    memoryObjectData = {
-        "Username": userName,
-        "Conversation with User": "Base Description",
         "Creation Time": currTime,
         "Observations": observationList,
     }
@@ -127,26 +135,55 @@ def updateMemoryCollection(
     currentObject = memoryObjectCollection.insert_one(memoryObjectData)
     memoryObjectData["_id"] = currentObject.inserted_id
     # Delete the oldest record and add the latest one.
-    if len(pastObservations) > MAX_DEQUE_LENGTH:
+    if len(pastObservations) > 15:
         pastObservations.pop()
     pastObservations.appendleft(memoryObjectData)
 
 
 def getBaseDescription():
-    description = ""
-    while True:
-        currLine = input(
-            "Please enter a relevant description about your character. Type done to complete the description \n"
-        )
-        if currLine.lower() == "done":
-            break
-        description += f"{currLine}\n"
+    print("Please enter a relevant description about your character. Type done to complete the description \n")
+    if "4q" in INPUT_FILENAME:
+        description = '''
+        1 Ava is a kind girl who is 27 years old, she doesn't love to help people
+        2 Ava was born in a small town called Winterland. Winterland is a beautiful city with nice people.
+        3 Ava loves a coffee shop called MorningStar in Winterland, she goes to MorningStar cafe once a week.
+        4 Ava is living with her sister Avam. Avam is a master of education student at Winterland University.
+        5 Ava is a writer who writes novels. She loves to sit in MorningStar and write new stories in her novels.
+        6 Ava’s favourite novel is called Amazing Doctor. Ava’s favorite sport is basketball.
+        7 Ava knows her neighbor Bob. They often meet at Newbrun St. They like to play basketball together on Sunday mornings.
+        8 Ava’s birthday is April 8th.
+        9 Ava loves coffee. Her favourite coffee is Latte. But she dislikes americano coffee.
+        10 Ava has a cat called Lucy. Lucy is a 3-year-old Golden cat.
+        '''
+    else:
+        description = '''
+        1 Ava is a kind girl who is 25 years old, she loves to help people
+        2 Ava was born in a small town called Brentwood. Brentwood is a beautiful town with delicious food.
+        3 Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+        4 Ava is living with her sister Avam. Avam is a master of computer science student at Brentwood University.
+        5 Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+        6 Ava’s favourite novel is called Gone with the wind. Ava’s favourite sport is jogging.
+        7 Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+        8 Ava’s birthday is June 8th.
+        9 Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+        10 Ava has a cat called Lucy. Lucy is a 3-year-old male Bengal cat.
+        '''
+    # while True:
+    #     currLine = input(
+    #         "Please enter a relevant description about your character. Type done to complete the description \n"
+    #     )
+    #     if currLine.lower() == "done":
+    #         break
+    #     description += f"{currLine}\n"
+    print(description)
     return description
 
 
-def startConversation(userName, currMode):
+def startConversation(userName, currMode, questionList):
     global pastObservations
-    conversationalUser = input("Define the username you are acting as: ")
+    print("Define the username you are acting as: ")
+    # conversationalUser = input("Define the username you are acting as: ")
+    conversationalUser="Tony"
     baseObservation = fetchBaseDescription(userName)
     if baseObservation:
         # filter empty observations
@@ -157,14 +194,13 @@ def startConversation(userName, currMode):
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
+    count=0
 
-    conversation_count = 0
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
-            currentConversation = input(
-                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            )
+            currentConversation = questionList[count]
+
             end = time.perf_counter()
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
@@ -186,17 +222,16 @@ def startConversation(userName, currMode):
         if currentConversation.lower() == "done":
             break
         start = time.perf_counter()
-
         baseRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=baseObservation,
-            retrievalCount=BASE_RETRIEVAL_COUNT,
+            currentConversation,
+            baseObservation,
+            BASE_RETRIEVAL_COUNT,
             isBaseDescription=True,
         )
         observationRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=pastObservations,
-            retrievalCount=OBS_RETRIEVAL_COUNT,
+            currentConversation,
+            pastObservations,
+            OBS_RETRIEVAL_COUNT,
             isBaseDescription=False,
         )
         end = time.perf_counter()
@@ -247,6 +282,12 @@ def startConversation(userName, currMode):
         print(
             f"Time taken for the conversation generation by GPT : {npc_response_time}"
         )
+
+        if count<len(questionList)-1:
+            count+=1
+        else:
+            break
+    
         eventLoop.run_in_executor(
             threadExecutor,
             generateObservationAndUpdateMemory,
@@ -255,43 +296,30 @@ def startConversation(userName, currMode):
             currentConversation,
             resultConversationString,
         )
-        
+        if count!=1 and count % REFLECTION_PERIOD == 0:
+            print("NPC in reflection...\n")
+            reflection_retrieval = retrievalFunction(
+                currentConversation=currentConversation,
+                memoryStream=pastObservations,
+                retrievalCount=REFLECTION_RETRIEVAL_COUNT,
+                isBaseDescription=False,
+                is_reflection=True,
+            )       
+            reflection_observations = [data[1] for data in reflection_retrieval]
+            # print(f"reflection_observations: {reflection_observations}")
 
-        conversation_count += 1
-        if conversation_count!=1 and conversation_count % REFLECTION_PERIOD == 0:
-            with ThreadPoolExecutor() as executor:
-                executor.submit( 
-                    perform_reflection_logic,
-                    userName,
-                    conversationalUser,
-                    currentConversation,
-                    pastObservations,
-                )
+            reflection_list = generate_reflection(
+                userName,
+                conversationalUser,
+                pastConversations=reflection_observations,
+            ).split("\n")
+            print(f"NPC reflection: {reflection_list}")
+            update_reflection_db(
+                userName,
+                conversationalUser, 
+                reflection_list
+            )
 
-def perform_reflection_logic(
-    userName, conversationalUser, currentConversation, pastObservations, 
-):
-    print("NPC in reflection...\n")
-    reflection_retrieval = retrievalFunction(
-        currentConversation=currentConversation,
-        memoryStream=pastObservations,
-        retrievalCount=REFLECTION_RETRIEVAL_COUNT,
-        isBaseDescription=False,
-        is_reflection=True,
-    )
-    reflection_observations = [data[1] for data in reflection_retrieval]
-
-    reflection_list = generate_reflection(
-        userName,
-        conversationalUser,
-        pastConversations=reflection_observations,
-    ).split("\n")
-    print(f"NPC reflection: {reflection_list}")
-    update_reflection_db(
-        userName,
-        conversationalUser,
-        reflection_list
-    )
 
 def generateObservationAndUpdateMemory(
     userName, conversationalUser, currentConversation, resultConversationString
@@ -313,12 +341,14 @@ def generateObservationAndUpdateMemory(
         f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
     )
     """
+
     updateMemoryCollection(userName, conversationalUser, finalObservations)
 
 
 def setConversationMode():
     while True:
-        currMode = input("Please select the following :\n1. Text Mode\n2. Audio Mode\n")
+        # currMode = input("Please select the following :\n1. Text Mode\n2. Audio Mode\n")
+        currMode="1"
         if currMode == "1":
             return CONVERSATION_MODE.TEXT.value
         elif currMode == "2":
@@ -329,20 +359,54 @@ def setConversationMode():
 
 if __name__ == "__main__":
     pastObservations = deque()
+    df = pd.read_excel(INPUT_FILENAME)
+    questionList = df['Questions']
+
+    # for value in column_data:
+    #     print(value)
+
     # Get username.
-    userName = input("Please enter the username of character: ")
+    # userName = input("Please enter the username of character: ")
+    print("Please enter a relevant description about your character. Type done to complete the description \n")
+    userName = "Ava"
 
     # Check for existing user.
     existingUser = userCollection.find_one({"Username": userName})
-
+    existingInCOLLECTION=memoryObjectCollection.find_one({"Username": userName})
     if existingUser:
-        print(f"Welcome back! {userName} \nContinue where you left off")
-        avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
-        avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
-        avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
-        avatar_expressions = list(avatar_expression_map.keys())
-        avatar_actions = list(avatar_action_map.keys())
+        if existingInCOLLECTION:
+            print(f"Welcome back! {userName} \nContinue where you left off")
+            avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+            avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
+            avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
+            avatar_expressions = list(avatar_expression_map.keys())
+            avatar_actions = list(avatar_action_map.keys())
 
+        else:
+            # Collect the description details.
+            description = getBaseDescription()
+
+            # Insert the userData to the Users collection.
+            userData = {
+                "Username": userName,
+                "Description": description,
+                "Avatar Expressions Map": avatar_expression_map,
+                "Avatar Actions Map": avatar_action_map,
+                "Avatar Voice": avatar_voice,
+            }
+            startTime = time.time()
+            observationList = generateInitialObservations(userName, description).split("\n")
+            endTime = time.time()
+            print(
+                f"Time taken for the observation generation by GPT : {endTime - startTime:.2f} "
+            )
+
+            # Generate the memory object data and push it to the memory objects collection.
+            updateBaseDescription(userName, observationList)
+            print("User created successfully!")
+            print(f"Welcome back! {userName} \nContinue where you left off")
+            avatar_expressions = list(avatar_expression_map.keys())
+            avatar_actions = list(avatar_action_map.keys())
     else:
         # Collect the description details.
         description = getBaseDescription()
@@ -372,5 +436,5 @@ if __name__ == "__main__":
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
     currMode = setConversationMode()
-    startConversation(userName, currMode)
+    startConversation(userName, currMode, questionList)
     client.close()

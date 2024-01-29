@@ -1,7 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-hello,"Justin started the conversation with a wave.
-Justin greeted Katie enthusiastically.
-Justin mentioned being in a good mood.","1.0
-0.73
-0.0","(Happy, Wave Hands)
-Hey Katie! Great to see you! I'm in such a good mood today! How are you doing?",1.89,,,,0,0.58,0.58

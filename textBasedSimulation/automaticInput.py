@@ -12,7 +12,7 @@ from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
-from pandas import *
+
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
