@@ -1,0 +1,161 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+What type of coffee does Bob prefer?,"9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+7. Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+Bob has a favorite coffee.
+Both Ava and Bob have shared their favorite types of coffee, with Ava preferring cappuccino and Bob liking a unique blend called ""Mystic Morning"" that combines hazelnut, caramel, and a hint of cinnamon.
+Tony is asked if he has a favorite type of coffee.
+Tony has a favorite type of coffee.
+- Both Ava and Bob have shared their favorite types of coffee, with Ava preferring cappuccino and Bob liking a unique blend called ""Mystic Morning"" that combines hazelnut, caramel, and a hint of cinnamon.","1.0
+0.79
+0.78
+1.0
+0.78
+0.76
+0.76
+0.76","(Happy, Wave Hands)
+Bob's favorite coffee is a unique blend called ""Mystic Morning"" that combines hazelnut, caramel, and a hint of cinnamon. It sounds absolutely delightful! How about you, Tony? Do you have a favorite type of coffee?",0.0,,,,0,1.16,0.3
+"Ava, what is your favorite type of coffee?","9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5. Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava asks Tony if he has a favorite type of coffee.
+Ava asks Tony about his go-to coffee.
+Ava asks Tony if he has a favorite coffee place.
+Ava asks Tony if he has any other coffee favorites.
+Ava is interested in hearing about Tony's favorite coffee.","1.0
+0.63
+0.51
+1.0
+0.89
+0.87
+0.85
+0.84","(Smiling, Cheer)
+My favorite type of coffee is cappuccino! How about you, Tony? Do you have a favorite coffee? Maybe one that makes your taste buds dance?",0.0,,,,0,1.85,0.8
+"Besides your favorite, is there another type of coffee you occasionally enjoy?","9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5. Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Tony is asked if he has a favorite type of coffee.
+Bob's favorite coffee combines hazelnut, caramel, and a hint of cinnamon.
+Bob's favorite coffee is called ""Mystic Morning"" and it is a unique blend.
+Tony is asked if he has a favorite type of coffee.
+Ava asks Tony if he has any other coffee favorites.","1.0
+0.79
+0.47
+1.0
+0.82
+0.81
+0.71
+0.68","(Happy, Wave Hands)
+I love cappuccino, but I also enjoy trying different flavors! Have you ever had a coffee with a hint of caramel or maybe a touch of hazelnut?",0.0,,,,0,1.56,0.49
+Does Bob like to drink his favorite coffee at the Soon Cafe?,"3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+7. Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+Bob's favorite coffee is called ""Mystic Morning"" and it is a unique blend.
+Tony is asked if he has a favorite type of coffee.
+Bob's favorite coffee combines hazelnut, caramel, and a hint of cinnamon.
+Ava asks Tony about his favorite coffee.
+Bob has a favorite coffee.","1.0
+0.69
+0.6
+1.0
+0.95
+0.95
+0.93
+0.92","(Sad, Faint)
+Oh no, I'm not sure if Bob likes to drink his favorite coffee at the Soon Cafe. Maybe we should ask him directly next time we see him at the library.",0.0,,,,0,6.17,0.29
+How often do you visit the Soon Cafe?,"3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5. Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+7. Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+- Ava has expressed a desire to visit the Soon Cafe and add it to her list of coffee adventures.
+Ava hasn't visited the Soon Cafe yet.
+Ava expresses sadness about not having visited the Soon Cafe.
+They like to go to Soon cafe in Brentwood for coffee.
+Observation 3: The Brentwood Library and Soon cafe are popular meeting places for Ava and Tony.","1.0
+0.55
+0.36
+1.0
+0.99
+0.96
+0.96
+0.96","(Sad, Faint)
+I haven't had the pleasure of visiting the Soon Cafe yet, but I've heard so many wonderful things about it. I can only imagine the aroma of freshly brewed coffee and the cozy atmosphere. It's definitely on my list of coffee adventures!",0.0,,,,0,2.69,0.25
+"Have you ever tried dirty coffee? If so, what do you think about it?","9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5. Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Tony asked Ava if she has ever tried dirty coffee.
+Ava is open to experimenting with different types of coffee.
+Ava responded that she hasn't tried dirty coffee yet but she is open to new coffee adventures.
+Ava asked Tony what makes dirty coffee dirty and if it is like a mischievous blend of flavors.
+Tony is asked if he has a favorite type of coffee.","1.0
+0.8
+0.47
+1.0
+0.98
+0.97
+0.95
+0.93","(Happy, Cheer)
+I haven't tried dirty coffee yet, Tony! What makes it dirty? Is it like a mischievous blend of flavors? I'm always up for new coffee adventures! By the way, do you have a favorite type of coffee?",0.0,,,,0,1.19,0.31
+What kind of coffee do you usually order when you visit the Soon Cafe?,"3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+5. Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava uses the phrase ""coffee adventures"" to describe her interest in visiting the Soon Cafe.
+Observation 1: Ava is eager to visit the Soon Cafe and expresses interest in coffee adventures.
+Ava mentions that she has heard many wonderful things about the Soon Cafe.
+- Ava is unsure if Bob likes to drink his favorite coffee at the Soon Cafe.
+Ava asks Tony about his favorite type of coffee.","1.0
+0.61
+0.53
+1.0
+0.89
+0.86
+0.85
+0.79","(Sad, Faint)
+Oh no, I'm sorry, Tony! I haven't had the chance to visit the Soon Cafe yet. But I'm really curious to try their coffee. Do you have any recommendations?",0.0,,,,0,1.56,0.46
+"Do you and Bob ever go for coffee together? If so, where do you usually go?","7. Ava knows her neighbor Bob. They often meet at the Brentwood Library. They like to play tennis together on Sunday mornings.
+3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+- Ava is unsure if Bob likes to drink his favorite coffee at the Soon Cafe.
+- Tony and Ava are discussing Bob's coffee preferences.
+- Ava suggests asking Bob directly about his coffee preferences next time they see him at the library.
+Observation 2: Ava and Tony often discuss their preferences and suggest new types of coffee to each other.
+Bob's favorite coffee combines hazelnut, caramel, and a hint of cinnamon.","1.0
+0.89
+0.57
+1.0
+0.97
+0.96
+0.86
+0.85","(Happy, Clap)
+Bob and I love exploring new coffee shops! We haven't tried Soon Cafe yet, but we often meet at the Brentwood Library. Maybe we'll give it a go next time!",0.0,,,,0,1.05,0.88
+Has your coffee preference changed over time?,"9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+5. Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Tony is asked if he has a favorite type of coffee.
+Tony's coffee preference has changed over time.
+Ava is open to experimenting with different types of coffee.
+Observation 2: Ava and Tony often discuss their preferences and suggest new types of coffee to each other.
+Ava asks Tony about his favorite type of coffee.","1.0
+0.72
+0.32
+1.0
+0.98
+0.93
+0.93
+0.91","(Happy, Clap)
+Yes, Tony! I love trying new coffee flavors. My favorite is cappuccino, but I'm always up for a delightful adventure with different types of coffee. How about you? Any new favorites on your coffee journey?",0.0,,,,0,1.22,0.46
+What would you recommend to someone trying coffee at the Soon Cafe for the first time?,"3. Ava loves a coffee shop called Soon cafe in Brentwood, she goes to Soon cafe twice a week.
+9. Ava loves coffee. Her favourite coffee is cappuccino, but she dislikes americano coffee.
+5. Ava is a writer who writes novels. She loves to sit in Soon cafe in Brentwood and write new stories in her novels.
+Ava is curious to try the coffee at the Soon Cafe and asks Tony for recommendations.
+Ava uses the phrase ""coffee adventures"" to describe her interest in visiting the Soon Cafe.
+Observation 1: Ava is eager to visit the Soon Cafe and expresses interest in coffee adventures.
+They plan to try Soon Cafe next time.
+Tony usually orders coffee when he visits the Soon Cafe.","1.0
+0.67
+0.56
+1.0
+0.9
+0.87
+0.87
+0.85","(Happy, Point)
+For a delightful coffee adventure at Soon Cafe, I recommend trying their signature cappuccino! It's my favorite and perfect for cozy writing sessions. Enjoy!",0.0,,,,0,1.3,0.46

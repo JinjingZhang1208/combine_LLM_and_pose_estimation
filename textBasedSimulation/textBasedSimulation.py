@@ -1,16 +1,12 @@
 from distutils import text_file
 import time
-import os
-import datetime
 import asyncio
 from enum import Enum
 from concurrent.futures import ThreadPoolExecutor
-from collections import deque
-from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
-from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
+from collections import deque
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
 
 
@@ -22,19 +18,22 @@ from responseGenerator import (
     generate_reflection,
 )
 
-load_dotenv()
+from db_util import (
+    fetchBaseDescription,
+    fetchPastRecords,
+    updateMemoryCollection,
+    updateBaseDescription,
+    update_reflection_db_and_past_obs,
+    client,
+    userCollection,
+)
 
-# Constants
-DATABASE_NAME = "LLMDatabase"
-DATABASE_URL = os.environ.get("DATABASE_URL")
-COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "reflectionTest"
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5 # change parameter
 REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
-MAX_DEQUE_LENGTH = 50
+
 FILENAME = "current_conversation.wav"
 
 CSV_LOGGER = CSVLogger()
@@ -49,92 +48,6 @@ class AVATAR_DATA(Enum):
 class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
-
-
-# Basic objects for the Database.
-client = MongoClient(DATABASE_URL)
-LLMdatabase = client[DATABASE_NAME]
-userCollection = LLMdatabase[COLLECTION_USERS]
-memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
-
-
-# Fetch the base description once.
-def fetchBaseDescription(userName: str):
-    return deque(
-        memoryObjectCollection.find(
-            {"Username": userName, "Conversation with User": "Base Description"}
-        ),
-    )
-
-
-# fetch the past records once.
-def fetchPastRecords(userName: str):
-    fetchQuery = {
-        "$or": [{"Username": userName}, {"Conversation with User": userName}],
-        "Conversation with User": {"$ne": "Base Description"},
-    }
-    return deque(
-        memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(MAX_DEQUE_LENGTH), maxlen=MAX_DEQUE_LENGTH
-    )
-
-def update_reflection_db_and_past_obs(
-        userName: str, 
-        conversationalUser: str,
-        observationList: list
-        ):
-    global pastObservations
-    # Get the current time.
-    currTime = datetime.datetime.utcnow()
-    # Update the memoryObjects collection.
-    memoryObjectData = {
-        "Username": userName,
-        "Conversation with User": conversationalUser,
-        "Creation Time": currTime,
-        "Observations": observationList,
-    }
-    currentObject=memoryObjectCollection.insert_one(memoryObjectData)
-    # Delete the oldest record and add the latest one.
-    memoryObjectData["_id"] = currentObject.inserted_id
-    # Delete the oldest record and add the latest one.
-    if len(pastObservations) > MAX_DEQUE_LENGTH:
-        pastObservations.pop()
-    pastObservations.appendleft(memoryObjectData)
-
-def updateBaseDescription(userName: str, observationList: list):
-    # Get the current time.
-    currTime = datetime.datetime.utcnow()
-    # Update the memoryObjects collection.
-    memoryObjectData = {
-        "Username": userName,
-        "Conversation with User": "Base Description",
-        "Creation Time": currTime,
-        "Observations": observationList,
-    }
-    # Update the latest collection with the id parameter and insert to the database.
-    memoryObjectCollection.insert_one(memoryObjectData)
-    # Delete the oldest record and add the latest one.
-
-
-def updateMemoryCollection(
-    userName: str, conversationalUser: str, observationList: list
-):
-    global pastObservations
-    # Get the current time.
-    currTime = datetime.datetime.utcnow()
-    # Update the memoryObjects collection.
-    memoryObjectData = {
-        "Username": userName,
-        "Conversation with User": conversationalUser,
-        "Creation Time": currTime,
-        "Observations": observationList,
-    }
-    # Update the latest collection with the id parameter and insert to the database.
-    currentObject = memoryObjectCollection.insert_one(memoryObjectData)
-    memoryObjectData["_id"] = currentObject.inserted_id
-    # Delete the oldest record and add the latest one.
-    if len(pastObservations) > MAX_DEQUE_LENGTH:
-        pastObservations.pop()
-    pastObservations.appendleft(memoryObjectData)
 
 
 def getBaseDescription():
