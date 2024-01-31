@@ -57,7 +57,7 @@ def retrievalFunction(
             )[:retrievalCount]
             return reflection_results
 
-        print(f"observationData: {observationData}")
+        # print(f"observationData: {observationData}")
         similarityScores = calculateRelevance(currentConversation, observationData)
         return calculateRetrievalScore(
             observationData, recencyScores, similarityScores, retrievalCount
