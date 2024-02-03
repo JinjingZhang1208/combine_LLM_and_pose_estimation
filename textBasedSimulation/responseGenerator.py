@@ -1,7 +1,9 @@
 from statistics import mode
+from deepgram import Deepgram
 import openai
 from openai import OpenAI
 import json
+import asyncio
 import os
 from dotenv import load_dotenv
 
@@ -11,9 +13,10 @@ GPT4 = "gpt-4"
 GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
 openai_client = OpenAI(api_key=API_KEY)
+DEEPGRAM_API_KEY = os.environ.get("DEEPGRAM_API_KEY")
+MIMETYPE = 'audio/wav'
 
-SAMPLE_DESCRIPTION = """John Lin is a pharmacy shopkeeper at the Willow
-Market and Pharmacy who loves to help people. He
+SAMPLE_DESCRIPTION = """John Lin is a pharmacy shopkeeper at the Willow Market and Pharmacy who loves to help people. He
 is always looking for ways to make the process
 of getting medication easier for his customers;
 John Lin is living with his wife, Mei Lin, who
@@ -133,10 +136,54 @@ def getGPTResponse(prompt, gptModel):
     return response.choices[0].message.content
 
 
+# def getTextfromAudio_whisper_1(recordedFile):
+#     audio_file = open(recordedFile, "rb")
+#     transcript = openai_client.audio.transcriptions.create(
+#         model="whisper-1", file=audio_file
+#     )
+#     print(f"Recorded Audio text : {transcript.text}")
+#     return transcript.text
+
+
 def getTextfromAudio(recordedFile):
-    audio_file = open(recordedFile, "rb")
-    transcript = openai_client.audio.transcriptions.create(
-        model="whisper-1", file=audio_file
+    res = asyncio.run(get_deepgram_response(recordedFile)) 
+    text = res.get("results", {}).get("channels", [{}])[0].get(
+    "alternatives", [{}])[0].get("transcript", "")
+    print(text)
+    return text
+    
+async def get_deepgram_response(FILE):
+    # Initialize the Deepgram SDK
+    deepgram = Deepgram(DEEPGRAM_API_KEY)
+
+    # Check whether requested file is local or remote, and prepare source
+    if FILE.startswith('http'):
+        # file is remote
+        # Set the source
+        source = {
+            'url': FILE
+        }
+    else:
+        # file is local
+        # Open the audio file
+        audio = open(FILE, 'rb')
+
+        # Set the source
+        source = {
+            'buffer': audio,
+            'mimetype': MIMETYPE
+        }
+
+    # Send the audio to Deepgram and get the response
+    response = await asyncio.create_task(
+        deepgram.transcription.prerecorded(
+            source,
+            {
+                'punctuate': True,
+                'model': 'nova',
+            }
+        )
     )
-    print(f"Recorded Audio text : {transcript.text}")
-    return transcript.text
+
+    # Write the response to the console
+    return response

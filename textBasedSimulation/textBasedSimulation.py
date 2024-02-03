@@ -9,7 +9,6 @@ from csvLogger import CSVLogger, LogElements
 from collections import deque
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
 
-
 from responseGenerator import (
     generateInitialObservations,
     generateObservations,
@@ -87,7 +86,7 @@ def startConversation(userName, currMode):
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
             CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, 0)
-        else:
+        elif currMode == CONVERSATION_MODE.AUDIO.value:
             start = time.perf_counter()
             listenAndRecord(FILENAME, CSV_LOGGER)
             end = time.perf_counter()

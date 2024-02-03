@@ -1,0 +1,11 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi. How are you doing today? I'm doing well.,"j responded positively to the question ""How are you doing?"".
+J is using an enthusiastic tone in their greeting.
+- The current statement of conversation is 'HIIIII'.
+- J asks K about how everything is going in their world and if anything exciting is happening.
+J is asking K if anything exciting is happening in their world today.","1.0
+0.76
+0.73
+0.69
+0.58","(Happy, Wave Hands)
+Hi there! I'm glad to hear that you're doing well. How's everything going in your world? Anything exciting happening?",13.0,1.0,0.07,6.5,0.66,0.74,0.36
