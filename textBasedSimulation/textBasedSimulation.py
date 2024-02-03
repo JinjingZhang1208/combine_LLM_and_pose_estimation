@@ -37,6 +37,14 @@ FILENAME = "current_conversation.wav"
 
 CSV_LOGGER = CSVLogger()
 
+event_publisher_base_description =  """
+The Event Publisher is a dedicated agent whose mission is to accept and store events published by users. It serves as a central hub for all user-generated events, providing access to these events for any inquiring individuals.
+
+When asked about a specific event, the Event Publisher will search its memory and share the relevant information. If the requested event is not in its memory, the Event Publisher will honestly admit that it does not know.
+
+Above all, the Event Publisher is committed to providing accurate and reliable information. It strictly avoids hallucination, ensuring that all shared events are real and verifiable.
+"""
+
 
 class AVATAR_DATA(Enum):
     AVATAR_EXPRESSION_MAP = "Avatar Expressions Map"
@@ -61,9 +69,12 @@ def getBaseDescription():
     return description
 
 
-def startConversation(userName, currMode):
+def startConversation(userName, currMode,is_publish_event):
     global pastObservations
-    conversationalUser = input("Define the username you are acting as: ")
+    if not is_publish_event:
+        conversationalUser = input("Define the username you are acting as: ")
+    else:
+        conversationalUser = "Default User"
     baseObservation = fetchBaseDescription(userName)
     if baseObservation:
         # filter empty observations
@@ -247,30 +258,49 @@ def setConversationMode():
         else:
             print("Invalid input, please select appropriate options")
 
+def publish_event_mode():
+    declare_event = input("Do you want publish or Find an event (y/n): ")
+    if declare_event.lower() == "y":
+        return True
+    elif declare_event.lower() == "n":
+        return False
+    else:
+        print("Invalid input, please select appropriate options")
+
+
 
 if __name__ == "__main__":
+    currMode = setConversationMode()
+    is_publish_event = publish_event_mode()
+    print(f"is_publish_event: {is_publish_event}")
     pastObservations = deque()
-    # Get username.
-    userName = input("Please enter the username of character: ")
+
+    if not is_publish_event:
+        npc_name = input("Please enter the username of character: ")
+    else:
+        npc_name = "Event Publisher"
 
     # Check for existing user.
-    existingUser = userCollection.find_one({"Username": userName})
+    is_existing_npc = userCollection.find_one({"Username": npc_name})
 
-    if existingUser:
-        print(f"Welcome back! {userName} \nContinue where you left off")
-        avatar_expression_map = existingUser[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
-        avatar_action_map = existingUser[AVATAR_DATA.AVATAR_ACTION_MAP.value]
-        avatar_voice = existingUser[AVATAR_DATA.AVATAR_VOICE.value]
+    if is_existing_npc:
+        print(f"Welcome back! {npc_name} \nContinue where you left off")
+        avatar_expression_map = is_existing_npc[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+        avatar_action_map = is_existing_npc[AVATAR_DATA.AVATAR_ACTION_MAP.value]
+        avatar_voice = is_existing_npc[AVATAR_DATA.AVATAR_VOICE.value]
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
 
     else:
-        # Collect the description details.
-        description = getBaseDescription()
+        if not is_publish_event:
+            # Collect the description details.
+            description = getBaseDescription()
+        else: 
+            description = event_publisher_base_description
 
         # Insert the userData to the Users collection.
         userData = {
-            "Username": userName,
+            "Username": npc_name,
             "Description": description,
             "Avatar Expressions Map": avatar_expression_map,
             "Avatar Actions Map": avatar_action_map,
@@ -280,18 +310,19 @@ if __name__ == "__main__":
 
         # Time the function call and fetch the results.
         startTime = time.time()
-        observationList = generateInitialObservations(userName, description).split("\n")
+        observationList = generateInitialObservations(npc_name, description).split("\n")
         endTime = time.time()
         print(
             f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
         )
 
         # Generate the memory object data and push it to the memory objects collection.
-        updateBaseDescription(userName, observationList)
+        updateBaseDescription(npc_name, observationList)
         print("User created successfully!")
-        print(f"Welcome back! {userName} \nContinue where you left off")
+        print(f"Welcome back! {npc_name} \nContinue where you left off")
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
-    currMode = setConversationMode()
-    startConversation(userName, currMode)
+
+
+    startConversation(npc_name, currMode,is_publish_event)
     client.close()
