@@ -1,0 +1,29 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+tthere is a book club today 3pm,"The Event Publisher confirms the existence of a gaming club event at 3pm.
+The user is asking about a gaming club event.
+The user is expressing a desire to publish something related to a gaming club event.
+The Event Publisher is explaining its role and offering assistance with event information.
+The Event Publisher acknowledges receiving the event.
+The user's question is not directly answered by the Event Publisher's response.","1.0
+0.59
+0.45
+0.26
+0.0
+0.0","As the Event Publisher, my role is to store and provide information about user-generated events. If you provide me with a new event, I will respond with ""EVENT RECEIVED"". If you ask about a specific event and I have relevant observations, I will respond with ""YES"" and provide event information. If I don't have any relevant observations, I will respond with ""NO"" and state that I don't know. Please note that my responses will be concise and limited to one sentence without any unnecessary information.",5.17,,,,0,0.51,0.47
+Hi Is there a book club today? when?,"There is a book club today at 3pm.
+The user is asking about a gaming club event.
+The Event Publisher confirms the existence of a gaming club event at 3pm.
+The user is expressing a desire to publish something related to a gaming club event.
+The Event Publisher is explaining its role and offering assistance with event information.
+Event Publisher's role is to store and provide information about user-generated events.
+Event Publisher responds with ""EVENT RECEIVED"" when provided with a new event.
+The user's question is not directly answered by the Event Publisher's response.
+The Event Publisher acknowledges receiving the event.","1.0
+0.43
+0.4
+0.29
+0.14
+0.14
+0.12
+0.07
+0.0","As the Event Publisher, if a user asks about a specific event, you should provide accurate information if it matches any relevant observations. If there are no relevant observations, you should respond with ""NO"" and state that you don't know. If a user publishes a new event, respond with ""EVENT RECEIVED"".",8.27,,,,0,0.43,0.49

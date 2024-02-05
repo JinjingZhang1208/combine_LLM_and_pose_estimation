@@ -8,6 +8,29 @@ from audioRecorder import listenAndRecord, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
 from collections import deque
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
+import datetime
+import os
+from dotenv import load_dotenv
+from collections import deque
+from pymongo.mongo_client import MongoClient
+
+load_dotenv()
+
+
+# Constants
+DATABASE_NAME = "LLMDatabase"
+DATABASE_URL = os.environ.get("DATABASE_URL")
+COLLECTION_USERS = "NPC Avatars"
+COLLECTION_MEMORY_OBJECTS = "test199"
+
+MAX_DEQUE_LENGTH = 50
+
+# Basic objects for the Database.
+client = MongoClient(DATABASE_URL)
+LLMdatabase = client[DATABASE_NAME]
+userCollection = LLMdatabase[COLLECTION_USERS]
+memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
+
 
 from responseGenerator import (
     generateInitialObservations,
@@ -15,17 +38,9 @@ from responseGenerator import (
     generateConversation,
     getTextfromAudio,
     generate_reflection,
+    generate_event_publisher_prompt,
 )
 
-from db_util import (
-    fetchBaseDescription,
-    fetchPastRecords,
-    updateMemoryCollection,
-    updateBaseDescription,
-    update_reflection_db_and_past_obs,
-    client,
-    userCollection,
-)
 
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
@@ -36,14 +51,6 @@ REFLECTION_PERIOD = 3
 FILENAME = "current_conversation.wav"
 
 CSV_LOGGER = CSVLogger()
-
-event_publisher_base_description =  """
-The Event Publisher is a dedicated agent whose mission is to accept and store events published by users. It serves as a central hub for all user-generated events, providing access to these events for any inquiring individuals.
-
-When asked about a specific event, the Event Publisher will search its memory and share the relevant information. If the requested event is not in its memory, the Event Publisher will honestly admit that it does not know.
-
-Above all, the Event Publisher is committed to providing accurate and reliable information. It strictly avoids hallucination, ensuring that all shared events are real and verifiable.
-"""
 
 
 class AVATAR_DATA(Enum):
@@ -69,7 +76,9 @@ def getBaseDescription():
     return description
 
 
-def startConversation(userName, currMode,is_publish_event):
+def startConversation(userName, 
+                      currMode,
+                      is_publish_event):
     global pastObservations
     if not is_publish_event:
         conversationalUser = input("Define the username you are acting as: ")
@@ -90,9 +99,14 @@ def startConversation(userName, currMode,is_publish_event):
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
-            currentConversation = input(
-                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            )
+            if not is_publish_event:
+                currentConversation = input(
+                    f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+                )
+            else:
+                currentConversation = input(
+                    f"If you want to publish an event, start with Event: <Event Name> and then provide the details. Else, start with a query. "
+                )
             end = time.perf_counter()
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
@@ -115,45 +129,74 @@ def startConversation(userName, currMode,is_publish_event):
             break
         start = time.perf_counter()
 
-        baseRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=baseObservation,
-            retrievalCount=BASE_RETRIEVAL_COUNT,
-            isBaseDescription=True,
-        )
-        observationRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=pastObservations,
-            retrievalCount=OBS_RETRIEVAL_COUNT,
-            isBaseDescription=False,
-        )
+        if not is_publish_event:
+            baseRetrieval = retrievalFunction(
+                currentConversation=currentConversation,
+                memoryStream=baseObservation,
+                retrievalCount=BASE_RETRIEVAL_COUNT,
+                isBaseDescription=True,
+            )
+
+        if not is_publish_event:
+            observationRetrieval = retrievalFunction(
+                currentConversation=currentConversation,
+                memoryStream=pastObservations,
+                retrievalCount=OBS_RETRIEVAL_COUNT,
+                isBaseDescription=False,
+            )
+        else:
+            # if publish event, only sort by relevance
+            observationRetrieval = retrievalFunction(
+                currentConversation=currentConversation,
+                memoryStream=pastObservations,
+                retrievalCount=OBS_RETRIEVAL_COUNT,
+                isBaseDescription=False,
+                is_publish_event=True,
+            )
         end = time.perf_counter()
         retrieval_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
 
-        important_observations = [
-            data[1] for data in baseRetrieval + observationRetrieval
-        ]
+        if not is_publish_event:
+            important_observations = [
+                data[1] for data in baseRetrieval + observationRetrieval
+            ]
+        else:
+            important_observations = [
+                data[1] for data in observationRetrieval
+            ]
+        # print(f"Important Observations: {important_observations}")
 
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_OBSERVATIONS, "\n".join(important_observations)
         )
-        important_scores = [
-            round(data[0], 2) for data in baseRetrieval + observationRetrieval
-        ]
+        if not is_publish_event:
+            important_scores = [
+                round(data[0], 2) for data in baseRetrieval + observationRetrieval
+            ]
+        else:
+            important_scores = [
+                round(data[0], 2) for data in observationRetrieval
+            ]
 
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
         )
         start = time.perf_counter()
-        conversationPrompt = generateConversation(
-            userName,
-            conversationalUser,
-            currentConversation,
-            important_observations,
-            avatar_expressions,
-            avatar_actions,
-        )
+        if not is_publish_event:
+            conversationPrompt = generateConversation(
+                userName,
+                conversationalUser,
+                currentConversation,
+                important_observations,
+                avatar_expressions,
+                avatar_actions,
+            )
+        else:
+            conversationPrompt = generate_event_publisher_prompt(
+                currentConversation,
+                important_observations,
+            )
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
         print(f"{userName} :")
@@ -186,7 +229,7 @@ def startConversation(userName, currMode,is_publish_event):
         
 
         conversation_count += 1
-        if conversation_count!=1 and conversation_count % REFLECTION_PERIOD == 0:
+        if conversation_count!=1 and conversation_count % REFLECTION_PERIOD == 0 and not is_publish_event:
             with ThreadPoolExecutor() as executor:
                 executor.submit( 
                     perform_reflection_logic,
@@ -226,7 +269,10 @@ def perform_reflection_logic(
     )
 
 def generateObservationAndUpdateMemory(
-    userName, conversationalUser, currentConversation, resultConversationString
+    userName, 
+    conversationalUser, 
+    currentConversation, 
+    resultConversationString
 ):
     # Time the function call and fetch the results.
     startTime = time.perf_counter()
@@ -245,7 +291,83 @@ def generateObservationAndUpdateMemory(
         f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
     )
     """
-    updateMemoryCollection(userName, conversationalUser, finalObservations)
+    update_Memory_Collection_and_past_obs(userName, conversationalUser, finalObservations)
+
+# Fetch the base description once.
+def fetchBaseDescription(userName: str):
+    return deque(
+        memoryObjectCollection.find(
+            {"Username": userName, "Conversation with User": "Base Description"}
+        ),
+    )
+
+# fetch the past records once.
+def fetchPastRecords(userName: str):
+    fetchQuery = {
+        "$or": [{"Username": userName}, {"Conversation with User": userName}],
+        "Conversation with User": {"$ne": "Base Description"},
+    }
+    return deque(
+        memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(MAX_DEQUE_LENGTH), maxlen=MAX_DEQUE_LENGTH
+    )
+
+def update_reflection_db_and_past_obs(
+        userName: str, 
+        conversationalUser: str,
+        observationList: list
+        ):
+    global pastObservations
+    # Get the current time.
+    currTime = datetime.datetime.utcnow()
+    # Update the memoryObjects collection.
+    memoryObjectData = {
+        "Username": userName,
+        "Conversation with User": conversationalUser,
+        "Creation Time": currTime,
+        "Observations": observationList,
+    }
+    currentObject=memoryObjectCollection.insert_one(memoryObjectData)
+    # Delete the oldest record and add the latest one.
+    memoryObjectData["_id"] = currentObject.inserted_id
+    # Delete the oldest record and add the latest one.
+    if len(pastObservations) > MAX_DEQUE_LENGTH:
+        pastObservations.pop()
+    pastObservations.appendleft(memoryObjectData)
+
+def updateBaseDescription(userName: str, observationList: list):
+    # Get the current time.
+    currTime = datetime.datetime.utcnow()
+    # Update the memoryObjects collection.
+    memoryObjectData = {
+        "Username": userName,
+        "Conversation with User": "Base Description",
+        "Creation Time": currTime,
+        "Observations": observationList,
+    }
+    # Update the latest collection with the id parameter and insert to the database.
+    memoryObjectCollection.insert_one(memoryObjectData)
+    # Delete the oldest record and add the latest one.
+
+def update_Memory_Collection_and_past_obs(
+    userName: str, conversationalUser: str, observationList: list
+):
+    global pastObservations
+    # Get the current time.
+    currTime = datetime.datetime.utcnow()
+    # Update the memoryObjects collection.
+    memoryObjectData = {
+        "Username": userName,
+        "Conversation with User": conversationalUser,
+        "Creation Time": currTime,
+        "Observations": observationList,
+    }
+    # Update the latest collection with the id parameter and insert to the database.
+    currentObject = memoryObjectCollection.insert_one(memoryObjectData)
+    memoryObjectData["_id"] = currentObject.inserted_id
+    # Delete the oldest record and add the latest one.
+    if len(pastObservations) > MAX_DEQUE_LENGTH:
+        pastObservations.pop()
+    pastObservations.appendleft(memoryObjectData)
 
 
 def setConversationMode():
@@ -259,20 +381,22 @@ def setConversationMode():
             print("Invalid input, please select appropriate options")
 
 def publish_event_mode():
-    declare_event = input("Do you want publish or Find an event (y/n): ")
-    if declare_event.lower() == "y":
-        return True
-    elif declare_event.lower() == "n":
-        return False
-    else:
-        print("Invalid input, please select appropriate options")
+    while True:
+        declare_event = input("Do you want publish or Find an event (y/n): ")
+        if declare_event.lower() == "y":
+            return True
+        elif declare_event.lower() == "n":
+            return False
+        else:
+            print("Invalid input, please select appropriate options")
 
 
 
 if __name__ == "__main__":
     currMode = setConversationMode()
     is_publish_event = publish_event_mode()
-    print(f"is_publish_event: {is_publish_event}")
+    if is_publish_event:
+        OBS_RETRIEVAL_COUNT=7
     pastObservations = deque()
 
     if not is_publish_event:
@@ -281,22 +405,18 @@ if __name__ == "__main__":
         npc_name = "Event Publisher"
 
     # Check for existing user.
-    is_existing_npc = userCollection.find_one({"Username": npc_name})
+    is_existing_npc_in_user_collection = userCollection.find_one({"Username": npc_name})
 
-    if is_existing_npc:
+    if is_existing_npc_in_user_collection:
         print(f"Welcome back! {npc_name} \nContinue where you left off")
-        avatar_expression_map = is_existing_npc[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
-        avatar_action_map = is_existing_npc[AVATAR_DATA.AVATAR_ACTION_MAP.value]
-        avatar_voice = is_existing_npc[AVATAR_DATA.AVATAR_VOICE.value]
+        avatar_expression_map = is_existing_npc_in_user_collection[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+        avatar_action_map = is_existing_npc_in_user_collection[AVATAR_DATA.AVATAR_ACTION_MAP.value]
+        avatar_voice = is_existing_npc_in_user_collection[AVATAR_DATA.AVATAR_VOICE.value]
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
 
     else:
-        if not is_publish_event:
-            # Collect the description details.
-            description = getBaseDescription()
-        else: 
-            description = event_publisher_base_description
+        description = getBaseDescription()
 
         # Insert the userData to the Users collection.
         userData = {
