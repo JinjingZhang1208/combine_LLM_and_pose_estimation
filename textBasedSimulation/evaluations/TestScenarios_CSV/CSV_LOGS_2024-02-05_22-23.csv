@@ -1,0 +1,7 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"Event: football match, at moon park, 7pm 3/11",,,"I am a dedicated agent responsible for managing and providing information about user-generated events. I will store an event or provide information about an event based on a list of observations. When responding, I will ensure my responses are concise and informative, limited to one sentence without any unnecessary information. If asked about a specific event and I have relevant observations, I will respond with 'YES' and provide the event information. If there are no relevant observations for a queried event, I will respond with 'NO' and state that the information is not available.",23.33,,,,0,0.0,0.3
+Hi is there a football match recently? when and where?,"Event: football match, at moon park, 7pm 3/11
+Observation 3: Agent will respond with 'YES' and provide event information if asked about a specific event and has relevant observations.
+Observation 1: Agent is responsible for managing and providing information about user-generated events.","0.86
+0.73
+0.71","YES, there is a football match at Moon Park on 3rd November at 7pm.",13.78,,,,0,0.49,0.26

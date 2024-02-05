@@ -21,7 +21,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "test199"
+COLLECTION_MEMORY_OBJECTS = "test2001"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -63,6 +63,11 @@ class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
 
+class AGENT_MODE(Enum):
+    NORAML = 1
+    EVENT = 2
+    RESEARCH = 3
+
 
 def getBaseDescription():
     description = ""
@@ -78,12 +83,12 @@ def getBaseDescription():
 
 def startConversation(userName, 
                       currMode,
-                      is_publish_event):
+                      agent_mode):
     global pastObservations
-    if not is_publish_event:
+    if agent_mode == AGENT_MODE.NORAML.value:
         conversationalUser = input("Define the username you are acting as: ")
-    else:
-        conversationalUser = "Default User"
+    elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value: 
+        conversationalUser = "User"
     baseObservation = fetchBaseDescription(userName)
     if baseObservation:
         # filter empty observations
@@ -99,14 +104,19 @@ def startConversation(userName,
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             start = time.perf_counter()
-            if not is_publish_event:
+            if agent_mode == AGENT_MODE.NORAML.value:
                 currentConversation = input(
                     f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
                 )
-            else:
+            elif agent_mode == AGENT_MODE.EVENT.value:
                 currentConversation = input(
                     f"If you want to publish an event, start with Event: <Event Name> and then provide the details. Else, start with a query. "
                 )
+            elif agent_mode == AGENT_MODE.RESEARCH.value:
+                currentConversation = input(
+                    f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+                )
+
             end = time.perf_counter()
             text_input_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
@@ -129,7 +139,7 @@ def startConversation(userName,
             break
         start = time.perf_counter()
 
-        if not is_publish_event:
+        if agent_mode == AGENT_MODE.NORAML.value:
             baseRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
                 memoryStream=baseObservation,
@@ -137,14 +147,14 @@ def startConversation(userName,
                 isBaseDescription=True,
             )
 
-        if not is_publish_event:
+        if agent_mode == AGENT_MODE.NORAML.value:
             observationRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
                 memoryStream=pastObservations,
                 retrievalCount=OBS_RETRIEVAL_COUNT,
                 isBaseDescription=False,
             )
-        else:
+        elif agent_mode == AGENT_MODE.EVENT.value:
             # if publish event, only sort by relevance
             observationRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
@@ -157,24 +167,24 @@ def startConversation(userName,
         retrieval_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
 
-        if not is_publish_event:
+        if agent_mode == AGENT_MODE.NORAML.value:
             important_observations = [
                 data[1] for data in baseRetrieval + observationRetrieval
             ]
-        else:
+        elif agent_mode == AGENT_MODE.EVENT.value:
             important_observations = [
                 data[1] for data in observationRetrieval
             ]
-        # print(f"Important Observations: {important_observations}")
+        print(f"Important Observations: {important_observations}")
 
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_OBSERVATIONS, "\n".join(important_observations)
         )
-        if not is_publish_event:
+        if agent_mode == AGENT_MODE.NORAML.value:
             important_scores = [
                 round(data[0], 2) for data in baseRetrieval + observationRetrieval
             ]
-        else:
+        elif agent_mode == AGENT_MODE.EVENT.value:
             important_scores = [
                 round(data[0], 2) for data in observationRetrieval
             ]
@@ -183,7 +193,7 @@ def startConversation(userName,
             LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
         )
         start = time.perf_counter()
-        if not is_publish_event:
+        if agent_mode == AGENT_MODE.NORAML.value:
             conversationPrompt = generateConversation(
                 userName,
                 conversationalUser,
@@ -192,7 +202,7 @@ def startConversation(userName,
                 avatar_expressions,
                 avatar_actions,
             )
-        else:
+        elif agent_mode == AGENT_MODE.EVENT.value:
             conversationPrompt = generate_event_publisher_prompt(
                 currentConversation,
                 important_observations,
@@ -229,7 +239,7 @@ def startConversation(userName,
         
 
         conversation_count += 1
-        if conversation_count!=1 and conversation_count % REFLECTION_PERIOD == 0 and not is_publish_event:
+        if conversation_count!=1 and conversation_count % REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORAML.value:
             with ThreadPoolExecutor() as executor:
                 executor.submit( 
                     perform_reflection_logic,
@@ -380,29 +390,32 @@ def setConversationMode():
         else:
             print("Invalid input, please select appropriate options")
 
-def publish_event_mode():
-    while True:
-        declare_event = input("Do you want publish or Find an event (y/n): ")
-        if declare_event.lower() == "y":
-            return True
-        elif declare_event.lower() == "n":
-            return False
-        else:
-            print("Invalid input, please select appropriate options")
 
+def set_agent_mode():
+    while True:
+        user_input = input("Select conversation mode:\n1. Normal Conversation\n2. Publish Event\n3. Research Assistant Mode\nEnter the corresponding number: ")
+        if user_input == "1":
+            return AGENT_MODE.NORAML.value
+        elif user_input == "2":
+            return AGENT_MODE.EVENT.value
+        elif user_input == "3":
+            return AGENT_MODE.RESEARCH.value
+        else:
+            print("Invalid input, please enter a valid number.")
 
 
 if __name__ == "__main__":
     currMode = setConversationMode()
-    is_publish_event = publish_event_mode()
-    if is_publish_event:
-        OBS_RETRIEVAL_COUNT=7
+    agent_mode = set_agent_mode()
+    if agent_mode == AGENT_MODE.EVENT.value:
+        OBS_RETRIEVAL_COUNT=3
+
     pastObservations = deque()
 
-    if not is_publish_event:
+    if agent_mode == AGENT_MODE.NORAML.value or agent_mode == AGENT_MODE.RESEARCH.value:
         npc_name = input("Please enter the username of character: ")
-    else:
-        npc_name = "Event Publisher"
+    elif agent_mode == AGENT_MODE.EVENT.value:
+        npc_name = "Agent"
 
     # Check for existing user.
     is_existing_npc_in_user_collection = userCollection.find_one({"Username": npc_name})
@@ -417,7 +430,6 @@ if __name__ == "__main__":
 
     else:
         description = getBaseDescription()
-
         # Insert the userData to the Users collection.
         userData = {
             "Username": npc_name,
@@ -427,7 +439,6 @@ if __name__ == "__main__":
             "Avatar Voice": avatar_voice,
         }
         userCollection.insert_one(userData)
-
         # Time the function call and fetch the results.
         startTime = time.time()
         observationList = generateInitialObservations(npc_name, description).split("\n")
@@ -444,5 +455,5 @@ if __name__ == "__main__":
         avatar_actions = list(avatar_action_map.keys())
 
 
-    startConversation(npc_name, currMode,is_publish_event)
+    startConversation(npc_name, currMode,agent_mode)
     client.close()

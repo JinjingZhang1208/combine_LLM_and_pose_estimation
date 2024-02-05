@@ -1,0 +1,18 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"New Event: football match 3/11 9pm, at Moon Park",,,RECEIVED.,45.92,,,,0,0.0,0.3
+Hi is there a football match happened recently? when and where?,"The event is a football match.
+The date and time of the football match is 3/11 at 9pm.
+The agent acknowledges the receipt of the new event.","0.87
+0.84
+0.75",RECEIVED,16.41,,,,0,6.26,0.23
+Hi is there a football match happened recently? when and where?,"The Default User asked about a recent football match.
+The event is a football match.
+The date and time of the football match is 3/11 at 9pm.
+The agent acknowledges the receipt of the new event.
+The Agent responded with ""RECEIVED"".
+There is no additional context provided in the conversation.","0.88
+0.87
+0.84
+0.75
+0.74
+0.74",RECEIVED,27.54,,,,0,0.67,0.56

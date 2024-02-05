@@ -1,0 +1,14 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"New Event: football match 3/11 9pm, at Moon Park","The date and time of the football match is 3/11 at 9pm.
+The event is a football match.
+The user is asking about a recently happened football match.
+The Default User asked about a recent football match.
+The agent acknowledges the receipt of the new event.
+There is no other information provided in the conversation.
+There is no additional context provided in the conversation.","0.91
+0.88
+0.83
+0.83
+0.75
+0.72
+0.71","YES, there is a football match on 3/11 at 9pm at Moon Park.",1.47,,,,0,0.57,0.29

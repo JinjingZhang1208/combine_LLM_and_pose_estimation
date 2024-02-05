@@ -36,13 +36,14 @@ the Moreno family somewhat well — the husband Tom
 Moreno and the wife Jane Moreno.
 """
 
+
 def generate_reflection(
-        userName, 
-        conversationalUser, 
+        userName,
+        conversationalUser,
         pastConversations):
     prompt = {
         "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
-        "pastConversations": f"{pastConversations}", 
+        "pastConversations": f"{pastConversations}",
         "instruction": "Provide three new higher-level observations or insights based on the past conversations. Summarize the overall patterns and trends in the conversation, rather than specific details of individual conversational turns. Only list the observations, separated by a new line, without any additional text, headers, or formatting.",
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
@@ -79,22 +80,21 @@ def generateObservations(userName, conversationalUser, currentConversation, user
 
 def generate_event_publisher_prompt(currentConversations, relevantObservations):
     prompt = {
-        "context": "You are the Event Publisher, a dedicated agent responsible for storing and providing information about user-generated events. You will be given a list of observations. Based on these observations, you will provide information about the events when asked.",
+        "context": "You are a dedicated agent, responsible for managing and providing information about user-generated events. You will either store an event or provide information about an event based on a list of observations.",
         "information": {
             "Current Conversations": currentConversations,
             "Relevant Observations": relevantObservations,
         },
         "criteria": [
-            "Ensure responses are concise, limited to one sentence without any unnecessary information.",
-            "If a user publishes a new event, respond with 'RECEIVED'",
-            "If asked about a specific event and you retrieve relevant observations, respond with 'YES' and provide event information.",
-            "If there are no relevant observations, respond with 'NO' and state that you don't know.",
+            "Ensure responses are concise and informative, limited to one sentence without any unnecessary information.",
+            "When asked about a specific event and you have relevant observations, respond with 'YES' and provide the event information.",
+            "If there are no relevant observations for a queried event, respond with 'NO' and state that the information is not available.",
+            "If user provides an event, store the event and respond with 'Received'",
         ]
     }
 
     eventPublisherPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(eventPublisherPrompt, GPT35)
-
 
 
 def generateConversation(
@@ -165,12 +165,13 @@ def getGPTResponse(prompt, gptModel):
 
 
 def getTextfromAudio(recordedFile):
-    res = asyncio.run(get_deepgram_response(recordedFile)) 
+    res = asyncio.run(get_deepgram_response(recordedFile))
     text = res.get("results", {}).get("channels", [{}])[0].get(
-    "alternatives", [{}])[0].get("transcript", "")
+        "alternatives", [{}])[0].get("transcript", "")
     print(text)
     return text
-    
+
+
 async def get_deepgram_response(FILE):
     # Initialize the Deepgram SDK
     deepgram = Deepgram(DEEPGRAM_API_KEY)
