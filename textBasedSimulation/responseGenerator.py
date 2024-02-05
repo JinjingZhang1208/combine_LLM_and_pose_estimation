@@ -40,7 +40,6 @@ def generate_reflection(
         userName, 
         conversationalUser, 
         pastConversations):
-    # print(f"pastConversations: {pastConversations}")
     prompt = {
         "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
         "pastConversations": f"{pastConversations}", 
@@ -76,6 +75,26 @@ def generateObservations(userName, conversationalUser, currentConversation, user
     }
     observationPrompt = json.dumps(prompt, indent=4)
     return getGPTResponse(observationPrompt, GPT35)
+
+
+def generate_event_publisher_prompt(currentConversations, relevantObservations):
+    prompt = {
+        "context": "You are the Event Publisher, a dedicated agent responsible for storing and providing information about user-generated events. You will be given a list of observations. Based on these observations, you will provide information about the events when asked.",
+        "information": {
+            "Current Conversations": currentConversations,
+            "Relevant Observations": relevantObservations,
+        },
+        "criteria": [
+            "Ensure responses are concise, limited to one sentence without any unnecessary information.",
+            "If a user publishes a new event, respond with 'RECEIVED'",
+            "If asked about a specific event and you retrieve relevant observations, respond with 'YES' and provide event information.",
+            "If there are no relevant observations, respond with 'NO' and state that you don't know.",
+        ]
+    }
+
+    eventPublisherPrompt = json.dumps(prompt, indent=4)
+    return getConversationGenerator(eventPublisherPrompt, GPT35)
+
 
 
 def generateConversation(

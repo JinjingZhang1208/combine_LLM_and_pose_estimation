@@ -31,6 +31,7 @@ def retrievalFunction(
     retrievalCount: int,
     isBaseDescription=True,
     is_reflection=False,
+    is_publish_event=False,
 ):
     """
     Returns:
@@ -59,6 +60,15 @@ def retrievalFunction(
 
         # print(f"observationData: {observationData}")
         similarityScores = calculateRelevance(currentConversation, observationData)
+        
+        if is_publish_event:
+            publish_results = sorted(
+                zip(similarityScores, observationData),
+                key=lambda x: x[0],
+                reverse=True
+            )[:retrievalCount]
+            return publish_results
+
         return calculateRetrievalScore(
             observationData, recencyScores, similarityScores, retrievalCount
         )

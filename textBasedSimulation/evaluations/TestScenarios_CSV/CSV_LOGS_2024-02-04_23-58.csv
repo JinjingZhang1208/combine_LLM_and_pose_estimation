@@ -1,0 +1,39 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+there is party at 8pm today,"There is a book club today at 3pm.
+Hi Is there a book club today? when?
+The Event Publisher confirms the existence of a gaming club event at 3pm.
+The user is asking about a gaming club event.
+Event Publisher's role is to store and provide information about user-generated events.
+The Event Publisher is explaining its role and offering assistance with event information.
+The user is expressing a desire to publish something related to a gaming club event.
+Event Publisher responds with ""EVENT RECEIVED"" when provided with a new event.
+As the Event Publisher, if a user asks about a specific event, you should provide accurate information if it matches any relevant observations. If there are no relevant observations, you should respond with ""NO"" and state that you don't know. If a user publishes a new event, respond with ""EVENT RECEIVED"".
+The Event Publisher acknowledges receiving the event.","1.0
+0.97
+0.66
+0.56
+0.43
+0.42
+0.35
+0.34
+0.34
+0.15","YES, there is a party at 8pm today.",5.29,,,,0,0.5,0.5
+Is there a party at 8 pm today?,"The statement by the Default User is a declaration of a party happening at 8pm today.
+Hi Is there a book club today? when?
+The response by the Event Publisher confirms the existence of the party.
+The conversation between the Event Publisher and Default User is about an event happening at a specific time.
+There is a book club today at 3pm.
+The user is asking about a gaming club event.
+The Event Publisher confirms the existence of a gaming club event at 3pm.
+As the Event Publisher, if a user asks about a specific event, you should provide accurate information if it matches any relevant observations. If there are no relevant observations, you should respond with ""NO"" and state that you don't know. If a user publishes a new event, respond with ""EVENT RECEIVED"".
+The user is expressing a desire to publish something related to a gaming club event.
+The Event Publisher is explaining its role and offering assistance with event information.","1.0
+0.7
+0.69
+0.56
+0.52
+0.33
+0.33
+0.19
+0.17
+0.16",EVENT RECEIVED,7.48,,,,0,0.55,0.51
