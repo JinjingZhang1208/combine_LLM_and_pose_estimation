@@ -1,9 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-hi how r u?,,,"(Happy, Wave Hands)
-Hey there! I'm doing great, thank you for asking! How about you? Anything exciting happening in your world?",3.05,,,,0,0.0,0.56
-hiiii,"J is in a good mood.
-J is polite and friendly.
-J is interested in knowing about K's life.","1.0
-0.74
-0.0","(Happy, Wave Hands)
-Hi there! How's your day going? Anything exciting happening in your world? 😄👋",1.83,,,,0,0.45,0.26

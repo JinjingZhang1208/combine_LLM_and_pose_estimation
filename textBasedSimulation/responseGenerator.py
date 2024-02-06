@@ -92,9 +92,28 @@ def generate_event_publisher_prompt(currentConversations, relevantObservations):
             "If user provides an event, store the event and respond with 'Received'",
         ]
     }
-
     eventPublisherPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(eventPublisherPrompt, GPT35)
+
+
+import json
+
+def generate_research_assistant_prompt(currentConversations, relevantObservations):
+    prompt = {
+        "context": "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, and interviewing users about their experiences with VRChat.",
+        "information": {
+            "User Reply": currentConversations,
+            "Relevant Observations": relevantObservations,
+        },
+        "criteria": [
+            "Ensure responses are engaging, informative, and focused on the predefined goals.",
+            "When asked about a specific topic, ask probing questions to gather more user experience. Do not provide direct answers to user questions.",
+            "If there are no relevant observations for a queried topic, ask open-ended questions to encourage the user to share their experiences.",
+            "If the user shares an experience or completes a challenge, acknowledge their input and respond appropriately.",
+        ]
+    }
+    conversationPrompt = json.dumps(prompt, indent=4)
+    return getConversationGenerator(conversationPrompt, GPT35)
 
 
 def generateConversation(
@@ -123,7 +142,6 @@ def generateConversation(
         ],
         "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
-
     conversationPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(conversationPrompt, GPT35)
 

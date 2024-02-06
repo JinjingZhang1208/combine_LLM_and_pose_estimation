@@ -1,3 +1,12 @@
+from responseGenerator import (
+    generateInitialObservations,
+    generateObservations,
+    generateConversation,
+    getTextfromAudio,
+    generate_reflection,
+    generate_event_publisher_prompt,
+    generate_research_assistant_prompt,
+)
 from distutils import text_file
 import time
 import asyncio
@@ -32,19 +41,8 @@ userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 
-from responseGenerator import (
-    generateInitialObservations,
-    generateObservations,
-    generateConversation,
-    getTextfromAudio,
-    generate_reflection,
-    generate_event_publisher_prompt,
-)
-
-
-
 BASE_RETRIEVAL_COUNT = 3  # change parameter
-OBS_RETRIEVAL_COUNT = 5 # change parameter
+OBS_RETRIEVAL_COUNT = 5  # change parameter
 REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
 
@@ -63,39 +61,95 @@ class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
 
+
 class AGENT_MODE(Enum):
-    NORAML = 1
+    NORMAL = 1
     EVENT = 2
     RESEARCH = 3
 
 
-def getBaseDescription():
-    description = ""
-    while True:
-        currLine = input(
-            "Please enter a relevant description about your character. Type done to complete the description \n"
+def getBaseDescription(agent_mode):
+    if agent_mode == AGENT_MODE.EVENT.value:
+        return (
+            "You are a dedicated agent, responsible for managing and providing information about user-generated events. "
+            "You will either store an event or provide information about an event based on a list of observations."
         )
-        if currLine.lower() == "done":
-            break
-        description += f"{currLine}\n"
-    return description
+    elif agent_mode == AGENT_MODE.RESEARCH.value:
+        return (
+            "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, "
+            "and interviewing users about their experiences, e.g., their experience with VRChat."
+        )
+    elif agent_mode == AGENT_MODE.NORMAL.value:
+        description = ""
+        while True:
+            currLine = input(
+                "Please enter a relevant description about your character. Type done to complete the description \n"
+            )
+            if currLine.lower() == "done":
+                break
+            description += f"{currLine}\n"
+        return description
 
 
-def startConversation(userName, 
-                      currMode,
-                      agent_mode):
+def text_conversation_input(agent_mode, userName, conversationalUser, conversation_count):
+    start = time.perf_counter()
+    
+    if conversation_count == 0:
+        # Initial prompt for the first conversation
+        if agent_mode == AGENT_MODE.RESEARCH.value:
+            currentConversation = input(
+                f"Ask the user: How is your experience with VRChat? "
+            )
+        else:
+            currentConversation = input(
+                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+            )
+    else:
+        # Default prompts for subsequent conversations
+        if agent_mode == AGENT_MODE.NORMAL.value:
+            currentConversation = input(
+                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+            )
+        elif agent_mode == AGENT_MODE.EVENT.value:
+            currentConversation = input(
+                f"If you want to publish an event, start with Event: <Event Name> and then provide the details. Else, start with a query. "
+            )
+        elif agent_mode == AGENT_MODE.RESEARCH.value:
+            currentConversation = input(
+                f"Talk with {userName}. Have a discussion! "
+            )
+
+    end = time.perf_counter()
+    text_input_time = round(end - start, 2)
+    CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
+    CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, 0)
+    
+    return currentConversation
+
+
+def audio_conversation_input(CSV_LOGGER, FILENAME):
+    start = time.perf_counter()
+    listenAndRecord(FILENAME, CSV_LOGGER)
+    end = time.perf_counter()
+    audio_record_time = round(end - start, 2)
+    CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
+
+    start = time.perf_counter()
+    currentConversation = getTextfromAudio(FILENAME)
+    end = time.perf_counter()
+    audio_to_text_time = round(end - start, 2)
+    CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, audio_to_text_time)
+
+    return currentConversation
+
+
+def startConversation(userName, currMode, agent_mode):
     global pastObservations
-    if agent_mode == AGENT_MODE.NORAML.value:
+    if agent_mode == AGENT_MODE.NORMAL.value:
         conversationalUser = input("Define the username you are acting as: ")
-    elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value: 
+    elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
         conversationalUser = "User"
     baseObservation = fetchBaseDescription(userName)
-    if baseObservation:
-        # filter empty observations
-        observation_dict = baseObservation[0]
-        filtered_observations = [obs for obs in observation_dict['Observations'] if obs.strip()]
-        observation_dict['Observations'] = filtered_observations
-
     pastObservations = fetchPastRecords(userName)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
@@ -103,43 +157,17 @@ def startConversation(userName,
     conversation_count = 0
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
-            start = time.perf_counter()
-            if agent_mode == AGENT_MODE.NORAML.value:
-                currentConversation = input(
-                    f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-                )
-            elif agent_mode == AGENT_MODE.EVENT.value:
-                currentConversation = input(
-                    f"If you want to publish an event, start with Event: <Event Name> and then provide the details. Else, start with a query. "
-                )
-            elif agent_mode == AGENT_MODE.RESEARCH.value:
-                currentConversation = input(
-                    f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-                )
-
-            end = time.perf_counter()
-            text_input_time = round(end - start, 2)
-            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, text_input_time)
-            CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, 0)
+            currentConversation = text_conversation_input(
+                agent_mode, userName, conversationalUser, conversation_count)
         elif currMode == CONVERSATION_MODE.AUDIO.value:
-            start = time.perf_counter()
-            listenAndRecord(FILENAME, CSV_LOGGER)
-            end = time.perf_counter()
-            audio_record_time = round(end - start, 2)
-            CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
-
-            start = time.perf_counter()
-            currentConversation = getTextfromAudio(FILENAME)
-            end = time.perf_counter()
-            audio_to_text_time = round(end - start, 2)
-            CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, audio_to_text_time)
+            currentConversation = audio_conversation_input(
+                CSV_LOGGER, FILENAME)
         CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
 
         if currentConversation.lower() == "done":
             break
         start = time.perf_counter()
-
-        if agent_mode == AGENT_MODE.NORAML.value:
+        if agent_mode == AGENT_MODE.NORMAL.value:
             baseRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
                 memoryStream=baseObservation,
@@ -147,14 +175,14 @@ def startConversation(userName,
                 isBaseDescription=True,
             )
 
-        if agent_mode == AGENT_MODE.NORAML.value:
+        if agent_mode == AGENT_MODE.NORMAL.value:
             observationRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
                 memoryStream=pastObservations,
                 retrievalCount=OBS_RETRIEVAL_COUNT,
                 isBaseDescription=False,
             )
-        elif agent_mode == AGENT_MODE.EVENT.value:
+        elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
             # if publish event, only sort by relevance
             observationRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
@@ -167,33 +195,33 @@ def startConversation(userName,
         retrieval_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
 
-        if agent_mode == AGENT_MODE.NORAML.value:
+        if agent_mode == AGENT_MODE.NORMAL.value:
             important_observations = [
                 data[1] for data in baseRetrieval + observationRetrieval
             ]
-        elif agent_mode == AGENT_MODE.EVENT.value:
+        elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
             important_observations = [
                 data[1] for data in observationRetrieval
             ]
-        print(f"Important Observations: {important_observations}")
-
         CSV_LOGGER.set_enum(
-            LogElements.IMPORTANT_OBSERVATIONS, "\n".join(important_observations)
+            LogElements.IMPORTANT_OBSERVATIONS, "\n".join(
+                important_observations)
         )
-        if agent_mode == AGENT_MODE.NORAML.value:
+        print("Important Observations: ", important_observations)
+        if agent_mode == AGENT_MODE.NORMAL.value:
             important_scores = [
                 round(data[0], 2) for data in baseRetrieval + observationRetrieval
             ]
-        elif agent_mode == AGENT_MODE.EVENT.value:
+        elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
             important_scores = [
                 round(data[0], 2) for data in observationRetrieval
             ]
-
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
         )
+
         start = time.perf_counter()
-        if agent_mode == AGENT_MODE.NORAML.value:
+        if agent_mode == AGENT_MODE.NORMAL.value:
             conversationPrompt = generateConversation(
                 userName,
                 conversationalUser,
@@ -204,6 +232,11 @@ def startConversation(userName,
             )
         elif agent_mode == AGENT_MODE.EVENT.value:
             conversationPrompt = generate_event_publisher_prompt(
+                currentConversation,
+                important_observations,
+            )
+        elif agent_mode == AGENT_MODE.RESEARCH.value:
+            conversationPrompt = generate_research_assistant_prompt(
                 currentConversation,
                 important_observations,
             )
@@ -236,12 +269,11 @@ def startConversation(userName,
             currentConversation,
             resultConversationString,
         )
-        
 
         conversation_count += 1
-        if conversation_count!=1 and conversation_count % REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORAML.value:
+        if conversation_count != 1 and conversation_count % REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORMAL.value:
             with ThreadPoolExecutor() as executor:
-                executor.submit( 
+                executor.submit(
                     perform_reflection_logic,
                     userName,
                     conversationalUser,
@@ -249,8 +281,9 @@ def startConversation(userName,
                     pastObservations,
                 )
 
+
 def perform_reflection_logic(
-    userName, conversationalUser, currentConversation, pastObservations, 
+    userName, conversationalUser, currentConversation, pastObservations,
 ):
     print("NPC in reflection...\n")
     reflection_retrieval = retrievalFunction(
@@ -278,10 +311,11 @@ def perform_reflection_logic(
         finalObservations
     )
 
+
 def generateObservationAndUpdateMemory(
-    userName, 
-    conversationalUser, 
-    currentConversation, 
+    userName,
+    conversationalUser,
+    currentConversation,
     resultConversationString
 ):
     # Time the function call and fetch the results.
@@ -301,17 +335,27 @@ def generateObservationAndUpdateMemory(
         f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
     )
     """
-    update_Memory_Collection_and_past_obs(userName, conversationalUser, finalObservations)
+    update_Memory_Collection_and_past_obs(
+        userName, conversationalUser, finalObservations)
 
-# Fetch the base description once.
+
 def fetchBaseDescription(userName: str):
-    return deque(
+    baseObservation = deque(
         memoryObjectCollection.find(
             {"Username": userName, "Conversation with User": "Base Description"}
         ),
     )
 
-# fetch the past records once.
+    if baseObservation:
+        observation_dict = baseObservation[0]
+        filtered_observations = [
+            obs for obs in observation_dict['Observations'] if obs.strip()
+        ]
+        observation_dict['Observations'] = filtered_observations
+
+    return baseObservation
+
+
 def fetchPastRecords(userName: str):
     fetchQuery = {
         "$or": [{"Username": userName}, {"Conversation with User": userName}],
@@ -321,11 +365,12 @@ def fetchPastRecords(userName: str):
         memoryObjectCollection.find(fetchQuery).sort("_id", -1).limit(MAX_DEQUE_LENGTH), maxlen=MAX_DEQUE_LENGTH
     )
 
+
 def update_reflection_db_and_past_obs(
-        userName: str, 
+        userName: str,
         conversationalUser: str,
         observationList: list
-        ):
+):
     global pastObservations
     # Get the current time.
     currTime = datetime.datetime.utcnow()
@@ -336,13 +381,14 @@ def update_reflection_db_and_past_obs(
         "Creation Time": currTime,
         "Observations": observationList,
     }
-    currentObject=memoryObjectCollection.insert_one(memoryObjectData)
+    currentObject = memoryObjectCollection.insert_one(memoryObjectData)
     # Delete the oldest record and add the latest one.
     memoryObjectData["_id"] = currentObject.inserted_id
     # Delete the oldest record and add the latest one.
     if len(pastObservations) > MAX_DEQUE_LENGTH:
         pastObservations.pop()
     pastObservations.appendleft(memoryObjectData)
+
 
 def updateBaseDescription(userName: str, observationList: list):
     # Get the current time.
@@ -357,6 +403,7 @@ def updateBaseDescription(userName: str, observationList: list):
     # Update the latest collection with the id parameter and insert to the database.
     memoryObjectCollection.insert_one(memoryObjectData)
     # Delete the oldest record and add the latest one.
+
 
 def update_Memory_Collection_and_past_obs(
     userName: str, conversationalUser: str, observationList: list
@@ -382,7 +429,8 @@ def update_Memory_Collection_and_past_obs(
 
 def setConversationMode():
     while True:
-        currMode = input("Please select the following :\n1. Text Mode\n2. Audio Mode\n")
+        currMode = input(
+            "Please select the following :\n1. Text Mode\n2. Audio Mode\n")
         if currMode == "1":
             return CONVERSATION_MODE.TEXT.value
         elif currMode == "2":
@@ -393,9 +441,10 @@ def setConversationMode():
 
 def set_agent_mode():
     while True:
-        user_input = input("Select conversation mode:\n1. Normal Conversation\n2. Publish Event\n3. Research Assistant Mode\nEnter the corresponding number: ")
+        user_input = input(
+            "Select conversation mode:\n1. Normal Conversation\n2. Publish Event\n3. Research Assistant Mode\nEnter the corresponding number: ")
         if user_input == "1":
-            return AGENT_MODE.NORAML.value
+            return AGENT_MODE.NORMAL.value
         elif user_input == "2":
             return AGENT_MODE.EVENT.value
         elif user_input == "3":
@@ -408,28 +457,31 @@ if __name__ == "__main__":
     currMode = setConversationMode()
     agent_mode = set_agent_mode()
     if agent_mode == AGENT_MODE.EVENT.value:
-        OBS_RETRIEVAL_COUNT=3
+        OBS_RETRIEVAL_COUNT = 3
 
     pastObservations = deque()
 
-    if agent_mode == AGENT_MODE.NORAML.value or agent_mode == AGENT_MODE.RESEARCH.value:
+    if agent_mode == AGENT_MODE.NORMAL.value:
         npc_name = input("Please enter the username of character: ")
     elif agent_mode == AGENT_MODE.EVENT.value:
-        npc_name = "Agent"
+        npc_name = "Event Agent"
+    elif agent_mode == AGENT_MODE.RESEARCH.value:
+        npc_name = "Research Agent"
 
     # Check for existing user.
-    is_existing_npc_in_user_collection = userCollection.find_one({"Username": npc_name})
+    is_existing_npc_in_user_collection = userCollection.find_one(
+        {"Username": npc_name})
 
     if is_existing_npc_in_user_collection:
         print(f"Welcome back! {npc_name} \nContinue where you left off")
-        avatar_expression_map = is_existing_npc_in_user_collection[AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
+        avatar_expression_map = is_existing_npc_in_user_collection[
+            AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
         avatar_action_map = is_existing_npc_in_user_collection[AVATAR_DATA.AVATAR_ACTION_MAP.value]
         avatar_voice = is_existing_npc_in_user_collection[AVATAR_DATA.AVATAR_VOICE.value]
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
-
     else:
-        description = getBaseDescription()
+        description = getBaseDescription(agent_mode)
         # Insert the userData to the Users collection.
         userData = {
             "Username": npc_name,
@@ -441,7 +493,8 @@ if __name__ == "__main__":
         userCollection.insert_one(userData)
         # Time the function call and fetch the results.
         startTime = time.time()
-        observationList = generateInitialObservations(npc_name, description).split("\n")
+        observationList = generateInitialObservations(
+            npc_name, description).split("\n")
         endTime = time.time()
         print(
             f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
@@ -454,6 +507,5 @@ if __name__ == "__main__":
         avatar_expressions = list(avatar_expression_map.keys())
         avatar_actions = list(avatar_action_map.keys())
 
-
-    startConversation(npc_name, currMode,agent_mode)
+    startConversation(npc_name, currMode, agent_mode)
     client.close()

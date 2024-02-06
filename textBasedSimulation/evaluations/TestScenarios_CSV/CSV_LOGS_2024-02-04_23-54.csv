@@ -1,7 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-i want publish there is gaming club at 3pm,,,"YES, there is a gaming club event at 3pm. EVENT RECEIVED.",14.93,,,,0,0.0,0.51
-hi is there a gaming club today? when?,"The Event Publisher confirms the existence of a gaming club event at 3pm.
-The user is expressing a desire to publish something related to a gaming club event.
-The Event Publisher acknowledges receiving the event.","1.0
-0.85
-0.0","As the Event Publisher, I store and provide information about user-generated events. If you have any questions or need information about a specific event, feel free to ask!",9.03,,,,0,0.41,0.56
