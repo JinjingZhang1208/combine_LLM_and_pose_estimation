@@ -1,0 +1,6 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I like VRChat so much,"The conversation between Research Agent and j is focused on j's difficulty in making friends in VRChat due to not being able to meet them in person. The Research Agent asks for more details about j's experience and specific difficulties encountered.
+The conversation between Research Agent and j:
+- j expressed feeling disconnected because they believe all friends in VRChat are virtual and not real.","0.97
+0.96
+0.96",That's great to hear that you enjoy VRChat! It can be a wonderful platform for connecting with others and exploring virtual environments. Can you tell me more about your experience with VRChat? Have you made any friends or had any memorable experiences while using the platform?,8.86,,,,0,0.0,0.25

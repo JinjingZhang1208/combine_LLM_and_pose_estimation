@@ -78,7 +78,9 @@ def generateObservations(userName, conversationalUser, currentConversation, user
     return getGPTResponse(observationPrompt, GPT35)
 
 
-def generate_event_publisher_prompt(currentConversations, relevantObservations):
+def generate_event_publisher_prompt(
+        currentConversations, 
+        relevantObservations):
     prompt = {
         "context": "You are a dedicated agent, responsible for managing and providing information about user-generated events. You will either store an event or provide information about an event based on a list of observations.",
         "information": {
@@ -90,7 +92,8 @@ def generate_event_publisher_prompt(currentConversations, relevantObservations):
             "When asked about a specific event and you have relevant observations, respond with 'YES' and provide the event information.",
             "If there are no relevant observations for a queried event, respond with 'NO' and state that the information is not available.",
             "If user provides an event, store the event and respond with 'Received'",
-        ]
+        ],
+        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
     eventPublisherPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(eventPublisherPrompt, GPT35)
@@ -98,7 +101,9 @@ def generate_event_publisher_prompt(currentConversations, relevantObservations):
 
 import json
 
-def generate_research_assistant_prompt(currentConversations, relevantObservations):
+def generate_research_assistant_prompt(
+        currentConversations, 
+        relevantObservations):
     prompt = {
         "context": "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, and interviewing users about their experiences with VRChat.",
         "information": {
@@ -110,7 +115,8 @@ def generate_research_assistant_prompt(currentConversations, relevantObservation
             "When asked about a specific topic, ask probing questions to gather more user experience. Do not provide direct answers to user questions.",
             "If there are no relevant observations for a queried topic, ask open-ended questions to encourage the user to share their experiences.",
             "If the user shares an experience or completes a challenge, acknowledge their input and respond appropriately.",
-        ]
+        ],
+        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
     conversationPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(conversationPrompt, GPT35)

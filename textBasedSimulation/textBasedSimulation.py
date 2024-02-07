@@ -30,7 +30,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "test2001"
+COLLECTION_MEMORY_OBJECTS = "ra001"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -43,6 +43,7 @@ memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5  # change parameter
+RA_OBS_COUNT = 3
 REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
 
@@ -145,9 +146,9 @@ def audio_conversation_input(CSV_LOGGER, FILENAME):
 
 def startConversation(userName, currMode, agent_mode):
     global pastObservations
-    if agent_mode == AGENT_MODE.NORMAL.value:
+    if agent_mode == AGENT_MODE.NORMAL.value or agent_mode == AGENT_MODE.RESEARCH.value:
         conversationalUser = input("Define the username you are acting as: ")
-    elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
+    elif agent_mode == AGENT_MODE.EVENT.value:
         conversationalUser = "User"
     baseObservation = fetchBaseDescription(userName)
     pastObservations = fetchPastRecords(userName)
@@ -182,7 +183,15 @@ def startConversation(userName, currMode, agent_mode):
                 retrievalCount=OBS_RETRIEVAL_COUNT,
                 isBaseDescription=False,
             )
-        elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
+        elif agent_mode == AGENT_MODE.RESEARCH.value:
+            observationRetrieval = retrievalFunction(
+                currentConversation=currentConversation,
+                memoryStream=pastObservations,
+                retrievalCount=RA_OBS_COUNT,
+                isBaseDescription=False,
+                is_reflection=True,
+            )
+        elif agent_mode == AGENT_MODE.EVENT.value:
             # if publish event, only sort by relevance
             observationRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
@@ -194,7 +203,6 @@ def startConversation(userName, currMode, agent_mode):
         end = time.perf_counter()
         retrieval_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
-
         if agent_mode == AGENT_MODE.NORMAL.value:
             important_observations = [
                 data[1] for data in baseRetrieval + observationRetrieval
