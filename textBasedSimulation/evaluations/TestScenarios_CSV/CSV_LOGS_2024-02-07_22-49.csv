@@ -1,0 +1,11 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I want to publish an event: Dance party today 9pm,"The user wants to publish an event: dance party today.
+The conversation is inquiring about a dance party happening today.
+The current statement of conversation is 'there is a dance party today'","0.95
+0.89
+0.88",Received.,16.68,,,,0,0.98,0.89
+is there a dance party happeneded recently?,"The conversation is inquiring about a dance party happening today.
+The current statement of conversation is 'there is a dance party today'
+The user wants to publish an event: dance party today.","0.88
+0.88
+0.84",Received.,16.15,,,,0,0.97,1.42

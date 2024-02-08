@@ -1,0 +1,10 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+I hate it,"The user expresses a positive sentiment towards VRChat.
+The Research Agent asks a question to further understand what the user enjoys about VRChat.
+The user's statement reveals their enthusiasm for VRChat.
+The conversation is about dance parties in VRChat.
+j thinks that dance parties in VRChat are good.","0.99
+0.99
+0.99
+0.94
+0.94",What makes you hate VRChat? Can you share more about your experience?,2.33,,,,0,0.0,2.01
