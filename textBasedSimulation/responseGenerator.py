@@ -97,29 +97,28 @@ def generate_event_publisher_prompt(
     return getConversationGenerator(eventPublisherPrompt, GPT4)
 
 
-
 def generate_research_assistant_prompt(
         currentConversations, 
         relevantObservations,
         goals="Experiences with VRChat"):
     prompt = {
-        "context": f"You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
-        "goal": f"Interviewing User about {goals}",
+        "context": f"You are an Embodied Research Assistant, responsible for engaging users with predefined goals. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
+        "main_goal": f"Interviewing User about {goals}",
+        "adaptive goals": "The adaptive goal is to provide information based on the user's query and adapt responses based on the current and historical conversations.",
         "information": {
             "Current Conversation": currentConversations,
             "History Conversations": relevantObservations,
         },
         "criteria": [
-            "Ensure responses are engaging, informative, and focused on the predefined goals.",
-            "When asked about a specific topic, ask probing questions to gather more user experience. Do not provide direct answers to user questions.",
-            "If there are no relevant observations for a queried topic, ask open-ended questions to encourage the user to share their experiences.",
+            "Start the conversation with a response to the user's message before posing any questions.",
+            "Ensure responses are engaging, informative, and focused on the adaptive goals.",
+            "When asked about a specific topic, ask probing questions based on the user's current conversation. Avoid providing direct answers to user questions.",
             "If the user shares an experience or completes a challenge, acknowledge their input and respond appropriately.",
-            f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
         ],
+
     }
     conversationPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(conversationPrompt, GPT4)
-
 
 
 
