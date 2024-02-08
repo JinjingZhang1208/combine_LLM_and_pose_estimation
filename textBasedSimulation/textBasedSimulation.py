@@ -43,9 +43,11 @@ memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5  # change parameter
-RA_OBS_COUNT = 3
+RA_OBS_COUNT = 5
+EVENT_OBS_COUNT = 5
 REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
+RESEARCH_GOALS = "Experiences with VRChat"
 
 FILENAME = "current_conversation.wav"
 
@@ -94,12 +96,11 @@ def getBaseDescription(agent_mode):
 
 def text_conversation_input(agent_mode, userName, conversationalUser, conversation_count):
     start = time.perf_counter()
-    
     if conversation_count == 0:
         # Initial prompt for the first conversation
         if agent_mode == AGENT_MODE.RESEARCH.value:
             currentConversation = input(
-                f"Ask the user: How is your experience with VRChat? "
+                f"Talks with {userName}, You are {conversationalUser}. Talk about {RESEARCH_GOALS}! "
             )
         else:
             currentConversation = input(
@@ -113,7 +114,7 @@ def text_conversation_input(agent_mode, userName, conversationalUser, conversati
             )
         elif agent_mode == AGENT_MODE.EVENT.value:
             currentConversation = input(
-                f"If you want to publish an event, start with Event: <Event Name> and then provide the details. Else, start with a query. "
+                f"If you want to publish an event, start with I want to publish an event: and provide the details. Else, start with a query. "
             )
         elif agent_mode == AGENT_MODE.RESEARCH.value:
             currentConversation = input(
@@ -144,14 +145,14 @@ def audio_conversation_input(CSV_LOGGER, FILENAME):
     return currentConversation
 
 
-def startConversation(userName, currMode, agent_mode):
+def startConversation(npc_name, currMode, agent_mode):
     global pastObservations
     if agent_mode == AGENT_MODE.NORMAL.value or agent_mode == AGENT_MODE.RESEARCH.value:
         conversationalUser = input("Define the username you are acting as: ")
     elif agent_mode == AGENT_MODE.EVENT.value:
         conversationalUser = "User"
-    baseObservation = fetchBaseDescription(userName)
-    pastObservations = fetchPastRecords(userName)
+    baseObservation = fetchBaseDescription(npc_name)
+    pastObservations = fetchPastRecords(conversationalUser)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
 
@@ -159,7 +160,7 @@ def startConversation(userName, currMode, agent_mode):
     while True:
         if currMode == CONVERSATION_MODE.TEXT.value:
             currentConversation = text_conversation_input(
-                agent_mode, userName, conversationalUser, conversation_count)
+                agent_mode, npc_name, conversationalUser, conversation_count)
         elif currMode == CONVERSATION_MODE.AUDIO.value:
             currentConversation = audio_conversation_input(
                 CSV_LOGGER, FILENAME)
@@ -196,7 +197,7 @@ def startConversation(userName, currMode, agent_mode):
             observationRetrieval = retrievalFunction(
                 currentConversation=currentConversation,
                 memoryStream=pastObservations,
-                retrievalCount=OBS_RETRIEVAL_COUNT,
+                retrievalCount=EVENT_OBS_COUNT,
                 isBaseDescription=False,
                 is_publish_event=True,
             )
@@ -231,7 +232,7 @@ def startConversation(userName, currMode, agent_mode):
         start = time.perf_counter()
         if agent_mode == AGENT_MODE.NORMAL.value:
             conversationPrompt = generateConversation(
-                userName,
+                npc_name,
                 conversationalUser,
                 currentConversation,
                 important_observations,
@@ -247,10 +248,11 @@ def startConversation(userName, currMode, agent_mode):
             conversationPrompt = generate_research_assistant_prompt(
                 currentConversation,
                 important_observations,
+                goals=RESEARCH_GOALS,
             )
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
-        print(f"{userName} :")
+        print(f"{npc_name} :")
         resultConversationString = ""
         for conversation in conversationPrompt:
             try:
@@ -272,7 +274,7 @@ def startConversation(userName, currMode, agent_mode):
         eventLoop.run_in_executor(
             threadExecutor,
             generateObservationAndUpdateMemory,
-            userName,
+            npc_name,
             conversationalUser,
             currentConversation,
             resultConversationString,
@@ -283,7 +285,7 @@ def startConversation(userName, currMode, agent_mode):
             with ThreadPoolExecutor() as executor:
                 executor.submit(
                     perform_reflection_logic,
-                    userName,
+                    npc_name,
                     conversationalUser,
                     currentConversation,
                     pastObservations,
@@ -464,8 +466,6 @@ def set_agent_mode():
 if __name__ == "__main__":
     currMode = setConversationMode()
     agent_mode = set_agent_mode()
-    if agent_mode == AGENT_MODE.EVENT.value:
-        OBS_RETRIEVAL_COUNT = 3
 
     pastObservations = deque()
 

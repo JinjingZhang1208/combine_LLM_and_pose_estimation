@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 GPT4 = "gpt-4"
-GPT35 = "gpt-3.5-turbo"
+GPT4 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
 openai_client = OpenAI(api_key=API_KEY)
 DEEPGRAM_API_KEY = os.environ.get("DEEPGRAM_API_KEY")
@@ -48,7 +48,7 @@ def generate_reflection(
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
     reflectionPrompt = json.dumps(prompt, indent=4)
-    return getGPTResponse(reflectionPrompt, GPT35)
+    return getGPTResponse(reflectionPrompt, GPT4)
 
 
 def generateInitialObservations(userName, baseDescription):
@@ -65,7 +65,7 @@ def generateInitialObservations(userName, baseDescription):
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
     defaultBackgroundPrompt = json.dumps(prompt, indent=4)
-    return getGPTResponse(defaultBackgroundPrompt, GPT35)
+    return getGPTResponse(defaultBackgroundPrompt, GPT4)
 
 
 def generateObservations(userName, conversationalUser, currentConversation, userResult):
@@ -75,7 +75,7 @@ def generateObservations(userName, conversationalUser, currentConversation, user
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
     observationPrompt = json.dumps(prompt, indent=4)
-    return getGPTResponse(observationPrompt, GPT35)
+    return getGPTResponse(observationPrompt, GPT4)
 
 
 def generate_event_publisher_prompt(
@@ -85,41 +85,43 @@ def generate_event_publisher_prompt(
         "context": "You are a dedicated agent, responsible for managing and providing information about user-generated events. You will either store an event or provide information about an event based on a list of observations.",
         "information": {
             "Current Conversations": currentConversations,
-            "Relevant Observations": relevantObservations,
+            "History Conversations": relevantObservations,
         },
         "criteria": [
             "Ensure responses are concise and informative, limited to one sentence without any unnecessary information.",
             "When asked about a specific event and you have relevant observations, respond with 'YES' and provide the event information.",
             "If there are no relevant observations for a queried event, respond with 'NO' and state that the information is not available.",
-            "If user provides an event, store the event and respond with 'Received'",
         ],
-        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
     eventPublisherPrompt = json.dumps(prompt, indent=4)
-    return getConversationGenerator(eventPublisherPrompt, GPT35)
+    return getConversationGenerator(eventPublisherPrompt, GPT4)
 
 
-import json
 
 def generate_research_assistant_prompt(
         currentConversations, 
-        relevantObservations):
+        relevantObservations,
+        goals="Experiences with VRChat"):
     prompt = {
-        "context": "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, and interviewing users about their experiences with VRChat.",
+        "context": f"You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
+        "goal": f"Interviewing User about {goals}",
         "information": {
-            "User Reply": currentConversations,
-            "Relevant Observations": relevantObservations,
+            "Current Conversation": currentConversations,
+            "History Conversations": relevantObservations,
         },
         "criteria": [
             "Ensure responses are engaging, informative, and focused on the predefined goals.",
             "When asked about a specific topic, ask probing questions to gather more user experience. Do not provide direct answers to user questions.",
             "If there are no relevant observations for a queried topic, ask open-ended questions to encourage the user to share their experiences.",
             "If the user shares an experience or completes a challenge, acknowledge their input and respond appropriately.",
+            f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
         ],
-        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
     conversationPrompt = json.dumps(prompt, indent=4)
-    return getConversationGenerator(conversationPrompt, GPT35)
+    return getConversationGenerator(conversationPrompt, GPT4)
+
+
+
 
 
 def generateConversation(
@@ -146,10 +148,9 @@ def generateConversation(
             f"Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
             f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
         ],
-        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
     conversationPrompt = json.dumps(prompt, indent=4)
-    return getConversationGenerator(conversationPrompt, GPT35)
+    return getConversationGenerator(conversationPrompt, GPT4)
 
 
 def getConversationGenerator(prompt, gptModel):
