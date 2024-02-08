@@ -481,7 +481,7 @@ if __name__ == "__main__":
         {"Username": npc_name})
 
     if is_existing_npc_in_user_collection:
-        print(f"Welcome back! {npc_name} \nContinue where you left off")
+        # print(f"Welcome back! {npc_name} \nContinue where you left off")
         avatar_expression_map = is_existing_npc_in_user_collection[
             AVATAR_DATA.AVATAR_EXPRESSION_MAP.value]
         avatar_action_map = is_existing_npc_in_user_collection[AVATAR_DATA.AVATAR_ACTION_MAP.value]
