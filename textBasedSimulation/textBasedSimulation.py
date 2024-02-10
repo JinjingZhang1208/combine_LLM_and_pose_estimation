@@ -48,6 +48,7 @@ EVENT_OBS_COUNT = 5
 REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
 RESEARCH_GOALS = "Experiences with VRChat"
+DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
 
 FILENAME = "current_conversation.wav"
 
@@ -76,6 +77,10 @@ def getBaseDescription(agent_mode):
         return (
             "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, and interviewing users about their experiences, e.g., their experience with VRChat."
         )
+    elif agent_mode == AGENT_MODE.DEBATE.value:
+        return (
+            "You are an AI Agent responsible for engaging in debates with users. You will be responsible for providing information and engaging in debates with users based on a list of observations."
+        )
     elif agent_mode == AGENT_MODE.NORMAL.value:
         description = ""
         while True:
@@ -90,30 +95,24 @@ def getBaseDescription(agent_mode):
 
 def text_conversation_input(agent_mode, userName, conversationalUser, conversation_count):
     start = time.perf_counter()
-    if conversation_count == 0:
-        # Initial prompt for the first conversation
-        if agent_mode == AGENT_MODE.RESEARCH.value:
-            currentConversation = input(
-                f"Talks with {userName}, You are {conversationalUser}. Talk about {RESEARCH_GOALS}! "
-            )
-        else:
-            currentConversation = input(
-                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            )
+    if agent_mode == AGENT_MODE.RESEARCH.value:
+        currentConversation = input(
+            f"Talks with {userName}, You are {conversationalUser}. Talk about {RESEARCH_GOALS}! "
+        )
+    elif agent_mode == AGENT_MODE.EVENT.value:
+        currentConversation = input(
+            f"If you want to publish an event, start with I want to publish an event: and provide the details. Else, start with a query. "
+        )
+    elif agent_mode == AGENT_MODE.DEBATE.value:
+        currentConversation = input(
+            f"Talk with {userName}, You are {conversationalUser}. Engage in a debate on {DEBATE_GOALS}! "
+        )
     else:
-        # Default prompts for subsequent conversations
-        if agent_mode == AGENT_MODE.NORMAL.value:
-            currentConversation = input(
-                f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
-            )
-        elif agent_mode == AGENT_MODE.EVENT.value:
-            currentConversation = input(
-                f"If you want to publish an event, start with I want to publish an event: and provide the details. Else, start with a query. "
-            )
-        elif agent_mode == AGENT_MODE.RESEARCH.value:
-            currentConversation = input(
-                f"Talk with {userName}. Have a discussion! "
-            )
+        currentConversation = input(
+            f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
+        )
+
+
 
     end = time.perf_counter()
     text_input_time = round(end - start, 2)
@@ -141,7 +140,7 @@ def audio_conversation_input(CSV_LOGGER, FILENAME):
 
 def startConversation(npc_name, currMode, agent_mode):
     global pastObservations
-    if agent_mode == AGENT_MODE.NORMAL.value or agent_mode == AGENT_MODE.RESEARCH.value:
+    if agent_mode == AGENT_MODE.NORMAL.value or agent_mode == AGENT_MODE.RESEARCH.value or agent_mode == AGENT_MODE.DEBATE.value:
         conversationalUser = input("Define the username you are acting as: ")
     elif agent_mode == AGENT_MODE.EVENT.value:
         conversationalUser = "User"
@@ -163,38 +162,14 @@ def startConversation(npc_name, currMode, agent_mode):
         if currentConversation.lower() == "done":
             break
         start = time.perf_counter()
-        if agent_mode == AGENT_MODE.NORMAL.value:
-            baseRetrieval = retrievalFunction(
-                currentConversation=currentConversation,
-                memoryStream=baseObservation,
-                retrievalCount=BASE_RETRIEVAL_COUNT,
-                isBaseDescription=True,
-            )
 
-        if agent_mode == AGENT_MODE.NORMAL.value:
-            observationRetrieval = retrievalFunction(
-                currentConversation=currentConversation,
-                memoryStream=pastObservations,
-                retrievalCount=OBS_RETRIEVAL_COUNT,
-                isBaseDescription=False,
-            )
-        elif agent_mode == AGENT_MODE.RESEARCH.value:
-            observationRetrieval = retrievalFunction(
-                currentConversation=currentConversation,
-                memoryStream=pastObservations,
-                retrievalCount=RA_OBS_COUNT,
-                isBaseDescription=False,
-                is_reflection=True,
-            )
-        elif agent_mode == AGENT_MODE.EVENT.value:
-            # if publish event, only sort by relevance
-            observationRetrieval = retrievalFunction(
-                currentConversation=currentConversation,
-                memoryStream=pastObservations,
-                retrievalCount=EVENT_OBS_COUNT,
-                isBaseDescription=False,
-                is_publish_event=True,
-            )
+        baseRetrieval, observationRetrieval = perform_observation_retrieval(
+            agent_mode, 
+            currentConversation, 
+            baseObservation,
+            pastObservations
+        )
+
         end = time.perf_counter()
         retrieval_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
@@ -202,7 +177,7 @@ def startConversation(npc_name, currMode, agent_mode):
             important_observations = [
                 data[1] for data in baseRetrieval + observationRetrieval
             ]
-        elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
+        else:
             important_observations = [
                 data[1] for data in observationRetrieval
             ]
@@ -211,11 +186,12 @@ def startConversation(npc_name, currMode, agent_mode):
                 important_observations)
         )
         print("Important Observations: ", important_observations)
+        
         if agent_mode == AGENT_MODE.NORMAL.value:
             important_scores = [
                 round(data[0], 2) for data in baseRetrieval + observationRetrieval
             ]
-        elif agent_mode == AGENT_MODE.EVENT.value or agent_mode == AGENT_MODE.RESEARCH.value:
+        else:
             important_scores = [
                 round(data[0], 2) for data in observationRetrieval
             ]
@@ -226,7 +202,6 @@ def startConversation(npc_name, currMode, agent_mode):
         start = time.perf_counter()
 
 
-
         if agent_mode == AGENT_MODE.RESEARCH.value:
             conversationPrompt = generateConversation(
                 npc_name,
@@ -235,8 +210,19 @@ def startConversation(npc_name, currMode, agent_mode):
                 important_observations,
                 avatar_expressions,
                 avatar_actions,
-                goals=RESEARCH_GOALS,
                 agent_mode=agent_mode,
+                research_goals=RESEARCH_GOALS,
+            )
+        elif agent_mode == AGENT_MODE.DEBATE.value:
+            conversationPrompt = generateConversation(
+                npc_name,
+                conversationalUser,
+                currentConversation,
+                important_observations,
+                avatar_expressions,
+                avatar_actions,
+                agent_mode=agent_mode,
+                debate_goals=DEBATE_GOALS,
             )
         else:
             conversationPrompt = generateConversation(
@@ -291,61 +277,33 @@ def startConversation(npc_name, currMode, agent_mode):
                 )
 
 
-def perform_reflection_logic(
-    userName, conversationalUser, currentConversation, pastObservations,
-):
-    print("NPC in reflection...\n")
-    reflection_retrieval = retrievalFunction(
-        currentConversation=currentConversation,
-        memoryStream=pastObservations,
-        retrievalCount=REFLECTION_RETRIEVAL_COUNT,
-        isBaseDescription=False,
-        is_reflection=True,
-    )
-    reflection_observations = [data[1] for data in reflection_retrieval]
-
-    reflection_list = generate_reflection(
-        userName,
-        conversationalUser,
-        pastConversations=reflection_observations,
-    ).split("\n")
-    finalObservations = []
-    for observation in reflection_list:
-        if len(observation) > 0:
-            finalObservations.append(observation)
-    print(f"NPC reflection: {finalObservations}")
-    update_reflection_db_and_past_obs(
-        userName,
-        conversationalUser,
-        finalObservations
-    )
+def setConversationMode():
+    while True:
+        currMode = input(
+            "Please select the following :\n1. Text Mode\n2. Audio Mode\n")
+        if currMode == "1":
+            return CONVERSATION_MODE.TEXT.value
+        elif currMode == "2":
+            return CONVERSATION_MODE.AUDIO.value
+        else:
+            print("Invalid input, please select appropriate options")
 
 
-def generateObservationAndUpdateMemory(
-    userName,
-    conversationalUser,
-    currentConversation,
-    resultConversationString
-):
-    # Time the function call and fetch the results.
-    startTime = time.perf_counter()
-    observationList = generateObservations(
-        userName, conversationalUser, currentConversation, resultConversationString
-    )
-    observationList = observationList.split("\n")
-    finalObservations = []
-    for observation in observationList:
-        if len(observation) > 0:
-            finalObservations.append(observation)
+def set_agent_mode():
+    while True:
+        user_input = input(
+            "Select conversation mode:\n1. Normal Conversation\n2. Event Agent\n3. Research Agent\n4. Debate Agent\nEnter the corresponding number: ")
+        if user_input == "1":
+            return AGENT_MODE.NORMAL.value
+        elif user_input == "2":
+            return AGENT_MODE.EVENT.value
+        elif user_input == "3":
+            return AGENT_MODE.RESEARCH.value
+        elif user_input == "4":
+            return AGENT_MODE.DEBATE.value
+        else:
+            print("Invalid input, please enter a valid number.")
 
-    endTime = time.perf_counter()
-    """
-    print(
-        f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
-    )
-    """
-    update_Memory_Collection_and_past_obs(
-        userName, conversationalUser, finalObservations)
 
 
 def fetchBaseDescription(userName: str):
@@ -436,30 +394,113 @@ def update_Memory_Collection_and_past_obs(
     pastObservations.appendleft(memoryObjectData)
 
 
-def setConversationMode():
-    while True:
-        currMode = input(
-            "Please select the following :\n1. Text Mode\n2. Audio Mode\n")
-        if currMode == "1":
-            return CONVERSATION_MODE.TEXT.value
-        elif currMode == "2":
-            return CONVERSATION_MODE.AUDIO.value
-        else:
-            print("Invalid input, please select appropriate options")
+def perform_reflection_logic(
+    userName, conversationalUser, currentConversation, pastObservations,
+):
+    print("NPC in reflection...\n")
+    reflection_retrieval = retrievalFunction(
+        currentConversation=currentConversation,
+        memoryStream=pastObservations,
+        retrievalCount=REFLECTION_RETRIEVAL_COUNT,
+        isBaseDescription=False,
+        is_reflection=True,
+    )
+    reflection_observations = [data[1] for data in reflection_retrieval]
+
+    reflection_list = generate_reflection(
+        userName,
+        conversationalUser,
+        pastConversations=reflection_observations,
+    ).split("\n")
+    finalObservations = []
+    for observation in reflection_list:
+        if len(observation) > 0:
+            finalObservations.append(observation)
+    print(f"NPC reflection: {finalObservations}")
+    update_reflection_db_and_past_obs(
+        userName,
+        conversationalUser,
+        finalObservations
+    )
 
 
-def set_agent_mode():
-    while True:
-        user_input = input(
-            "Select conversation mode:\n1. Normal Conversation\n2. Event Agent\n3. Research Agent\nEnter the corresponding number: ")
-        if user_input == "1":
-            return AGENT_MODE.NORMAL.value
-        elif user_input == "2":
-            return AGENT_MODE.EVENT.value
-        elif user_input == "3":
-            return AGENT_MODE.RESEARCH.value
-        else:
-            print("Invalid input, please enter a valid number.")
+def generateObservationAndUpdateMemory(
+    userName,
+    conversationalUser,
+    currentConversation,
+    resultConversationString
+):
+    # Time the function call and fetch the results.
+    startTime = time.perf_counter()
+    observationList = generateObservations(
+        userName, conversationalUser, currentConversation, resultConversationString
+    )
+    observationList = observationList.split("\n")
+    finalObservations = []
+    for observation in observationList:
+        if len(observation) > 0:
+            finalObservations.append(observation)
+
+    endTime = time.perf_counter()
+    """
+    print(
+        f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
+    )
+    """
+    update_Memory_Collection_and_past_obs(
+        userName, conversationalUser, finalObservations)
+    
+
+def perform_observation_retrieval(
+        agent_mode, 
+        currentConversation, 
+        baseObservation,
+        pastObservations
+    ):
+    if agent_mode == AGENT_MODE.NORMAL.value:
+        baseRetrieval = retrievalFunction(
+            currentConversation=currentConversation,
+            memoryStream=baseObservation,
+            retrievalCount=BASE_RETRIEVAL_COUNT,
+            isBaseDescription=True,
+        )
+    else:
+        baseRetrieval = []
+
+    if agent_mode == AGENT_MODE.NORMAL.value:
+        observationRetrieval = retrievalFunction(
+            currentConversation=currentConversation,
+            memoryStream=pastObservations,
+            retrievalCount=OBS_RETRIEVAL_COUNT,
+            isBaseDescription=False,
+        )
+    elif agent_mode == AGENT_MODE.RESEARCH.value:
+        observationRetrieval = retrievalFunction(
+            currentConversation=currentConversation,
+            memoryStream=pastObservations,
+            retrievalCount=RA_OBS_COUNT,
+            isBaseDescription=False,
+        )
+    elif agent_mode == AGENT_MODE.EVENT.value:
+        # if publish event, only sort by relevance
+        observationRetrieval = retrievalFunction(
+            currentConversation=currentConversation,
+            memoryStream=pastObservations,
+            retrievalCount=EVENT_OBS_COUNT,
+            isBaseDescription=False,
+            is_reflection=False,
+            is_publish_event=True,
+        )
+    elif agent_mode == AGENT_MODE.DEBATE.value:
+        observationRetrieval = retrievalFunction(
+            currentConversation=currentConversation,
+            memoryStream=pastObservations,
+            retrievalCount=OBS_RETRIEVAL_COUNT,
+            isBaseDescription=False,
+        )
+    return baseRetrieval, observationRetrieval
+
+
 
 
 if __name__ == "__main__":
@@ -474,6 +515,8 @@ if __name__ == "__main__":
         npc_name = "Event Agent"
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         npc_name = "Research Agent"
+    elif agent_mode == AGENT_MODE.DEBATE.value:
+        npc_name = "Debate Agent"
 
     # Check for existing user.
     is_existing_npc_in_user_collection = userCollection.find_one(
