@@ -6,6 +6,14 @@ import json
 import asyncio
 import os
 from dotenv import load_dotenv
+from enum import Enum
+
+class AGENT_MODE(Enum):
+    NORMAL = 1
+    EVENT = 2
+    RESEARCH = 3
+    DEBATE = 4
+
 
 load_dotenv()
 
@@ -78,49 +86,6 @@ def generateObservations(userName, conversationalUser, currentConversation, user
     return getGPTResponse(observationPrompt, GPT4)
 
 
-def generate_event_publisher_prompt(
-        currentConversations, 
-        relevantObservations):
-    prompt = {
-        "context": "You are a dedicated agent, responsible for managing and providing information about user-generated events. You will either store an event or provide information about an event based on a list of observations.",
-        "information": {
-            "Current Conversations": currentConversations,
-            "History Conversations": relevantObservations,
-        },
-        "criteria": [
-            "Ensure responses are concise and informative, limited to one sentence without any unnecessary information.",
-            "When asked about a specific event and you have relevant observations, respond with 'YES' and provide the event information.",
-            "If there are no relevant observations for a queried event, respond with 'NO' and state that the information is not available.",
-        ],
-    }
-    eventPublisherPrompt = json.dumps(prompt, indent=4)
-    return getConversationGenerator(eventPublisherPrompt, GPT4)
-
-
-def generate_research_assistant_prompt(
-        currentConversations, 
-        relevantObservations,
-        goals="Experiences with VRChat"):
-    prompt = {
-        "context": f"You are an Embodied Research Assistant, responsible for engaging users with predefined goals. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
-        "main_goal": f"Interviewing User about {goals}",
-        "adaptive goals": "The adaptive goal is to provide information based on the user's query and adapt responses based on the current and historical conversations.",
-        "information": {
-            "Current Conversation": currentConversations,
-            "History Conversations": relevantObservations,
-        },
-        "criteria": [
-            "Start the conversation with a response to the user's message before posing any questions.",
-            "Ensure responses are engaging, informative, and focused on the adaptive goals.",
-            "When asked about a specific topic, ask probing questions based on the user's current conversation. Avoid providing direct answers to user questions.",
-            "If the user shares an experience or completes a challenge, acknowledge their input and respond appropriately.",
-        ],
-
-    }
-    conversationPrompt = json.dumps(prompt, indent=4)
-    return getConversationGenerator(conversationPrompt, GPT4)
-
-
 
 
 def generateConversation(
@@ -130,24 +95,72 @@ def generateConversation(
     relevantObservations: list,
     avatar_expressions,
     avatar_actions,
+    agent_mode,
+    goals="Experiences with VRChat",
 ):
-    prompt = {
-        "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
+    if agent_mode == AGENT_MODE.NORMAL.value:
+        prompt = {
+            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
+            "information": {
+                "You are": userName,
+                "Conversational Partner": conversationalUser,
+                "Current conversation": currentConversation,
+                "Relevant observations": relevantObservations,
+                "Expressions": avatar_expressions,
+                "Actions": avatar_actions,
+            },
+            "criteria": [
+                f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
+                f"Explicitly avoid the use of emojis and hashtags in all responses."
+                f"Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
+                f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
+            ],
+            "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
+        }
+    elif agent_mode == AGENT_MODE.EVENT.value:
+        prompt = {
+        "context": "You are a dedicated event agent, responsible for managing and providing information about user-generated events. You will either store an event or provide information about an event based on a list of observations.",
         "information": {
-            "You are": userName,
-            "Conversational Partner": conversationalUser,
-            "Current conversation": currentConversation,
-            "Relevant observations": relevantObservations,
-            "Expressions": avatar_expressions,
-            "Actions": avatar_actions,
+                "You are": userName,
+                "Conversational Partner": conversationalUser,
+                "Current conversation": currentConversation,
+                "Relevant observations": relevantObservations,
+                "Expressions": avatar_expressions,
+                "Actions": avatar_actions,
         },
         "criteria": [
-            f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
-            f"Explicitly avoid the use of emojis and hashtags in all responses."
+            f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as Event Agent should be constant, and there should be no disclosure or suggestion of being an AI.",
+            f"When asked about a specific event and you have relevant observations, respond with 'YES' and provide the event information.",
+            f"If there are no relevant observations for a queried event, respond with 'NO' and state that the information is not available.",
             f"Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
             f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
         ],
+        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
+    elif agent_mode == AGENT_MODE.RESEARCH.value:
+        prompt = {
+        "context": f"You are a friendly and imaginative Research Asssistant, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
+        "Goal": f"Interviewing User about {goals}",
+        "Adaptive goals": "The adaptive goal is to provide information based on the user's query and adapt responses based on the current and historical conversations.",
+        "information": {
+                "You are": userName,
+                "Conversational Partner": conversationalUser,
+                "Current conversation": currentConversation,
+                "Relevant observations": relevantObservations,
+                "Expressions": avatar_expressions,
+                "Actions": avatar_actions,
+        },
+        "criteria": [
+            f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as Research Assistant should be constant, and there should be no disclosure or suggestion of being an AI.",
+            "Start the conversation with a response to the user's message before posing any questions.",
+            "When asked about a specific topic, ask probing questions based on the user's current conversation. Avoid providing direct answers to user questions.",
+            "If the user shares an experience or completes a challenge, acknowledge their input and respond appropriately.",
+            f"Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output).",
+            f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
+        ],
+        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
+    }
+
     conversationPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(conversationPrompt, GPT4)
 

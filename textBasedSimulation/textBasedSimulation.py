@@ -4,8 +4,7 @@ from responseGenerator import (
     generateConversation,
     getTextfromAudio,
     generate_reflection,
-    generate_event_publisher_prompt,
-    generate_research_assistant_prompt,
+    AGENT_MODE,
 )
 from distutils import text_file
 import time
@@ -22,6 +21,7 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
+
 
 load_dotenv()
 
@@ -65,11 +65,6 @@ class CONVERSATION_MODE(Enum):
     AUDIO = 2
 
 
-class AGENT_MODE(Enum):
-    NORMAL = 1
-    EVENT = 2
-    RESEARCH = 3
-
 
 def getBaseDescription(agent_mode):
     if agent_mode == AGENT_MODE.EVENT.value:
@@ -79,8 +74,7 @@ def getBaseDescription(agent_mode):
         )
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         return (
-            "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, "
-            "and interviewing users about their experiences, e.g., their experience with VRChat."
+            "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, and interviewing users about their experiences, e.g., their experience with VRChat."
         )
     elif agent_mode == AGENT_MODE.NORMAL.value:
         description = ""
@@ -230,7 +224,10 @@ def startConversation(npc_name, currMode, agent_mode):
         )
 
         start = time.perf_counter()
-        if agent_mode == AGENT_MODE.NORMAL.value:
+
+
+
+        if agent_mode == AGENT_MODE.RESEARCH.value:
             conversationPrompt = generateConversation(
                 npc_name,
                 conversationalUser,
@@ -238,18 +235,20 @@ def startConversation(npc_name, currMode, agent_mode):
                 important_observations,
                 avatar_expressions,
                 avatar_actions,
-            )
-        elif agent_mode == AGENT_MODE.EVENT.value:
-            conversationPrompt = generate_event_publisher_prompt(
-                currentConversation,
-                important_observations,
-            )
-        elif agent_mode == AGENT_MODE.RESEARCH.value:
-            conversationPrompt = generate_research_assistant_prompt(
-                currentConversation,
-                important_observations,
                 goals=RESEARCH_GOALS,
+                agent_mode=agent_mode,
             )
+        else:
+            conversationPrompt = generateConversation(
+                npc_name,
+                conversationalUser,
+                currentConversation,
+                important_observations,
+                avatar_expressions,
+                avatar_actions,
+                agent_mode=agent_mode,
+            )
+
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
         print(f"{npc_name} :")
@@ -452,7 +451,7 @@ def setConversationMode():
 def set_agent_mode():
     while True:
         user_input = input(
-            "Select conversation mode:\n1. Normal Conversation\n2. Publish Event\n3. Research Assistant Mode\nEnter the corresponding number: ")
+            "Select conversation mode:\n1. Normal Conversation\n2. Event Agent\n3. Research Agent\nEnter the corresponding number: ")
         if user_input == "1":
             return AGENT_MODE.NORMAL.value
         elif user_input == "2":
