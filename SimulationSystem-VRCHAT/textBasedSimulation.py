@@ -25,6 +25,8 @@ import easyocr1
 from TTS import openaiTTS
 import random
 import fillerWords
+from TTS import Polly
+from STT import deepgramSTT
 # Define list of expressions and actions for GPT and allow it to pick one
 
 load_dotenv()
@@ -44,7 +46,7 @@ memoryObjectCollection=LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 RETRIEVAL_COUNT = 5
 FILENAME = "./speech/current_conversation.wav"
 CSV_LOGGER = CSVLogger()
-
+tts = Polly.Polly()
 #client
 parser = argparse.ArgumentParser()
 parser.add_argument("--ip", default="127.0.0.1",
@@ -146,9 +148,9 @@ def filler(currentConversation):
         openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
 
 def fillerShort():
-    selected_filler_key = random.choice(list(fillerWords.fillersS.keys()))
-    VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersS[selected_filler_key])
-    openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
+    selected_filler_key = random.choice(list(fillerWords.fillersS.values()))
+    VRC_OSCLib.actionChatbox(VRCclient, selected_filler_key)
+    openaiTTS.read_audio_file("TTS/fillerWord/Pollyfiller/"+selected_filler_key+".ogg", 9)
 
 
 def startConversation(userName, currMode, usernameMode):
@@ -185,14 +187,15 @@ def startConversation(userName, currMode, usernameMode):
         else:
             start = time.perf_counter()
             listenAndRecordDirect(CSV_LOGGER, FILENAME)
-            fillerShort()
-            currentConversation = getTextfromAudio(FILENAME)
+            # fillerShort()
+            # currentConversation = getTextfromAudio(FILENAME)
+            currentConversation=deepgramSTT.transTTDeepgram()
             end = time.perf_counter()
             audio_to_text_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_to_text_time)
             CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
             print(currentConversation)
-            filler(currentConversation)
+            # filler(currentConversation)
 
         start = time.perf_counter()
         baseRetrieval = retrievalFunction(
@@ -238,6 +241,7 @@ def startConversation(userName, currMode, usernameMode):
         resultConversationString = ""
         splitSentence = ""
         count=0
+        # start = time.perf_counter()
         for conversation in conversationPrompt:
             try:
                 currText = conversation.choices[0].delta.content
@@ -255,7 +259,8 @@ def startConversation(userName, currMode, usernameMode):
                         print(splitSentence, end="")
                     print(splitSentence, end="")
                     # Additional actions
-                    openaiTTS.generateAudio(splitSentence, 9)
+                    # openaiTTS.generateAudio(splitSentence, 9)
+                    tts.speech(splitSentence, "Joanna", 9)
                     VRC_OSCLib.actionChatbox(VRCclient, splitSentence)
                     splitSentence = ""  # Reset splitSentence
             except:
@@ -263,10 +268,14 @@ def startConversation(userName, currMode, usernameMode):
 
         if splitSentence:
             # Additional actions for the remaining splitSentence
-            openaiTTS.generateAudio(splitSentence, 9)
+            # openaiTTS.generateAudio(splitSentence, 9)
+            tts.speech(splitSentence, "Joanna", 9)
             VRC_OSCLib.actionChatbox(VRCclient, splitSentence)
             print(splitSentence, end="")
 
+        # end = time.perf_counter()
+        # TTS_response_time = round(end - start, 2)
+        # CSV_LOGGER.set_enum(LogElements.TIME_FOR_TTS, TTS_response_time)
         CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
         CSV_LOGGER.write_to_csv(True)

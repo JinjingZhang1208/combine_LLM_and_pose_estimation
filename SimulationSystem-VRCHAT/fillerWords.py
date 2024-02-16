@@ -5,6 +5,152 @@ import os
 from dotenv import load_dotenv
 import threading
 import sounddevice
+import configparser
+import contextlib
+import importlib
+import re
+import threading
+from os import getenv
+from pathlib import Path
+import numpy as np
+import boto3
+import botocore
+import botocore.exceptions
+import sounddevice
+import soundfile
+import numpy as np
+import io
+import time
+from dotenv import load_dotenv
+from pydub import AudioSegment
+from pydub.playback import play
+import pyaudio
+CURRENT_FRAME = 0
+event = threading.Event()
+playback_lock = threading.Lock()
+load_dotenv()
+import os
+class Polly:
+    """Use Amazon Polly API to synthesize a speech.
+
+    This class can be used as speech_provider attribute for the VRCSpeechAssistant class.
+
+    Attributes
+    ----------
+    AWS_CONFIG_FILE: Path
+        Default location of Amazon AWS API config file.
+    AWS_CREDENTIALS_FILE: Path
+        Default location of Amazon AWS API credentials file.
+    VOICES_PATH: Path
+        The location of the voices files that will be generated.
+    """
+
+    AWS_CONFIG_FILE = Path.home() / ".aws" / "config"
+    AWS_CREDENTIALS_FILE = Path.home() / ".aws" / "credentials"
+    VOICES_PATH = Path(getenv("APPDATA")) / "VRChat LLM Avartars" / "voices"
+
+    def __init__(self):
+        """Initialize instance."""
+        self.aws_config = configparser.ConfigParser()
+        self.aws_credentials = configparser.ConfigParser()
+        self._init_config()
+        self.client = boto3.client("polly")
+        # The first self.client.synthesize_speech called takes a little time to respond,
+        # calling self.speech once before the user call it.
+        self.speech("test", "Justin", 999)
+
+    def _init_config(self):
+        self._load_base_aws_config()
+        if self.AWS_CONFIG_FILE.exists():
+            self.aws_config.read(self.AWS_CONFIG_FILE)
+        self.save_aws_config()
+        self._load_base_aws_credentials()
+        if self.AWS_CREDENTIALS_FILE.exists():
+            self.aws_credentials.read(self.AWS_CREDENTIALS_FILE)
+        self.save_aws_credentials()
+
+    def _load_base_aws_config(self):
+        self.aws_config["default"] = {"region": "us-west-2"}
+
+    def _load_base_aws_credentials(self):
+        self.aws_credentials["default"] = {
+            "aws_access_key_id": "AKIAXHCQPAHUFWENZPUJ",
+            "aws_secret_access_key": "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",
+        }
+
+    def save_aws_config(self):
+        """Save aws configuration changes to the aws configuration file."""
+        self.AWS_CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        self.aws_config.write(self.AWS_CONFIG_FILE.open("w", encoding="utf-8"))
+
+    def save_aws_credentials(self):
+        """Save aws credentials changes to the aws credentials file."""
+        self.AWS_CREDENTIALS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        self.aws_credentials.write(self.AWS_CREDENTIALS_FILE.open("w", encoding="utf-8"))
+
+    def speech(self, text: str, voice_id: str, output_device_index: int, extra_tags: dict = None):
+
+
+        """Convert a text into a speech and then play it to the given output_device.
+
+        Parameters
+        ----------
+        text : str
+            The text to be converted to speech.
+        voice_id : str
+            The voice id of the voice you want to use.
+        output_device_index : int
+            The index of the output device.
+        extra_tags : dict
+            A dict of extra tags. Currently only {"Whispered": bool} available.
+        """
+
+        def convert_to_ssml(input_text):
+            # https://docs.aws.amazon.com/polly/latest/dg/supportedtags.html
+            if extra_tags and extra_tags.get("whispered"):
+                return (
+                    "<speak>"
+                    + '<amazon:auto-breaths frequency="low" volume="soft" duration="x-short">'
+                    + '<amazon:effect name="whispered">'
+                    + input_text
+                    + "</amazon:effect>"
+                    + "</amazon:auto-breaths>"
+                    + "</speak>"
+                )
+            return (
+                "<speak>"
+                + '<amazon:auto-breaths frequency="low" volume="soft" duration="x-short">'
+                + input_text
+                + "</amazon:auto-breaths>"
+                + "</speak>"
+            )
+
+        # # Remove special characters from the text for the file destination.
+        filename = re.sub("[#<$+%>!`&*'|{?\"=/}:@]", "", text)
+        print(self.VOICES_PATH / voice_id / f"w_{filename}.ogg")
+        if extra_tags and extra_tags.get("whispered"):
+            filepath = self.VOICES_PATH / voice_id / f"w_{filename}.ogg"
+        else:
+            filepath = self.VOICES_PATH / voice_id / f"{filename}.ogg"
+        # It creates the directory if it doesn't exist.
+        filepath.parent.mkdir(parents=True, exist_ok=True)
+        # Create the answer from Amazon Polly if the file does not exist.
+        # if not filepath.exists():
+        if not filepath.exists():
+            try:
+                response = self.client.synthesize_speech(
+                    Text=convert_to_ssml(text),
+                    VoiceId=voice_id.split(" ")[0],
+                    OutputFormat="ogg_vorbis",
+                    TextType="ssml",
+                )
+            except botocore.exceptions.ClientError as err:
+                error(err)
+                return
+            with open(filepath, "wb") as file:
+                file.write(response["AudioStream"].read())
+
+
 event = threading.Event()
 # General Fillers Dictionary
 fillers = {
@@ -12,11 +158,11 @@ fillers = {
     "filler2": "um...let me think...Interesting",
     "filler3": "I mean...Actually...",
     "filler4": "Well, sort of... its like...",
-    "filler5": "Actually, that's quite a complex topic. Hmm...",
-    "filler6": "So, let's dive into this. Uh, where to begin...",
-    "filler7": "Interesting... Let me ponder that for a second...",
-    "filler8": "Ah, I need to consider this carefully...",
-    "filler9": "Hmm, let me think about that for a moment...",
+    # "filler5": "Actually, that's quite a complex topic. Hmm...",
+    # "filler6": "So, let's dive into this. Uh, where to begin...",
+    # "filler7": "Interesting... Let me ponder that for a second...",
+    # "filler8": "Ah, I need to consider this carefully...",
+    # "filler9": "Hmm, let me think about that for a moment...",
     # "filler10": "Now, if I may... it's a bit complicated because...",
     # "filler11": "You see, it's not that straightforward. Let me explain...",
     # "filler12": "In a way, it's quite unique. So basically...",
@@ -187,8 +333,10 @@ response = client.audio.speech.create(
 #     # and 'value' is the corresponding filler text.
 #     generateAudio(value, key)
 #     print(f"{key}: {value}")
+# tts = Polly()
 # for key, value in fillersS.items():
 #     # Here 'key' is the filler identifier (like 'filler1', 'filler2', etc.)
 #     # and 'value' is the corresponding filler text.
-#     generateAudio(value, key)
+#     # generateAudio(value, key)
+#     tts.speech(value, "Joanna", 8)
 #     print(f"{key}: {value}")
