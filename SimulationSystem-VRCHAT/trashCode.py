@@ -202,3 +202,14 @@ prompt = {
 
 
 """
+npc_names = ['NPC1', 'NPC2', 'NPC1']  # Example list of NPC names
+dialogues = ['Hello there!', 'How can I assist you?', 'Farewell!']  # Corresponding dialogues
+
+# Initialize an empty list to store the dialogues
+npc_dialogues = []
+
+# Iterate over both lists simultaneously and add each pair to the npc_dialogues list
+for npc_name, dialogue in zip(npc_names, dialogues):
+    npc_dialogues.append((npc_name, dialogue))
+
+print(npc_dialogues)

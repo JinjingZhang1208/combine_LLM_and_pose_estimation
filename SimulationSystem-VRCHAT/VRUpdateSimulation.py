@@ -55,7 +55,7 @@ RA_OBS_COUNT = 5
 EVENT_OBS_COUNT = 5
 REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
-RESEARCH_GOALS = "Experiences with VRChat"
+RESEARCH_GOALS = "Experience in this AAAI conference"
 DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
 
 FILENAME = "./speech/current_conversation.wav"
@@ -187,16 +187,20 @@ def startConversation(npc_name, currMode, agent_mode):
 
     conversation_count = 0
     while True:
+        npc_dialogues = []
         if currMode == CONVERSATION_MODE.TEXT.value:
             currentConversation = text_conversation_input(
                 agent_mode, npc_name, conversationalUser, conversation_count)
         elif currMode == CONVERSATION_MODE.AUDIO.value:
             currentConversation = audio_conversation_input(
                 CSV_LOGGER, FILENAME)
+
+
         CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
 
         if currentConversation.lower() == "done":
             break
+        npc_dialogues.append((npc_name, currentConversation))
         start = time.perf_counter()
 
         baseRetrieval, observationRetrieval = perform_observation_retrieval(
@@ -246,6 +250,7 @@ def startConversation(npc_name, currMode, agent_mode):
                 avatar_expressions,
                 avatar_actions,
                 agent_mode=agent_mode,
+                npc_dialogues=npc_dialogues,
                 research_goals=RESEARCH_GOALS,
             )
         elif agent_mode == AGENT_MODE.DEBATE.value:
@@ -299,7 +304,8 @@ def startConversation(npc_name, currMode, agent_mode):
                     splitSentence = ""  # Reset splitSentence
             except:
                 break
-
+        npc_dialogues.append((conversationalUser, resultConversationString))
+        print(npc_dialogues)
         if splitSentence:
             # Additional actions for the remaining splitSentence
             openaiTTS.generateAudio(splitSentence, 9)
@@ -332,6 +338,7 @@ def startConversation(npc_name, currMode, agent_mode):
             conversationalUser,
             currentConversation,
             resultConversationString,
+            npc_dialogues
         )
 
         conversation_count += 1

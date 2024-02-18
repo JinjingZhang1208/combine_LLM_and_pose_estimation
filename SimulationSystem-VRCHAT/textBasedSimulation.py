@@ -43,6 +43,7 @@ LLMdatabase= client[DATABASE_NAME]
 userCollection= LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection=LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
+Context=[]
 RETRIEVAL_COUNT = 5
 FILENAME = "./speech/current_conversation.wav"
 CSV_LOGGER = CSVLogger()
