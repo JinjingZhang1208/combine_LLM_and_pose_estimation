@@ -23,7 +23,7 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
-#VRC import
+# VRC import
 import VRC_OSCLib
 import argparse
 from pythonosc import udp_client
@@ -33,6 +33,7 @@ from TTS import openaiTTS
 from TTS import Polly
 from STT import deepgramSTT
 import controlexpression
+
 load_dotenv()
 
 # Constants
@@ -62,14 +63,15 @@ FILENAME = "./speech/current_conversation.wav"
 
 CSV_LOGGER = CSVLogger()
 
-#VRC client
+# VRC client
 parser = argparse.ArgumentParser()
 parser.add_argument("--ip", default="127.0.0.1",
-                        help="The ip of the OSC server")
+                    help="The ip of the OSC server")
 parser.add_argument("--port", type=int, default=9000,
-                        help="The port the OSC server is listening on")
+                    help="The port the OSC server is listening on")
 args = parser.parse_args()
 VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
+
 
 class AVATAR_DATA(Enum):
     AVATAR_EXPRESSION_MAP = "Avatar Expressions Map"
@@ -81,26 +83,37 @@ class CONVERSATION_MODE(Enum):
     TEXT = 1
     AUDIO = 2
 
-def filler(currentConversation):
-    if "?" in currentConversation and len(currentConversation)>40:
-        selected_filler_key = random.choice(list(fillerWords.fillersQ.keys()))
+
+def filler(currentConversation, Convround):
+    if Convround == 0:
+        selected_filler_key = random.choice(list(fillerWords.fillersG.keys()))
         # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
         threading.Thread(target=VRC_OSCLib.actionChatbox,
-                         args=(VRCclient, fillerWords.fillersQ[selected_filler_key],)).start()
-        openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
-
+                         args=(VRCclient, fillerWords.fillersG[selected_filler_key],)).start()
+        openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", 9)
     else:
-        selected_filler_key = random.choice(list(fillerWords.fillers.keys()))
-        # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
-        threading.Thread(target=VRC_OSCLib.actionChatbox,
-                         args=(VRCclient, fillerWords.fillers[selected_filler_key],)).start()
-        openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
+        if "?" in currentConversation and len(currentConversation) > 40:
+            selected_filler_key = random.choice(list(fillerWords.fillersQ.keys()))
+            # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
+            threading.Thread(target=VRC_OSCLib.actionChatbox,
+                             args=(VRCclient, fillerWords.fillersQ[selected_filler_key],)).start()
+            openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", 9)
+
+        else:
+            selected_filler_key = random.choice(list(fillerWords.fillers.keys()))
+            # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
+            threading.Thread(target=VRC_OSCLib.actionChatbox,
+                             args=(VRCclient, fillerWords.fillers[selected_filler_key],)).start()
+            openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", 9)
+
 
 def fillerShort():
     selected_filler_key = random.choice(list(fillerWords.fillersS.keys()))
-    threading.Thread(target=VRC_OSCLib.actionChatbox, args=(VRCclient,fillerWords.fillersS[selected_filler_key],)).start()
+    threading.Thread(target=VRC_OSCLib.actionChatbox,
+                     args=(VRCclient, fillerWords.fillersS[selected_filler_key],)).start()
     # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
-    openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
+    openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", 9)
+
 
 def getBaseDescription(agent_mode):
     if agent_mode == AGENT_MODE.EVENT.value:
@@ -155,9 +168,9 @@ def text_conversation_input(agent_mode, userName, conversationalUser, conversati
     return currentConversation
 
 
-def audio_conversation_input(CSV_LOGGER, FILENAME):
+def audio_conversation_input(CSV_LOGGER, FILENAME, Convround):
     start = time.perf_counter()
-    listenAndRecordDirect(CSV_LOGGER,FILENAME)
+    listenAndRecordDirect(CSV_LOGGER, FILENAME)
     # fillerShort()
     threading.Thread(target=fillerShort, args=()).start()
     end = time.perf_counter()
@@ -170,7 +183,7 @@ def audio_conversation_input(CSV_LOGGER, FILENAME):
     end = time.perf_counter()
     audio_to_text_time = round(end - start, 2)
     CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, audio_to_text_time)
-    threading.Thread(target=filler, args=(currentConversation,)).start()
+    threading.Thread(target=filler, args=(currentConversation, Convround,)).start()
     return currentConversation
 
 
@@ -186,6 +199,7 @@ def startConversation(npc_name, currMode, agent_mode):
     threadExecutor = ThreadPoolExecutor()
 
     conversation_count = 0
+    Convround = 0
     while True:
         npc_dialogues = []
         if currMode == CONVERSATION_MODE.TEXT.value:
@@ -193,9 +207,9 @@ def startConversation(npc_name, currMode, agent_mode):
                 agent_mode, npc_name, conversationalUser, conversation_count)
         elif currMode == CONVERSATION_MODE.AUDIO.value:
             currentConversation = audio_conversation_input(
-                CSV_LOGGER, FILENAME)
+                CSV_LOGGER, FILENAME, Convround)
 
-
+        Convround += 1
         CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
 
         if currentConversation.lower() == "done":
@@ -262,6 +276,7 @@ def startConversation(npc_name, currMode, agent_mode):
                 avatar_expressions,
                 avatar_actions,
                 agent_mode=agent_mode,
+                npc_dialogues=npc_dialogues,
                 debate_goals=DEBATE_GOALS,
             )
         else:
@@ -273,6 +288,7 @@ def startConversation(npc_name, currMode, agent_mode):
                 avatar_expressions,
                 avatar_actions,
                 agent_mode=agent_mode,
+                npc_dialogues=npc_dialogues,
             )
 
         end = time.perf_counter()
@@ -291,10 +307,10 @@ def startConversation(npc_name, currMode, agent_mode):
 
                 # Check for specific punctuation marks in splitSentence
                 if any(punct in currText for punct in ['.', '?', '!']):
-                    if count==0:
+                    if count == 0:
                         emotions = controlexpression.extract_emotions(splitSentence)
                         splitSentence = controlexpression.remove_emotions_from_string(splitSentence)
-                        count+=1
+                        count += 1
                         print(splitSentence, end="")
                     print(splitSentence, end="")
                     # Additional actions

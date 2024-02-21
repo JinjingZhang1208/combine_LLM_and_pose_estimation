@@ -137,16 +137,21 @@ def getBaseDescription():
         description += f"{currLine}\n"
     return description
 
-def filler(currentConversation):
-    if "?" in currentConversation and len(currentConversation)>40:
-        selected_filler_key = random.choice(list(fillerWords.fillersQ.keys()))
-        VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
-        openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
-
+def filler(currentConversation, round):
+    if round==0:
+        selected_filler_key = random.choice(list(fillerWords.fillersG.keys()))
+        VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersG[selected_filler_key])
+        openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", 9)
     else:
-        selected_filler_key = random.choice(list(fillerWords.fillers.keys()))
-        VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
-        openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
+        if "?" in currentConversation and len(currentConversation)>40:
+            selected_filler_key = random.choice(list(fillerWords.fillersQ.keys()))
+            VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
+            openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
+
+        else:
+            selected_filler_key = random.choice(list(fillerWords.fillers.keys()))
+            VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
+            openaiTTS.read_audio_file("TTS/fillerWord/"+selected_filler_key+".ogg", 9)
 
 def fillerShort():
     selected_filler_key = random.choice(list(fillerWords.fillersS.values()))
@@ -156,6 +161,7 @@ def fillerShort():
 
 def startConversation(userName, currMode, usernameMode):
     global pastObservations
+    round=0
     if usernameMode ==INPUTUSERNAME_MODE.INPUT.value:
         conversationalUser = input("Define the username you are acting as: ")
     elif usernameMode ==INPUTUSERNAME_MODE.AUTODETECT.value:
@@ -289,6 +295,7 @@ def startConversation(userName, currMode, usernameMode):
         # print(emotions)
         # print(result)
         print()
+        round+=1
         #texttospeech time
         starttime = time.perf_counter()
         # openaiTTS.generateAudio(result, 9)

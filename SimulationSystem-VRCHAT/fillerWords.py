@@ -297,6 +297,16 @@ fillersS = {
     "fillerS49": "Ah...Hmm...So...",
     "fillerS50": "Right...Ah...Yes..."
 }
+fillersG = {
+    "fillerG1": "Hey there!",
+    "fillerG2": "Hello, nice weather we're having, huh?",
+    "fillerG3": "Hello, How's it going?",
+    "fillerG4": "Hello!",
+    "fillerG7": "Hello, Isn't this place just wonderful?",
+    "fillerG8": "Hello, What a pleasant surprise to run into you!",
+    "fillerG9": "Hey, it's great to see a friendly face!",
+}
+
 def generateAudio(text, filler):
     response = client.audio.speech.create(
         model="tts-1",
@@ -339,4 +349,11 @@ response = client.audio.speech.create(
 #     # and 'value' is the corresponding filler text.
 #     # generateAudio(value, key)
 #     tts.speech(value, "Joanna", 8)
+#     print(f"{key}: {value}")
+
+# for key, value in fillersG.items():
+#     # Here 'key' is the filler identifier (like 'filler1', 'filler2', etc.)
+#     # and 'value' is the corresponding filler text.
+#     # generateAudio(value, key)
+#     generateAudio(value, key)
 #     print(f"{key}: {value}")

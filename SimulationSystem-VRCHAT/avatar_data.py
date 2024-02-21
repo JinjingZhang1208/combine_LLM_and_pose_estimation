@@ -14,6 +14,5 @@ avatar_action_map = {
     "Dance": 5,
     "Backflip": 6,
     "Sadness": 7,
-    "Faint": 8,
 }
 avatar_voice = "nova"
