@@ -56,9 +56,9 @@ RA_OBS_COUNT = 5
 EVENT_OBS_COUNT = 5
 REFLECTION_RETRIEVAL_COUNT = 9
 REFLECTION_PERIOD = 3
-RESEARCH_GOALS = "Experience in this AAAI conference"
+RESEARCH_GOALS = "Experience of using Large Language Model and idea for further improvement LLMs"
 DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
-
+STARTING_NOTIFICATION="Hi"
 FILENAME = "./speech/current_conversation.wav"
 
 CSV_LOGGER = CSVLogger()
@@ -197,11 +197,23 @@ def startConversation(npc_name, currMode, agent_mode):
     pastObservations = fetchPastRecords(conversationalUser)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
-
+    npc_dialogues = []
+    # Starting Notifications
+    if agent_mode == AGENT_MODE.NORMAL.value:
+        STARTING_NOTIFICATION=f"Hi, {conversationalUser}. My Name is Ellma_AI, I'm your virtual chitchat friend here today. Let's dive into our conversation."
+    elif agent_mode == AGENT_MODE.RESEARCH.value:
+        STARTING_NOTIFICATION=f"Hi, {conversationalUser}. My Name is Ellma_AI, I'm your virtual interviewer here today. Today our topic is {RESEARCH_GOALS}.Let's dive into our conversation."
+    elif agent_mode == AGENT_MODE.DEBATE.value:
+        STARTING_NOTIFICATION = f"Hi, {conversationalUser}. My Name is Ellma_AI, I'm your virtual debator here today. Today our debate topic is {DEBATE_GOALS}.Let's dive into our conversation."
+    elif agent_mode == AGENT_MODE.EVENT.value:
+        STARTING_NOTIFICATION = f"Hi, there. My Name is Ellma_AI, I'm a virtual event publisher. Feel free to let me know if there is any event you want to hold or join. I can help you with it."
+    openaiTTS.generateAudio(STARTING_NOTIFICATION, 9)
+    # tts.speech(splitSentence, "Joanna", 9)
+    VRC_OSCLib.actionChatbox(VRCclient, STARTING_NOTIFICATION)
     conversation_count = 0
     Convround = 0
+    npc_dialogues.append((npc_name, STARTING_NOTIFICATION))
     while True:
-        npc_dialogues = []
         if currMode == CONVERSATION_MODE.TEXT.value:
             currentConversation = text_conversation_input(
                 agent_mode, npc_name, conversationalUser, conversation_count)

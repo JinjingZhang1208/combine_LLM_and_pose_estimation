@@ -47,8 +47,7 @@ expression_data_mapping = {
         "Cheer": 4,
         "Dance": 5,
         "Backflip": 6,
-        "Sadness": 7,
-        "Faint": 8
+        "Sadness": 7
     }
 }
 
