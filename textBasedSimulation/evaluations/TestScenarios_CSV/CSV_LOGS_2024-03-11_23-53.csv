@@ -1,0 +1,4 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hiii,,,"(NO) Sorry, the information for the event you asked about is not available at the moment. If you have any other event queries, feel free to ask! (Confused, Cheer)",23.09,,,,0,0.0,0.61
+how are you,,,"(Cheer, Clap)  
+I'm here and ready to assist you with any event-related queries! What event information can I help you with today?",3.81,,,,0,0.0,0.53

@@ -1,0 +1,20 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hiii,"The current statement in the conversation is ""Hello. Hi.""
+The user initiated the conversation with a greeting (""Hello."").
+The user greeted the Event Agent with ""Hello.""
+- The user initiated the conversation with a greeting of ""Hello.""
+The user greeted the assistant with ""Hello, Carl. Can you hear me?""","0.83
+0.81
+0.8
+0.8
+0.79",I'm here to assist with events! Feel free to share any event details or ask questions. How can I help you today?,1.38,,,,0,1.69,0.83
+helloooo,"The current statement in the conversation is ""Hello. Hi.""
+The user initiated the conversation with a greeting (""Hello."").
+The user greeted the Event Agent with ""Hello.""
+The user greeted the assistant with ""Hello, Carl. Can you hear me?""
+- The user initiated the conversation with a greeting of ""Hello.""","0.84
+0.83
+0.83
+0.82
+0.82","(chosen expression: Happy, chosen action: Clap)  
+Great to see you again! What exciting event do you have in store today? Let's make it memorable!",10.69,,,,0,0.86,0.67

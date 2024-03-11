@@ -30,7 +30,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "ra001"
+COLLECTION_MEMORY_OBJECTS = "ev001"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -303,7 +303,6 @@ def set_agent_mode():
             return AGENT_MODE.DEBATE.value
         else:
             print("Invalid input, please enter a valid number.")
-
 
 
 def fetchBaseDescription(userName: str):
