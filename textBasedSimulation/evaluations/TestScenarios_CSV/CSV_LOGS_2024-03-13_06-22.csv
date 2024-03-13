@@ -1,0 +1,6 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"Hi I want to publish an event, today 9pm dance party",,,"(Sad, Clap)  
+Sure, your event has been published: Dance Party at 9pm today. Enjoy the party!",10.28,,,,0,0.0,0.59
+Hi is there an event today? e.g. party?,"User Message: Hi I want to publish an event, today 9pm dance party. Event Agent:   
+Sure, your event has been published: Dance Party at 9pm today. Enjoy the party!.",0.86,"(Sad, Faint)  
+I'm sorry, I don't have information about events other than the one you shared. Feel free to share more details for me to assist!",13.58,,,,0,0.75,0.44

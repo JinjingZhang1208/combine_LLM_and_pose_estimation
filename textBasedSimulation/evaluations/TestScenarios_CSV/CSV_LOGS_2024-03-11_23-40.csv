@@ -1,5 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-I would love publish an new event: Football match 3/11 7pm,,,"(Sad, Faint)  
-NO, the event information is not available at the moment. If you have any other events in mind, feel free to share!",16.65,,,,0,0.0,0.43
-is there a new event about football match?,,,"(Sad, Faint)\nNO, the event information is not available at the moment. If you have any other events in mind, feel free to share!",74.82,,,,0,0.0,0.63
-is there a new event about football match?,,,"(Sad, Faint)\\nNO, the event information is not available at the moment. If you have any other events in mind, feel free to share!",29.18,,,,0,0.0,0.37

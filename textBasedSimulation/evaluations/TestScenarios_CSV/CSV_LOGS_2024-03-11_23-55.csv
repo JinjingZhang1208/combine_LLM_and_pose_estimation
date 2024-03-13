@@ -1,7 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-hiii,,,I'm here as your Event Agent! Let's dive into creating and managing exciting events together. Feel free to share your ideas or ask for event details!,1.57,,,,0,0.0,0.36
-hiiiiii,"3. The User has greeted the Event Agent with ""hiii.""
-1. Event Agent is introducing themselves as the User's assistant for creating and managing events.
-2. The Event Agent encourages the User to share ideas or ask for event details.","0.82
-0.75
-0.73","(NO) Sorry, the information for that event is not available at the moment. Feel free to share your ideas for new events! (Confused, Point)",2.14,,,,0,0.4,0.37

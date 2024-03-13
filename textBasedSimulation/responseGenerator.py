@@ -107,10 +107,9 @@ def generateConversation(
                 "You are": userName,
                 "Conversational Partner": conversationalUser,
                 "Current conversation": currentConversation,
-                "Relevant observations": relevantObservations,
+                "Relevant Chat History": relevantObservations,
                 "Expressions": avatar_expressions,
                 "Actions": avatar_actions,
-                "Past Chat History": npc_dialogues
             },
             "criteria": [
                 f"Craft seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
@@ -129,10 +128,9 @@ def generateConversation(
                 "You are": "Debater",
                 "Conversational Partner": conversationalUser,
                 "Current conversation": currentConversation,
-                "Relevant observations": relevantObservations,
+                "Relevant Chat History": relevantObservations,
                 "Expressions": avatar_expressions,
                 "Actions": avatar_actions,
-                "Past Chat History": npc_dialogues
             },
             "criteria": [
                 f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as {userName} should be constant, and there should be no disclosure or suggestion of being an AI.",
@@ -145,24 +143,20 @@ def generateConversation(
         }
     elif agent_mode == AGENT_MODE.EVENT.value:
         prompt = {
-        "context": "You are a dedicated event agent, responsible for managing and providing information about user-generated events. You will either store an event or provide information about an event based on a list of observations. Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
+        "context": "You are a dedicated event agent, responsible for managing and providing information about user-generated events. If user asking query, you should provide details information about query event based on chat history, if not found, say you dont know. If user not asking question, you should just confirm users message.",
         "information": {
                 "You are": userName,
                 "Conversational Partner": conversationalUser,
                 "Current conversation": currentConversation,
-                "Relevant observations": relevantObservations,
+                "Relevant Chat History": relevantObservations,
                 "Expressions": avatar_expressions,
                 "Actions": avatar_actions,
-                "Past Chat History": npc_dialogues
         },
         "criteria": [
-            f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as Event Agent should be constant, and there should be no disclosure or suggestion of being an AI.",
-            f"When asked about a specific event and you have relevant observations, respond with 'YES' and provide the event information.",
-            f"If there are no relevant observations for a queried event, respond with 'NO' and state that the information is not available.",
-            "Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
+            f"Ensure that your responses do not contain repetitive greetings like Hello.",
+            f"Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
             f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
         ],
-        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
     }
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         prompt = {

@@ -1,0 +1,3 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+"Hi I want to publish an event, today 9pm dance party",,,"(Confused, Clap) 
+I'm sorry, I don't have information about a dance party at 9pm today. If you have any other questions or need help, feel free to ask!",14.02,,,,0,0.0,0.34

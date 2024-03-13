@@ -21,6 +21,7 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
+import re
 
 
 load_dotenv()
@@ -30,7 +31,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "ev001"
+COLLECTION_MEMORY_OBJECTS = "ev004"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -151,6 +152,8 @@ def startConversation(npc_name, currMode, agent_mode):
 
     conversation_count = 0
     while True:
+        npc_dialogues = ""
+
         if currMode == CONVERSATION_MODE.TEXT.value:
             currentConversation = text_conversation_input(
                 agent_mode, npc_name, conversationalUser, conversation_count)
@@ -161,6 +164,8 @@ def startConversation(npc_name, currMode, agent_mode):
 
         if currentConversation.lower() == "done":
             break
+
+        npc_dialogues+=f"User Message: {currentConversation}. "
         start = time.perf_counter()
 
         baseRetrieval, observationRetrieval = perform_observation_retrieval(
@@ -185,7 +190,8 @@ def startConversation(npc_name, currMode, agent_mode):
             LogElements.IMPORTANT_OBSERVATIONS, "\n".join(
                 important_observations)
         )
-        print("Important Observations: ", important_observations)
+        print(f"base retrieval: {baseRetrieval}")
+        print(f"observation retrieval: {observationRetrieval}")
         
         if agent_mode == AGENT_MODE.NORMAL.value:
             important_scores = [
@@ -248,6 +254,14 @@ def startConversation(npc_name, currMode, agent_mode):
                 break
         CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
+
+
+        filtered_result = re.sub(r'\([^()]*\)', '', resultConversationString)
+        npc_dialogues += f"{npc_name}: {filtered_result}."
+
+        print()
+        # print(f"npc_dialogues: {npc_dialogues}")
+
         # speech = tts.speech(resultConversationString, "Joanna", 7)
         # polly.read_audio_file()
         # print(speech)
@@ -263,6 +277,7 @@ def startConversation(npc_name, currMode, agent_mode):
             conversationalUser,
             currentConversation,
             resultConversationString,
+            npc_dialogues
         )
 
         conversation_count += 1
@@ -415,7 +430,7 @@ def perform_reflection_logic(
     for observation in reflection_list:
         if len(observation) > 0:
             finalObservations.append(observation)
-    print(f"NPC reflection: {finalObservations}")
+    # print(f"NPC reflection: {finalObservations}")
     update_reflection_db_and_past_obs(
         userName,
         conversationalUser,
@@ -427,20 +442,22 @@ def generateObservationAndUpdateMemory(
     userName,
     conversationalUser,
     currentConversation,
-    resultConversationString
+    resultConversationString,
+    npc_dialogues
 ):
-    # Time the function call and fetch the results.
-    startTime = time.perf_counter()
-    observationList = generateObservations(
-        userName, conversationalUser, currentConversation, resultConversationString
-    )
-    observationList = observationList.split("\n")
+    # # Time the function call and fetch the results.
+    # startTime = time.perf_counter()
+    # observationList = generateObservations(
+    #     userName, conversationalUser, currentConversation, resultConversationString
+    # )
+    # observationList = observationList.split("\n")
     finalObservations = []
-    for observation in observationList:
-        if len(observation) > 0:
-            finalObservations.append(observation)
+    finalObservations.append(npc_dialogues)
+    # for observation in observationList:
+    #     if len(observation) > 0:
+    #         finalObservations.append(observation)
 
-    endTime = time.perf_counter()
+    # endTime = time.perf_counter()
     """
     print(
         f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "

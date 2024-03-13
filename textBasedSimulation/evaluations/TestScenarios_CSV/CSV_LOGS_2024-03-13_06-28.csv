@@ -1,0 +1,11 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi how are you?,,,"(chosen expression: Happy, chosen action: Dance)  
+Feeling great! How about we dance through this conversation with a sprinkle of joy and a dash of imagination?",3.1,,,,0,0.0,0.43
+I think LLM is very hard to use it,"User Message: Hi how are you?. j:   
+Feeling great! How about we dance through this conversation with a sprinkle of joy and a dash of imagination?.",1.0,"(chosen expression: Confused, chosen action: Point)  
+LLM might seem tricky at first, but with a bit of practice, it can become a fascinating tool. Let's explore its possibilities together!",8.12,,,,0,0.0,0.64
+I dont like LLM,"User Message: I think LLM is very hard to use it. j:   
+LLM might seem tricky at first, but with a bit of practice, it can become a fascinating tool. Let's explore its possibilities together!.
+User Message: Hi how are you?. j:   
+Feeling great! How about we dance through this conversation with a sprinkle of joy and a dash of imagination?.","1.0
+1.0","(chosen expression: Confused, chosen action: Point)\nLLM can be quite perplexing at first, but with a sprinkle of curiosity and a dash of determination, it might just unveil its wonders to you!",8.14,,,,0,0.0,0.91
