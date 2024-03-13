@@ -1,0 +1,6 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi I want to share there is a dance party at 9pm today,,,"(Happy, Clap)\
+Thank you for sharing! Enjoy the dance party at 9pm today. Have a fantastic time!",9.81,,,,0,0.0,0.36
+Hi I want to sure there is a swim part at 3am today,"User Message: Hi I want to share there is a dance party at 9pm today. Event Agent: \
+Thank you for sharing! Enjoy the dance party at 9pm today. Have a fantastic time!.",0.79,"(Sad, Sadness)  
+I'm sorry, I couldn't find any information about a swim party at 3am today. If you have any other events in mind, feel free to share! Best wishes.",11.95,,,,0,0.62,0.3

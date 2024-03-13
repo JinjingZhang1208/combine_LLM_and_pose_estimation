@@ -17,8 +17,8 @@ class AGENT_MODE(Enum):
 
 load_dotenv()
 
-GPT4 = "gpt-4"
-GPT4 = "gpt-3.5-turbo"
+GPT35 = "gpt-4"
+GPT35 = "gpt-3.5-turbo"
 API_KEY = os.environ.get("API_KEY")
 openai_client = OpenAI(api_key=API_KEY)
 DEEPGRAM_API_KEY = os.environ.get("DEEPGRAM_API_KEY")
@@ -56,7 +56,7 @@ def generate_reflection(
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
     reflectionPrompt = json.dumps(prompt, indent=4)
-    return getGPTResponse(reflectionPrompt, GPT4)
+    return getGPTResponse(reflectionPrompt, GPT35)
 
 
 def generateInitialObservations(userName, baseDescription):
@@ -73,7 +73,7 @@ def generateInitialObservations(userName, baseDescription):
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
     defaultBackgroundPrompt = json.dumps(prompt, indent=4)
-    return getGPTResponse(defaultBackgroundPrompt, GPT4)
+    return getGPTResponse(defaultBackgroundPrompt, GPT35)
 
 
 def generateObservations(userName, conversationalUser, currentConversation, userResult):
@@ -83,7 +83,7 @@ def generateObservations(userName, conversationalUser, currentConversation, user
         "example": "(Observation 1 text)\n(Observation 2 text)\n",
     }
     observationPrompt = json.dumps(prompt, indent=4)
-    return getGPTResponse(observationPrompt, GPT4)
+    return getGPTResponse(observationPrompt, GPT35)
 
 
 
@@ -92,7 +92,7 @@ def generateConversation(
     userName,
     conversationalUser,
     currentConversation,
-    relevantObservations: list,
+    important_observations: list,
     avatar_expressions,
     avatar_actions,
     agent_mode,
@@ -102,12 +102,12 @@ def generateConversation(
 ):
     if agent_mode == AGENT_MODE.NORMAL.value:
         prompt = {
-            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
+            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
             "information": {
                 "You are": userName,
                 "Conversational Partner": conversationalUser,
                 "Current conversation": currentConversation,
-                "Relevant Chat History": relevantObservations,
+                "Relevant Chat History": important_observations,
                 "Expressions": avatar_expressions,
                 "Actions": avatar_actions,
             },
@@ -128,7 +128,7 @@ def generateConversation(
                 "You are": "Debater",
                 "Conversational Partner": conversationalUser,
                 "Current conversation": currentConversation,
-                "Relevant Chat History": relevantObservations,
+                "Relevant Chat History": important_observations,
                 "Expressions": avatar_expressions,
                 "Actions": avatar_actions,
             },
@@ -143,47 +143,49 @@ def generateConversation(
         }
     elif agent_mode == AGENT_MODE.EVENT.value:
         prompt = {
-        "context": "You are a dedicated event agent, responsible for managing and providing information about user-generated events. If user asking query, you should provide details information about query event based on chat history, if not found, say you dont know. If user not asking question, you should just confirm users message.",
-        "information": {
-                "You are": userName,
+            "context": "As an event agent, manage and provide information about user-generated events. Respond with detailed information by analyzing the chat history when the user poses a question about an event. If the event is not found, inform the user. Acknowledge receipt of information cordially in declarative sentences. Express good wishes.",
+            "information": {
+                "Agent Identity": userName,
                 "Conversational Partner": conversationalUser,
-                "Current conversation": currentConversation,
-                "Relevant Chat History": relevantObservations,
-                "Expressions": avatar_expressions,
-                "Actions": avatar_actions,
-        },
-        "criteria": [
-            f"Ensure that your responses do not contain repetitive greetings like Hello.",
-            f"Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
-            f"Keep responses within 100-140 characters, allowing for flexibility while ensuring brevity.",
-        ],
-    }
+                "Relevant Conversation History": important_observations,
+                "Current User Message": currentConversation,
+                "Available Expressions": avatar_expressions,
+                "Available Actions": avatar_actions,
+            },
+            "criteria": [
+                f"Before responding, analyze the user message to determine if it's a question or a declarative sentence. Use cues like question words ('What,' 'How,' etc.) or explicit question marks to identify questions. For declarative sentences, acknowledge the information and express good wishes without querying the event.",
+                f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, aligning with the ongoing chat. Your identity as {userName} should be constant; no disclosure or suggestion of being AI.",
+                f"Avoid repetitive greetings such as 'Hello'.",
+                f"Autonomously select an expression from 'Available Expressions' and an action from 'Available Actions' that align with the chat context. Present the output as follows: (selected expression, selected action)\\n(Conversation output) at the beginning of the response.",
+                "Maintain brevity, ideally within 100-140 characters, allowing for flexibility.",
+                "Include explicit cues like 'Can you', 'Tell me', or '?' to signal questions. For declarative sentences, express acknowledgment and good wishes.",
+                "Acknowledge information received and refrain from querying the event when the user uses a declarative sentence. Query the event only when the user asks a question.",
+            ],
+        }
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         prompt = {
-       "context": f"You are a friendly and imaginative Research Asssistant, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
+       "context": f"You are a friendly and imaginative Interviewer, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI.  Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
        "Goal": f"Interviewing User about {research_goals}, asking related questions",
-       "Adaptive goals": "The adaptive goal is to provide information based on the user's query and adapt responses based on the current and historical conversations.",
+       "Adaptive goals": "The adaptive goal is to provide information based on the user's response and adapt your questions based on the current and historical conversations.",
        "information": {
                "You are": userName,
                "Conversational Partner": conversationalUser,
                "Current conversation": currentConversation,
-               "Relevant observations": relevantObservations,
+               "Relevant Conversation History": important_observations,
                "Expressions": avatar_expressions,
                "Actions": avatar_actions,
                "Past Chat History": npc_dialogues,
        },
        "criteria": [
-           f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat. Your identity as Research Assistant should be constant, and there should be no disclosure or suggestion of being an AI.",
+           f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat.",
            "Start the conversation with a response to the user's message before posing any questions.",
-           "When asked about a specific topic, ask probing questions based on the user's current conversation. Avoid providing direct answers to user questions.",
-           "If the user shares an experience or completes a challenge, acknowledge their input and respond appropriately.",
            "Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
        ],
-       "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
    }
 
     conversationPrompt = json.dumps(prompt, indent=4)
-    return getConversationGenerator(conversationPrompt, GPT4)
+    # print(f"Conversation Prompt: {conversationPrompt}")
+    return getConversationGenerator(conversationPrompt, GPT35)
 
 
 def getConversationGenerator(prompt, gptModel):

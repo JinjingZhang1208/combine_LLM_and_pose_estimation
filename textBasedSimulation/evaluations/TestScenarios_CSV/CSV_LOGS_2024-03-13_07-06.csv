@@ -1,0 +1,12 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi there is a dance party at 7pm,,,"(Happy, Wave Hands)  
+Hi! Got it, there's a dance party at 7pm. Sounds fun! Let me know if you need more details.",8.82,,,,0,0.0,0.38
+Hi there is a swim party at 9pm,"User Message: Hi there is a dance party at 7pm. Event Agent:   
+Hi! Got it, there's a dance party at 7pm. Sounds fun! Let me know if you need more details..",0.85,"(Happy, Cheer)  
+Got it! Thanks for sharing about the swim party at 9pm. Sounds like a fun time! Let me know if you need more info.",8.62,,,,0,0.43,0.32
+Hi is there a dance party happen tonight?,"User Message: Hi there is a dance party at 7pm. Event Agent:   
+Hi! Got it, there's a dance party at 7pm. Sounds fun! Let me know if you need more details..
+User Message: Hi there is a swim party at 9pm. Event Agent:   
+Got it! Thanks for sharing about the swim party at 9pm. Sounds like a fun time! Let me know if you need more info..","0.9
+0.84","(Sad, Faint)  
+Got it! Thanks for sharing about the dance party at 7pm and swim party at 9pm. If you need more details, feel free to ask!",18.28,,,,0,0.51,0.95
