@@ -31,7 +31,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "ev004"
+COLLECTION_MEMORY_OBJECTS = "ev009"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -100,10 +100,6 @@ def text_conversation_input(agent_mode, userName, conversationalUser, conversati
         currentConversation = input(
             f"Talks with {userName}, You are {conversationalUser}. Talk about {RESEARCH_GOALS}! "
         )
-    elif agent_mode == AGENT_MODE.EVENT.value:
-        currentConversation = input(
-            f"If you want to publish an event, start with I want to publish an event: and provide the details. Else, start with a query. "
-        )
     elif agent_mode == AGENT_MODE.DEBATE.value:
         currentConversation = input(
             f"Talk with {userName}, You are {conversationalUser}. Engage in a debate on {DEBATE_GOALS}! "
@@ -165,7 +161,7 @@ def startConversation(npc_name, currMode, agent_mode):
         if currentConversation.lower() == "done":
             break
 
-        npc_dialogues+=f"User Message: {currentConversation}. "
+        npc_dialogues+=f"User: {currentConversation}. "
         start = time.perf_counter()
 
         baseRetrieval, observationRetrieval = perform_observation_retrieval(
@@ -190,8 +186,9 @@ def startConversation(npc_name, currMode, agent_mode):
             LogElements.IMPORTANT_OBSERVATIONS, "\n".join(
                 important_observations)
         )
-        print(f"base retrieval: {baseRetrieval}")
-        print(f"observation retrieval: {observationRetrieval}")
+        # print(f"base retrieval: {baseRetrieval}")
+        # print(f"observation retrieval: {observationRetrieval}")
+        # print(f"Important Observations: {important_observations}")
         
         if agent_mode == AGENT_MODE.NORMAL.value:
             important_scores = [
@@ -257,7 +254,9 @@ def startConversation(npc_name, currMode, agent_mode):
 
 
         filtered_result = re.sub(r'\([^()]*\)', '', resultConversationString)
-        npc_dialogues += f"{npc_name}: {filtered_result}."
+        filtered_result = filtered_result.replace('\n', '')
+        # Concatenate to npc_dialogues
+        npc_dialogues += f"{npc_name}: {filtered_result}.\n"
 
         print()
         # print(f"npc_dialogues: {npc_dialogues}")

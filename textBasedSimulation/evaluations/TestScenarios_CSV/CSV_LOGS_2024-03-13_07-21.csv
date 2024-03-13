@@ -1,0 +1,28 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi i want share dance party tonight at 9pm,"User Message: Hi I want to share there is a dance party at 9pm today. Event Agent: \
+Thank you for sharing! Enjoy the dance party at 9pm today. Have a fantastic time!.
+User Message: Hi I want to sure there is a swim part at 3am today. Event Agent:   
+I'm sorry, I couldn't find any information about a swim party at 3am today. If you have any other events in mind, feel free to share! Best wishes..","0.91
+0.8","(Happy, Dance)  
+Thank you for sharing! Enjoy the dance party at 9pm tonight. Have a fantastic time!",8.67,,,,0,0.44,0.51
+Hi I want share swim party at 3am today,"User Message: Hi I want to sure there is a swim part at 3am today. Event Agent:   
+I'm sorry, I couldn't find any information about a swim party at 3am today. If you have any other events in mind, feel free to share! Best wishes..
+User Message: Hi i want share dance party tonight at 9pm. Event Agent:   
+Thank you for sharing! Enjoy the dance party at 9pm tonight. Have a fantastic time!.
+User Message: Hi I want to share there is a dance party at 9pm today. Event Agent: \
+Thank you for sharing! Enjoy the dance party at 9pm today. Have a fantastic time!.","0.9
+0.84
+0.84","(Cheer, Clap)  
+Thank you for sharing! Enjoy the swim party at 3am today. Have a fantastic time!",9.24,,,,0,0.4,0.44
+Hi is there a swim party today? when,"User Message: Hi I want to sure there is a swim part at 3am today. Event Agent:   
+I'm sorry, I couldn't find any information about a swim party at 3am today. If you have any other events in mind, feel free to share! Best wishes..
+User Message: Hi I want share swim party at 3am today. Event Agent:   
+Thank you for sharing! Enjoy the swim party at 3am today. Have a fantastic time!.
+User Message: Hi I want to share there is a dance party at 9pm today. Event Agent: \
+Thank you for sharing! Enjoy the dance party at 9pm today. Have a fantastic time!.
+User Message: Hi i want share dance party tonight at 9pm. Event Agent:   
+Thank you for sharing! Enjoy the dance party at 9pm tonight. Have a fantastic time!.","0.86
+0.86
+0.82
+0.79","(Happy, Cheer)  
+Hi! I couldn't find any information about a swim party today. If you have another event in mind, feel free to share! Best wishes.",8.35,,,,0,0.51,0.84
