@@ -1,0 +1,5 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+ Hi I want to publish event: 3/11 beach party,"User Message: Hi I want to publish event: 3/11 beach party. Event Agent:   
+NO, the information for the event ""3/11 beach party"" is not available at the moment. Let me know if you need help with anything else.
+",0.91,"(Sad, Faint)  
+I'm sorry, but the information for the event ""3/11 beach party"" is still unavailable. Let me know if you need assistance with anything else.",1.58,,,,0,0.57,0.35
