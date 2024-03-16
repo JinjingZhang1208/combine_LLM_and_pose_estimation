@@ -46,8 +46,8 @@ BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5  # change parameter
 RA_OBS_COUNT = 5
 EVENT_OBS_COUNT = 5
-REFLECTION_RETRIEVAL_COUNT = 9
-REFLECTION_PERIOD = 3
+REFLECTION_RETRIEVAL_COUNT = 5
+REFLECTION_PERIOD = 5
 RESEARCH_GOALS = "Experiences with VRChat"
 DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
 
@@ -108,8 +108,6 @@ def text_conversation_input(agent_mode, userName, conversationalUser, conversati
         currentConversation = input(
             f"Talk with {userName}, You are {conversationalUser}. Have a discussion! "
         )
-
-
 
     end = time.perf_counter()
     text_input_time = round(end - start, 2)
@@ -188,7 +186,7 @@ def startConversation(npc_name, currMode, agent_mode):
         )
         # print(f"base retrieval: {baseRetrieval}")
         # print(f"observation retrieval: {observationRetrieval}")
-        # print(f"Important Observations: {important_observations}")
+        print(f"Important Observations: {important_observations}")
         
         if agent_mode == AGENT_MODE.NORMAL.value:
             important_scores = [
@@ -203,7 +201,6 @@ def startConversation(npc_name, currMode, agent_mode):
         )
 
         start = time.perf_counter()
-
 
         if agent_mode == AGENT_MODE.RESEARCH.value:
             conversationPrompt = generateConversation(

@@ -53,7 +53,7 @@ def isHumanSpeech(fileName):
         return False
 
 
-def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=2):
+def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=1):
     fs = 16000  # Sample rate
     CHUNK_SIZE = int(fs * 0.5)  # Record in chunks of 0.5 seconds
 
