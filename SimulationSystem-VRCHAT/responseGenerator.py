@@ -167,7 +167,7 @@ def generateConversation(
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         prompt = {
        "context": f"You are a friendly and imaginative Research Asssistant, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
-       "Goal": f"Interviewing User about {research_goals}, asking related questions",
+       "Goal": f"Interviewing User about {research_goals}",
        "Adaptive goals": "The adaptive goal is to provide information based on the user's query and adapt responses based on the current and historical conversations.",
        "information": {
                "You are": userName,
@@ -187,11 +187,93 @@ def generateConversation(
        ],
        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
    }
-
     conversationPrompt = json.dumps(prompt, indent=4)
     return getConversationGenerator(conversationPrompt, GPT4)
 
+def Interviewer_judgeEndingConversation(
+    userName,
+    conversationalUser,
+    npc_dialogues,
+    dialogue_length,
+    research_goals= "Experiences with VRChat",
+):
+    prompt = {
+       "context": f"Based on previous Chat History between Interviewer and Interviewee, decide if Interviewer successfully get enough information from previous dialogue. If the Current dialog length reaches the maximum length return True directly to end this conversation.",
+       "Topics": f"Interviewing User about {research_goals}",
+       "information": {
+               "Interviewer": userName,
+               "Interviewee": conversationalUser,
+               "Past Chat History": npc_dialogues,
+                "Current dialog length":dialogue_length,
+               "maximum length":5
+       },
+       "criteria": [
+           "If you think Interviewer successfully get enough information and its time to end this conversation, please only return True with no other contents. If you think information is not enough and should keep interviewing, please return False. ",
+       ],
+   }
 
+    conversationPrompt = json.dumps(prompt, indent=4)
+    return getConversationGenerator(conversationPrompt, GPT4)
+def Interviewer_EndingConversation(
+        userName,
+        conversationalUser,
+        currentConversation,
+        relevantObservations: list,
+        avatar_expressions,
+        avatar_actions,
+        agent_mode,
+        npc_dialogues,
+        research_goals="Experiences with VRChat",
+        debate_goals="AI Agents should be included in VRChat in the future"
+):
+    prompt = {
+        "context": f"You are a friendly and imaginative Research Asssistant, {userName}, having a lively conversation with {conversationalUser}. Now you should generate correct response to end this conversation according to Past Chat History",
+        "Goal": f"Interviewing User about {research_goals}",
+        "information": {
+            "You are": userName,
+            "Conversational Partner": conversationalUser,
+            "Current conversation": currentConversation,
+            "Relevant observations": relevantObservations,
+            "Expressions": avatar_expressions,
+            "Actions": avatar_actions,
+            "Past Chat History": npc_dialogues,
+        },
+        "criteria": [
+            "Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
+        ],
+        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
+    }
+
+
+    conversationPrompt = json.dumps(prompt, indent=4)
+    return getConversationGenerator(conversationPrompt, GPT4)
+def Interviewer_SummarizeConversation(
+        userName,
+        conversationalUser,
+        currentConversation,
+        relevantObservations: list,
+        avatar_expressions,
+        avatar_actions,
+        agent_mode,
+        npc_dialogues,
+        research_goals="Experiences with VRChat",
+        debate_goals="AI Agents should be included in VRChat in the future"
+):
+    prompt = {
+        "context": f"Summarize the chat content between Interviewer--{userName} and User--{conversationalUser} from Chat Dialogues. ",
+        "Topic": f"Interviewing User about {research_goals}",
+        "information": {
+            "Chat Dialogues": npc_dialogues,
+        },
+        "criteria": [
+            "Make sure your summary has the key content of User's thoughts",
+        ],
+        "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
+    }
+
+
+    conversationPrompt = json.dumps(prompt, indent=4)
+    return getConversationGenerator(conversationPrompt, GPT4)
 def getConversationGenerator(prompt, gptModel):
     response = openai_client.chat.completions.create(
         model=gptModel,

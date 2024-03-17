@@ -5,7 +5,10 @@ from responseGenerator import (
     getTextfromAudio,
     generate_reflection,
     AGENT_MODE,
-    getTextfromAudio_whisper_1
+    getTextfromAudio_whisper_1,
+    Interviewer_judgeEndingConversation,
+    Interviewer_EndingConversation,
+    Interviewer_SummarizeConversation
 )
 from distutils import text_file
 import time
@@ -268,17 +271,42 @@ def startConversation(npc_name, currMode, agent_mode):
         start = time.perf_counter()
 
         if agent_mode == AGENT_MODE.RESEARCH.value:
-            conversationPrompt = generateConversation(
+            print(Convround)
+            judgementPrompt=Interviewer_judgeEndingConversation(
                 npc_name,
                 conversationalUser,
-                currentConversation,
-                important_observations,
-                avatar_expressions,
-                avatar_actions,
-                agent_mode=agent_mode,
-                npc_dialogues=npc_dialogues,
-                research_goals=RESEARCH_GOALS,
+                npc_dialogues,
+                dialogue_length=Convround
             )
+            result=[]
+            for conversation in judgementPrompt:
+                currText = conversation.choices[0].delta.content
+                result.append(currText)
+            print(result)
+            if "True" in result[1] or Convround==5:
+                conversationPrompt = Interviewer_EndingConversation(
+                    npc_name,
+                    conversationalUser,
+                    currentConversation,
+                    important_observations,
+                    avatar_expressions,
+                    avatar_actions,
+                    agent_mode=agent_mode,
+                    npc_dialogues=npc_dialogues,
+                    research_goals=RESEARCH_GOALS,
+                )
+            else:
+                conversationPrompt = generateConversation(
+                    npc_name,
+                    conversationalUser,
+                    currentConversation,
+                    important_observations,
+                    avatar_expressions,
+                    avatar_actions,
+                    agent_mode=agent_mode,
+                    npc_dialogues=npc_dialogues,
+                    research_goals=RESEARCH_GOALS,
+                )
         elif agent_mode == AGENT_MODE.DEBATE.value:
             conversationPrompt = generateConversation(
                 npc_name,
@@ -368,7 +396,10 @@ def startConversation(npc_name, currMode, agent_mode):
             resultConversationString,
             npc_dialogues
         )
-
+        if agent_mode == AGENT_MODE.RESEARCH.value:
+            if "True" in result[1] or Convround >= 5:
+                summary=Interviewer_SummarizeConversation
+                print(summary)
         conversation_count += 1
         if conversation_count != 1 and conversation_count % REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORMAL.value:
             with ThreadPoolExecutor() as executor:
