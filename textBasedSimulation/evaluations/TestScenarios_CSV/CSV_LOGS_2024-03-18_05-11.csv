@@ -1,0 +1,31 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi. How is we?,"User: Hi. How you do. j:   Feeling good! Let's tackle these internet issues with a positive attitude and a little dance to keep spirits high!.
+
+User: Hi. How are you doing?. j: Oh no, not the internet issues again! *faints dramatically* Let's hope for a solution soon. Stay positive!.
+
+User: Hi. How fast is it?. j:   Oh no, it seems like things are not going well with the speed. Let's hope for a quick solution to this issue..
+
+User: Hi. How are you doing?. j:   Oh no, not the internet issues again! *faints dramatically* Let's hope for a quick fix like before. Stay positive!.
+
+User: Hi. How are you doing?. j:    Oh no, not the internet issues again! *faints dramatically* Let's hope for a quick fix like before. Stay positive!.
+","0.5
+0.49
+0.46
+0.46
+0.34","(Sad, Faint)  
+Oh no, internet issues strike again! *dramatically faints* Let's hope for a speedy resolution to this frustrating problem.",2304.04,0.73,0.07,14.38,0.68,0.0,0.63
+And how are you doing?,"User: Hi. How is we?. j:   Oh no, internet issues strike again! *dramatically faints* Let's hope for a speedy resolution to this frustrating problem..
+
+User: Hi. How you do. j:   Feeling good! Let's tackle these internet issues with a positive attitude and a little dance to keep spirits high!.
+
+User: Hi. How are you doing?. j: Oh no, not the internet issues again! *faints dramatically* Let's hope for a solution soon. Stay positive!.
+
+User: Hi. How fast is it?. j:   Oh no, it seems like things are not going well with the speed. Let's hope for a quick solution to this issue..
+
+User: Hi. How are you doing?. j:   Oh no, not the internet issues again! *faints dramatically* Let's hope for a quick fix like before. Stay positive!.
+","1.0
+0.5
+0.48
+0.46
+0.46","(chosen expression: Happy, chosen action: Dance)  
+Feeling fabulous! Let's sprinkle some positivity and dance our way through any challenges that come our way!",7.14,0.97,0.08,3.77,0.54,0.0,0.6

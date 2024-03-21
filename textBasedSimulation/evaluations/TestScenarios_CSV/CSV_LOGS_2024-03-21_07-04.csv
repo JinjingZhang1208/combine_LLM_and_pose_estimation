@@ -1,0 +1,31 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hii,"User: testtest. j: It seems like there's a bit of a gloomy cloud hanging around. How about we dance our way to brighter vibes and twirl away those blues together?.
+
+User: test. j:   Let's somersault through those feelings and flip them into a brighter mood! How about we dance away any lingering blues together?.
+
+User: test. j:   Oh no, feeling a bit down? How about we flip those emotions with a metaphorical backflip into a happier zone together!.
+
+User: . j:   Maybe a somersault could flip that frown upside down! Let's tumble through the blues and land in a brighter mood together..
+
+User: hi. j: \Hey there! How about we shake off any worries with a little impromptu dance session? Let's groove our way to a brighter mood!.
+","0.96
+0.96
+0.95
+0.06
+0.0","(chosen expression: Happy, chosen action: Dance)  
+Hey there! How about we sprinkle some happiness and twirl into a joyful dance together? Let's boogie our way to brighter vibes!",1.69,,,,0,0.0,0.61
+hiiii,"User: hii. j:   Hey there! How about we sprinkle some happiness and twirl into a joyful dance together? Let's boogie our way to brighter vibes!.
+
+User: testtest. j: It seems like there's a bit of a gloomy cloud hanging around. How about we dance our way to brighter vibes and twirl away those blues together?.
+
+User: test. j:   Let's somersault through those feelings and flip them into a brighter mood! How about we dance away any lingering blues together?.
+
+User: test. j:   Oh no, feeling a bit down? How about we flip those emotions with a metaphorical backflip into a happier zone together!.
+
+User: . j:   Maybe a somersault could flip that frown upside down! Let's tumble through the blues and land in a brighter mood together..
+","1.0
+0.95
+0.95
+0.95
+0.06","(Sad, Faint)  
+Oh dear, it seems like a shadow has crossed our path. Let's twirl through the gloom with a graceful dance to lighten the mood.",6.92,,,,0,0.0,0.6

@@ -1,0 +1,6 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+test new function,,,"(Sad, Backflip)  
+Oh no, what's got you feeling down? Maybe a little backflip can help lift your spirits!",2.66,,,,0,0.0,0.64
+Hi How are you doing recently?,"User: test new function. j:   Oh no, what's got you feeling down? Maybe a little backflip can help lift your spirits!.
+",1.0,"(Happy, Dance)  
+Hey there! Feeling like dancing through the day? Let's groove away any lingering blues together!",5.36,,,,0,0.0,0.44

@@ -1,0 +1,16 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi. How are you? I'm fine. Thank you.,"User: Hi. How are you? I'm fine. Same today.. NPC:   Oh no, the internet connection troubles are back! *faints dramatically* Hopefully, it gets sorted out soon. Let's stay positive and hope for a quick fix..
+
+User: And how are you doing?. NPC:   Feeling great! How about you? Let's keep the positive vibes flowing and make the most of today!.
+
+User: I like your song.. NPC:   Thank you! It means a lot coming from you. Your appreciation fuels my creativity. Let's keep the positive vibes flowing!.
+
+User: Hi. How are you doing? I'm fine.. NPC: Oh no, not the internet connection troubles again! *faints dramatically* Let's hope for a quick resolution..
+
+User: test++. NPC: Haha, looks like the internet connection is up to its old tricks again! Maybe it just wants some attention. *points playfully* Let's hope it behaves soon!.
+","0.86
+0.62
+0.57
+0.57
+0.54","(Sad, Faint)  
+Oh no, the internet connection issues are back! *faints dramatically* Let's hope for a quick fix like last time.",10.9,1.63,0.12,5.51,0.5,0.0,0.64

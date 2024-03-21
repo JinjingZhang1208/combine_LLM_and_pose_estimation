@@ -1,0 +1,6 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Test latency,,,"(Sad, Faint)  
+Oh no, the thought of a slow internet connection makes me dizzy. Let's hope for a speedy fix!",3.44,,,,0,0.0,0.75
+Latency,"User: Test latency. j:   Oh no, the thought of a slow internet connection makes me dizzy. Let's hope for a speedy fix!.
+",1.0,"(Happy, Clap)  
+Ah, the anticipation of reduced latency brings a smile to my face! Let's celebrate the upcoming speedy connection together!",1.8,,,,0,0.0,0.52

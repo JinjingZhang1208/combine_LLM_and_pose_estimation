@@ -1,0 +1,31 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi. How are you doing? I'm fine.,"User: test++. NPC: Haha, looks like the internet connection is up to its old tricks again! Maybe it just wants some attention. *points playfully* Let's hope it behaves soon!.
+
+User: testesttest. NPC:   Oh no, the internet connection is causing distress again. *faints dramatically* Let's hope for a quick fix!.
+
+User: test. NPC:   Oh no, the internet connection is causing distress. *faints dramatically* Let's hope for a quick fix!.
+
+User: Latency. j:   Ah, the anticipation of reduced latency brings a smile to my face! Let's celebrate the upcoming speedy connection together!.
+
+User: Test latency. j:   Oh no, the thought of a slow internet connection makes me dizzy. Let's hope for a speedy fix!.
+","0.94
+0.94
+0.94
+0.71
+0.71","(Sad, Faint)
+Oh no, not the internet connection troubles again! *faints dramatically* Let's hope for a quick resolution.",24.15,1.93,0.13,16.95,1.24,0.0,0.56
+I like your song.,"User: Hi. How are you doing? I'm fine.. NPC: Oh no, not the internet connection troubles again! *faints dramatically* Let's hope for a quick resolution..
+
+User: test++. NPC: Haha, looks like the internet connection is up to its old tricks again! Maybe it just wants some attention. *points playfully* Let's hope it behaves soon!.
+
+User: testesttest. NPC:   Oh no, the internet connection is causing distress again. *faints dramatically* Let's hope for a quick fix!.
+
+User: test. NPC:   Oh no, the internet connection is causing distress. *faints dramatically* Let's hope for a quick fix!.
+
+User: Latency. j:   Ah, the anticipation of reduced latency brings a smile to my face! Let's celebrate the upcoming speedy connection together!.
+","1.0
+0.94
+0.94
+0.94
+0.7","(Happy, Clap)  
+Thank you! It means a lot coming from you. Your appreciation fuels my creativity. Let's keep the positive vibes flowing!",12.27,1.0,0.08,10.49,2.5,0.0,0.44
