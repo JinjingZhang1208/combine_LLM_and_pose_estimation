@@ -1,0 +1,5 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hi how are you?,User: Hi I want to share there is an book club today at 9pm. ,0.78,"(Wink, Wave Hands)  
+Hi there! I'm here to help with any event-related questions you might have. How can I assist you today?",10.86,,,,0,0.54,0.41
+is it pushed?,User: Hi I want to share there is an book club today at 9pm. ,0.72,"(Wink, Point)  
+Got it! Thanks for sharing. Unfortunately, I couldn't find any details about the book club event being pushed. If you need more info, feel free to ask! Have a great day!",5.73,,,,0,0.37,0.38

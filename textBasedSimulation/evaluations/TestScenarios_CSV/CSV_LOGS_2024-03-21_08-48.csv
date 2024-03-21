@@ -1,0 +1,17 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi I want to share there is a book club happened today 3pm,User: Hi I want to share there is an book club today at 9pm. ,0.94,"(Happy, Wave Hands)
+Sure, I've noted that there was a book club today at 3pm. I hope it was a wonderful gathering!",13.98,,,,0,0.45,0.31
+Hi is there a book club happen today?,"User: Hi I want to share there is a book club happened today 3pm. 
+User: Hi I want to share there is an book club today at 9pm. ","0.93
+0.92","(Happy, Clap)
+Sure, there is a book club happening today at 3pm. I hope you have a great time there!",14.98,,,,0,0.46,0.33
+hi there is a swim party at 2pm here,"User: Hi I want to share there is a book club happened today 3pm. 
+User: Hi I want to share there is an book club today at 9pm. ","0.83
+0.81","(Happy, Cheer)  
+Sure, I've noted the swim party at 2pm. I hope it's a splashing good time!",19.96,,,,0,0.44,0.33
+Hi is there a swim party 2pm today?,"User: hi there is a swim party at 2pm here. 
+User: Hi I want to share there is a book club happened today 3pm. 
+User: Hi I want to share there is an book club today at 9pm. ","0.95
+0.83
+0.81","(Happy, Wave Hands)  
+Sure, I've got you covered! Enjoy the swim party at 2pm today! Have a great time!",6.82,,,,0,0.53,0.59
