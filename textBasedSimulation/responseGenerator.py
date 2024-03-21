@@ -6,13 +6,7 @@ import json
 import asyncio
 import os
 from dotenv import load_dotenv
-from enum import Enum
-
-class AGENT_MODE(Enum):
-    NORMAL = 1
-    EVENT = 2
-    RESEARCH = 3
-    DEBATE = 4
+from enums import AGENT_MODE
 
 
 load_dotenv()
@@ -43,6 +37,17 @@ discuss local politics together; John Lin knows
 the Moreno family somewhat well — the husband Tom
 Moreno and the wife Jane Moreno.
 """
+
+
+def generate_saturation_prompt(userName, conversationalUser, pastConversations):
+    prompt = {
+        "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
+        "pastConversations": f"{pastConversations}",
+        "instruction": "Assess whether the conversation has reached a point where no new, meaningful information is being exchanged. If the conversation is merely reiterating previously discussed points without adding substantial value or novel insights, consider it saturated. Respond with 'True' if the conversation is saturated and User is boring and not giving new information, indicating that it should be concluded, or 'False' if you believe there is potential for further productive dialogue.",
+        "example": "True\n",
+    }
+    saturation_prompt = json.dumps(prompt, indent=4)
+    return getGPTResponse(saturation_prompt, GPT35)
 
 
 def generate_reflection(

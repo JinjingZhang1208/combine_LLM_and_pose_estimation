@@ -1,0 +1,12 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hi there is  a dance party tonight at 9 pm,,,"(Sad, Faint)  
+I'm sorry, I couldn't find information about the dance party tonight at 9 pm. Wishing you a great evening nonetheless!",14.04,,,,0,0.0,0.51
+Hi Is there a dacnce party appening today?,User: hi there is  a dance party tonight at 9 pm. ,0.87,"(Happy, Clap)  
+Hi! I acknowledge the dance party tonight at 9 pm. Have a great time if you decide to go!",8.99,,,,0,0.4,0.58
+Hi there is a book club today at 3pm,User: hi there is  a dance party tonight at 9 pm. ,0.8,"(Happy, Cheer)  
+Acknowledged! There's a book club today at 3pm. Sounds like a great event! Enjoy your time there!",23.68,,,,0,0.54,0.54
+Hi is there a book club happening today? when?,User: hi there is  a dance party tonight at 9 pm. ,0.81,"(Happy, Wave Hands)  
+Sure thing! No book club today. Have a great day and enjoy your reading!",14.01,,,,0,0.49,1.16
+Hi there is a book club today at 3pm,User: hi there is  a dance party tonight at 9 pm. ,0.8,"(Wink, Wave Hands)  
+Got it! Thanks for the info about the book club today at 3pm.  
+Wishing you a great time there!",39.08,,,,0,0.43,0.47

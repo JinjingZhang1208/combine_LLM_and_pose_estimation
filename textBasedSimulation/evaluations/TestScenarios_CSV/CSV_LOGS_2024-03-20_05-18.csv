@@ -1,0 +1,7 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hi,"User: Hi How are you doing recently?. j:   Hey there! Feeling like dancing through the day? Let's groove away any lingering blues together!.
+
+User: test new function. j:   Oh no, what's got you feeling down? Maybe a little backflip can help lift your spirits!.
+","0.3
+0.3","(Happy, Dance)\
+Hey there! How about we shake off any worries with a little impromptu dance session? Let's groove our way to a brighter mood!",1.58,,,,0,0.0,0.68

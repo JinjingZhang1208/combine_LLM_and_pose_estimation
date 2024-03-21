@@ -1,0 +1,6 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hi,,,"(Happy, Dance)  
+Hey there, what's up? Ready to groove and have some fun today?",0.65,,,,0,0.0,0.4
+hi,"User: hi. j:   Hey there, what's up? Ready to groove and have some fun today?.
+",1.0,"(Sad, Faint)  
+Feeling a bit down, overwhelmed by everything. Sometimes life throws unexpected challenges. How do you cope when things get tough?",3.38,,,,0,0.0,0.37

@@ -1,0 +1,16 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+Hi. How you do,"User: Hi. How are you doing?. j: Oh no, not the internet issues again! *faints dramatically* Let's hope for a solution soon. Stay positive!.
+
+User: Hi. How fast is it?. j:   Oh no, it seems like things are not going well with the speed. Let's hope for a quick solution to this issue..
+
+User: Hi. How are you doing?. j:   Oh no, not the internet issues again! *faints dramatically* Let's hope for a quick fix like before. Stay positive!.
+
+User: Hi. How are you doing?. j:    Oh no, not the internet issues again! *faints dramatically* Let's hope for a quick fix like before. Stay positive!.
+
+User: j. NPC:   Oh no, another bout of internet troubles? *faints dramatically* Let's hope for a quick fix like before!.
+","0.97
+0.92
+0.92
+0.68
+0.0","(Happy, Dance)  
+Feeling good! Let's tackle these internet issues with a positive attitude and a little dance to keep spirits high!",6.61,0.59,0.07,5.26,0.65,0.0,0.56

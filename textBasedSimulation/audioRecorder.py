@@ -52,7 +52,7 @@ def isHumanSpeech(fileName):
     else:
         return False
 
-
+# check silenceThreshold and maxSilenceLength
 def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=1):
     fs = 16000  # Sample rate
     CHUNK_SIZE = int(fs * 0.5)  # Record in chunks of 0.5 seconds
@@ -71,6 +71,7 @@ def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=1):
             write(byte_io, fs, audio_chunk)
             byte_io.seek(0)
             segment = AudioSegment.from_wav(byte_io)
+            print("dBFS:", segment.dBFS)
 
             if segment.dBFS < silenceThreshold:
                 silence_duration += CHUNK_SIZE / fs
@@ -80,8 +81,9 @@ def recordAudio(fileName, silenceThreshold=-40, maxSilenceLength=1):
             else:
                 silence_duration = 0
             audio_chunks.append(audio_chunk)
-
+    
     recording = np.concatenate(audio_chunks, axis=0)
+
     write(fileName, fs, recording)
     convertAudio(fileName)
     if not isHumanSpeech(TEMP_FILE):
