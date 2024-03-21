@@ -1,12 +1,15 @@
 from enums import CONVERSATION_MODE, AGENT_MODE
 import re
-from responseGenerator import generate_saturation_prompt
+from responseGenerator import generate_saturation_prompt, generateConversation
 from retrievalFunction import retrievalFunction
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5  # change parameter
 RA_RETRIVAL_COUNT = 5
 EVENT_RETRIVAL_COUNT = 5
+
+RESEARCH_GOALS = "experience in Vr chat, what activities they like doing in Vr chat and overall why do they value regarding VR chat?"
+DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
 
 
 def get_npc_name(agent_mode):
@@ -19,9 +22,8 @@ def get_npc_name(agent_mode):
     elif agent_mode == AGENT_MODE.DEBATE.value:
         return "Debate Agent"
     
-    
 
-def is_question(message):
+def is_question_function(message):
     question_keywords = ["what", "how", "where", "when", "why", "who", "?"]
     # Convert the message to lowercase for case-insensitive comparison
     message_lower = message.lower()
@@ -201,3 +203,12 @@ def perform_saturation_logic(
     elif "False" in response:
         return False 
     
+def generate_conversation_helper(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=None, research_goals=None, debate_goals=None, is_question=False):
+    if agent_mode == AGENT_MODE.RESEARCH.value:
+        return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode, research_goals=RESEARCH_GOALS)
+    elif agent_mode == AGENT_MODE.DEBATE.value:
+        return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode, debate_goals=DEBATE_GOALS)
+    elif agent_mode == AGENT_MODE.EVENT.value:
+        return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode, is_question=is_question)
+    else:
+        return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode)

@@ -1,6 +1,5 @@
 from responseGenerator import (
     generateInitialObservations,
-    generateConversation,
     getTextfromAudio,
     generate_reflection,
 )
@@ -17,7 +16,7 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
-from dialoge_helper import filter_conversation, is_question, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic
+from dialoge_helper import filter_conversation, is_question_function, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic, generate_conversation_helper
 from enums import CONVERSATION_MODE, AGENT_MODE, AVATAR_DATA
 from dialoge_helper import get_npc_name
 
@@ -27,7 +26,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "ev014"
+COLLECTION_MEMORY_OBJECTS = "ev016"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -42,8 +41,6 @@ MAX_WAIT_TIME = 120  # 2 minutes
 REFLECTION_RETRIEVAL_COUNT = 5
 REFLECTION_PERIOD = 5
 CHECK_SATURATION_PEROID = 5
-RESEARCH_GOALS = "experience in Vr chat, what activities they like doing in Vr chat and overall why do they value regarding VR chat?"
-DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
 FILENAME = "current_conversation.wav"
 
 all_conversations = []
@@ -105,7 +102,6 @@ def startConversation(npc_name, currMode, agent_mode):
 
     conversation_count = 0
     while True:
-        push_conversation = True # only push conversation if it is not a question
         current_conversation = ""
 
         if currMode == CONVERSATION_MODE.TEXT.value:
@@ -120,10 +116,9 @@ def startConversation(npc_name, currMode, agent_mode):
         if agent_mode != AGENT_MODE.EVENT.value:
             current_conversation += f"User: {currentConversation}. "
         else:
-            if not is_question(currentConversation):
+            is_question = is_question_function(currentConversation)
+            if not is_question:
                 current_conversation += f"User: {currentConversation}. "
-            elif is_question(currentConversation):
-                push_conversation = False
 
         start = time.perf_counter()
         baseRetrieval, observationRetrieval = perform_observation_retrieval( agent_mode, currentConversation, baseObservation, pastObservations )
@@ -144,7 +139,7 @@ def startConversation(npc_name, currMode, agent_mode):
         )
 
         start = time.perf_counter()
-        conversationPrompt = generate_conversation_prompt( npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode)
+        conversationPrompt = generate_conversation_helper( npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode, is_question)
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
 
@@ -169,7 +164,7 @@ def startConversation(npc_name, currMode, agent_mode):
         CSV_LOGGER.write_to_csv(True) # write all values to csv
 
         print( f"Time taken for the conversation generation by GPT : {npc_response_time}" )
-        if push_conversation:
+        if not is_question:
             eventLoop.run_in_executor( threadExecutor, generateObservationAndUpdateMemory, npc_name, conversationalUser, currentConversation, resultConversationString, current_conversation)
 
         all_conversations.append(current_conversation)
@@ -301,7 +296,6 @@ def perform_reflection_logic(
     )
 
 
-
 def generateObservationAndUpdateMemory(
     userName,
     conversationalUser,
@@ -332,14 +326,6 @@ def generateObservationAndUpdateMemory(
 
 
 
-
-def generate_conversation_prompt(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=None, research_goals=None, debate_goals=None):
-    if agent_mode == AGENT_MODE.RESEARCH.value:
-        return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode, research_goals=RESEARCH_GOALS)
-    elif agent_mode == AGENT_MODE.DEBATE.value:
-        return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode, debate_goals=DEBATE_GOALS)
-    else:
-        return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode)
 
 
 if __name__ == "__main__":

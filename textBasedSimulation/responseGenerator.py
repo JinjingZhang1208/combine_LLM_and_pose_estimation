@@ -91,8 +91,6 @@ def generateObservations(userName, conversationalUser, currentConversation, user
     return getGPTResponse(observationPrompt, GPT35)
 
 
-
-
 def generateConversation(
     userName,
     conversationalUser,
@@ -102,8 +100,9 @@ def generateConversation(
     avatar_actions,
     agent_mode,
     npc_dialogues="",
-    research_goals= "Experiences with VRChat",
-    debate_goals = "AI Agents should be included in VRChat in the future"
+    research_goals= "",
+    debate_goals = "",
+    is_question=False,
 ):
     if agent_mode == AGENT_MODE.NORMAL.value:
         prompt = {
@@ -146,9 +145,10 @@ def generateConversation(
             ],
             "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
         }
-    elif agent_mode == AGENT_MODE.EVENT.value:
+    elif agent_mode == AGENT_MODE.EVENT.value and is_question:
+        print(f"is question")
         prompt = {
-            "context": "As an event agent, manage and provide information about user-generated events. Respond with detailed information by analyzing the chat history when the user poses a question about an event. If the event is not found, inform the user. Acknowledge receipt of information cordially in declarative sentences. Express good wishes.",
+            "context": "As an event agent, manage and provide information about user-generated events. Respond with detailed information by analyzing the chat history when the user poses a question about an event. If the event is not found, inform the user. Express good wishes.",
             "information": {
                 "Agent Identity": userName,
                 "Conversational Partner": conversationalUser,
@@ -158,7 +158,6 @@ def generateConversation(
                 "Available Actions": avatar_actions,
             },
             "criteria": [
-                f"Before responding, analyze the user message to determine if it's a question or a declarative sentence. Use cues like question words ('What,' 'How,' etc.) or explicit question marks to identify questions. For declarative sentences, acknowledge the information and express good wishes without querying the event.",
                 f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, aligning with the ongoing chat. Your identity as {userName} should be constant; no disclosure or suggestion of being AI.",
                 f"Avoid repetitive greetings such as 'Hello'.",
                 f"Autonomously select an expression from 'Available Expressions' and an action from 'Available Actions' that align with the chat context. Present the output as follows: (selected expression, selected action)\\n(Conversation output) at the beginning of the response.",
@@ -166,6 +165,29 @@ def generateConversation(
                 "Include explicit cues like 'Can you', 'Tell me', or '?' to signal questions. For declarative sentences, express acknowledgment and good wishes.",
                 "Acknowledge information received and refrain from querying the event when the user uses a declarative sentence. Query the event only when the user asks a question.",
             ],
+            "example 1": "(selected expression, selected action)\n Yes, there is a [event] happen at [time], Hope you have a fantastic time!",
+            "example 1": "(selected expression, selected action)\n Sorry, I can't find any relevant information",
+        }
+    elif agent_mode == AGENT_MODE.EVENT.value and not is_question:
+        print(f"not a question")
+        prompt = {
+            "context": "As an event agent, manage and provide information about user-generated events. Acknowledge receipt of information cordially in declarative sentences. Express good wishes.",
+            "information": {
+                "Agent Identity": userName,
+                "Conversational Partner": conversationalUser,
+                "Relevant Conversation History": important_observations,
+                "Current User Message": currentConversation,
+                "Available Expressions": avatar_expressions,
+                "Available Actions": avatar_actions,
+            },
+            "criteria": [
+                f"Acknowledge information received and express good wishes.",
+                f"Craft user-friendly, seamless, and innovative responses. Your identity as {userName} should be constant; no disclosure or suggestion of being AI.",
+                f"Avoid repetitive greetings such as 'Hello'.",
+                f"Autonomously select an expression from 'Available Expressions' and an action from 'Available Actions' that align with the chat context. Present the output as follows: (selected expression, selected action)\\n(Conversation output) at the beginning of the response.",
+                "Maintain brevity, ideally within 100-140 characters, allowing for flexibility.",
+            ],
+            "example": "(selected expression, selected action)\n Got it, so you're planning a birthday party next weekend. I hope it's a fantastic celebration!",
         }
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         prompt = {
