@@ -3,7 +3,6 @@ from responseGenerator import (
     generateConversation,
     getTextfromAudio,
     generate_reflection,
-    generate_saturation_prompt
 )
 import time
 import asyncio
@@ -18,18 +17,17 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
-from dialoge_helper import filter_conversation, is_question, setConversationMode, set_agent_mode
+from dialoge_helper import filter_conversation, is_question, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic
 from enums import CONVERSATION_MODE, AGENT_MODE, AVATAR_DATA
-
+from dialoge_helper import get_npc_name
 
 load_dotenv()
-
 
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "ev013"
+COLLECTION_MEMORY_OBJECTS = "ev014"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -40,46 +38,17 @@ userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 MAX_WAIT_TIME = 120  # 2 minutes
 
-BASE_RETRIEVAL_COUNT = 3  # change parameter
-OBS_RETRIEVAL_COUNT = 5  # change parameter
-RA_OBS_COUNT = 5
-EVENT_OBS_COUNT = 5
+
 REFLECTION_RETRIEVAL_COUNT = 5
 REFLECTION_PERIOD = 5
-CHECK_SATURATION_PEROID = 1
+CHECK_SATURATION_PEROID = 5
 RESEARCH_GOALS = "experience in Vr chat, what activities they like doing in Vr chat and overall why do they value regarding VR chat?"
 DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
 FILENAME = "current_conversation.wav"
 
 all_conversations = []
-
 CSV_LOGGER = CSVLogger()
 
-
-def getBaseDescription(agent_mode):
-    if agent_mode == AGENT_MODE.EVENT.value:
-        return (
-            "You are a dedicated agent, responsible for managing and providing information about user-generated events. "
-            "You will either store an event or provide information about an event based on a list of observations."
-        )
-    elif agent_mode == AGENT_MODE.RESEARCH.value:
-        return (
-            "You are an Embodied Research Assistant, responsible for engaging users with predefined goals such as challenges, and interviewing users about their experiences, e.g., their experience with VRChat."
-        )
-    elif agent_mode == AGENT_MODE.DEBATE.value:
-        return (
-            "You are an AI Agent responsible for engaging in debates with users. You will be responsible for providing information and engaging in debates with users based on a list of observations."
-        )
-    elif agent_mode == AGENT_MODE.NORMAL.value:
-        description = ""
-        while True:
-            currLine = input(
-                "Please enter a relevant description about your character. Type done to complete the description \n"
-            )
-            if currLine.lower() == "done":
-                break
-            description += f"{currLine}\n"
-        return description
 
 
 def text_conversation_input(agent_mode, userName, conversationalUser, conversation_count):
@@ -159,32 +128,23 @@ def startConversation(npc_name, currMode, agent_mode):
         start = time.perf_counter()
         baseRetrieval, observationRetrieval = perform_observation_retrieval( agent_mode, currentConversation, baseObservation, pastObservations )
         end = time.perf_counter()
-
         retrieval_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
-        if agent_mode == AGENT_MODE.NORMAL.value:
-            important_observations = [ data[1] for data in baseRetrieval + observationRetrieval ]
-        else:
-            important_observations = [ data[1] for data in observationRetrieval ]
+
+        important_observations = select_important_observations(agent_mode, baseRetrieval, observationRetrieval)
+        print(f"Important Observations: {important_observations}")
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_OBSERVATIONS, "\n".join(
                 important_observations)
         )
-        # print(f"base retrieval: {baseRetrieval}")
-        # print(f"observation retrieval: {observationRetrieval}")
-        print(f"Important Observations: {important_observations}")
 
-        if agent_mode == AGENT_MODE.NORMAL.value:
-            important_scores = [ round(data[0], 2) for data in baseRetrieval + observationRetrieval ]
-        else:
-            important_scores = [ round(data[0], 2) for data in observationRetrieval ]
+        important_scores = calculate_important_scores(agent_mode, baseRetrieval, observationRetrieval)
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
         )
 
         start = time.perf_counter()
-        conversationPrompt = generate_conversation_prompt(
-            npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode)
+        conversationPrompt = generate_conversation_prompt( npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode)
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
 
@@ -208,9 +168,7 @@ def startConversation(npc_name, currMode, agent_mode):
 
         CSV_LOGGER.write_to_csv(True) # write all values to csv
 
-        print(
-            f"Time taken for the conversation generation by GPT : {npc_response_time}"
-        )
+        print( f"Time taken for the conversation generation by GPT : {npc_response_time}" )
         if push_conversation:
             eventLoop.run_in_executor( threadExecutor, generateObservationAndUpdateMemory, npc_name, conversationalUser, currentConversation, resultConversationString, current_conversation)
 
@@ -343,23 +301,6 @@ def perform_reflection_logic(
     )
 
 
-def perform_saturation_logic(
-    userName, conversationalUser, all_conversations
-):
-    print("NPC in determinting saturation...\n")
-
-    response = generate_saturation_prompt(
-        userName,
-        conversationalUser,
-        pastConversations=all_conversations,
-    )
-    print(f"Saturation response: {response}")
-    if "True" in response:
-        return True
-    elif "False" in response:
-        return False 
-
-
 
 def generateObservationAndUpdateMemory(
     userName,
@@ -390,54 +331,6 @@ def generateObservationAndUpdateMemory(
         userName, conversationalUser, finalObservations)
 
 
-def perform_observation_retrieval(
-    agent_mode,
-    currentConversation,
-    baseObservation,
-    pastObservations
-):
-    if agent_mode == AGENT_MODE.NORMAL.value:
-        baseRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=baseObservation,
-            retrievalCount=BASE_RETRIEVAL_COUNT,
-            isBaseDescription=True,
-        )
-    else:
-        baseRetrieval = []
-
-    if agent_mode == AGENT_MODE.NORMAL.value:
-        observationRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=pastObservations,
-            retrievalCount=OBS_RETRIEVAL_COUNT,
-            isBaseDescription=False,
-        )
-    elif agent_mode == AGENT_MODE.RESEARCH.value:
-        observationRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=pastObservations,
-            retrievalCount=RA_OBS_COUNT,
-            isBaseDescription=False,
-        )
-    elif agent_mode == AGENT_MODE.EVENT.value:
-        # if publish event, only sort by relevance
-        observationRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=pastObservations,
-            retrievalCount=EVENT_OBS_COUNT,
-            isBaseDescription=False,
-            is_reflection=False,
-            is_publish_event=True,
-        )
-    elif agent_mode == AGENT_MODE.DEBATE.value:
-        observationRetrieval = retrievalFunction(
-            currentConversation=currentConversation,
-            memoryStream=pastObservations,
-            retrievalCount=OBS_RETRIEVAL_COUNT,
-            isBaseDescription=False,
-        )
-    return baseRetrieval, observationRetrieval
 
 
 def generate_conversation_prompt(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=None, research_goals=None, debate_goals=None):
@@ -454,15 +347,7 @@ if __name__ == "__main__":
     agent_mode = set_agent_mode()
 
     pastObservations = deque()
-
-    if agent_mode == AGENT_MODE.NORMAL.value:
-        npc_name = input("Please enter the username of character: ")
-    elif agent_mode == AGENT_MODE.EVENT.value:
-        npc_name = "Event Agent"
-    elif agent_mode == AGENT_MODE.RESEARCH.value:
-        npc_name = "Research Agent"
-    elif agent_mode == AGENT_MODE.DEBATE.value:
-        npc_name = "Debate Agent"
+    npc_name = get_npc_name(agent_mode)
 
     # Check for existing user.
     is_existing_npc_in_user_collection = userCollection.find_one(
