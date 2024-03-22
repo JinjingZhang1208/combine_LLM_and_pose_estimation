@@ -1,0 +1,28 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
+hiii,"User: hi. NPC:   Hey there! Feeling the joy today? Let's dance through the conversation with excitement! What's on your mind?.
+
+User: hi. NPC:   Hey there! Feeling the joy today? Let's dance through the conversation with excitement! What's on your mind?.
+
+User: I am fine. j:   Hey there! Delighted to hear you're fine. Any exciting plans or adventures on the horizon today? Let's keep the positive vibes flowing!.
+
+User: hiii how r u?. j:   Hey there! I'm feeling great, thanks for asking. How about you? Any exciting news to share today?.
+","0.96
+0.95
+0.92
+0.92","(chosen expression: Happy, chosen action: Dance)
+Hey there! I'm feeling great, thanks for asking. How about you? Any exciting news to share today?",0.97,,,,0,0.0,0.7
+hiii,"User: hiii. NPC: Hey there! I'm feeling great, thanks for asking. How about you? Any exciting news to share today?.
+
+User: hi. NPC:   Hey there! Feeling the joy today? Let's dance through the conversation with excitement! What's on your mind?.
+
+User: hi. NPC:   Hey there! Feeling the joy today? Let's dance through the conversation with excitement! What's on your mind?.
+
+User: I am fine. j:   Hey there! Delighted to hear you're fine. Any exciting plans or adventures on the horizon today? Let's keep the positive vibes flowing!.
+
+User: hiii how r u?. j:   Hey there! I'm feeling great, thanks for asking. How about you? Any exciting news to share today?.
+","1.0
+0.95
+0.95
+0.92
+0.92","(chosen expression: Tease, chosen action: Dance)  
+Hey there! Ready to dance through our conversation with some playful banter? What's the latest scoop in your world today?",1.08,,,,0,0.0,0.34

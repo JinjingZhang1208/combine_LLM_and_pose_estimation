@@ -1,6 +1,6 @@
 from enums import CONVERSATION_MODE, AGENT_MODE
 import re
-from responseGenerator import generate_saturation_prompt, generateConversation
+from responseGenerator import generate_saturation_prompt, generate_summary_prompt, generateConversation
 from retrievalFunction import retrievalFunction
 
 BASE_RETRIEVAL_COUNT = 3  # change parameter
@@ -24,7 +24,7 @@ def get_npc_name(agent_mode):
     
 
 def is_question_function(message):
-    question_keywords = ["what", "how", "where", "when", "why", "who", "?", "any"]
+    question_keywords = ["what", "how", "where", "when", "why", "who", "?", ""]
     # Convert the message to lowercase for case-insensitive comparison
     message_lower = message.lower()
 
@@ -213,3 +213,20 @@ def generate_conversation_helper(npc_name, conversationalUser, currentConversati
         return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode, is_question=is_question)
     else:
         return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode)
+    
+
+def perform_summurization_logic(
+    userName, all_conversations
+):
+    print("NPC generating summarization...\n")
+
+    response = generate_summary_prompt(
+        userName,
+        pastConversations=all_conversations,
+    )
+    return response
+
+
+def write_to_file(content, filename):
+    with open(filename, 'w') as file:
+        file.write(content)
