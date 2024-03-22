@@ -106,12 +106,12 @@ def generateConversation(
 ):
     if agent_mode == AGENT_MODE.NORMAL.value:
         prompt = {
-            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
+            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}.  Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
             "information": {
                 "You are": userName,
                 "Conversational Partner": conversationalUser,
                 "Current conversation": currentConversation,
-                "Relevant Chat History": important_observations,
+                "Chat History": important_observations,
                 "Expressions": avatar_expressions,
                 "Actions": avatar_actions,
             },
@@ -132,7 +132,7 @@ def generateConversation(
                 "You are": "Debater",
                 "Conversational Partner": conversationalUser,
                 "Current conversation": currentConversation,
-                "Relevant Chat History": important_observations,
+                "Chat History": important_observations,
                 "Expressions": avatar_expressions,
                 "Actions": avatar_actions,
             },
@@ -146,48 +146,43 @@ def generateConversation(
             "adaptive learning": "Remember and reference previous parts of the conversation within the same session to create a more cohesive and engaging user experience.",
         }
     elif agent_mode == AGENT_MODE.EVENT.value and is_question:
-        print(f"is question")
         prompt = {
-            "context": "As an event agent, manage and provide information about user-generated events. Respond with detailed information by analyzing the chat history when the user poses a question about an event. If the event is not found, inform the user. Express good wishes.",
+            "context": f"Respond with detailed information by thoroughly analyzing the provided chat history when the user poses a question about an event. If an event is found in the chat history, provide the relevant information. If the event is not clearly mentioned, say yo dont know. Express good wishes. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
             "information": {
                 "Agent Identity": userName,
                 "Conversational Partner": conversationalUser,
-                "Relevant Conversation History": important_observations,
-                "Current User Message": currentConversation,
+                "Conversation History": important_observations,
+                "User Message": currentConversation,
                 "Available Expressions": avatar_expressions,
                 "Available Actions": avatar_actions,
             },
             "criteria": [
-                f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, aligning with the ongoing chat. Your identity as {userName} should be constant; no disclosure or suggestion of being AI.",
-                f"Avoid repetitive greetings such as 'Hello'.",
+                f"Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings",
                 f"Autonomously select an expression from 'Available Expressions' and an action from 'Available Actions' that align with the chat context. Present the output as follows: (selected expression, selected action)\\n(Conversation output) at the beginning of the response.",
-                "Maintain brevity, ideally within 100-140 characters, allowing for flexibility.",
-                "Include explicit cues like 'Can you', 'Tell me', or '?' to signal questions. For declarative sentences, express acknowledgment and good wishes.",
-                "Acknowledge information received and refrain from querying the event when the user uses a declarative sentence. Query the event only when the user asks a question.",
             ],
-            "example 1": "(selected expression, selected action)\n Yes, there is a [event] happen at [time], Hope you have a fantastic time!",
-            "example 1": "(selected expression, selected action)\n Sorry, I can't find any relevant information",
+            "example 1": "(selected expression, selected action)\n Yes, there is a [event] happening at [time]. Hope you have a fantastic time!",
+            "example 2": "(selected expression, selected action)\n I apologize, I couldn't find any specific information about an event in our conversation history. Can you provide more details about the event you're referring to?",
         }
     elif agent_mode == AGENT_MODE.EVENT.value and not is_question:
-        print(f"not a question")
+        # print(f"not a question")
         prompt = {
-            "context": "As an event agent, manage and provide information about user-generated events. Acknowledge receipt of information cordially in declarative sentences. Express good wishes.",
+            "context": "You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. As an event agent, manage and provide information about user-generated events. Acknowledge getting what user say. Express good wishes.",
             "information": {
                 "Agent Identity": userName,
                 "Conversational Partner": conversationalUser,
-                "Relevant Conversation History": important_observations,
+                "Conversation History": important_observations,
                 "Current User Message": currentConversation,
                 "Available Expressions": avatar_expressions,
                 "Available Actions": avatar_actions,
             },
             "criteria": [
-                f"Acknowledge information received and express good wishes.",
-                f"Craft user-friendly, seamless, and innovative responses. Your identity as {userName} should be constant; no disclosure or suggestion of being AI.",
+                f"Do not repeat what user say.",
+                f"Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings",
                 f"Avoid repetitive greetings such as 'Hello'.",
                 f"Autonomously select an expression from 'Available Expressions' and an action from 'Available Actions' that align with the chat context. Present the output as follows: (selected expression, selected action)\\n(Conversation output) at the beginning of the response.",
                 "Maintain brevity, ideally within 100-140 characters, allowing for flexibility.",
             ],
-            "example": "(selected expression, selected action)\n Got it, so you're planning a birthday party next weekend. I hope it's a fantastic celebration!",
+            "example": "(selected expression, selected action)\n Got it, thank you for sharing. I hope it's a fantastic celebration!",
         }
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         prompt = {

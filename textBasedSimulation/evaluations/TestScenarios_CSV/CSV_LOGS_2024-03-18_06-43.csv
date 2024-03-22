@@ -1,7 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-Hi I want to share there is a dance part today at 9pm,,,"(Happy, Dance)  
-Hi! Thank you for sharing. A dance party at 9pm sounds fun. Have a great time and enjoy the event!",14.81,,,,0,0.0,0.46
-Hi I want to know is there events happening today?,,,"(Happy, Wave Hands)  
-Hi! I'll check for events happening today. Let me find out for you. Have a great day!",11.23,,,,0,0.0,0.86
-Hiii,,,"(Wink, Dance)  
-Hello! How can I assist you today?",26.52,,,,0,0.0,0.46
