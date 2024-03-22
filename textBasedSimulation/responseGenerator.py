@@ -1,6 +1,4 @@
-from statistics import mode
 from deepgram import Deepgram
-import openai
 from openai import OpenAI
 import json
 import asyncio
@@ -38,6 +36,15 @@ the Moreno family somewhat well — the husband Tom
 Moreno and the wife Jane Moreno.
 """
 
+
+def generate_summary_prompt(userName, pastConversations):
+    prompt = {
+        "context": f"Summarize the past conversations between {userName} and NPC.",
+        "pastConversations": f"{pastConversations}",
+        "instruction": "Provide a concise and coherent summary of the past conversations, capturing the main topics, key points, and overall flow of the dialogue.",
+    }
+    summaryPrompt = json.dumps(prompt, indent=4)
+    return getGPTResponse(summaryPrompt, GPT35)
 
 def generate_saturation_prompt(userName, conversationalUser, pastConversations):
     prompt = {
@@ -237,6 +244,7 @@ def getGPTResponse(prompt, gptModel):
     return response.choices[0].message.content
 
 
+
 def getTextfromAudio_whisper_1(recordedFile):
     audio_file = open(recordedFile, "rb")
     transcript = openai_client.audio.transcriptions.create(
@@ -250,7 +258,7 @@ def getTextfromAudio(recordedFile):
     res = asyncio.run(get_deepgram_response(recordedFile))
     text = res.get("results", {}).get("channels", [{}])[0].get(
         "alternatives", [{}])[0].get("transcript", "")
-    print(text)
+    # print(text)
     return text
 
 

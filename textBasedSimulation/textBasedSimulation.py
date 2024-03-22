@@ -16,7 +16,7 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
-from dialoge_helper import filter_conversation, is_question_function, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic, generate_conversation_helper, RESEARCH_GOALS, DEBATE_GOALS
+from dialoge_helper import filter_conversation, is_question_function, perform_summurization_logic, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic, generate_conversation_helper, RESEARCH_GOALS, DEBATE_GOALS, write_to_file
 from enums import CONVERSATION_MODE, AGENT_MODE, AVATAR_DATA
 from dialoge_helper import get_npc_name
 
@@ -35,12 +35,11 @@ client = MongoClient(DATABASE_URL)
 LLMdatabase = client[DATABASE_NAME]
 userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
-MAX_WAIT_TIME = 120  # 2 minutes
 
 
 REFLECTION_RETRIEVAL_COUNT = 5
 REFLECTION_PERIOD = 5
-CHECK_SATURATION_PEROID = 5
+CHECK_SATURATION_PEROID = 2
 FILENAME = "current_conversation.wav"
 
 all_conversations = []
@@ -103,6 +102,7 @@ def startConversation(npc_name, currMode, agent_mode):
     conversation_count = 0
     while True:
         current_conversation = ""
+        is_question=False
 
         if currMode == CONVERSATION_MODE.TEXT.value:
             currentConversation = text_conversation_input( agent_mode, npc_name, conversationalUser, conversation_count)
@@ -158,7 +158,7 @@ def startConversation(npc_name, currMode, agent_mode):
 
         filtered_result = filter_conversation(resultConversationString)
         if agent_mode != AGENT_MODE.EVENT.value:
-            current_conversation += f"{npc_name}: {filtered_result}.\n"
+            current_conversation += f"NPC: {filtered_result}.\n"
 
         print()
 
@@ -376,4 +376,10 @@ if __name__ == "__main__":
         avatar_actions = list(avatar_action_map.keys())
 
     startConversation(npc_name, currMode, agent_mode)
+
+    summirzation_response = perform_summurization_logic(npc_name, all_conversations)
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    filename = f"summarization_response_{timestamp}.txt"
+    write_to_file(summirzation_response, filename)
+    # print(f"Summarization response: {summirzation_response}")
     client.close()
