@@ -1,9 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-Hi whats the point of this?,,,"(Happy, Point)  
-Hi! The purpose here is for me to manage and provide info about user-generated events. If you have any event-related questions, feel free to ask!",6.67,,,,0,0.0,0.42
-Hi whats the point of this?,,,"(Wink, Wave Hands)  
-Hi there! The point of this is to provide information about user-generated events. If you have any specific questions or need help, feel free to ask. Have a great day!",6.18,,,,0,0.0,0.64
-Hi I want to share there is an book club today at 9pm,,,"(Happy, Point)  
-Thank you for sharing! The book club at 9pm sounds fantastic. I hope you have a wonderful time there!",17.66,,,,0,0.0,0.44
-Hi is there a book club happening today? when?,User: Hi I want to share there is an book club today at 9pm. ,0.91,"(Wink, Dance)  
-Got it! The book club you mentioned is happening today at 9pm. Enjoy the event!",14.43,,,,0,0.44,0.35

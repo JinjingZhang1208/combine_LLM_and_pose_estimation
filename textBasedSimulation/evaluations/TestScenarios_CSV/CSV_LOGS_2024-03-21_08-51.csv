@@ -1,9 +1,0 @@
-Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response
-Hi there is swim party today at 3pm,,,"(Happy, Clap)
-Got it, there is a swim party today at 3pm! Have a great time and enjoy the pool!",6.52,,,,0,0.0,0.29
-Hi there is a book club tomorrow at 9am,User: Hi there is swim party today at 3pm. ,0.81,"(Happy, Cheer)  
-Got it, a book club tomorrow at 9am. Sounds like a great way to start the day!",9.22,,,,0,0.41,0.46
-Hi is there a swim party happen recently?,"User: Hi there is swim party today at 3pm. 
-User: Hi there is a book club tomorrow at 9am. ","0.91
-0.79","(Happy, Clap)  
-Yes, there was a swim party today at 3pm. I hope it was a great time!",20.87,,,,0,0.5,0.43

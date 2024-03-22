@@ -16,7 +16,7 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
-from dialoge_helper import filter_conversation, is_question_function, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic, generate_conversation_helper
+from dialoge_helper import filter_conversation, is_question_function, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic, generate_conversation_helper, RESEARCH_GOALS, DEBATE_GOALS
 from enums import CONVERSATION_MODE, AGENT_MODE, AVATAR_DATA
 from dialoge_helper import get_npc_name
 
@@ -26,7 +26,7 @@ load_dotenv()
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "ev016"
+COLLECTION_MEMORY_OBJECTS = "ev018"
 
 MAX_DEQUE_LENGTH = 50
 
@@ -115,10 +115,11 @@ def startConversation(npc_name, currMode, agent_mode):
 
         if agent_mode != AGENT_MODE.EVENT.value:
             current_conversation += f"User: {currentConversation}. "
-        else:
+        elif agent_mode == AGENT_MODE.EVENT.value:
             is_question = is_question_function(currentConversation)
+            print(f"Is question: {is_question}")
             if not is_question:
-                current_conversation += f"User: {currentConversation}. "
+                current_conversation += f"{currentConversation}. "
 
         start = time.perf_counter()
         baseRetrieval, observationRetrieval = perform_observation_retrieval( agent_mode, currentConversation, baseObservation, pastObservations )
@@ -139,7 +140,7 @@ def startConversation(npc_name, currMode, agent_mode):
         )
 
         start = time.perf_counter()
-        conversationPrompt = generate_conversation_helper( npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode, is_question)
+        conversationPrompt = generate_conversation_helper( npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode, is_question=is_question)
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
 

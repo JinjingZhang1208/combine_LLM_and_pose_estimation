@@ -24,9 +24,10 @@ def get_npc_name(agent_mode):
     
 
 def is_question_function(message):
-    question_keywords = ["what", "how", "where", "when", "why", "who", "?"]
+    question_keywords = ["what", "how", "where", "when", "why", "who", "?", "any"]
     # Convert the message to lowercase for case-insensitive comparison
     message_lower = message.lower()
+
     for keyword in question_keywords:
         if keyword in message_lower:
             return True
