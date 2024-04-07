@@ -16,7 +16,8 @@ class LogElements(Enum):
     TIME_AUDIO_TO_TEXT = "Time for Audio to Text"
     TIME_RETRIEVAL = "Time for Retrieval"
     TIME_FOR_RESPONSE = "Time for Response"
-
+    TIME_FOR_REFLECTION = "Time for Reflection"
+    TIME_FOR_GENERATE_OBS = "Time for Generate Observations"
 
 class CSVLogger:
     enum_values = {}

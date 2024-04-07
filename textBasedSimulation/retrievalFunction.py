@@ -30,8 +30,8 @@ def retrievalFunction(
     memoryStream: list,
     retrievalCount: int,
     isBaseDescription=True,
-    is_reflection=True,
-    is_publish_event=False,
+    is_only_recency=False,
+    is_only_relevance=False,
 ):
     """
     Returns:
@@ -50,8 +50,8 @@ def retrievalFunction(
             observationData.append(memory[0])
             recencyScores.append(memory[1])
 
-        # only sort by recency if we are reflecting
-        if is_reflection:
+        # only sort by recency if reflecting
+        if is_only_recency:
             reflection_results = sorted(
                 zip(recencyScores, observationData),
                 key=lambda x: x[0],
@@ -62,7 +62,7 @@ def retrievalFunction(
         similarityScores = calculateRelevance(currentConversation, observationData)
         
         # only sort by relevance if we are publishing an event
-        if is_publish_event:
+        if is_only_relevance:
             publish_results = sorted(
                 zip(similarityScores, observationData),
                 key=lambda x: x[0],

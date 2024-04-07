@@ -50,12 +50,11 @@ def generate_saturation_prompt(userName, conversationalUser, pastConversations):
     prompt = {
         "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
         "pastConversations": f"{pastConversations}",
-        "instruction": "Assess whether the conversation has reached a point where no new, meaningful information is being exchanged. If the conversation is merely reiterating previously discussed points without adding substantial value or novel insights, consider it saturated. Respond with 'True' if the conversation is saturated and User is boring and not giving new information, indicating that it should be concluded, or 'False' if you believe there is potential for further productive dialogue.",
-        "example": "True\n",
+        "instruction": "Assess whether the conversation has reached a point where it should be concluded or if there is potential for further productive dialogue. Consider the following factors:\n\n- Are new, meaningful information or insights being exchanged, or is the conversation mainly reiterating previously discussed points?\n- Is the conversation progressing in a constructive and engaging manner, or has it become stagnant or unproductive?\n- Are there any unresolved topics or questions that could benefit from further discussion?\n\nIf you determine that the conversation should be concluded, provide a clear and specific reason explaining why it has reached saturation and no longer adds substantial value. If you believe there is potential for further productive dialogue, respond with 'False' and optionally suggest directions for continuing the conversation.",
+        "example": "True: The conversation appears to have reached saturation because [reason for saturation]. It would be appropriate to conclude the dialogue at this point.\n\nFalse: There are still [potential areas for further discussion] that could lead to a more productive dialogue.",
     }
     saturation_prompt = json.dumps(prompt, indent=4)
     return getGPTResponse(saturation_prompt, GPT35)
-
 
 def generate_reflection(
         userName,
@@ -65,12 +64,33 @@ def generate_reflection(
         "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
         "pastConversations": f"{pastConversations}",
         "instruction": "Provide three new higher-level observations or insights based on the past conversations. Summarize the overall patterns and trends in the conversation, rather than specific details of individual conversational turns. Only list the observations, separated by a new line, without any additional text, headers, or formatting.",
-        "example": "(Observation 1 text)\n(Observation 2 text)\n",
+        "example": "(Reflection 1 text)\n(Reflection 2 text)\n",
     }
     reflectionPrompt = json.dumps(prompt, indent=4)
     return getGPTResponse(reflectionPrompt, GPT35)
 
 
+def generate_interview_questions(
+    interview_goal,
+    number_of_questions
+):
+   prompt = {
+        "context": f"Generate {number_of_questions} interview questions based on the interview goal: {interview_goal}",
+        "criteria": [
+            "Craft 10 interview questions that are relevant to the interview goal.",
+            "Ensure the questions are clear, concise, and suitable for the context.",
+            "Avoid repetitive or redundant questions.",
+            "Separate each question with a newline character (\\n)."
+            "Only list the questions, separated by a new line, without any additional text, headers, or formatting."
+        ],
+        "example": "(Question 1 text)\n(Question 2 text)\n",
+   }
+   conversationPrompt = json.dumps(prompt, indent=4)
+   # print(f"Conversation Prompt: {conversationPrompt}")
+   return getGPTResponse(conversationPrompt, GPT35)
+
+
+# function to generate base observations
 def generateInitialObservations(userName, baseDescription):
     BACKGROUND_DESCRIPTION_CONTEXT = f"You are the user {userName}. You wil be provided with a description with background details about you."
 
@@ -113,7 +133,7 @@ def generateConversation(
 ):
     if agent_mode == AGENT_MODE.NORMAL.value:
         prompt = {
-            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}.  Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
+            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}.  Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain greetings like Hello.",
             "information": {
                 "You are": userName,
                 "Conversational Partner": conversationalUser,
@@ -133,7 +153,7 @@ def generateConversation(
         }
     elif agent_mode == AGENT_MODE.DEBATE.value:
         prompt = {
-            "context": f"You are a debater, tasked with challenging and opposing the argument from {conversationalUser}. Your responses should be critical, persuasive, and aimed at countering the player's viewpoints. Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
+            "context": f"You are a debater, tasked with challenging and opposing the argument from {conversationalUser}. Your responses should be critical, persuasive, and aimed at countering the player's viewpoints. Ensure that your responses do not contain greetings like Hello.",
             "Debate Topic": debate_goals,
             "information": {
                 "You are": "Debater",
@@ -154,7 +174,7 @@ def generateConversation(
         }
     elif agent_mode == AGENT_MODE.EVENT.value and is_question:
         prompt = {
-            "context": f"Respond with detailed information by thoroughly analyzing the provided chat history when the user poses a question about an event. If an event is found in the chat history, provide the relevant information. If the event is not clearly mentioned, say yo dont know. Express good wishes. Ensure that your responses do not contain emojis and refrain from repetitive greetings.",
+            "context": f"Respond with detailed information by thoroughly analyzing the provided chat history when the user poses a question about an event. If an event is found in the chat history, provide the relevant information. If the event is not clearly mentioned, say yo dont know. Express good wishes. Ensure that your responses do not contain greetings like Hello.",
             "information": {
                 "Agent Identity": userName,
                 "Conversational Partner": conversationalUser,
@@ -173,7 +193,7 @@ def generateConversation(
     elif agent_mode == AGENT_MODE.EVENT.value and not is_question:
         # print(f"not a question")
         prompt = {
-            "context": "You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. As an event agent, manage and provide information about user-generated events. Acknowledge getting what user say. Express good wishes.",
+            "context": "You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. As an event agent, manage and provide information about user-generated events. Acknowledge getting what user say. Express good wishes. Ensure that your responses do not contain greetings like Hello.",
             "information": {
                 "Agent Identity": userName,
                 "Conversational Partner": conversationalUser,
@@ -193,9 +213,9 @@ def generateConversation(
         }
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         prompt = {
-       "context": f"You are a friendly and imaginative Interviewer, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI.  Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
+       "context": f"You are a friendly and imaginative  er, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI.  Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
        "Goal": f"Interviewing User about {research_goals}, asking related questions",
-       "Adaptive goals": "The adaptive goal is to provide information based on the user's response and adapt your questions based on the current and historical conversations.",
+       "Adaptive goals": "The adaptive goal is to provide information based on the user's response and adapt your questions based on the current and historical conversations. Ensure that your responses do not contain greetings like Hello.",
        "information": {
                "You are": userName,
                "Conversational Partner": conversationalUser,
@@ -210,10 +230,9 @@ def generateConversation(
            "Start the conversation with a response to the user's message before posing any questions.",
            "Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
        ],
-   }
-
+    }
     conversationPrompt = json.dumps(prompt, indent=4)
-    # print(f"Conversation Prompt: {conversationPrompt}")
+
     return getConversationGenerator(conversationPrompt, GPT35)
 
 

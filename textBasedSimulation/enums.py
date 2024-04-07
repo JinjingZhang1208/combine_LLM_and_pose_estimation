@@ -14,3 +14,4 @@ class AGENT_MODE(Enum):
     EVENT = 2
     RESEARCH = 3
     DEBATE = 4
+    PREDEFINED_RESEARCH = 5
