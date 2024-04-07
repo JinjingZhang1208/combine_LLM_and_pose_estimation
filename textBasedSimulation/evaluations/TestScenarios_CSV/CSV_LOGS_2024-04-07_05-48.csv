@@ -1,0 +1,29 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response,Time for Reflection,Time for Generate Observations
+Its good,"User: I think VR Chat is good. 
+User: I think its good. 
+User: Its boring. 
+User: I think its not interesting. 
+User: How do you perceive the value of VR chat in terms of communication, social interaction, and overall experience?. NPC: .
+","1.0
+0.96
+0.9
+0.89
+0.74",. Can you share a specific experience you've had in VR chat that was particularly memorable or impactful for you?,2.91,,,,0,0.641,,,0.0
+Play with others,"User: Its good. 
+User: I think VR Chat is good. 
+User: Its boring. 
+User: I think its good. 
+User: I think its not interesting. ","1.0
+0.97
+0.9
+0.88
+0.88",. What are some of your favorite activities or things to do when you're in VR chat?,8.54,,,,0,0.781,,,0.0
+Its interesting,"User: Its good. 
+User: I think VR Chat is good. 
+User: Play with others. 
+User: I think its not interesting. 
+User: I think its good. ","1.0
+0.93
+0.93
+0.9
+0.89",. Why do you personally value the experience of VR chat and what does it offer that other forms of communication or interaction do not?,11.44,,,,0,0.611,,,0.0

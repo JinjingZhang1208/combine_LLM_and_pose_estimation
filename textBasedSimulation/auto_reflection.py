@@ -316,7 +316,7 @@ def perform_reflection_logic(
         memoryStream=pastObservations,
         retrievalCount=REFLECTION_RETRIEVAL_COUNT,
         isBaseDescription=False,
-        is_reflection=True,
+        is_only_recency=True,
     )
     reflection_observations = [data[1] for data in reflection_retrieval]
 

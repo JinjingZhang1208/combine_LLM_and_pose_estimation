@@ -1,8 +1,4 @@
-from responseGenerator import (
-    generateInitialObservations,
-    getTextfromAudio,
-    generate_reflection,
-)
+from responseGenerator import *
 import time
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
@@ -16,7 +12,7 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
-from dialoge_helper import filter_conversation, is_question_function, perform_summurization_logic, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic, generate_conversation_helper, RESEARCH_GOALS, DEBATE_GOALS, write_to_file
+from dialoge_helper import *
 from enums import CONVERSATION_MODE, AGENT_MODE, AVATAR_DATA
 from dialoge_helper import get_npc_name
 
@@ -38,8 +34,8 @@ memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 
 REFLECTION_RETRIEVAL_COUNT = 5
-REFLECTION_PERIOD = 5
-CHECK_SATURATION_PEROID = 2
+CHECK_REFLECTION_PERIOD = 5
+CHECK_SATURATION_PEROID = 5
 FILENAME = "current_conversation.wav"
 
 all_conversations = []
@@ -47,11 +43,15 @@ CSV_LOGGER = CSVLogger()
 
 
 
-def text_conversation_input(agent_mode, userName, conversationalUser, conversation_count):
+def text_conversation_input(agent_mode, userName, conversationalUser, question_list, conversation_count):
     start = time.perf_counter()
     if agent_mode == AGENT_MODE.RESEARCH.value:
         currentConversation = input(
             f"Talks with {userName}, You are {conversationalUser}. Talk about {RESEARCH_GOALS}! "
+        )
+    elif agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
+        currentConversation = input(
+            f"{question_list[conversation_count]} "
         )
     elif agent_mode == AGENT_MODE.DEBATE.value:
         currentConversation = input(
@@ -90,22 +90,32 @@ def startConversation(npc_name, currMode, agent_mode):
     global pastObservations
     global all_conversations
 
-    if agent_mode == AGENT_MODE.NORMAL.value or agent_mode == AGENT_MODE.RESEARCH.value or agent_mode == AGENT_MODE.DEBATE.value:
-        conversationalUser = input("Define the username you are acting as: ")
-    elif agent_mode == AGENT_MODE.EVENT.value:
+    if agent_mode == AGENT_MODE.EVENT.value:
         conversationalUser = "User"
+    else:
+        conversationalUser = input("Define the username you are acting as: ")
     baseObservation = fetchBaseDescription(npc_name)
     pastObservations = fetchPastRecords(conversationalUser)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
 
     conversation_count = 0
+    question_list = []
+    if agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
+        question_list = generate_interview_questions(
+            RESEARCH_GOALS, number_of_questions=INTERVIEW_ROUNDS,
+        ).split("\n")
+        question_list = remove_numbers(question_list)
+    print(f"question_list: {question_list}")
+
+    print(f"Starting conversation with {npc_name} as {conversationalUser}...\n")
+
     while True:
         current_conversation = ""
-        is_question=False
+        is_question_event_agent=False
 
         if currMode == CONVERSATION_MODE.TEXT.value:
-            currentConversation = text_conversation_input( agent_mode, npc_name, conversationalUser, conversation_count)
+            currentConversation = text_conversation_input(agent_mode, npc_name, conversationalUser, question_list, conversation_count)
         elif currMode == CONVERSATION_MODE.AUDIO.value:
             currentConversation = audio_conversation_input( CSV_LOGGER, FILENAME)
         CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
@@ -116,66 +126,72 @@ def startConversation(npc_name, currMode, agent_mode):
         if agent_mode != AGENT_MODE.EVENT.value:
             current_conversation += f"User: {currentConversation}. "
         elif agent_mode == AGENT_MODE.EVENT.value:
-            is_question = is_question_function(currentConversation)
-            print(f"Is question: {is_question}")
-            if not is_question:
+            is_question_event_agent = is_question_function(currentConversation)
+            if not is_question_event_agent:
                 current_conversation += f"{currentConversation}. "
 
-        start = time.perf_counter()
-        baseRetrieval, observationRetrieval = perform_observation_retrieval( agent_mode, currentConversation, baseObservation, pastObservations )
-        end = time.perf_counter()
-        retrieval_time = round(end - start, 2)
+        baseRetrieval, observationRetrieval, retrieval_time = perform_observation_retrieval(
+            agent_mode, currentConversation, baseObservation, pastObservations
+        )
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
 
         important_observations = select_important_observations(agent_mode, baseRetrieval, observationRetrieval)
-        print(f"Important Observations: {important_observations}")
-        CSV_LOGGER.set_enum(
-            LogElements.IMPORTANT_OBSERVATIONS, "\n".join(
-                important_observations)
-        )
-
+        # print(f"Important Observations: {important_observations}")
+        CSV_LOGGER.set_enum(LogElements.IMPORTANT_OBSERVATIONS, "\n".join(important_observations))
         important_scores = calculate_important_scores(agent_mode, baseRetrieval, observationRetrieval)
-        CSV_LOGGER.set_enum(
-            LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
-        )
+        CSV_LOGGER.set_enum(LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores)))
 
-        start = time.perf_counter()
-        conversationPrompt = generate_conversation_helper( npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode, is_question=is_question)
-        end = time.perf_counter()
-        npc_response_time = round(end - start, 2)
+        if agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
+            resultConversationString = question_list[conversation_count]
+        else:
+            start = time.perf_counter()
+            conversationPrompt = generate_conversation_helper( npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode, is_question=is_question_event_agent, )
+            end = time.perf_counter()
+            npc_response_time = round(end - start, 2)
 
-        print(f"{npc_name} :")
-        resultConversationString = ""
-        for conversation in conversationPrompt:
-            try:
-                currText = conversation.choices[0].delta.content
-                resultConversationString += currText
-                print(currText, end="")
-            except:
-                break
+            print(f"{npc_name} :")
+            resultConversationString = ""
+            for conversation in conversationPrompt:
+                try:
+                    currText = conversation.choices[0].delta.content
+                    resultConversationString += currText
+                    print(currText, end="")
+                except:
+                    break
+            
+            CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
+            filtered_result = filter_conversation(resultConversationString)
+            if agent_mode != AGENT_MODE.EVENT.value:
+                current_conversation += f"NPC: {filtered_result}.\n"
+            print(f"Time taken for the conversation generation by GPT : {npc_response_time}" )
         CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
-        CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
 
-        filtered_result = filter_conversation(resultConversationString)
-        if agent_mode != AGENT_MODE.EVENT.value:
-            current_conversation += f"NPC: {filtered_result}.\n"
-
-        print()
+            
+        start = time.perf_counter()
+        if not is_question_event_agent:
+            eventLoop.run_in_executor( threadExecutor, generateObservationAndUpdateMemory, npc_name, conversationalUser, currentConversation, resultConversationString, current_conversation)
+        end = time.perf_counter()
+        generate_observation_time = round(end - start, 2)
+        CSV_LOGGER.set_enum(LogElements.TIME_FOR_GENERATE_OBS, generate_observation_time)
+        all_conversations.append(current_conversation)
 
         CSV_LOGGER.write_to_csv(True) # write all values to csv
 
-        print( f"Time taken for the conversation generation by GPT : {npc_response_time}" )
-        if not is_question:
-            eventLoop.run_in_executor( threadExecutor, generateObservationAndUpdateMemory, npc_name, conversationalUser, currentConversation, resultConversationString, current_conversation)
-
-        all_conversations.append(current_conversation)
-
         conversation_count += 1
-        if conversation_count != 1 and conversation_count % REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORMAL.value:
+
+        if conversation_count != 1 and conversation_count % CHECK_REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORMAL.value:
+            start = time.perf_counter()
             eventLoop.run_in_executor(threadExecutor, perform_reflection_logic, npc_name, conversationalUser, currentConversation, pastObservations)
+            end = time.perf_counter()
+            reflection_time = round(end - start, 2)
+            CSV_LOGGER.set_enum(LogElements.TIME_FOR_REFLECTION, reflection_time)
         
         if conversation_count != 1 and conversation_count % CHECK_SATURATION_PEROID == 0 and perform_saturation_logic(npc_name, conversationalUser, all_conversations):
             print("Conversation ended due to saturation.")
+            break
+        
+        if conversation_count == INTERVIEW_ROUNDS:
+            print("Conversation ended due to interview rounds.")
             break
 
 
@@ -185,7 +201,6 @@ def fetchBaseDescription(userName: str):
             {"Username": userName, "Conversation with User": "Base Description"}
         ),
     )
-
     if baseObservation:
         observation_dict = baseObservation[0]
         filtered_observations = [
@@ -276,7 +291,7 @@ def perform_reflection_logic(
         memoryStream=pastObservations,
         retrievalCount=REFLECTION_RETRIEVAL_COUNT,
         isBaseDescription=False,
-        is_reflection=True,
+        is_only_recency=True,
     )
     reflection_observations = [data[1] for data in reflection_retrieval]
 
@@ -317,11 +332,6 @@ def generateObservationAndUpdateMemory(
     #         finalObservations.append(observation)
 
     # endTime = time.perf_counter()
-    """
-    print(
-        f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
-    )
-    """
     update_Memory_Collection_and_past_obs(
         userName, conversationalUser, finalObservations)
 
@@ -379,7 +389,7 @@ if __name__ == "__main__":
 
     summirzation_response = perform_summurization_logic(npc_name, all_conversations)
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    filename = f"summarization_response_{timestamp}.txt"
+    filename = f"./evaluations/summarization_response_{timestamp}.txt"
     write_to_file(summirzation_response, filename)
     # print(f"Summarization response: {summirzation_response}")
     client.close()
