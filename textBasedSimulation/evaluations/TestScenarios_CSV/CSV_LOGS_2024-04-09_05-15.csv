@@ -1,0 +1,46 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response,Time for Reflection,Time for Generate Observations
+Hi. I'm very tired.,"User: Hi. How are you doing?. NPC:   Feeling the joy bubbling up! Any new adventures on your horizon? Let's keep the excitement flowing!.
+
+User: I'm waiting for your response.. NPC:   Seems like we're in sync, ready to tango through this chat with some sassy moves? Let's sprinkle some more mystery into our banter!.
+
+User: Think I'm good.. NPC: Seems like you're in for a thrilling ride with that confidence! Ready to dive into the unknown and embrace the unexpected? Let's dance through the mysteries!.
+
+User: hiii how r u?. j:   Hey there! I'm feeling great, thanks for asking. How about you? Any exciting news to share today?.
+
+User: hiii. NPC: Hey there! I'm feeling great, thanks for asking. How about you? Any exciting news to share today?.
+","1.0
+0.99
+0.97
+0.07
+0.05","(tease, dance)  
+Seems like you've been on your feet all day! How about a spontaneous dance break to shake off that tiredness and bring in some fresh energy?",8.27,0.79,0.08,6.58,3.54,0.627,0.5,,0.0
+To go to Eagle Bay.,"User: Think I'm good.. NPC: Seems like you're in for a thrilling ride with that confidence! Ready to dive into the unknown and embrace the unexpected? Let's dance through the mysteries!.
+
+User: Hi. I'm very tired.. NPC:   Seems like you've been on your feet all day! How about a spontaneous dance break to shake off that tiredness and bring in some fresh energy?.
+
+User: Hi. How are you doing?. NPC:   Feeling the joy bubbling up! Any new adventures on your horizon? Let's keep the excitement flowing!.
+
+User: I'm waiting for your response.. NPC:   Seems like we're in sync, ready to tango through this chat with some sassy moves? Let's sprinkle some more mystery into our banter!.
+
+User: hii. NPC:   Oh no, it seems like a mysterious fog has clouded my thoughts. Can you shine a light to guide me back to our joyful conversation?.
+","1.0
+1.0
+0.97
+0.97
+0.05","(chosen expression: Tease, chosen action: Dance)  
+Oh, ready to waltz into the enigmatic allure of Eagle Bay? Mysteries await, and adventures beckon us to pirouette through the unknown! Let's tango into the excitement together!",9.48,0.72,0.08,8.21,0.38,0.541,0.82,,0.0
+How many money do you have every year?,"User: Hi. I'm very tired.. NPC:   Seems like you've been on your feet all day! How about a spontaneous dance break to shake off that tiredness and bring in some fresh energy?.
+
+User: To go to Eagle Bay.. NPC:   Oh, ready to waltz into the enigmatic allure of Eagle Bay? Mysteries await, and adventures beckon us to pirouette through the unknown! Let's tango into the excitement together!.
+
+User: Hi. How are you doing?. NPC:   Feeling the joy bubbling up! Any new adventures on your horizon? Let's keep the excitement flowing!.
+
+User: Think I'm good.. NPC: Seems like you're in for a thrilling ride with that confidence! Ready to dive into the unknown and embrace the unexpected? Let's dance through the mysteries!.
+
+User: I'm waiting for your response.. NPC:   Seems like we're in sync, ready to tango through this chat with some sassy moves? Let's sprinkle some more mystery into our banter!.
+","1.0
+1.0
+0.98
+0.98
+0.96","(Sad, Faint)  
+Oh, the mention of money always brings a heavy cloud. It's not about the money, but the experiences and joy we gather along the way that truly enrich our lives. Let's dance away from such heavy thoughts!",14.52,0.85,0.08,13.44,3.75,0.627,0.27,,0.0

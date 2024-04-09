@@ -190,7 +190,7 @@ def startConversation(npc_name, currMode, agent_mode):
             print("Conversation ended due to saturation.")
             break
         
-        if conversation_count == INTERVIEW_ROUNDS:
+        if conversation_count == INTERVIEW_ROUNDS and agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
             print("Conversation ended due to interview rounds.")
             break
 

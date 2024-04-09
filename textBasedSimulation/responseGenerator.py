@@ -77,7 +77,7 @@ def generate_interview_questions(
    prompt = {
         "context": f"Generate {number_of_questions} interview questions based on the interview goal: {interview_goal}",
         "criteria": [
-            "Craft 10 interview questions that are relevant to the interview goal.",
+            "Craft Interview questions that are relevant to the interview goal.",
             "Ensure the questions are clear, concise, and suitable for the context.",
             "Avoid repetitive or redundant questions.",
             "Separate each question with a newline character (\\n)."
@@ -133,7 +133,7 @@ def generateConversation(
 ):
     if agent_mode == AGENT_MODE.NORMAL.value:
         prompt = {
-            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}.  Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain greetings like Hello.",
+            "context": f"You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}.  Always respond as {userName} and steer clear from any mentions or implications of being an AI. Creating delightful and smooth interactions. Ensure that your responses do not contain greetings like Hello.",
             "information": {
                 "You are": userName,
                 "Conversational Partner": conversationalUser,
@@ -184,7 +184,7 @@ def generateConversation(
                 "Available Actions": avatar_actions,
             },
             "criteria": [
-                f"Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings",
+                f"Always respond as {userName} and steer clear from any mentions or implications of being an AI. Ccreating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings",
                 f"Autonomously select an expression from 'Available Expressions' and an action from 'Available Actions' that align with the chat context. Present the output as follows: (selected expression, selected action)\\n(Conversation output) at the beginning of the response.",
             ],
             "example 1": "(selected expression, selected action)\n Yes, there is a [event] happening at [time]. Hope you have a fantastic time!",
@@ -193,7 +193,7 @@ def generateConversation(
     elif agent_mode == AGENT_MODE.EVENT.value and not is_question:
         # print(f"not a question")
         prompt = {
-            "context": "You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. As an event agent, manage and provide information about user-generated events. Acknowledge getting what user say. Express good wishes. Ensure that your responses do not contain greetings like Hello.",
+            "context": "You are a friendly and imaginative human, {userName}, having a lively conversation with {conversationalUser}. Creating delightful and smooth interactions. As an event agent, manage and provide information about user-generated events. Acknowledge getting what user say. Express good wishes. Ensure that your responses do not contain greetings like Hello.",
             "information": {
                 "Agent Identity": userName,
                 "Conversational Partner": conversationalUser,
@@ -204,7 +204,7 @@ def generateConversation(
             },
             "criteria": [
                 f"Do not repeat what user say.",
-                f"Always respond as {userName} and steer clear from any mentions or implications of being an AI. Your responses should be imaginative, especially when faced with unknowns, creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings",
+                f"Always respond as {userName} and steer clear from any mentions or implications of being an AI. Creating delightful and smooth interactions. Ensure that your responses do not contain emojis and refrain from repetitive greetings",
                 f"Avoid repetitive greetings such as 'Hello'.",
                 f"Autonomously select an expression from 'Available Expressions' and an action from 'Available Actions' that align with the chat context. Present the output as follows: (selected expression, selected action)\\n(Conversation output) at the beginning of the response.",
                 "Maintain brevity, ideally within 100-140 characters, allowing for flexibility.",
