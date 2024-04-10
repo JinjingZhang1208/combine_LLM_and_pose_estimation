@@ -6,14 +6,41 @@ from pydub import AudioSegment, silence
 import pyaudio
 from csvLogger import CSVLogger, LogElements
 import os
+import random
+import fillerWords
+import VRC_OSCLib
+from TTS import openaiTTS
+import argparse
+from pythonosc import udp_client
+import threading
+import time
+
 INPUT_DEVICE_INDEX = 3
-OUTPUT_DEVICE_INDEX =17
+OUTPUT_DEVICE_INDEX = 17
 TEMP_FILE = "speech_check.wav"
 MODEL_PATH = "./vosk-model/vosk-model-small-en-us-0.15"
 AUDIO_CSV_LOGGER = ""
+# VRC client
+parser = argparse.ArgumentParser()
+parser.add_argument("--ip", default="127.0.0.1",
+                    help="The ip of the OSC server")
+parser.add_argument("--port", type=int, default=9000,
+                    help="The port the OSC server is listening on")
+args = parser.parse_args()
+VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
+
+def fillerShort():
+
+    selected_filler_key = random.choice(list(fillerWords.fillersA.keys()))
+    threading.Thread(target=VRC_OSCLib.actionChatbox,
+                     args=(VRCclient, fillerWords.fillersA[selected_filler_key],)).start()
+    # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
+    openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", 9)
+
 
 # print(listenAndRecord("text1.wav"))
 def recordAudioToByteStream(silenceThreshold=-40, maxSilenceLength=1):
+
     fs = 16000  # Sample rate
     CHUNK_SIZE = int(fs * 0.5)  # Record in chunks of 0.5 seconds
 
@@ -31,12 +58,22 @@ def recordAudioToByteStream(silenceThreshold=-40, maxSilenceLength=1):
                     frames_per_buffer=CHUNK_SIZE)
 
     print("Recording started... Speak something...")
-
+    # fillerShort()
     while True:
         audio_chunk = stream.read(CHUNK_SIZE, exception_on_overflow=False)
 
         # Convert byte data to AudioSegment for silence detection
         segment = AudioSegment.from_raw(io.BytesIO(audio_chunk), sample_width=2, frame_rate=fs, channels=1)
+
+        # current_time = time.time()
+        #
+        # # Calculate the elapsed time by subtracting the start time from the current time
+        # elapsed_time = current_time - start_time
+        #
+        # # Check if 3 seconds have passed
+        # if elapsed_time >= 3 and play is True:
+        #     fillerShort()
+        #     play = False
 
         # Check for non-silence to start recording
         if segment.dBFS > silenceThreshold:
@@ -44,12 +81,12 @@ def recordAudioToByteStream(silenceThreshold=-40, maxSilenceLength=1):
 
         if recording_started:
             audio_chunks.append(audio_chunk)
-
             # Check for silence to stop recording
             if segment.dBFS < silenceThreshold:
                 silence_duration += CHUNK_SIZE / fs
                 if silence_duration >= maxSilenceLength:
                     print("Silence detected, stopping recording.")
+                    fillerShort()
                     break
             else:
                 silence_duration = 0
@@ -58,6 +95,7 @@ def recordAudioToByteStream(silenceThreshold=-40, maxSilenceLength=1):
     audio_data = b''.join(audio_chunks)
     byte_stream = io.BytesIO(audio_data)
     return byte_stream
+
 
 def convertAndCheckAudio(byte_stream):
     # Convert audio to the desired format in memory
@@ -75,6 +113,7 @@ def convertAndCheckAudio(byte_stream):
 
     # Check if the converted audio contains human speech
     return isHumanSpeechByte(converted_stream)
+
 
 def isHumanSpeechByte(byte_stream):
     global AUDIO_CSV_LOGGER
@@ -105,6 +144,7 @@ def isHumanSpeechByte(byte_stream):
         AUDIO_CSV_LOGGER.set_enum(
             LogElements.TIME_AUDIO_TO_TEXT, detect_time
         )
+        # fillerShort()
         return True
     else:
         return False
@@ -112,7 +152,9 @@ def isHumanSpeechByte(byte_stream):
 
 def listenAndRecordDirect(CSV_LOGGER, audio_file_name):
     global AUDIO_CSV_LOGGER
+    global play
     AUDIO_CSV_LOGGER = CSV_LOGGER
+    start_time = time.time()
     while True:
         start = time.perf_counter()
         audio_byte_stream = recordAudioToByteStream()
@@ -127,16 +169,21 @@ def listenAndRecordDirect(CSV_LOGGER, audio_file_name):
 
             break
 
+        current_time = time.time()
+
+        # Calculate the elapsed time by subtracting the start time from the current time
+        elapsed_time = current_time - start_time
+
+        # Check if 3 seconds have passed
+
         with open(audio_file_name, "wb") as f:
             audio_byte_stream.seek(0)
             raw_audio_data = AudioSegment.from_raw(audio_byte_stream, sample_width=2, frame_rate=16000, channels=1)
             raw_audio_data.export(audio_file_name, format="wav")
 
-
-
-
         break
     return
+
 
 def deleteAudioFile(fileName):
     try:
