@@ -46,15 +46,30 @@ def generate_summary_prompt(userName, pastConversations):
     summaryPrompt = json.dumps(prompt, indent=4)
     return getGPTResponse(summaryPrompt, GPT35)
 
+def generate_bullet_points_prompt(userName, pastConversations):
+    prompt = {
+        "context": f"Summarize the past conversations between {userName} and NPC.",
+        "pastConversations": f"{pastConversations}",
+        "instruction": "Provide a concise and coherent summary of the past conversations, capturing the main topics, key points, and overall flow of the dialogue.",
+        "example": "We've discussed about: [topic1], [topic2], and [topic3]. Would you like to continue this conversation?"
+    }
+    summaryPrompt = json.dumps(prompt, indent=4)
+    return getGPTResponse(summaryPrompt, GPT35)
+
+
+
+
 def generate_saturation_prompt(userName, conversationalUser, pastConversations):
     prompt = {
         "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
         "pastConversations": f"{pastConversations}",
-        "instruction": "Assess whether the conversation has reached a point where it should be concluded or if there is potential for further productive dialogue. Consider the following factors:\n\n- Are new, meaningful information or insights being exchanged, or is the conversation mainly reiterating previously discussed points?\n- Is the conversation progressing in a constructive and engaging manner, or has it become stagnant or unproductive?\n- Are there any unresolved topics or questions that could benefit from further discussion?\n\nIf you determine that the conversation should be concluded, provide a clear and specific reason explaining why it has reached saturation and no longer adds substantial value. If you believe there is potential for further productive dialogue, respond with 'False' and optionally suggest directions for continuing the conversation.",
-        "example": "True: The conversation appears to have reached saturation because [reason for saturation]. It would be appropriate to conclude the dialogue at this point.\n\nFalse: There are still [potential areas for further discussion] that could lead to a more productive dialogue.",
+        "instruction": "Assess whether the user's message indicates a desire to continue the conversation or to conclude it, provide a clear and specific reason explaining why it has reached saturation and no longer adds substantial value. If you believe there is potential for further productive dialogue based on the user's message, respond with 'False'.",
+        "example": "True: The user's message appears to suggest that the conversation has reached saturation because [reason for saturation]. It would be appropriate to conclude the dialogue at this point.\n\nFalse: There are still [potential areas for further discussion] in the user's message that could lead to a more productive dialogue.",
     }
     saturation_prompt = json.dumps(prompt, indent=4)
     return getGPTResponse(saturation_prompt, GPT35)
+
+
 
 def generate_reflection(
         userName,
@@ -74,20 +89,19 @@ def generate_interview_questions(
     interview_goal,
     number_of_questions
 ):
-   prompt = {
+    prompt = {
         "context": f"Generate {number_of_questions} interview questions based on the interview goal: {interview_goal}",
         "criteria": [
             "Craft Interview questions that are relevant to the interview goal.",
             "Ensure the questions are clear, concise, and suitable for the context.",
             "Avoid repetitive or redundant questions.",
-            "Separate each question with a newline character (\\n)."
             "Only list the questions, separated by a new line, without any additional text, headers, or formatting."
         ],
         "example": "(Question 1 text)\n(Question 2 text)\n",
-   }
-   conversationPrompt = json.dumps(prompt, indent=4)
-   # print(f"Conversation Prompt: {conversationPrompt}")
-   return getGPTResponse(conversationPrompt, GPT35)
+    }
+    conversationPrompt = json.dumps(prompt, indent=4)
+    # print(f"Conversation Prompt: {conversationPrompt}")
+    return getGPTResponse(conversationPrompt, GPT35)
 
 
 # function to generate base observations
@@ -127,8 +141,8 @@ def generateConversation(
     avatar_actions,
     agent_mode,
     npc_dialogues="",
-    research_goals= "",
-    debate_goals = "",
+    research_goals="",
+    debate_goals="",
     is_question=False,
 ):
     if agent_mode == AGENT_MODE.NORMAL.value:
@@ -213,24 +227,24 @@ def generateConversation(
         }
     elif agent_mode == AGENT_MODE.RESEARCH.value:
         prompt = {
-       "context": f"You are a friendly and imaginative  er, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI.  Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
-       "Goal": f"Interviewing User about {research_goals}, asking related questions",
-       "Adaptive goals": "The adaptive goal is to provide information based on the user's response and adapt your questions based on the current and historical conversations. Ensure that your responses do not contain greetings like Hello.",
-       "information": {
-               "You are": userName,
-               "Conversational Partner": conversationalUser,
-               "Current conversation": currentConversation,
-               "Relevant Conversation History": important_observations,
-               "Expressions": avatar_expressions,
-               "Actions": avatar_actions,
-               "Past Chat History": npc_dialogues,
-       },
-       "criteria": [
-           f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat.",
-           "Start the conversation with a response to the user's message before posing any questions.",
-           "Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
-       ],
-    }
+            "context": f"You are a friendly and imaginative  er, {userName}, having a lively conversation with {conversationalUser}. Always respond as {userName} and steer clear from any mentions or implications of being an AI.  Ensure that your responses do not contain repetitive greetings like Hello and any content in the Past Chat History.",
+            "Goal": f"Interviewing User about {research_goals}, asking related questions",
+            "Adaptive goals": "The adaptive goal is to provide information based on the user's response and adapt your questions based on the current and historical conversations. Ensure that your responses do not contain greetings like Hello.",
+            "information": {
+                "You are": userName,
+                "Conversational Partner": conversationalUser,
+                "Current conversation": currentConversation,
+                "Relevant Conversation History": important_observations,
+                "Expressions": avatar_expressions,
+                "Actions": avatar_actions,
+                "Past Chat History": npc_dialogues,
+            },
+            "criteria": [
+                f"Craft user-friendly, seamless, and innovative responses. When specific details are scarce, improvise with inventive and relevant answers, always aligning with the ongoing chat.",
+                "Start the conversation with a response to the user's message before posing any questions.",
+                "Choose an expression from Expressions and an action from Actions autonomously, ensuring they perfectly fit the chat context. Present the output as follows: (chosen expression, chosen action)\\n(Conversation output) at the beginning of response.",
+            ],
+        }
     conversationPrompt = json.dumps(prompt, indent=4)
 
     return getConversationGenerator(conversationPrompt, GPT35)
@@ -261,7 +275,6 @@ def getGPTResponse(prompt, gptModel):
         max_tokens=300,
     )
     return response.choices[0].message.content
-
 
 
 def getTextfromAudio_whisper_1(recordedFile):
