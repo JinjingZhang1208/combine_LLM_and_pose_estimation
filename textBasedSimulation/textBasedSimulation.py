@@ -35,12 +35,18 @@ memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 REFLECTION_RETRIEVAL_COUNT = 5
 CHECK_REFLECTION_PERIOD = 5
-CHECK_SATURATION_PEROID = 5
+CHECK_SATURATION_PEROID = 3
 FILENAME = "current_conversation.wav"
 
 all_conversations = []
 CSV_LOGGER = CSVLogger()
 
+
+def get_conversation_input(currMode, agent_mode, npc_name, conversationalUser, question_list, conversation_count):
+    if currMode == CONVERSATION_MODE.TEXT.value:
+        return text_conversation_input(agent_mode, npc_name, conversationalUser, question_list, conversation_count)
+    elif currMode == CONVERSATION_MODE.AUDIO.value:
+        return audio_conversation_input(CSV_LOGGER, FILENAME)
 
 
 def text_conversation_input(agent_mode, userName, conversationalUser, question_list, conversation_count):
@@ -87,48 +93,34 @@ def audio_conversation_input(CSV_LOGGER, FILENAME):
 
 
 def startConversation(npc_name, currMode, agent_mode):
-    global pastObservations
-    global all_conversations
+    global pastObservations, all_conversations
 
-    if agent_mode == AGENT_MODE.EVENT.value:
-        conversationalUser = "User"
-    else:
-        conversationalUser = input("Define the username you are acting as: ")
+    conversationalUser = get_conversational_user(agent_mode=agent_mode)
     baseObservation = fetchBaseDescription(npc_name)
     pastObservations = fetchPastRecords(conversationalUser)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
 
     conversation_count = 0
-    question_list = []
-    if agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
-        question_list = generate_interview_questions(
-            RESEARCH_GOALS, number_of_questions=INTERVIEW_ROUNDS,
-        ).split("\n")
-        question_list = remove_numbers(question_list)
-    print(f"question_list: {question_list}")
-
+    question_list = generate_interview_questions_list(agent_mode, RESEARCH_GOALS, INTERVIEW_ROUNDS)
     print(f"Starting conversation with {npc_name} as {conversationalUser}...\n")
 
     while True:
-        current_conversation = ""
+        current_conversation_str = ""
         is_question_event_agent=False
 
-        if currMode == CONVERSATION_MODE.TEXT.value:
-            currentConversation = text_conversation_input(agent_mode, npc_name, conversationalUser, question_list, conversation_count)
-        elif currMode == CONVERSATION_MODE.AUDIO.value:
-            currentConversation = audio_conversation_input( CSV_LOGGER, FILENAME)
+        currentConversation = get_conversation_input(currMode, agent_mode, npc_name, conversationalUser, question_list, conversation_count)
         CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
 
         if currentConversation.lower() == "done":
             break
 
         if agent_mode != AGENT_MODE.EVENT.value:
-            current_conversation += f"User: {currentConversation}. "
+            current_conversation_str += f"User: {currentConversation}. "
         elif agent_mode == AGENT_MODE.EVENT.value:
             is_question_event_agent = is_question_function(currentConversation)
             if not is_question_event_agent:
-                current_conversation += f"{currentConversation}. "
+                current_conversation_str += f"{currentConversation}. "
 
         baseRetrieval, observationRetrieval, retrieval_time = perform_observation_retrieval(
             agent_mode, currentConversation, baseObservation, pastObservations
@@ -138,6 +130,7 @@ def startConversation(npc_name, currMode, agent_mode):
         important_observations = select_important_observations(agent_mode, baseRetrieval, observationRetrieval)
         # print(f"Important Observations: {important_observations}")
         CSV_LOGGER.set_enum(LogElements.IMPORTANT_OBSERVATIONS, "\n".join(important_observations))
+
         important_scores = calculate_important_scores(agent_mode, baseRetrieval, observationRetrieval)
         CSV_LOGGER.set_enum(LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores)))
 
@@ -162,18 +155,18 @@ def startConversation(npc_name, currMode, agent_mode):
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
             filtered_result = filter_conversation(resultConversationString)
             if agent_mode != AGENT_MODE.EVENT.value:
-                current_conversation += f"NPC: {filtered_result}.\n"
+                current_conversation_str += f"NPC: {filtered_result}.\n"
             print(f"Time taken for the conversation generation by GPT : {npc_response_time}" )
         CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
 
             
         start = time.perf_counter()
         if not is_question_event_agent:
-            eventLoop.run_in_executor( threadExecutor, generateObservationAndUpdateMemory, npc_name, conversationalUser, currentConversation, resultConversationString, current_conversation)
+            eventLoop.run_in_executor( threadExecutor, generateObservationAndUpdateMemory, npc_name, conversationalUser, currentConversation, resultConversationString, current_conversation_str)
         end = time.perf_counter()
         generate_observation_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_GENERATE_OBS, generate_observation_time)
-        all_conversations.append(current_conversation)
+        all_conversations.append(current_conversation_str)
 
         CSV_LOGGER.write_to_csv(True) # write all values to csv
 
@@ -186,9 +179,16 @@ def startConversation(npc_name, currMode, agent_mode):
             reflection_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_REFLECTION, reflection_time)
         
-        if conversation_count != 1 and conversation_count % CHECK_SATURATION_PEROID == 0 and perform_saturation_logic(npc_name, conversationalUser, all_conversations):
-            print("Conversation ended due to saturation.")
-            break
+        if conversation_count != 1 and conversation_count % CHECK_SATURATION_PEROID == 0 and check_saturation(npc_name, conversationalUser, all_conversations):
+            bullet_points_response = get_bullet_points_response(conversationalUser, all_conversations)
+            saturation_check_response = input(
+                f"{bullet_points_response} "
+            )
+            intention_response = check_saturation(npc_name, conversationalUser,saturation_check_response)
+            if intention_response:
+                print("Conversation ended due to saturation.")
+                break
+
         
         if conversation_count == INTERVIEW_ROUNDS and agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
             print("Conversation ended due to interview rounds.")
@@ -387,7 +387,7 @@ if __name__ == "__main__":
 
     startConversation(npc_name, currMode, agent_mode)
 
-    summirzation_response = perform_summurization_logic(npc_name, all_conversations)
+    summirzation_response = get_summurization_response(npc_name, all_conversations)
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     filename = f"./evaluations/summarization_response_{timestamp}.txt"
     write_to_file(summirzation_response, filename)

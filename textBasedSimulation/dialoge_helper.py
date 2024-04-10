@@ -1,6 +1,6 @@
 from enums import CONVERSATION_MODE, AGENT_MODE
 import re
-from responseGenerator import generate_saturation_prompt, generate_summary_prompt, generateConversation
+from responseGenerator import generate_saturation_prompt, generate_summary_prompt, generateConversation, generate_interview_questions, generate_bullet_points_prompt
 from retrievalFunction import retrievalFunction
 import time
 
@@ -14,6 +14,23 @@ RESEARCH_GOALS = "experience in Vr chat, what activities they like doing in Vr c
 DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
 
 
+def get_conversational_user(agent_mode):
+    """
+    Determines the username based on the agent_mode.
+
+    Parameters:
+    - agent_mode: The mode of the agent which determines how the username is set.
+
+    Returns:
+    - A string representing the username to be used in conversations.
+    """
+    if agent_mode == AGENT_MODE.EVENT.value:
+        conversationalUser = "User"
+    else:
+        conversationalUser = input("Define the username you are acting as: ")
+    return conversationalUser
+
+
 def get_npc_name(agent_mode):
     if agent_mode == AGENT_MODE.NORMAL.value:
         return input("Please enter the username of character: ")
@@ -23,7 +40,7 @@ def get_npc_name(agent_mode):
         return "Research Agent"
     elif agent_mode == AGENT_MODE.DEBATE.value:
         return "Debate Agent"
-    
+
 
 def is_question_function(message):
     question_keywords = ["what", "how", "where", "when", "why", "who", "?", ""]
@@ -34,6 +51,7 @@ def is_question_function(message):
         if keyword in message_lower:
             return True
     return False
+
 
 def remove_numbers(question_list):
     processed_questions = []
@@ -48,6 +66,7 @@ def remove_numbers(question_list):
         processed_question = question[index:].lstrip()
         processed_questions.append(processed_question)
     return processed_questions
+
 
 def filter_conversation(conversation):
     # Remove text within parentheses
@@ -111,18 +130,19 @@ def getBaseDescription(agent_mode):
                 break
             description += f"{currLine}\n"
         return description
-    
+
 
 def select_important_observations(agent_mode, base_retrieval, observation_retrieval):
     if agent_mode == AGENT_MODE.NORMAL.value:
         return [data[1] for data in base_retrieval + observation_retrieval]
     else:
         return [data[1] for data in observation_retrieval]
-    
+
 
 def calculate_important_scores(agent_mode, base_retrieval, observation_retrieval):
     if agent_mode == AGENT_MODE.NORMAL.value:
-        scores = [round(data[0], 2) for data in base_retrieval + observation_retrieval]
+        scores = [round(data[0], 2)
+                  for data in base_retrieval + observation_retrieval]
     else:
         scores = [round(data[0], 2) for data in observation_retrieval]
     return scores
@@ -166,7 +186,7 @@ def perform_observation_retrieval(
     return baseRetrieval, observationRetrieval, retrieval_time
 
 
-def perform_saturation_logic(
+def check_saturation(
     userName, conversationalUser, all_conversations
 ):
     print("NPC in determinting saturation...\n")
@@ -180,8 +200,7 @@ def perform_saturation_logic(
     if "True" in response:
         return True
     elif "False" in response:
-        return False 
-    
+        return False
 
 
 def generate_conversation_helper(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=None, research_goals=None, debate_goals=None, is_question=False):
@@ -193,9 +212,9 @@ def generate_conversation_helper(npc_name, conversationalUser, currentConversati
         return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode, is_question=is_question)
     else:
         return generateConversation(npc_name, conversationalUser, currentConversation, important_observations, avatar_expressions, avatar_actions, agent_mode=agent_mode)
-    
 
-def perform_summurization_logic(
+
+def get_summurization_response(
     userName, all_conversations
 ):
     print("NPC generating summarization...\n")
@@ -207,6 +226,36 @@ def perform_summurization_logic(
     return response
 
 
+def get_user_end_intention_response(
+    userResponse
+):
+    response = generate_user_end_intention_prompt(
+        userResponse=userResponse
+    )
+    return response
+
+
 def write_to_file(content, filename):
     with open(filename, 'w') as file:
         file.write(content)
+
+
+def generate_interview_questions_list(agent_mode, research_goals, interview_rounds):
+    question_list = []
+    if agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
+        questions = generate_interview_questions(
+            research_goals, interview_rounds)
+        question_list = questions.split("\n")
+        question_list = remove_numbers(question_list)
+    return question_list
+
+
+def get_bullet_points_response(
+    userName, all_conversations
+):
+    print("NPC generating bullet points...\n")
+    response = generate_bullet_points_prompt(
+        userName,
+        pastConversations=all_conversations,
+    )
+    return response
