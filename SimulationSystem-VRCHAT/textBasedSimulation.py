@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from retrievalFunction import retrievalFunction
 from pymongo.mongo_client import MongoClient
 from audioRecorder import listenAndRecordDirect, deleteAudioFile
-from responseGenerator import (
+from responseGenerator01 import (
     generateInitialObservations,
     generateObservations,
     generateConversation,

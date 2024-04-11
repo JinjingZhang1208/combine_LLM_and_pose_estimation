@@ -1,24 +1,9 @@
-from responseGenerator01 import (
-    generateInitialObservations,
-    generateObservations,
-    generateConversation,
-    getTextfromAudio,
-    generate_reflection,
-    AGENT_MODE,
-    getTextfromAudio_whisper_1,
-    Interviewer_judgeEndingConversation,
-    Interviewer_EndingConversation,
-    Interviewer_SummarizeConversation,
-    generate_summary_prompt
-)
-from distutils import text_file
+from responseGenerator import *
 import time
-import threading
 import asyncio
-from enum import Enum
 from concurrent.futures import ThreadPoolExecutor
 from retrievalFunction import retrievalFunction
-from audioRecorder import deleteAudioFile, listenAndRecordDirect
+from audioRecorder import listenAndRecordDirect, deleteAudioFile
 from csvLogger import CSVLogger, LogElements
 from collections import deque
 from avatar_data import avatar_action_map, avatar_expression_map, avatar_voice
@@ -27,7 +12,8 @@ import os
 from dotenv import load_dotenv
 from collections import deque
 from pymongo.mongo_client import MongoClient
-# VRC import
+from dialoge_helper import filter_conversation, is_question_function, perform_summurization_logic, setConversationMode, set_agent_mode, getBaseDescription, getBaseDescription, select_important_observations, calculate_important_scores, perform_observation_retrieval, perform_saturation_logic, generate_conversation_helper, RESEARCH_GOALS, DEBATE_GOALS, write_to_file
+from enums import CONVERSATION_MODE, AGENT_MODE, AVATAR_DATA
 import VRC_OSCLib
 import argparse
 from pythonosc import udp_client
@@ -51,65 +37,38 @@ parser.add_argument("--port", type=int, default=9000,
                         help="The port the OSC server is listening on")
 args = parser.parse_args()
 VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
-load_dotenv()
-MAX_WAIT_TIME = 120 # 2 minutes
 # Constants
 DATABASE_NAME = "LLMDatabase"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 COLLECTION_USERS = "NPC Avatars"
-COLLECTION_MEMORY_OBJECTS = "ra001"
+COLLECTION_MEMORY_OBJECTS = "ev013"
 
 MAX_DEQUE_LENGTH = 50
-Virtual_MIC_Channel = 9
+
 # Basic objects for the Database.
 client = MongoClient(DATABASE_URL)
 LLMdatabase = client[DATABASE_NAME]
 userCollection = LLMdatabase[COLLECTION_USERS]
 memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
+
 BASE_RETRIEVAL_COUNT = 3  # change parameter
 OBS_RETRIEVAL_COUNT = 5  # change parameter
 RA_OBS_COUNT = 5
 EVENT_OBS_COUNT = 5
-REFLECTION_RETRIEVAL_COUNT = 9
-REFLECTION_PERIOD = 3
-RESEARCH_GOALS = "Experience of using VRchat"
+REFLECTION_RETRIEVAL_COUNT = 5
+REFLECTION_PERIOD = 5
+CHECK_REFLECTION_PERIOD = 5
+CHECK_SATURATION_PEROID = 5
+RESEARCH_GOALS = "experience in Vr chat, what activities they like doing in Vr chat and overall why do they value regarding VR chat?"
 DEBATE_GOALS = "AI Agents should be included in VRChat in the future"
-STARTING_NOTIFICATION="Hi"
-FILENAME = "./speech/current_conversation.wav"
+
+all_conversations = []
 
 CSV_LOGGER = CSVLogger()
 
-# VRC client
-parser = argparse.ArgumentParser()
-parser.add_argument("--ip", default="127.0.0.1",
-                    help="The ip of the OSC server")
-parser.add_argument("--port", type=int, default=9000,
-                    help="The port the OSC server is listening on")
-args = parser.parse_args()
-VRCclient = udp_client.SimpleUDPClient(args.ip, args.port)
+def filler(currentConversation):
 
-
-
-class AVATAR_DATA(Enum):
-    AVATAR_EXPRESSION_MAP = "Avatar Expressions Map"
-    AVATAR_ACTION_MAP = "Avatar Actions Map"
-    AVATAR_VOICE = "Avatar Voice"
-
-
-class CONVERSATION_MODE(Enum):
-    TEXT = 1
-    AUDIO = 2
-
-
-def filler(currentConversation, Convround):
-    if Convround == 0:
-        selected_filler_key = random.choice(list(fillerWords.fillers.keys()))
-        # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
-        threading.Thread(target=VRC_OSCLib.actionChatbox,
-                         args=(VRCclient, fillerWords.fillers[selected_filler_key],)).start()
-        openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", Virtual_MIC_Channel)
-    else:
         if "?" in currentConversation and len(currentConversation) > 40:
             selected_filler_key = random.choice(list(fillerWords.fillersQ.keys()))
             # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillersQ[selected_filler_key])
@@ -131,7 +90,6 @@ def fillerShort():
                      args=(VRCclient, fillerWords.fillersS[selected_filler_key],)).start()
     # VRC_OSCLib.actionChatbox(VRCclient, fillerWords.fillers[selected_filler_key])
     openaiTTS.read_audio_file("TTS/fillerWord/" + selected_filler_key + ".ogg", Virtual_MIC_Channel)
-
 
 def getBaseDescription(agent_mode):
     if agent_mode == AGENT_MODE.EVENT.value:
@@ -165,10 +123,6 @@ def text_conversation_input(agent_mode, userName, conversationalUser, conversati
         currentConversation = input(
             f"Talks with {userName}, You are {conversationalUser}. Talk about {RESEARCH_GOALS}! "
         )
-    elif agent_mode == AGENT_MODE.EVENT.value:
-        currentConversation = input(
-            f"If you want to publish an event, start with I want to publish an event: and provide the details. Else, start with a query. "
-        )
     elif agent_mode == AGENT_MODE.DEBATE.value:
         currentConversation = input(
             f"Talk with {userName}, You are {conversationalUser}. Engage in a debate on {DEBATE_GOALS}! "
@@ -186,27 +140,28 @@ def text_conversation_input(agent_mode, userName, conversationalUser, conversati
     return currentConversation
 
 
-def audio_conversation_input(CSV_LOGGER, FILENAME, Convround):
+def audio_conversation_input(CSV_LOGGER, FILENAME):
     start = time.perf_counter()
     listenAndRecordDirect(CSV_LOGGER, FILENAME)
-    # fillerShort()
     threading.Thread(target=fillerShort, args=()).start()
     end = time.perf_counter()
     audio_record_time = round(end - start, 2)
     CSV_LOGGER.set_enum(LogElements.TIME_FOR_INPUT, audio_record_time)
 
     start = time.perf_counter()
-    # currentConversation = getTextfromAudio(FILENAME)
-    currentConversation = getTextfromAudio_whisper_1(FILENAME)
+    currentConversation = getTextfromAudio(FILENAME)
     end = time.perf_counter()
     audio_to_text_time = round(end - start, 2)
     CSV_LOGGER.set_enum(LogElements.TIME_AUDIO_TO_TEXT, audio_to_text_time)
-    threading.Thread(target=filler, args=(currentConversation, Convround,)).start()
+    threading.Thread(target=filler, args=(currentConversation,)).start()
+    deleteAudioFile(FILENAME)
     return currentConversation
 
 
 def startConversation(npc_name, currMode, agent_mode):
     global pastObservations
+    global all_conversations
+
     if agent_mode == AGENT_MODE.NORMAL.value or agent_mode == AGENT_MODE.RESEARCH.value or agent_mode == AGENT_MODE.DEBATE.value:
         conversationalUser = input("Define the username you are acting as: ")
     elif agent_mode == AGENT_MODE.EVENT.value:
@@ -215,8 +170,7 @@ def startConversation(npc_name, currMode, agent_mode):
     pastObservations = fetchPastRecords(conversationalUser)
     eventLoop = asyncio.get_event_loop()
     threadExecutor = ThreadPoolExecutor()
-    npc_dialogues = []
-    # Starting Notifications
+
     if agent_mode == AGENT_MODE.NORMAL.value:
         STARTING_NOTIFICATION=f"Hi, {conversationalUser}. My Name is Ellma_AI, I'm your virtual chitchat friend here today. Let's dive into our conversation."
     elif agent_mode == AGENT_MODE.RESEARCH.value:
@@ -226,126 +180,61 @@ def startConversation(npc_name, currMode, agent_mode):
     elif agent_mode == AGENT_MODE.EVENT.value:
         STARTING_NOTIFICATION = f"Hi, there. My Name is Ellma_AI, I'm a virtual event publisher. Feel free to let me know if there is any event you want to hold or join. I can help you with it."
     openaiTTS.generateAudio(STARTING_NOTIFICATION, Virtual_MIC_Channel)
-    # tts.speech(splitSentence, "Joanna", 9)
     VRC_OSCLib.actionChatbox(VRCclient, STARTING_NOTIFICATION)
     conversation_count = 0
-    Convround = 0
-    npc_dialogues.append((npc_name, STARTING_NOTIFICATION))
     while True:
-        if currMode == CONVERSATION_MODE.TEXT.value:
-            currentConversation = text_conversation_input(
-                agent_mode, npc_name, conversationalUser, conversation_count)
-        elif currMode == CONVERSATION_MODE.AUDIO.value:
-            currentConversation = audio_conversation_input(
-                CSV_LOGGER, FILENAME, Convround)
+        push_conversation = True  # only push conversation if it is not a question
+        current_conversation = ""
+        is_question = False
 
-        Convround += 1
+        if currMode == CONVERSATION_MODE.TEXT.value:
+            currentConversation = text_conversation_input(agent_mode, npc_name, conversationalUser, conversation_count)
+        elif currMode == CONVERSATION_MODE.AUDIO.value:
+            currentConversation = audio_conversation_input(CSV_LOGGER, FILENAME)
         CSV_LOGGER.set_enum(LogElements.MESSAGE, currentConversation)
 
         if currentConversation.lower() == "done":
             break
-        npc_dialogues.append((npc_name, currentConversation))
+
+        if agent_mode != AGENT_MODE.EVENT.value:
+            current_conversation += f"User: {currentConversation}. "
+        elif agent_mode == AGENT_MODE.EVENT.value:
+            is_question = is_question_function(currentConversation)
+            print(f"Is question: {is_question}")
+            if not is_question:
+                current_conversation += f"{currentConversation}. "
+
         start = time.perf_counter()
-
-        baseRetrieval, observationRetrieval = perform_observation_retrieval(
-            agent_mode,
-            currentConversation,
-            baseObservation,
-            pastObservations
-        )
-
+        baseRetrieval, observationRetrieval = perform_observation_retrieval(agent_mode, currentConversation,
+                                                                            baseObservation, pastObservations)
         end = time.perf_counter()
+
         retrieval_time = round(end - start, 2)
         CSV_LOGGER.set_enum(LogElements.TIME_RETRIEVAL, retrieval_time)
         if agent_mode == AGENT_MODE.NORMAL.value:
-            important_observations = [
-                data[1] for data in baseRetrieval + observationRetrieval
-            ]
+            important_observations = [data[1] for data in baseRetrieval + observationRetrieval]
         else:
-            important_observations = [
-                data[1] for data in observationRetrieval
-            ]
+            important_observations = [data[1] for data in observationRetrieval]
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_OBSERVATIONS, "\n".join(
                 important_observations)
         )
-        print("Important Observations: ", important_observations)
+        # print(f"base retrieval: {baseRetrieval}")
+        # print(f"observation retrieval: {observationRetrieval}")
+        print(f"Important Observations: {important_observations}")
 
         if agent_mode == AGENT_MODE.NORMAL.value:
-            important_scores = [
-                round(data[0], 2) for data in baseRetrieval + observationRetrieval
-            ]
+            important_scores = [round(data[0], 2) for data in baseRetrieval + observationRetrieval]
         else:
-            important_scores = [
-                round(data[0], 2) for data in observationRetrieval
-            ]
+            important_scores = [round(data[0], 2) for data in observationRetrieval]
         CSV_LOGGER.set_enum(
             LogElements.IMPORTANT_SCORES, "\n".join(map(str, important_scores))
         )
 
         start = time.perf_counter()
-
-        if agent_mode == AGENT_MODE.RESEARCH.value:
-            print(Convround)
-            judgementPrompt=Interviewer_judgeEndingConversation(
-                npc_name,
-                conversationalUser,
-                npc_dialogues,
-                dialogue_length=Convround
-            )
-            result=[]
-            for conversation in judgementPrompt:
-                currText = conversation.choices[0].delta.content
-                result.append(currText)
-            print(result)
-            if "True" in result[1] or Convround==5:
-                conversationPrompt = Interviewer_EndingConversation(
-                    npc_name,
-                    conversationalUser,
-                    currentConversation,
-                    important_observations,
-                    avatar_expressions,
-                    avatar_actions,
-                    agent_mode=agent_mode,
-                    npc_dialogues=npc_dialogues,
-                    research_goals=RESEARCH_GOALS,
-                )
-            else:
-                conversationPrompt = generateConversation(
-                    npc_name,
-                    conversationalUser,
-                    currentConversation,
-                    important_observations,
-                    avatar_expressions,
-                    avatar_actions,
-                    agent_mode=agent_mode,
-                    npc_dialogues=npc_dialogues,
-                    research_goals=RESEARCH_GOALS,
-                )
-        elif agent_mode == AGENT_MODE.DEBATE.value:
-            conversationPrompt = generateConversation(
-                npc_name,
-                conversationalUser,
-                currentConversation,
-                important_observations,
-                avatar_expressions,
-                avatar_actions,
-                agent_mode=agent_mode,
-                npc_dialogues=npc_dialogues,
-                debate_goals=DEBATE_GOALS,
-            )
-        else:
-            conversationPrompt = generateConversation(
-                npc_name,
-                conversationalUser,
-                currentConversation,
-                important_observations,
-                avatar_expressions,
-                avatar_actions,
-                agent_mode=agent_mode,
-                npc_dialogues=npc_dialogues,
-            )
-
+        conversationPrompt = generate_conversation_helper(npc_name, conversationalUser, currentConversation,
+                                                          important_observations, avatar_expressions, avatar_actions,
+                                                          agent_mode, is_question=is_question)
         end = time.perf_counter()
         npc_response_time = round(end - start, 2)
         print(f"{npc_name} :")
@@ -369,110 +258,52 @@ def startConversation(npc_name, currMode, agent_mode):
                         print(splitSentence, end="")
                     print(splitSentence, end="")
                     # Additional actions
-                    openaiTTS.generateAudio(splitSentence, Virtual_MIC_Channel)
+                    openaiTTS.generateAudio(splitSentence, 9)
                     # tts.speech(splitSentence, "Joanna", 9)
                     VRC_OSCLib.actionChatbox(VRCclient, splitSentence)
                     splitSentence = ""  # Reset splitSentence
             except:
                 break
-        npc_dialogues.append((conversationalUser, resultConversationString))
-        print(npc_dialogues)
+        # npc_dialogues.append((conversationalUser, resultConversationString))
+        # print(npc_dialogues)
         if splitSentence:
             # Additional actions for the remaining splitSentence
-            openaiTTS.generateAudio(splitSentence, Virtual_MIC_Channel)
+            openaiTTS.generateAudio(splitSentence, 9)
             # tts.speech(splitSentence, "Joanna", 9)
             VRC_OSCLib.actionChatbox(VRCclient, splitSentence)
             print(splitSentence, end="")
-        # for conversation in conversationPrompt:
-        #     try:
-        #         currText = conversation.choices[0].delta.content
-        #         resultConversationString += currText
-        #         print(currText, end="")
-        #     except:
-        #         break
-        threading.Thread(target=VRC_OSCLib.send_expression_command, args=(emotions,)).start()
-        deleteAudioFile(FILENAME)
         CSV_LOGGER.set_enum(LogElements.NPC_RESPONSE, resultConversationString)
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_RESPONSE, npc_response_time)
-        # speech = tts.speech(resultConversationString, "Joanna", 7)
-        # polly.read_audio_file()
-        # print(speech)
-        if agent_mode == AGENT_MODE.RESEARCH.value:
-            if "True" in result[1] or Convround >= 5:
-                summary=Interviewer_SummarizeConversation(npc_name,
-                    conversationalUser,
-                    currentConversation,
-                    important_observations,
-                    avatar_expressions,
-                    avatar_actions,
-                    agent_mode=agent_mode,
-                    npc_dialogues=npc_dialogues,
-                    research_goals=RESEARCH_GOALS)
-                print(summary)
-                summary1=generate_summary_prompt(npc_name,
-                    conversationalUser,
-                    currentConversation,
-                    important_observations,
-                    avatar_expressions,
-                    avatar_actions,
-                    agent_mode=agent_mode,
-                    npc_dialogues=npc_dialogues,
-                    research_goals=RESEARCH_GOALS)
-                print(summary1)
-                CSV_LOGGER.set_enum(LogElements.SUMMARY, summary)
-                CSV_LOGGER.set_enum(LogElements.SUMMARY1, summary1)
-        CSV_LOGGER.write_to_csv(True)
+        threading.Thread(target=VRC_OSCLib.send_expression_command, args=(emotions,)).start()
+        filtered_result = filter_conversation(resultConversationString)
+        if agent_mode != AGENT_MODE.EVENT.value:
+            current_conversation += f"{npc_name}: {filtered_result}.\n"
+
         print()
+
+        CSV_LOGGER.write_to_csv(True)  # write all values to csv
+
         print(
             f"Time taken for the conversation generation by GPT : {npc_response_time}"
         )
-        eventLoop.run_in_executor(
-            threadExecutor,
-            generateObservationAndUpdateMemory,
-            npc_name,
-            conversationalUser,
-            currentConversation,
-            resultConversationString,
-            npc_dialogues
-        )
+        if push_conversation:
+            eventLoop.run_in_executor(threadExecutor, generateObservationAndUpdateMemory, npc_name, conversationalUser,
+                                      currentConversation, resultConversationString, current_conversation)
+
+        all_conversations.append(current_conversation)
+
         conversation_count += 1
         if conversation_count != 1 and conversation_count % REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORMAL.value:
-            with ThreadPoolExecutor() as executor:
-                executor.submit(
-                    perform_reflection_logic,
-                    npc_name,
-                    conversationalUser,
-                    currentConversation,
-                    pastObservations,
-                )
+            eventLoop.run_in_executor(threadExecutor, perform_reflection_logic, npc_name, conversationalUser,
+                                      currentConversation, pastObservations)
 
+        if conversation_count != 1 and conversation_count % CHECK_SATURATION_PEROID == 0 and perform_saturation_logic(
+                npc_name, conversationalUser, all_conversations):
+            threading.Thread(target=VRC_OSCLib.actionChatbox,
+                             args=(VRCclient, "<Conversation ended due to saturation(Early Stopping)>.",)).start()
+            print("Conversation ended due to saturation.")
 
-def setConversationMode():
-    while True:
-        currMode = input(
-            "Please select the following :\n1. Text Mode\n2. Audio Mode\n")
-        if currMode == "1":
-            return CONVERSATION_MODE.TEXT.value
-        elif currMode == "2":
-            return CONVERSATION_MODE.AUDIO.value
-        else:
-            print("Invalid input, please select appropriate options")
-
-
-def set_agent_mode():
-    while True:
-        user_input = input(
-            "Select conversation mode:\n1. Normal Conversation\n2. Event Agent\n3. Research Agent\n4. Debate Agent\nEnter the corresponding number: ")
-        if user_input == "1":
-            return AGENT_MODE.NORMAL.value
-        elif user_input == "2":
-            return AGENT_MODE.EVENT.value
-        elif user_input == "3":
-            return AGENT_MODE.RESEARCH.value
-        elif user_input == "4":
-            return AGENT_MODE.DEBATE.value
-        else:
-            print("Invalid input, please enter a valid number.")
+            break
 
 
 def fetchBaseDescription(userName: str):
@@ -585,7 +416,7 @@ def perform_reflection_logic(
     for observation in reflection_list:
         if len(observation) > 0:
             finalObservations.append(observation)
-    print(f"NPC reflection: {finalObservations}")
+    # print(f"NPC reflection: {finalObservations}")
     update_reflection_db_and_past_obs(
         userName,
         conversationalUser,
@@ -593,24 +424,43 @@ def perform_reflection_logic(
     )
 
 
+# def perform_saturation_logic(
+#         userName, conversationalUser, all_conversations
+# ):
+#     print("NPC in determinting saturation...\n")
+#
+#     response = generate_saturation_prompt(
+#         userName,
+#         conversationalUser,
+#         pastConversations=all_conversations,
+#     )
+#     print(f"Saturation response: {response}")
+#     if "True" in response:
+#         return True
+#     elif "False" in response:
+#         return False
+
+
 def generateObservationAndUpdateMemory(
         userName,
         conversationalUser,
         currentConversation,
-        resultConversationString
+        resultConversationString,
+        npc_dialogues
 ):
-    # Time the function call and fetch the results.
-    startTime = time.perf_counter()
-    observationList = generateObservations(
-        userName, conversationalUser, currentConversation, resultConversationString
-    )
-    observationList = observationList.split("\n")
+    # # Time the function call and fetch the results.
+    # startTime = time.perf_counter()
+    # observationList = generateObservations(
+    #     userName, conversationalUser, currentConversation, resultConversationString
+    # )
+    # observationList = observationList.split("\n")
     finalObservations = []
-    for observation in observationList:
-        if len(observation) > 0:
-            finalObservations.append(observation)
+    finalObservations.append(npc_dialogues)
+    # for observation in observationList:
+    #     if len(observation) > 0:
+    #         finalObservations.append(observation)
 
-    endTime = time.perf_counter()
+    # endTime = time.perf_counter()
     """
     print(
         f"Time taken for the observation generation by GPT : {endTime-startTime:.2f} "
@@ -670,6 +520,8 @@ def perform_observation_retrieval(
     return baseRetrieval, observationRetrieval
 
 
+
+
 if __name__ == "__main__":
     currMode = setConversationMode()
     agent_mode = set_agent_mode()
@@ -725,4 +577,9 @@ if __name__ == "__main__":
         avatar_actions = list(avatar_action_map.keys())
 
     startConversation(npc_name, currMode, agent_mode)
+    summirzation_response = perform_summurization_logic(npc_name, all_conversations)
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    filename = f"evaluations/Summary/summarization_response_{timestamp}.txt"
+    write_to_file(summirzation_response, filename)
+    # print(f"Summarization response: {summirzation_response}")
     client.close()
