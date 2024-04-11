@@ -215,7 +215,7 @@ def startConversation(npc_name, currMode, agent_mode):
                             print(splitSentence, end="")
                         print(splitSentence, end="")
                         # Additional actions
-                        openaiTTS.generateAudio(splitSentence, )
+                        openaiTTS.generateAudio(splitSentence, Virtual_MIC_Channel)
                         # tts.speech(splitSentence, "Joanna", 9)
                         VRC_OSCLib.actionChatbox(VRCclient, splitSentence)
                         splitSentence = ""  # Reset splitSentence
