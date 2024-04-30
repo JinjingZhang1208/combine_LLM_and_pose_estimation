@@ -35,7 +35,7 @@ memoryObjectCollection = LLMdatabase[COLLECTION_MEMORY_OBJECTS]
 
 REFLECTION_RETRIEVAL_COUNT = 5
 CHECK_REFLECTION_PERIOD = 5
-CHECK_SATURATION_PEROID = 3
+CHECK_SATURATION_PEROID = 1
 FILENAME = "current_conversation.wav"
 
 all_conversations = []
@@ -168,8 +168,6 @@ def startConversation(npc_name, currMode, agent_mode):
         CSV_LOGGER.set_enum(LogElements.TIME_FOR_GENERATE_OBS, generate_observation_time)
         all_conversations.append(current_conversation_str)
 
-        CSV_LOGGER.write_to_csv(True) # write all values to csv
-
         conversation_count += 1
 
         if conversation_count != 1 and conversation_count % CHECK_REFLECTION_PERIOD == 0 and agent_mode == AGENT_MODE.NORMAL.value:
@@ -179,20 +177,28 @@ def startConversation(npc_name, currMode, agent_mode):
             reflection_time = round(end - start, 2)
             CSV_LOGGER.set_enum(LogElements.TIME_FOR_REFLECTION, reflection_time)
         
-        if conversation_count != 1 and conversation_count % CHECK_SATURATION_PEROID == 0 and check_saturation(npc_name, conversationalUser, all_conversations):
-            bullet_points_response = get_bullet_points_response(conversationalUser, all_conversations)
-            saturation_check_response = input(
-                f"{bullet_points_response} "
-            )
-            intention_response = check_saturation(npc_name, conversationalUser,saturation_check_response)
-            if intention_response:
-                print("Conversation ended due to saturation.")
-                break
+        if conversation_count != 1 and conversation_count % CHECK_SATURATION_PEROID == 0:
+            start = time.perf_counter() 
+            is_saturation = check_saturation(npc_name, conversationalUser, all_conversations)
+            end = time.perf_counter()
+            saturation_check_time = round(end - start, 2)
+            print(f"Time taken for the saturation check : {saturation_check_time}" )
 
-        
+            if is_saturation:
+                bullet_points_response = get_bullet_points_response(conversationalUser, all_conversations)
+                saturation_check_response = input(
+                    f"{bullet_points_response} "
+                )
+                intention_response = check_saturation(npc_name, conversationalUser,saturation_check_response)
+                if intention_response:
+                    print("Conversation ended due to saturation.")
+                    break
+ 
         if conversation_count == INTERVIEW_ROUNDS and agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
             print("Conversation ended due to interview rounds.")
             break
+
+        CSV_LOGGER.write_to_csv(True) # write all values to csv
 
 
 def fetchBaseDescription(userName: str):

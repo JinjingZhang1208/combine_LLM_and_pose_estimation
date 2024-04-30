@@ -226,15 +226,6 @@ def get_summurization_response(
     return response
 
 
-def get_user_end_intention_response(
-    userResponse
-):
-    response = generate_user_end_intention_prompt(
-        userResponse=userResponse
-    )
-    return response
-
-
 def write_to_file(content, filename):
     with open(filename, 'w') as file:
         file.write(content)
