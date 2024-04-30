@@ -63,8 +63,11 @@ def generate_saturation_prompt(userName, conversationalUser, pastConversations):
     prompt = {
         "context": f"Reflecting on the past conversations between {userName} and {conversationalUser}.",
         "pastConversations": f"{pastConversations}",
-        "instruction": "Assess whether the user's message indicates a desire to continue the conversation or to conclude it, provide a clear and specific reason explaining why it has reached saturation and no longer adds substantial value. If you believe there is potential for further productive dialogue based on the user's message, respond with 'False'.",
-        "example": "True: The user's message appears to suggest that the conversation has reached saturation because [reason for saturation]. It would be appropriate to conclude the dialogue at this point.\n\nFalse: There are still [potential areas for further discussion] in the user's message that could lead to a more productive dialogue.",
+        "instruction": "Assess whether the user's message indicates a desire to continue the conversation or to conclude it. If the user's message suggests a desire to continue, respond with 'False'. Otherwise, provide a clear and specific reason explaining why it has reached saturation and no longer adds substantial value.",
+        "criteria": [
+            "If the user's message suggests a desire to continue, do not end the conversation"
+        ],
+        "example": "True: The user's message appears to suggest that the conversation has reached saturation because [reason for saturation]. It would be appropriate to conclude the dialogue at this point.\n\nFalse: The user's message indicates a desire to continue the conversation. It is not saturated.",
     }
     saturation_prompt = json.dumps(prompt, indent=4)
     return getGPTResponse(saturation_prompt, GPT35)

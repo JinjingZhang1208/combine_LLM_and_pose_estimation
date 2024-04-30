@@ -18,6 +18,7 @@ class LogElements(Enum):
     TIME_FOR_RESPONSE = "Time for Response"
     TIME_FOR_REFLECTION = "Time for Reflection"
     TIME_FOR_GENERATE_OBS = "Time for Generate Observations"
+    TIME_FOR_SATURATION_CHECK = "Time for Saturation Check"
 
 class CSVLogger:
     enum_values = {}
