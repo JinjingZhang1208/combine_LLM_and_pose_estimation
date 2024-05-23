@@ -32,14 +32,14 @@ def get_conversational_user(agent_mode):
 
 
 def get_npc_name(agent_mode):
-    if agent_mode == AGENT_MODE.NORMAL.value:
-        return input("Please enter the username of character: ")
-    elif agent_mode == AGENT_MODE.EVENT.value:
+    if agent_mode == AGENT_MODE.EVENT.value:
         return "Event Agent"
     elif agent_mode == AGENT_MODE.RESEARCH.value or agent_mode == AGENT_MODE.PREDEFINED_RESEARCH.value:
         return "Research Agent"
     elif agent_mode == AGENT_MODE.DEBATE.value:
         return "Debate Agent"
+    else:
+        return input("Please enter the username of character: ")
 
 
 def is_question_function(message):
@@ -91,7 +91,7 @@ def setConversationMode():
 def set_agent_mode():
     while True:
         user_input = input(
-            "Select conversation mode:\n1. Normal Conversation\n2. Event Agent\n3. Interview Agent\n4. Debate Agent\n5. Predefined Interview\nEnter the corresponding number: ")
+            "Select conversation mode:\n1. Normal Conversation\n2. Event Agent\n3. Interview Agent\n4. Debate Agent\n5. Predefined Interview\n6. AAC Mode \nEnter the corresponding number: ")
         if user_input == "1":
             return AGENT_MODE.NORMAL.value
         elif user_input == "2":
@@ -102,6 +102,8 @@ def set_agent_mode():
             return AGENT_MODE.DEBATE.value
         elif user_input == "5":
             return AGENT_MODE.PREDEFINED_RESEARCH.value
+        elif user_input == "6":
+            return AGENT_MODE.AAC.value
         else:
             print("Invalid input, please enter a valid number.")
 
