@@ -15,3 +15,4 @@ class AGENT_MODE(Enum):
     RESEARCH = 3
     DEBATE = 4
     PREDEFINED_RESEARCH = 5
+    AAC = 6

@@ -1,5 +1,6 @@
 /textBasedSimulation - audio+text/.cache/
 /textBasedSimulation/.env
+/textBasedSimulation/evaluations/TestScenarios_CSV/*.csv
 /whispering/
 /whispering-ui/
 /whispering/
