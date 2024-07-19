@@ -1,0 +1,16 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response,Time for Reflection,Time for Generate Observations
+"Hello, I am waving.","User: hello. NPC:  Ellma, seems like we've hit a road bump. Could you please rephrase or elaborate a bit more on what you'd like to discuss?.
+
+User: hello. NPC: Ellma, it seems like we started off on a mysterious note, huh? Let's dive deeper into our conversation. What's on your mind today?.
+","0.0
+0.0","(Wink, Wave Hands)
+Ah, I see you've got the wave down, ellma! Shall we try a high-five next?",15.96,2.9,0.0,10.41,1.05,0.0,0.0024907999904826283,,0.0
+What do you have for lunch?,"User: Hello, I am waving.. NPC: Ah, I see you've got the wave down, ellma! Shall we try a high-five next?.
+
+User: hello. NPC:  Ellma, seems like we've hit a road bump. Could you please rephrase or elaborate a bit more on what you'd like to discuss?.
+
+User: hello. NPC: Ellma, it seems like we started off on a mysterious note, huh? Let's dive deeper into our conversation. What's on your mind today?.
+","0.98
+0.0
+0.0","(Happy, Point) 
+Oh, I had a classic sandwich for lunch today, ellma. It was a delightful mix of fresh veggies and cheese. How about you?",67.5,2.79,0.0,62.09,0.65,0.0,0.0019563000241760164,,0.0

@@ -15,10 +15,10 @@ from pythonosc import udp_client
 import threading
 import time
 
-INPUT_DEVICE_INDEX = 3
+INPUT_DEVICE_INDEX = 1
 OUTPUT_DEVICE_INDEX = 17
 TEMP_FILE = "speech_check.wav"
-MODEL_PATH = "./vosk-model/vosk-model-small-en-us-0.15"
+MODEL_PATH = r"C:\Users\andyma\Documents\GitHub\NEU-LLM-Avartars\SimulationSystem-VRCHAT\vosk-model-small-en-us-0.15"
 AUDIO_CSV_LOGGER = ""
 # VRC client
 parser = argparse.ArgumentParser()

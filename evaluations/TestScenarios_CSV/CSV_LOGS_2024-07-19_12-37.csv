@@ -1,0 +1,7 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response,Time for Reflection,Time for Generate Observations
+"Hello Emma, I am","Observation 1: The user's name is popozjj.
+Observation 2: The provided description includes two words, ""ellam"" and ""ellma"". 
+Observation 3: There is no additional information or context provided about the user or the words ""ellam"" and ""ellma"".","0
+0
+0","(Wink, Clap)
+Nice to meet you, popozjj! I see we are both fans of the words ""ellam"" and ""ellma"". They make quite a fascinating pair, don't they?",15.32,1.43,0.0,12.75,0.58,0.0,0.001402800000505522,,0.0

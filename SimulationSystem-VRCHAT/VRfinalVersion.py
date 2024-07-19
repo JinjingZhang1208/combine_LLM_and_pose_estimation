@@ -29,7 +29,7 @@ load_dotenv()
 FILENAME = "./speech/current_conversation.wav"
 Virtual_MIC_Channel = 9
 CSV_LOGGER = CSVLogger()
-tts = Polly.Polly()
+#tts = Polly.Polly()
 #VRC client
 parser = argparse.ArgumentParser()
 parser.add_argument("--ip", default="127.0.0.1",
@@ -464,6 +464,8 @@ if __name__ == "__main__":
     # Check for existing user.
     is_existing_npc_in_user_collection = userCollection.find_one(
         {"Username": npc_name})
+    
+    VRC_OSCLib.actionChatbox(VRCclient, "Hello")
 
     if is_existing_npc_in_user_collection:
         # print(f"Welcome back! {npc_name} \nContinue where you left off")

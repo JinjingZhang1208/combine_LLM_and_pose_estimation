@@ -1,0 +1,103 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response,Time for Reflection,Time for Generate Observations
+收到了 曬爆,"**Observations:**
+1. The user is identified as user 1.
+2. The user will be provided with a description containing background details.
+User: 我有一個寶箱. NPC: \\n1, I see you've got a treasure chest! What's the story behind that? Are we going on some thrilling quest together?.
+
+User: i do not understand. NPC: \\nAh, 1, it seems we hit a bump in our communication. Can you elaborate more so we can carry on with our adventure?.
+
+User: hi, i am jumping. NPC: \\nWell, 1, keep hopping! Your enthusiasm is contagious, I'm clapping for you. What's our next fun exploit?.
+
+User: hi, i am waving . NPC: \\n1, your wave is like a catchy tune, I can't help but join in! So, what's our next caper?.
+
+User: hello. NPC:  \nHey, 1! You got me! I'm actually number 22, not 11. What's next on our agenda?.
+","0
+0
+0
+0.44
+0.0
+0.0
+0.0
+0.0","(Sad, Point)\\n1, I see that your message seems a bit scrambled. Can we rewind a bit or start a new chapter in our story?",12.29,1.51,0.0,9.24,0.82,0.001,0.0033217000018339604,,0.0
+發到這個里面,"**Observations:**
+1. The user is identified as user 1.
+2. The user will be provided with a description containing background details.
+User: 收到了 曬爆. NPC: \\n1, I see that your message seems a bit scrambled. Can we rewind a bit or start a new chapter in our story?.
+
+User: 我有一個寶箱. NPC: \\n1, I see you've got a treasure chest! What's the story behind that? Are we going on some thrilling quest together?.
+
+User: i do not understand. NPC: \\nAh, 1, it seems we hit a bump in our communication. Can you elaborate more so we can carry on with our adventure?.
+
+User: hi, i am jumping. NPC: \\nWell, 1, keep hopping! Your enthusiasm is contagious, I'm clapping for you. What's our next fun exploit?.
+
+User: hi, i am waving . NPC: \\n1, your wave is like a catchy tune, I can't help but join in! So, what's our next caper?.
+","0
+0
+0
+1.0
+0.44
+0.0
+0.0
+0.0","(Wink, Dance) 
+\\n1, I see you're quite the charmer with those waves. Shall we do a little dance to celebrate our camaraderie? What's the next step in our dance, friend?",6.64,1.4,0.0,2.69,0.56,0.0,0.001987900002859533,,0.0
+"Ja, det fanns.","**Observations:**
+1. The user is identified as user 1.
+2. The user will be provided with a description containing background details.
+User: 發到這個里面. NPC:  \\n1, I see you're quite the charmer with those waves. Shall we do a little dance to celebrate our camaraderie? What's the next step in our dance, friend?.
+
+User: 收到了 曬爆. NPC: \\n1, I see that your message seems a bit scrambled. Can we rewind a bit or start a new chapter in our story?.
+
+User: 我有一個寶箱. NPC: \\n1, I see you've got a treasure chest! What's the story behind that? Are we going on some thrilling quest together?.
+
+User: i do not understand. NPC: \\nAh, 1, it seems we hit a bump in our communication. Can you elaborate more so we can carry on with our adventure?.
+
+User: hi, i am jumping. NPC: \\nWell, 1, keep hopping! Your enthusiasm is contagious, I'm clapping for you. What's our next fun exploit?.
+","0
+0
+0
+1.0
+0.99
+0.44
+0.0
+0.0","(Confused, Point)\\nIt seems we've got a bit lost in our adventure, 1. How about we get back on track? What's the next twist in our tale?",6.43,1.75,0.0,3.03,0.58,0.0,0.003104300005361438,,0.0
+Твою мать!,"**Observations:**
+1. The user is identified as user 1.
+2. The user will be provided with a description containing background details.
+User: Ja, det fanns.. NPC: \\nIt seems we've got a bit lost in our adventure, 1. How about we get back on track? What's the next twist in our tale?.
+
+User: 發到這個里面. NPC:  \\n1, I see you're quite the charmer with those waves. Shall we do a little dance to celebrate our camaraderie? What's the next step in our dance, friend?.
+
+User: 收到了 曬爆. NPC: \\n1, I see that your message seems a bit scrambled. Can we rewind a bit or start a new chapter in our story?.
+
+User: 我有一個寶箱. NPC: \\n1, I see you've got a treasure chest! What's the story behind that? Are we going on some thrilling quest together?.
+
+User: i do not understand. NPC: \\nAh, 1, it seems we hit a bump in our communication. Can you elaborate more so we can carry on with our adventure?.
+","0
+0
+0
+0.87
+0.86
+0.86
+0.38
+0.0","(Confused, Point)\\n1, it seems like our communication got scrambled again. Can you clarify your message so we can keep our adventure going smoothly?",502.65,1.49,0.0,500.57,0.58,0.0,0.002379200013820082,,0.0
+你在说什么,"**Observations:**
+1. The user is identified as user 1.
+2. The user will be provided with a description containing background details.
+User: Твою мать!. NPC: \\n1, it seems like our communication got scrambled again. Can you clarify your message so we can keep our adventure going smoothly?.
+
+User: Ja, det fanns.. NPC: \\nIt seems we've got a bit lost in our adventure, 1. How about we get back on track? What's the next twist in our tale?.
+
+User: 發到這個里面. NPC:  \\n1, I see you're quite the charmer with those waves. Shall we do a little dance to celebrate our camaraderie? What's the next step in our dance, friend?.
+
+User: 收到了 曬爆. NPC: \\n1, I see that your message seems a bit scrambled. Can we rewind a bit or start a new chapter in our story?.
+
+User: 我有一個寶箱. NPC: \\n1, I see you've got a treasure chest! What's the story behind that? Are we going on some thrilling quest together?.
+","0
+0
+0
+0.98
+0.85
+0.84
+0.83
+0.37","(Wink, Dance)
+1, I see you're keeping things interesting with your message. It's a bit of a riddle, isn't it? Want to try another round of our fun game?",90.11,1.46,0.0,87.1,0.54,0.0,0.0026842000079341233,,0.0

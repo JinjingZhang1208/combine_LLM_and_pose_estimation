@@ -76,6 +76,10 @@ def read_audio_file(filepath: str, output_device_index: int):
 
 
 def generateAudio(text, device_index):
+    output_directory = "speech"
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+
     response = client.audio.speech.create(
         model="tts-1",
         voice="alloy",

@@ -1,0 +1,88 @@
+Message,Important Observations,Important Scores,NPC Response,Total time for Input,Time for Human speech detection,Time for voice normalization,Time for audio recording,Time for Audio to Text,Time for Retrieval,Time for Response,Time for Reflection,Time for Generate Observations
+"Hello, I am waving.","I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?",0,"(Wink, Wave Hands)\\nWaving back at you, ELLMA! How's your day going?",10.22,1.68,0.0,7.39,0.82,0.0,0.0017516000079922378,,0.0
+我要听尾了,"I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?
+User: Hello, I am waving.. NPC: \\nWaving back at you, ELLMA! How's your day going?.
+","0
+0.84","(Confused, Point)\\nHmm, ELLMA, your last message seems a bit cryptic. Could you help me understand it better? Maybe we could then carry on our lively chat!",636.25,2.14,0.0,632.1,0.58,0.0,0.002432100009173155,,0.0
+喂 你现在能听到吗 现在能听到,"I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?
+User: 我要听尾了. NPC: \\nHmm, ELLMA, your last message seems a bit cryptic. Could you help me understand it better? Maybe we could then carry on our lively chat!.
+
+User: Hello, I am waving.. NPC: \\nWaving back at you, ELLMA! How's your day going?.
+","0
+0.97
+0.8","(Happy, Wave Hands)
+Oh, ELLMA, I can hear you loud and clear now! What's the next adventure we're embarking on?",124.56,1.95,0.0,7.52,0.69,0.0,0.0027759000076912344,,0.0
+這件事我不好說 但是首先你先給我,"I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?
+User: 喂 你现在能听到吗 现在能听到. NPC: Oh, ELLMA, I can hear you loud and clear now! What's the next adventure we're embarking on?.
+
+User: 我要听尾了. NPC: \\nHmm, ELLMA, your last message seems a bit cryptic. Could you help me understand it better? Maybe we could then carry on our lively chat!.
+
+User: Hello, I am waving.. NPC: \\nWaving back at you, ELLMA! How's your day going?.
+","0
+0.99
+0.96
+0.8","(Confused, Point)\\nELLMA, your message is quite puzzling. Could you clarify a bit? Are we starting a new journey or solving a mystery?",19.41,2.51,0.0,13.54,0.79,0.0,0.0034585999965202063,,0.0
+"I think I have a cable of three, and you'll get it.","I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?
+User: 這件事我不好說 但是首先你先給我. NPC: \\nELLMA, your message is quite puzzling. Could you clarify a bit? Are we starting a new journey or solving a mystery?.
+
+User: 喂 你现在能听到吗 现在能听到. NPC: Oh, ELLMA, I can hear you loud and clear now! What's the next adventure we're embarking on?.
+
+User: 我要听尾了. NPC: \\nHmm, ELLMA, your last message seems a bit cryptic. Could you help me understand it better? Maybe we could then carry on our lively chat!.
+
+User: Hello, I am waving.. NPC: \\nWaving back at you, ELLMA! How's your day going?.
+","0
+1.0
+0.99
+0.95
+0.79","(Happy, Wave Hands)
+ELLMA, a cable of three sounds like a charm! Pass it along, let's see what fun we can have with it!",8.9,2.56,0.0,2.47,0.62,0.0,0.002601099986350164,,0.0
+Bye.,"I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?
+User: I think I have a cable of three, and you'll get it.. NPC: ELLMA, a cable of three sounds like a charm! Pass it along, let's see what fun we can have with it!.
+
+User: 這件事我不好說 但是首先你先給我. NPC: \\nELLMA, your message is quite puzzling. Could you clarify a bit? Are we starting a new journey or solving a mystery?.
+
+User: 喂 你现在能听到吗 现在能听到. NPC: Oh, ELLMA, I can hear you loud and clear now! What's the next adventure we're embarking on?.
+
+User: 我要听尾了. NPC: \\nHmm, ELLMA, your last message seems a bit cryptic. Could you help me understand it better? Maybe we could then carry on our lively chat!.
+
+User: Hello, I am waving.. NPC: \\nWaving back at you, ELLMA! How's your day going?.
+","0
+1.0
+0.99
+0.98
+0.94
+0.78","(Happy, Wave Hands)
+See you later, ELLMA! Can't wait for our next quirky chat. Until then, keep the fun rolling!",12.09,2.62,0.0,8.53,0.66,0.0,0.0014952000055927783,0.0,0.0
+shot watch vision.,"I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?
+User: Bye.. NPC: See you later, ELLMA! Can't wait for our next quirky chat. Until then, keep the fun rolling!.
+
+User: I think I have a cable of three, and you'll get it.. NPC: ELLMA, a cable of three sounds like a charm! Pass it along, let's see what fun we can have with it!.
+
+User: 這件事我不好說 但是首先你先給我. NPC: \\nELLMA, your message is quite puzzling. Could you clarify a bit? Are we starting a new journey or solving a mystery?.
+
+User: 喂 你现在能听到吗 现在能听到. NPC: Oh, ELLMA, I can hear you loud and clear now! What's the next adventure we're embarking on?.
+
+User: 我要听尾了. NPC: \\nHmm, ELLMA, your last message seems a bit cryptic. Could you help me understand it better? Maybe we could then carry on our lively chat!.
+","0
+1.0
+0.99
+0.98
+0.97
+0.93","(Happy, Clap) \nELLMA, ""shot watch vision"" has an intriguing ring to it! Are we inventing a time-traveling watch or starting a spy film?",16.86,0.87,0.0,14.02,1.16,0.0,0.0033315000182483345,0.0,0.0
+,"I'm sorry, but the description provided doesn't contain any background details or information about user TEST. Could you please provide a detailed description for me to generate the list of observations?
+User: shot watch vision.. NPC:  \nELLMA, ""shot watch vision"" has an intriguing ring to it! Are we inventing a time-traveling watch or starting a spy film?.
+
+User: Bye.. NPC: See you later, ELLMA! Can't wait for our next quirky chat. Until then, keep the fun rolling!.
+
+User: I think I have a cable of three, and you'll get it.. NPC: ELLMA, a cable of three sounds like a charm! Pass it along, let's see what fun we can have with it!.
+
+User: 這件事我不好說 但是首先你先給我. NPC: \\nELLMA, your message is quite puzzling. Could you clarify a bit? Are we starting a new journey or solving a mystery?.
+
+User: 喂 你现在能听到吗 现在能听到. NPC: Oh, ELLMA, I can hear you loud and clear now! What's the next adventure we're embarking on?.
+","0
+1.0
+0.99
+0.98
+0.97
+0.96","(Wink, Dance)
+Sure, ELLMA, let's do a dance of words and expressions! What's on the agenda for our chat today?",13.42,0.94,0.0,10.54,2.7,0.0,0.002677499986020848,0.0,0.0
